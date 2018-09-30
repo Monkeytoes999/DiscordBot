@@ -1,0 +1,14 @@
+{
+	"name": "Graham",
+	"version": "1.0.0",
+	"description": "Stuff",
+	"main": "bot.js",
+	"author": "123",
+	"scripts": {
+		"start" : 		"start": npm start
+	}
+	"dependencies": {
+		"discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
+		"winston": "^3.1.0"
+	}
+}
