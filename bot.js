@@ -62,7 +62,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'help':
 				bot.sendMessage({
 					to: userID,
-					message: 'Sorry, we don\'t actually have very many commands at the moment. There is !ping, !destroy and !intro, but that\'s it.'
+					message: 'Sorry, we don\'t actually have very many commands at the moment. There is !ping, !destroy, !cat, !yoyo and !intro, but that\'s it. Also, we will say "What\'s this?" when any message contains owo'
 				});
 				bot.sendMessage({
 					to: channelID,
@@ -72,7 +72,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'yoyo':
 				bot.sendMessage({
 					to: channelID,
-					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------())'
+					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------()) \n -------------()) \n ------------()) \n -----------()) \n ----------()) \n ---------()) \n --------()) \n -------()) \n ------()) \n -----()) \n ----()) \n ---()) \n --()) \n -()) \n ())'
 				});
 			break;
 			case 'cat':
