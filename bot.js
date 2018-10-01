@@ -93,12 +93,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------()) \n -------------()) \n ------------()) \n -----------()) \n ----------()) \n ---------()) \n --------()) \n -------()) \n ------()) \n -----()) \n ----()) \n ---()) \n --()) \n -()) \n ())'
 				});
 			break;
-			case 'knock knock':
-				knockknock = 1;
-				bot.sendMessage({
-					to: channelID,
-					message: 'Who\'s there?'
-				});
+		case 'knockknock':
+			bot.sendMessage({
+				to: channelID,
+				message: 'Who\'s there?'
+			});
+			knockknock = 1;
 			break;
 			case 'cat':
 				bot.sendMessage({
