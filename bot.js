@@ -33,7 +33,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			channelID: channelID,
 			messageID: event.d.id
 		}, function (err) {
-          console.log(err));
+          console.log(err);
 		})
 	}
 	
