@@ -62,6 +62,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
+			case 'cat':
+				bot.sendMessage({
+					to: channelID,
+					message: 'Cat\'s are legit bro'
+				});
+				bot.sendMessage({
+					to: channelID,
+					message: 'Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow'
+				});
+			break;
 			case 'intro':
 				bot.sendMessage({
 					to: channelID,
