@@ -4,6 +4,7 @@ var prefix = '!';
 var passnum = 0; 
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
 var knockknock = 0;
+var joke = '.';
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -33,14 +34,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
        	
-	if (knockknock == 2){
+	if (knockknock == 2 && message != joke){
 		bot.sendMessage({
 			to: channelID,
 			message: "Hahaha!"
 		});
+		knockknock = 0;
 	}
 	
-	if (knockknock == 1){
+	if (knockknock == 1 && message.substring(1)!='knock knock'){
 		bot.sendMessage({
 			to: channelID,
 			message: message + " who?"
@@ -93,7 +95,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------()) \n -------------()) \n ------------()) \n -----------()) \n ----------()) \n ---------()) \n --------()) \n -------()) \n ------()) \n -----()) \n ----()) \n ---()) \n --()) \n -()) \n ())'
 				});
 			break;
-		case 'knockknock':
+		case 'knock knock':
 			bot.sendMessage({
 				to: channelID,
 				message: 'Who\'s there?'
