@@ -29,7 +29,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // It will listen for messages that will start with `!`
 	
 	if (curses.includes(message)){
-		bot.message.delete();
+		bot.deleteMessage({
+			channelID: channelID,
+			messageID: event.d.id
+		});
 	}
 	
 	if (message.includes('owo')){
