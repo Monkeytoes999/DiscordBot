@@ -2,6 +2,7 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var prefix = '!';
 var passnum = 0; 
+var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -97,7 +98,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 			case 'destroy':
 				var password = message.substring(9);
-				if (password == process.env.passwords[passnum]){
+				if (password == passwords[passnum]){
 					passnum = passnum + 1;
 					bot.sendMessage({
 						to: channelID,
