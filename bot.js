@@ -65,11 +65,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'cat':
 				bot.sendMessage({
 					to: channelID,
-					message: 'Cats are legit bro'
+					message: 'Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow'
 				});
 				bot.sendMessage({
 					to: channelID,
-					message: 'Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow'
+					message: 'Cats are legit bro'
 				});
 			break;
 			case 'intro':
