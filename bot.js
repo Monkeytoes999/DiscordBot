@@ -5,6 +5,7 @@ var passnum = 0;
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
 var knockknock = 0;
 var joke = '.';
+var curses = ['shit']
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -26,6 +27,10 @@ bot.on('ready', function (evt) {
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
+	
+	if (curses.includes(message)){
+		message.delete();
+	}
 	
 	if (message.includes('owo')){
 		bot.sendMessage({
@@ -67,6 +72,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
     if (message.substring(0, 1) == prefix) {
+	knockknock = 0
         var args = message.substring(1).split(' ');
         var cmd = args[0];
        
