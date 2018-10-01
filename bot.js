@@ -87,7 +87,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
-			case '
 			case 'yoyo':
 				bot.sendMessage({
 					to: channelID,
