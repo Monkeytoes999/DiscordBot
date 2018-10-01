@@ -31,9 +31,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (curses.includes(message)){
 		bot.deleteMessage({
 			channelID: channelID,
-			messageID: event.d.id
-		}, function (err) {
-          console.log(err);
+			messageID: rawEvent.d.id
 		})
 	}
 	
