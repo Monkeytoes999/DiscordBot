@@ -65,12 +65,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'cat':
 				bot.sendMessage({
 					to: channelID,
-					message: 'Cat\'s are legit bro'
+					message: 'Cats are legit bro'
 				});
 				bot.sendMessage({
 					to: channelID,
 					message: 'Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow'
 				});
+				bot.sendMessage({
+					to: channelID,
+					message: 'AA <br/>(-.-)<br/>  |-|<br/> /   \<br/>|     |   __<br/>|  || |  |  _<br/> _||//'
 			break;
 			case 'intro':
 				bot.sendMessage({
