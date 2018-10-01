@@ -42,7 +42,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		knockknock = 0;
 	}
 	
-	if (knockknock == 1 && message.substring(1)!='knock knock'){
+	if (knockknock == 1 && message.substring(1)!='knockknock'){
 		bot.sendMessage({
 			to: channelID,
 			message: message + " who?"
@@ -95,7 +95,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------()) \n -------------()) \n ------------()) \n -----------()) \n ----------()) \n ---------()) \n --------()) \n -------()) \n ------()) \n -----()) \n ----()) \n ---()) \n --()) \n -()) \n ())'
 				});
 			break;
-		case 'knock knock':
+		case 'knockknock':
 			bot.sendMessage({
 				to: channelID,
 				message: 'Who\'s there?'
