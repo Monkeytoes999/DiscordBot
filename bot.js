@@ -60,6 +60,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+			    
 			case 'help':
 				bot.sendMessage({
 					to: userID,
@@ -69,6 +70,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Documentation has been sent to your dms.'
 				});
+			break;
+		case 'knock knock':
+			bot.sendMessage({
+				to: channelID,
+				message: 'Who\'s there?'
+			});
+			bot.on('message', function (user, userID, channelID, message, evt){
+				bot.sendMessage({
+					to: channelID,
+					message: message + ' who?'
+				});
+				bot.on('message', function (user, userID, channelID, message, evt){
+					bot.sendMessage({
+						to: channelID,
+						message: "Hahaha!"
+					});
+					break;
+				}
+				break;
+			}
 			break;
 			case 'yoyo':
 				bot.sendMessage({
