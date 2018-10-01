@@ -3,6 +3,7 @@ var logger = require('winston');
 var prefix = '!';
 var passnum = 0; 
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
+var knockknock = 0;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -31,7 +32,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			message: 'What\'s this?'
 		});
 	}
-       
+       	
+	if (knockknock == 2){
+		bot.sendMessage({
+			to: channelID,
+			message: "Hahaha!"
+		});
+	}
+	
+	if (knockknock == 1){
+		bot.sendMessage({
+			to: channelID,
+			message: message + " who?"
+		});
+		knockknock = 2;
+	}
+	
 	if (message.substring(0, 24) == 'Graham Channel Destroyer'){
 		bot.sendMessage({
 			to: channelID,
@@ -71,28 +87,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
-		case 'knock knock':
-			bot.sendMessage({
-				to: channelID,
-				message: 'Who\'s there?'
-			});
-			bot.on('message', function (user, userID, channelID, message, evt){
-				bot.sendMessage({
-					to: channelID,
-					message: message + ' who?'
-				});
-				bot.on('message', function (user, userID, channelID, message, evt){
-					bot.sendMessage({
-						to: channelID,
-						message: "Hahaha!"
-					});
-				}
-			}
-			break;
+			case '
 			case 'yoyo':
 				bot.sendMessage({
 					to: channelID,
 					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------()) \n -------------()) \n ------------()) \n -----------()) \n ----------()) \n ---------()) \n --------()) \n -------()) \n ------()) \n -----()) \n ----()) \n ---()) \n --()) \n -()) \n ())'
+				});
+			break;
+			case 'knock knock':
+				knockknock = 1;
+				bot.sendMessage({
+					to: channelID,
+					message: 'Who\'s there?'
 				});
 			break;
 			case 'cat':
