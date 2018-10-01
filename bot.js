@@ -69,6 +69,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
+			case 'yoyo':
+				bot.sendMessage({
+					to: channelID,
+					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------())
+				});
+			break;
 			case 'cat':
 				bot.sendMessage({
 					to: channelID,
