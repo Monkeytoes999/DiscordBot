@@ -42,7 +42,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		knockknock = 0;
 	}
 	
-	if (knockknock == 1 && !message.includes('knock') && !message.includes('Who\'s there?)){
+	if (knockknock == 1 && !message.includes('knock') && !message.includes('Who\'s there?')){
 		bot.sendMessage({
 			to: channelID,
 			message: message + " who?"
