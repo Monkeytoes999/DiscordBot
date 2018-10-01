@@ -42,11 +42,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		knockknock = 0;
 	}
 	
-	if (knockknock == 1 && message.substring(1)!='knockknock'){
+	if (knockknock == 1 && !message.contains('knock')){
 		bot.sendMessage({
 			to: channelID,
 			message: message + " who?"
 		});
+		joke = message;
 		knockknock = 2;
 	}
 	
