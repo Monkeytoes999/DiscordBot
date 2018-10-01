@@ -80,7 +80,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				bot.sendMessage({
 					to: channelID,
-					message: '          A      A \n |        (= ^w^ = )'
+					message: '|          A    A \n |        (= ^w^ = )'
 				});
 			break;
 			case 'intro':
