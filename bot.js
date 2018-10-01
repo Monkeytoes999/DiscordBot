@@ -81,6 +81,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.sendMessage({
 					to: channelID,
 					message: '          /\      /\\n|        (= ^w^ =  )'
+				});
 			break;
 			case 'intro':
 				bot.sendMessage({
