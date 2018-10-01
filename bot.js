@@ -24,7 +24,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	if (message.includes('owo')){
+	if (message.includes(' owo ')){
 		bot.sendMessage({
 			to: channelID,
 			message: 'What\'s this?'
