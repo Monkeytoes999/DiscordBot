@@ -24,11 +24,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	if (message.includes('owo'){
-	    bot.sendMessage({
-	    	to: channelID,
-	    	message: 'What\'s this?'
-	    )};
+	if (message.includes('owo')){
+		bot.sendMessage({
+			to: channelID,
+			message: 'What\'s this?'
+		});
 	}
        
 	if (message.substring(0, 24) == 'Graham Channel Destroyer'){
@@ -78,6 +78,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Cats are legit bro'
 				});
+				bot.sendMessage({
+					to: channelID,
+					message: '          /\      /\\n|        (= ^w^ =  )'
 			break;
 			case 'intro':
 				bot.sendMessage({
