@@ -34,7 +34,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
        	
-	if (knockknock == 2 && message != joke && !message.incudes('?')){
+	if (knockknock == 2 && message != joke && !message.includes('?')){
 		bot.sendMessage({
 			to: channelID,
 			message: "Hahaha!"
