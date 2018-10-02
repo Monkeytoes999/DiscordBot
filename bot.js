@@ -34,14 +34,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	for (var i = 0; i < curses.length; i++){
 		if (message.includes(curses[i]) && !message.includes('password')){
+			bot.deleteMessage({
+				channelID: channelID,
+				messageID: prevEvtID
+			});
 			bot.sendMessage({
 				to: channelID,
 				message: 'Please don\'t curse. Thank you.'
 			});
-			bot.deleteMessage({
-					channelID: channelID,
-					messageID: prevEvtID
-				});
 			break;
 		}
 	}
