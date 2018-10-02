@@ -34,7 +34,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	evt.d.id = prevEvtID;
 	
 	for (var i = 0; i < curses.length; i++){
-		if (message.includes(curses[i] && !message.includes('password'))){
+		if (message.includes(curses[i]) && !message.includes('password')){
 			cussrun = 0;
 			bot.sendMessage({
 				to: channelID,
