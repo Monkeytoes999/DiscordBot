@@ -123,6 +123,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
+		case 'neha':
+			bot.sendMessage({
+				to: channelID,
+				message: 'slays'
+			});
+			break;
 			case 'yoyo':
 				bot.sendMessage({
 					to: channelID,
