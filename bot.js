@@ -34,15 +34,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	for (var i = 0; i < curses.length; i++){
 		if (message.includes(curses[i]) && !message.includes('password')){
-			bot.deleteMessage({
-				channelID: channelID,
-				messageID: prevEvtID
-			});
-			bot.sendMessage({
-				to: channelID,
-				message: 'Please don\'t curse. Thank you.'
-			});
-			break;
+			if (message.substring(0,curses[i].length -1) == curses[i] || message.includes(' ' + curses[i]){
+				bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
+				bot.sendMessage({
+					to: channelID,
+					message: 'Please don\'t curse. Thank you.'
+				});
+				break;
+			}
 		}
 	}
        	
