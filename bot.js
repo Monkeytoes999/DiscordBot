@@ -7,6 +7,7 @@ var knockknock = 0;
 var joke = '.';
 var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch'];
 var cursewarning = 0;
+var includescurse = false;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -29,6 +30,30 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
+	if (message.includes.localeCompare(curses[0]){
+	    includescurse = true;
+	    }
+	    
+	if (message.includes.localeCompare(curses[1]){
+	    includescurse = true;
+	    }
+	
+	if (message.includes.localeCompare(curses[2]){
+	    includescurse = true;
+	    }
+	    
+	if (message.includes.localeCompare(curses[3]){
+	    includescurse = true;
+	    }
+	
+	if (message.includes.localeCompare(curses[4]){
+	    includescurse = true;
+	    }
+	    
+	if (message.includes.localeCompare(curses[5]){
+	    includescurse = true;
+	    }
+	
 	if (cursewarning == 1){
 		bot.sendMessage({
 			channelID: channelID,
@@ -37,11 +62,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		cursewarning = 0;
 	}
 	
-	if (curses.includes(message)){
+	if (includescurse){
 		bot.deleteMessage({
 			channelID: channelID,
 			messageID: evt.d.id
 		});
+		includescurse = false;
 		cursewarning = 1;
 	}
 	
