@@ -6,8 +6,6 @@ var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE'
 var knockknock = 0;
 var joke = '.';
 var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch', 'Shit', 'SHIT', 'Bike', 'BIKE', 'Fuck', 'FUCK', 'Fuk', 'FUK', 'Ass', 'ASS', 'Bitch', 'BITCH'];
-var cursewarning = 0;
-var includescurse = false;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -36,17 +34,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				channelID: channelID,
 				messageID: evt.d.id
 			});
+			bot.sendMessage({
+				to: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
 			cursewarning = 1;
 			break;
 		}
-	}
-	
-	if (cursewarning > 0 && cursewarning <10){
-			bot.sendMessage({
-				channel: channelID,
-				messageID: "Please don\'t curse. Thank you."
-			});
-		cursewarning = cursewarning + 1;
 	}
 	
 	if (message.includes('owo')){
