@@ -30,21 +30,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // It will listen for messages that will start with `!`
 	
 	for (var i = 0; i < curses.length; i++){
-		if (message.includes(curses[i])){
+		if (message.includes(curses[i] && !message.includes('password'))){
 			bot.deleteMessage({
 				channelID: channelID,
 				messageID: evt.d.id
+			});
+			bot.sendMessage({
+				to: channelID,
+				message: 'Please don\'t curse. Thank you.'
 			});
 			cussrun = 0;
 			break;
 		}
 	}
 	
-	if (cussrun > -1 && cussrun < 50){
+	if (cussrun > -1 && cussrun < 200){
 		cussrun = cussrun + 1;
 	}
 	
-	if (cussrun == 50){
+	if (cussrun == 200){
 		bot.sendMessage({
 			to: channelID,
 			message: 'Please don\'t curse. Thank you'
