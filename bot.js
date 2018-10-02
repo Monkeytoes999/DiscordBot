@@ -5,7 +5,7 @@ var passnum = 0;
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
 var knockknock = 0;
 var joke = '.';
-var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch'];
+var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch', 'Shit', 'SHIT', 'Bike', 'BIKE', 'Fuck', 'FUCK', 'Fuk', 'FUK', 'Ass', 'ASS', 'Bitch', 'BITCH'];
 var cursewarning = 0;
 var includescurse = false;
 
@@ -30,29 +30,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	if (message.includes.localeCompare(curses[0])){
-	    includescurse = true;
-	    }
-	    
-	if (message.includes.localeCompare(curses[1])){
-	    includescurse = true;
-	    }
+	for (var i = 0; i < curses.length; i++){
+		if (message.includes(curses[i])){
+			bot.deleteMessage({
+				channelID: channelID,
+				messageID: evt.d.id
+			});
+			break;
+		}
+	}
 	
-	if (message.includes.localeCompare(curses[2])){
-	    includescurse = true;
-	    }
-	    
-	if (message.includes.localeCompare(curses[3])){
-	    includescurse = true;
-	    }
-	
-	if (message.includes.localeCompare(curses[4])){
-	    includescurse = true;
-	    }
-	    
-	if (message.includes.localeCompare(curses[5])){
-	    includescurse = true;
-	    }
 	
 	if (cursewarning == 1){
 		bot.sendMessage({
@@ -60,15 +47,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			message: 'Please don\'t curse. Thank you.'
 		});
 		cursewarning = 0;
-	}
-	
-	if (includescurse){
-		bot.deleteMessage({
-			channelID: channelID,
-			messageID: evt.d.id
-		});
-		includescurse = false;
-		cursewarning = 1;
 	}
 	
 	if (message.includes('owo')){
