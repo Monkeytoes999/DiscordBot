@@ -38,6 +38,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				messageID: "Please don\'t curse. Thank you."
 			});
+			bot.sendMessage({
+				to: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
+			bot.sendMessage({
+				to: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
+			bot.sendMessage({
+				to: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
+			bot.sendMessage({
+				to: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
 			cursewarning = 1;
 			break;
 		}
