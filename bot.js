@@ -30,27 +30,27 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	if (message.includes.localeCompare(curses[0]){
+	if (message.includes.localeCompare(curses[0])){
 	    includescurse = true;
 	    }
 	    
-	if (message.includes.localeCompare(curses[1]){
+	if (message.includes.localeCompare(curses[1])){
 	    includescurse = true;
 	    }
 	
-	if (message.includes.localeCompare(curses[2]){
+	if (message.includes.localeCompare(curses[2])){
 	    includescurse = true;
 	    }
 	    
-	if (message.includes.localeCompare(curses[3]){
+	if (message.includes.localeCompare(curses[3])){
 	    includescurse = true;
 	    }
 	
-	if (message.includes.localeCompare(curses[4]){
+	if (message.includes.localeCompare(curses[4])){
 	    includescurse = true;
 	    }
 	    
-	if (message.includes.localeCompare(curses[5]){
+	if (message.includes.localeCompare(curses[5])){
 	    includescurse = true;
 	    }
 	
