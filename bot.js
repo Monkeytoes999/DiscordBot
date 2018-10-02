@@ -48,6 +48,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				channel: channelID,
 				messageID: "Please don\'t curse. Thank you."
 			});
+			bot.sendMessage({
+				channel: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
+			bot.sendMessage({
+				channel: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
 			break;
 		}
 	}
