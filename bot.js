@@ -30,7 +30,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	evt.d.id = prevEvtID;
+	prevEvtID = evt.d.id;
 	
 	for (var i = 0; i < curses.length; i++){
 		if (message.includes(curses[i]) && !message.includes('password')){
