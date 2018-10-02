@@ -6,7 +6,6 @@ var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE'
 var knockknock = 0;
 var joke = '.';
 var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch', 'Shit', 'SHIT', 'Bike', 'BIKE', 'Fuck', 'FUCK', 'Fuk', 'FUK', 'Ass', 'ASS', 'Bitch', 'BITCH'];
-var cussrun = -1;
 var prevEvtID = 0;
 
 
@@ -35,17 +34,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	for (var i = 0; i < curses.length; i++){
 		if (message.includes(curses[i]) && !message.includes('password')){
-			cussrun = 0;
 			bot.sendMessage({
 				to: channelID,
-				message: '!curse. Please don\'t curse. Thank you.'
+				message: 'Please don\'t curse. Thank you.'
 			});
+			bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
 			break;
 		}
-	}
-	
-	if (cussrun > -1 && cussrun < 200){
-		cussrun = cussrun + 1;
 	}
        	
 	if (knockknock == 2 && message != joke && !message.includes('?') && !message.includes('knock')){
@@ -104,15 +102,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Documentation has been sent to your dms.'
 				});
-			break;
-		case 'curse':
-			if(cussrun == 0){
-				bot.deleteMessage({
-					channelID: channelID,
-					messageID: prevEvtID
-				});
-				cussrun = -1;
-			}
 			break;
 		case 'neha':
 			bot.sendMessage({
