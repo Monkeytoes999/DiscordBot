@@ -7,6 +7,8 @@ var knockknock = 0;
 var joke = '.';
 var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch', 'Shit', 'SHIT', 'Bike', 'BIKE', 'Fuck', 'FUCK', 'Fuk', 'FUK', 'Ass', 'ASS', 'Bitch', 'BITCH'];
 var cussrun = -1;
+var prevEvtID = 0;
+
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -29,38 +31,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
+	evt.d.id = prevEvtID;
+	
 	for (var i = 0; i < curses.length; i++){
 		if (message.includes(curses[i] && !message.includes('password'))){
-			bot.deleteMessage({
-				channelID: channelID,
-				messageID: evt.d.id
-			});
+			cussrun = 0;
 			bot.sendMessage({
 				to: channelID,
-				message: 'Please don\'t curse. Thank you.'
+				message: '!curse. Please don\'t curse. Thank you.'
 			});
-			cussrun = 0;
 			break;
 		}
 	}
 	
 	if (cussrun > -1 && cussrun < 200){
 		cussrun = cussrun + 1;
-	}
-	
-	if (cussrun == 200){
-		bot.sendMessage({
-			to: channelID,
-			message: 'Please don\'t curse. Thank you'
-		});
-		cussrun = -1;
-	}
-	
-	if (message.includes('owo')){
-		bot.sendMessage({
-			to: channelID,
-			message: 'What\'s this?'
-		});
 	}
        	
 	if (knockknock == 2 && message != joke && !message.includes('?') && !message.includes('knock')){
@@ -119,6 +104,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Documentation has been sent to your dms.'
 				});
+			break;
+		case 'curse':
+			if(cussrun == 0){
+				bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
+				cussrun = -1;
+			}
 			break;
 		case 'neha':
 			bot.sendMessage({
