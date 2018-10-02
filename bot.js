@@ -36,37 +36,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				channelID: channelID,
 				messageID: evt.d.id
 			});
-			bot.sendMessage({
-				channel: channelID,
-				messageID: "Please don\'t curse. Thank you."
-			});
-			bot.sendMessage({
-				channel: channelID,
-				messageID: "Please don\'t curse. Thank you."
-			});
-			bot.sendMessage({
-				channel: channelID,
-				messageID: "Please don\'t curse. Thank you."
-			});
-			bot.sendMessage({
-				channel: channelID,
-				messageID: "Please don\'t curse. Thank you."
-			});
-			bot.sendMessage({
-				channel: channelID,
-				messageID: "Please don\'t curse. Thank you."
-			});
+			cursewarning = 1;
 			break;
 		}
 	}
 	
-	
-	if (cursewarning == 1){
-		bot.sendMessage({
-			channelID: channelID,
-			message: 'Please don\'t curse. Thank you.'
-		});
-		cursewarning = 0;
+	if (cursewarning > 0 && cursewarning <10){
+			bot.sendMessage({
+				channel: channelID,
+				messageID: "Please don\'t curse. Thank you."
+			});
+		cursewarning = cursewarning + 1;
 	}
 	
 	if (message.includes('owo')){
