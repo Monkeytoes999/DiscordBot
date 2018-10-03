@@ -108,7 +108,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'list':
 			bot.sendMessage({
 				to: channelID,
-				message: process.env.testlist[1] + process.env.testlist[2] + process.env.testlist[3]
+				message: process.env.testlist
 			});
 			break;
 		case 'neha':
