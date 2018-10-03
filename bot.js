@@ -7,7 +7,6 @@ var knockknock = 0;
 var joke = '.';
 var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch', 'Shit', 'SHIT', 'Bike', 'BIKE', 'Fuck', 'FUCK', 'Fuk', 'FUK', 'Ass', 'ASS', 'Bitch', 'BITCH'];
 var prevEvtID = 0;
-process.env.testlist = ['test4', 'test5', 'test6']
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
