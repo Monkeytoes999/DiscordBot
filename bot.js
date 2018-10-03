@@ -78,7 +78,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		resultList[0] = message;
 		bot.sendMessage({
 			to: channelID,
-			message: 'Your command, ' + commandList[3] + ' has been successfully created.'
+			message: 'Your command, ' + commandList[0] + ' has been successfully created.'
 		});
 		createResult1 = false;
 	}
@@ -200,7 +200,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'customCommands':
 			bot.sendMessage({
 				to: channelID,
-				message: commandList[0] + ', ' + commandList[1] + ', ' + commandList[3]
+				message: commandList[0] + ', ' + commandList[1] + ', ' + commandList[2]
 			});
 			break;
 		case commandList[0]:
