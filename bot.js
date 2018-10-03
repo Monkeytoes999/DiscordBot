@@ -7,7 +7,14 @@ var knockknock = 0;
 var joke = '.';
 var curses = ['shit', 'bike', 'fuck', 'fuk', 'ass', 'bitch', 'Shit', 'SHIT', 'Bike', 'BIKE', 'Fuck', 'FUCK', 'Fuk', 'FUK', 'Ass', 'ASS', 'Bitch', 'BITCH'];
 var prevEvtID = 0;
-process.env.testlist[3] = 'test900'
+var commandList = ['__', '__', '__'];
+var resultList = ['__', '__', '__'];
+var createCommand1 = false;
+var createCommand2 = false;
+var createCommand3 = false;
+var createResult1 = false;
+var createResult2 = false;
+var createResult3 = false;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -48,6 +55,64 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
        	
+	
+	if (createResult1 && !message.includes('Ok, now please reply with the desired command output.')){
+		resultList[1] = message;
+		bot.sendMessage({
+			to: channelID,
+			message: 'Your command, ' + commandList[1] + ' has been successfully created.'
+		});
+		createResult1 = false;
+	}
+	
+	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.')){
+		resultList[2] = message;
+		bot.sendMessage({
+			to: channelID,
+			message: 'Your command, ' + commandList[2] + ' has been successfully created.'
+		});
+		createResult2 = false;
+	}
+	
+	if (createResult3 && !message.includes('Ok, now please reply with the desired command output.')){
+		resultList[3] = message;
+		bot.sendMessage({
+			to: channelID,
+			message: 'Your command, ' + commandList[3] + ' has been successfully created.'
+		});
+		createResult3 = false;
+	}
+	
+	if (createCommand1 && !message.includes('Ok, please reply with your command without the ' + prefix)){
+	    	commandList[1] = message;
+		    bot.sendMessage({
+			    to: channelID,
+			    message: 'Ok, now please reply with the desired command output.'
+		    });
+		createCommand1 = false;
+		createResult1 = true;
+	}
+	
+	if (createCommand2 && !message.includes('Ok, please reply with your command without the ' + prefix)){
+	    	commandList[2] = message;
+		    bot.sendMessage({
+			    to: channelID,
+			    message: 'Ok, now please reply with the desired command output.'
+		    });
+		createCommand2 = false;
+		createResult2 = true;
+	}
+	
+	if (createCommand3 && !message.includes('Ok, please reply with your command without the ' + prefix)){
+	    	commandList[3] = message;
+		    bot.sendMessage({
+			    to: channelID,
+			    message: 'Ok, now please reply with the desired command output.'
+		    });
+		createCommand3 = false;
+		createResult3 = true;
+	}
+	
 	if (knockknock == 2 && message != joke && !message.includes('?') && !message.includes('knock')){
 		bot.sendMessage({
 			to: channelID,
@@ -105,10 +170,55 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
-		case 'list':
+			case 'customCommand1Command':
+			if (commandList[1] == '__'){
+				createCommand1 = true;
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok, please reply with your command without the ' + prefix
+				});
+			}
+			break;
+			case 'customCommand2Command':
+			if (commandList[2] == '__'){
+				createCommand2 = true;
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok, please reply with your command without the ' + prefix
+				});
+			}
+			break;
+			case 'customCommand3Command':
+			if (commandList[3] == '__'){
+				createCommand3 = true;
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok, please reply with your command without the ' + prefix
+				});
+			}
+			break;
+			case 'customCommands':
 			bot.sendMessage({
 				to: channelID,
-				message: process.env.testlist
+				message: commandList[1] + ', ' + commandList[2] + ', ' + commandList[3]
+			});
+			break;
+		case commandList[1]:
+			bot.sendMessage({
+				to: channelID,
+				message: resultList[1]
+			});
+			break;
+			case commandList[2]:
+			bot.sendMessage({
+				to: channelID,
+				message: resultList[2]
+			});
+			break;
+			case commandList[3]:
+			bot.sendMessage({
+				to: channelID,
+				message: resultList[3]
 			});
 			break;
 		case 'neha':
