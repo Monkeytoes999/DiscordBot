@@ -55,7 +55,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
        	
-	
+	if (message.includes('owo')){
+	    	bot.sendMessage({
+			to: channelID,
+			message: 'What\'s this?'
+		});
+	}
+	    
 	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.')){
 		resultList[1] = message;
 		bot.sendMessage({
