@@ -56,35 +56,35 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
        	
 	
-	if (createResult1 && !message.includes('Ok, now please reply with the desired command output.')){
+	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.')){
 		resultList[1] = message;
 		bot.sendMessage({
 			to: channelID,
 			message: 'Your command, ' + commandList[1] + ' has been successfully created.'
 		});
-		createResult1 = false;
+		createResult2 = false;
 	}
 	
-	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.')){
+	if (createResult3 && !message.includes('Ok, now please reply with the desired command output.')){
 		resultList[2] = message;
 		bot.sendMessage({
 			to: channelID,
 			message: 'Your command, ' + commandList[2] + ' has been successfully created.'
 		});
-		createResult2 = false;
+		createResult3 = false;
 	}
 	
-	if (createResult3 && !message.includes('Ok, now please reply with the desired command output.')){
-		resultList[3] = message;
+	if (createResult1 && !message.includes('Ok, now please reply with the desired command output.')){
+		resultList[0] = message;
 		bot.sendMessage({
 			to: channelID,
 			message: 'Your command, ' + commandList[3] + ' has been successfully created.'
 		});
-		createResult3 = false;
+		createResult1 = false;
 	}
 	
 	if (createCommand1 && !message.includes('Ok, please reply with your command without the ' + prefix)){
-	    	commandList[1] = message;
+	    	commandList[0] = message;
 		    bot.sendMessage({
 			    to: channelID,
 			    message: 'Ok, now please reply with the desired command output.'
@@ -94,7 +94,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	if (createCommand2 && !message.includes('Ok, please reply with your command without the ' + prefix)){
-	    	commandList[2] = message;
+	    	commandList[1] = message;
 		    bot.sendMessage({
 			    to: channelID,
 			    message: 'Ok, now please reply with the desired command output.'
@@ -104,7 +104,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	if (createCommand3 && !message.includes('Ok, please reply with your command without the ' + prefix)){
-	    	commandList[3] = message;
+	    	commandList[2] = message;
 		    bot.sendMessage({
 			    to: channelID,
 			    message: 'Ok, now please reply with the desired command output.'
@@ -170,8 +170,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
-			case 'customCommand1Command':
-			if (commandList[1] == '__'){
+			case 'customCommand1':
+			if (commandList[0] == '__'){
 				createCommand1 = true;
 				bot.sendMessage({
 					to: channelID,
@@ -179,8 +179,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 			break;
-			case 'customCommand2Command':
-			if (commandList[2] == '__'){
+			case 'customCommand2':
+			if (commandList[1] == '__'){
 				createCommand2 = true;
 				bot.sendMessage({
 					to: channelID,
@@ -188,8 +188,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 			break;
-			case 'customCommand3Command':
-			if (commandList[3] == '__'){
+			case 'customCommand3':
+			if (commandList[2] == '__'){
 				createCommand3 = true;
 				bot.sendMessage({
 					to: channelID,
@@ -200,10 +200,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'customCommands':
 			bot.sendMessage({
 				to: channelID,
-				message: commandList[1] + ', ' + commandList[2] + ', ' + commandList[3]
+				message: commandList[0] + ', ' + commandList[1] + ', ' + commandList[3]
 			});
 			break;
-		case commandList[1]:
+		case commandList[0]:
+			bot.sendMessage({
+				to: channelID,
+				message: resultList[0]
+			});
+			break;
+			case commandList[1]:
 			bot.sendMessage({
 				to: channelID,
 				message: resultList[1]
@@ -213,12 +219,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({
 				to: channelID,
 				message: resultList[2]
-			});
-			break;
-			case commandList[3]:
-			bot.sendMessage({
-				to: channelID,
-				message: resultList[3]
 			});
 			break;
 		case 'neha':
