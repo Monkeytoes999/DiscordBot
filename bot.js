@@ -296,6 +296,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				}
 			break;
+		default: 
+			bot.sendMessage({
+				to: channelID,
+				message: 'Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help'
+			});
             // Just add any case commands if you want to..
          }
      }
