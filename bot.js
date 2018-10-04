@@ -169,7 +169,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'help':
 				bot.sendMessage({
 					to: userID,
-					message: 'Sorry, we don\'t actually have very many commands at the moment. There is !ping, !destroy, !cat, !yoyo and !intro, but that\'s it. Also, we will say "What\'s this?" when any message contains owo'
+					message: 'Our current commands are as follows. \n knockknock - responds to YOUR knockknock joke. \n ping - plays endless hours of pingpong with you, as long as you\'re up for it. \n customCommand(1-3) - Create your own simple response command for the bot, as long as that custom command slot hasn\'t already been taken. If it has been, don\'t worry. You\'ll have another chance whenever the bot restarts or updates, as these are temporary. \n customCommands - check the current custom commands, seperated by commas. If a command is "__", that means that it can be edited with the corresponding customCommand command. \n cat - sends a few lines of meows, a text cat, and a true statement. \n neha - sends a totally rediculous response that was requested by a friend. \n yoyo - yoyos horizontally. \n intro - I really should just delete this one as it does nothing helpful. But hey, I\'m the kind of person who\'s too lazy to do that but is willing to right a few sentences about it. \n This bot also comes equipped with a curse detector, (easy test curse = "bike", because reasons), and will say, well you\'ll see, whenever a message contains "owo".'
 				});
 				bot.sendMessage({
 					to: channelID,
