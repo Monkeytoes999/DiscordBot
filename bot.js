@@ -18,6 +18,7 @@ var createResult3 = false;
 var custom1channelID = 0;
 var custom2channelID = 0;
 var custom3channelID = 0;
+var cussmessage = '.';
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -42,9 +43,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	prevEvtID = evt.d.id;
 	
+	cussmessage = message.toUpperCase();
 	for (var i = 0; i < curses.length; i++){
-		if (message.includes(curses[i]) && !message.includes('password')){
-			if (message.substring(0, (curses[i].length)) == curses[i] || message.includes(' ' + curses[i])){
+		if (cyssmessage.includes(curses[i]) && !cussmessage.includes('password')){
+			if (cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
