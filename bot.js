@@ -15,6 +15,9 @@ var createCommand3 = false;
 var createResult1 = false;
 var createResult2 = false;
 var createResult3 = false;
+var custom1channelID = 0;
+var custom2channelID = 0;
+var custom3channelID = 0;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -62,7 +65,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	    
-	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.')){
+	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.') && custom2channelID == channelID;){
 		resultList[1] = message;
 		bot.sendMessage({
 			to: channelID,
@@ -71,7 +74,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		createResult2 = false;
 	}
 	
-	if (createResult3 && !message.includes('Ok, now please reply with the desired command output.')){
+	if (createResult3 && !message.includes('Ok, now please reply with the desired command output.') && custom3channelID == channelID;){
 		resultList[2] = message;
 		bot.sendMessage({
 			to: channelID,
@@ -80,7 +83,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		createResult3 = false;
 	}
 	
-	if (createResult1 && !message.includes('Ok, now please reply with the desired command output.')){
+	if (createResult1 && !message.includes('Ok, now please reply with the desired command output.') && custom1channelID == channelID;){
 		resultList[0] = message;
 		bot.sendMessage({
 			to: channelID,
@@ -89,7 +92,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		createResult1 = false;
 	}
 	
-	if (createCommand1 && !message.includes('Ok, please reply with your command without the ' + prefix)){
+	if (createCommand1 && !message.includes('Ok, please reply with your command without the ' + prefix) && custom1channelID == channelID){
 	    	commandList[0] = message;
 		    bot.sendMessage({
 			    to: channelID,
@@ -99,7 +102,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		createResult1 = true;
 	}
 	
-	if (createCommand2 && !message.includes('Ok, please reply with your command without the ' + prefix)){
+	if (createCommand2 && !message.includes('Ok, please reply with your command without the ' + prefix) && custom2channelID == channelID){
 	    	commandList[1] = message;
 		    bot.sendMessage({
 			    to: channelID,
@@ -109,7 +112,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		createResult2 = true;
 	}
 	
-	if (createCommand3 && !message.includes('Ok, please reply with your command without the ' + prefix)){
+	if (createCommand3 && !message.includes('Ok, please reply with your command without the ' + prefix) && custom3channelID == channelID){
 	    	commandList[2] = message;
 		    bot.sendMessage({
 			    to: channelID,
@@ -183,6 +186,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Ok, please reply with your command without the ' + prefix
 				});
+				custom1channelID = channelID;
 			}
 			break;
 			case 'customCommand2':
@@ -192,6 +196,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Ok, please reply with your command without the ' + prefix
 				});
+				custom2channelID = channelID;
 			}
 			break;
 			case 'customCommand3':
@@ -201,6 +206,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Ok, please reply with your command without the ' + prefix
 				});
+				custom3channelID = channelID;
 			}
 			break;
 			case 'customCommands':
