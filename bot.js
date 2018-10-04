@@ -65,7 +65,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	    
-	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.') && custom2channelID == channelID;){
+	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.') && custom2channelID == channelID){
 		resultList[1] = message;
 		bot.sendMessage({
 			to: channelID,
@@ -74,7 +74,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		createResult2 = false;
 	}
 	
-	if (createResult3 && !message.includes('Ok, now please reply with the desired command output.') && custom3channelID == channelID;){
+	if (createResult3 && !message.includes('Ok, now please reply with the desired command output.') && custom3channelID == channelID){
 		resultList[2] = message;
 		bot.sendMessage({
 			to: channelID,
@@ -83,7 +83,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		createResult3 = false;
 	}
 	
-	if (createResult1 && !message.includes('Ok, now please reply with the desired command output.') && custom1channelID == channelID;){
+	if (createResult1 && !message.includes('Ok, now please reply with the desired command output.') && custom1channelID == channelID){
 		resultList[0] = message;
 		bot.sendMessage({
 			to: channelID,
