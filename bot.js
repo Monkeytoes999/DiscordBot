@@ -23,7 +23,7 @@ var serverID = 0;
 var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'];
 var randNum = 0;
 var spot = 0;
-var symbolList = ['!', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\ ', '>', '<', '(', ')', '[', ']', '{', '}']; 
+var symbolList = ['!', '\'', '"', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\ ', '>', '<', '(', ')', '[', ']', '{', '}']; 
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -51,7 +51,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	cussmessage = message.toUpperCase();
 	
-	for (int i = 0; i < symbolList.length; i++){
+	for (var i = 0; i < symbolList.length; i++){
 		if (cussmessage.includes(sybmolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
 			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
