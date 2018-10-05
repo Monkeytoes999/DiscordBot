@@ -205,23 +205,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'newRole':
-			bot.createRole(serverID);
+			bot.createRole(serverID, function(err, res) {
+				if (err) throw err;
+				
+					bot.editRole({
+						serverID: serverID,
+						roleID: res.id,
+						name:'new role',
+						hoist: false,
+						permissions: {
+							GENERAL_ADMINISTRATOR: true
+						},
+						mentionable: false
+					});
+			});
 			bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
 				});
-			let role_name = 'new role'
-			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(role_name)).id
-			bot.editRole({
-				serverID: serverID,
-				roleID: roleIDnum,
-				name:'new role',
-				hoist: false,
-				permissions: {
-					GENERAL_ADMINISTRATOR: true
-				},
-				mentionable: false
-			});
+			
 				
 			break;
 		case 'changeMyNickname':
