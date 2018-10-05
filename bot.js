@@ -218,7 +218,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				name:'new role',
 				hoist: false,
 				permissions: {
-					GENERAL_ADMINISTRATOR = true
+					GENERAL_ADMINISTRATOR: true
 				},
 				mentionable: false
 			});
