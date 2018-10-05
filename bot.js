@@ -189,6 +189,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				userID: userID,
 				nick: nicknames[Math.floor(Math.random() * 5)]
 			});
+			break;
 			case 'customCommand1':
 			if (commandList[0] == '__'){
 				createCommand1 = true;
