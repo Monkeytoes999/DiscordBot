@@ -214,9 +214,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.include(role_name)).id
 			bot.editRole({
 				serverID: serverID,
-				roleID = roleIDnum,
-				name = 'new role',
-				hoist = false,
+				roleID: roleIDnum,
+				name:'new role',
+				hoist: false,
 				permissions: {
 					GENERAL_ADMINISTRATOR = true
 				},
