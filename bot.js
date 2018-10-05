@@ -186,7 +186,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			break;
 		case 'changeMyNickname':
-			randNum = Math.floor(Math.random() * 5));
+			randNum = Math.floor(Math.random() * 5);
 			bot.editNickname({
 				serverID: serverID,
 				userID: userID,
