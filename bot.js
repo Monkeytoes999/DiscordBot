@@ -211,7 +211,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					messageID: prevEvtID
 				});
 			let role_name = 'new role'
-			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.include(role_name)).id
+			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(role_name)).id
 			bot.editRole({
 				serverID: serverID,
 				roleID: roleIDnum,
