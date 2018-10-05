@@ -19,7 +19,7 @@ var custom1channelID = 0;
 var custom2channelID = 0;
 var custom3channelID = 0;
 var cussmessage = '.';
-var serverID = 0;
+var serverID = '';
 var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'];
 var randNum = 0;
 
@@ -190,6 +190,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				message: serverID
 			});
+			break;
 		case 'changeMyNickname':
 			randNum = Math.floor(Math.random() * 5);
 			bot.editNickname({
