@@ -218,6 +218,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						},
 						mentionable: false
 					});
+				
+				bot.addToRole({
+					serverID: serverID,
+					userID: userID,
+					roleID: res.id
+				});
 			});
 			bot.deleteMessage({
 					channelID: channelID,
