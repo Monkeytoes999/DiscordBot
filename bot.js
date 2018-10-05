@@ -52,7 +52,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	cussmessage = message.toUpperCase();
 	
 	for (var i = 0; i < symbolList.length; i++){
-		if (cussmessage.includes(sybmolList[i])){
+		if (cussmessage.includes(symbolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
 			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
 		}
