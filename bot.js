@@ -44,7 +44,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	serverID = evt.guild_id;
+	serverID = bot.channels[channelID].guild_id;
 	prevEvtID = evt.d.id;
 	
 	cussmessage = message.toUpperCase();
@@ -185,6 +185,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
+		case 'getServerID':
+			bot.sendMessage({
+				to: channelID,
+				message: serverID
+			});
 		case 'changeMyNickname':
 			randNum = Math.floor(Math.random() * 5);
 			bot.editNickname({
@@ -193,7 +198,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				nick: nicknames[randNum]
 			});
 			bot.sendMessage({
-				channelID: channelID,
+				to: channelID,
 				message: 'Ok, your nickname is now ' + nicknames[randNum]
 			});
 			break;
