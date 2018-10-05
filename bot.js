@@ -50,7 +50,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	cussmessage = message.toUpperCase();
 	for (var i = 0; i < curses.length; i++){
 		if (cussmessage.includes(curses[i]) && !cussmessage.includes('password')){
-			if (cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes('!' + curses[i] ||  cussmessage.includes(' ' + curses[i] || cussmessage.includes('~' + curses[i] || cussmessage.includes('`' + curses[i] || cussmessage.includes('\'' + curses[i] || cussmessage.includes('"' + curses[i] || cussmessage.includes('*' + curses[i])){
+			if (cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes('!' + curses[i]) ||  cussmessage.includes(' ' + curses[i]) || cussmessage.includes('~' + curses[i]) || cussmessage.includes('`' + curses[i]) || cussmessage.includes('\'' + curses[i]) || cussmessage.includes('"' + curses[i]) || cussmessage.includes('*' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
