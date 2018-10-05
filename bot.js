@@ -21,6 +21,7 @@ var custom3channelID = 0;
 var cussmessage = '.';
 var serverID = 0;
 var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'];
+var randNum = 0;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -42,7 +43,8 @@ bot.on('ready', function (evt) {
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
-	serverID = bot.channels[channelID].guild_id;
+	
+	serverID = evt.guild_id;
 	prevEvtID = evt.d.id;
 	
 	cussmessage = message.toUpperCase();
@@ -184,10 +186,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			break;
 		case 'changeMyNickname':
+			randNum = Math.floor(Math.random() * 5));
 			bot.editNickname({
 				serverID: serverID,
 				userID: userID,
-				nick: nicknames[Math.floor(Math.random() * 5)]
+				nick: nicknames[randNum]
+			});
+			bot.sendMessage({
+				channelID: channelID,
+				message: 'Ok, your nickname is now ' + nicknames[randNum]
 			});
 			break;
 			case 'customCommand1':
