@@ -216,7 +216,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				serverID: serverID,
 				roleID = role_id,
 				name = 'new role',
-				color = #F35353,
 				hoist = false,
 				permissions: {
 					GENERAL_ADMINISTRATOR = true
