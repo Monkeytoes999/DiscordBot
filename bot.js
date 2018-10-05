@@ -204,6 +204,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				message: serverID
 			});
 			break;
+		case 'newRole':
+			bot.createRole(serverID);
+			bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
+			break;
 		case 'changeMyNickname':
 			randNum = Math.floor(Math.random() * 5);
 			bot.editNickname({
