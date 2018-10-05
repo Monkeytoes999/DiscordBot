@@ -55,6 +55,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		if (cussmessage.includes(symbolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
 			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
+			i = i-1;
 		}
 	}
 
