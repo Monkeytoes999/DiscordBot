@@ -23,7 +23,8 @@ var serverID = 0;
 var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'];
 var randNum = 0;
 var spot = 0;
-var symbolList = ['~', '`', '!', '@', '#', '$', '%', '^', '&', '*', '\(', '\)', '_', '-', '+', '=', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', '\{', '\}', '[', ']', '\', '|', '\:', ';', '"', '\'', ',', '.', '/', '?', '<', '>'];
+var symbolList = ['!', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\', '<', '>']; 
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
