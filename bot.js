@@ -19,7 +19,7 @@ var custom1channelID = 0;
 var custom2channelID = 0;
 var custom3channelID = 0;
 var cussmessage = '.';
-var serverID = '';
+var serverID = 0;
 var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'];
 var randNum = 0;
 
