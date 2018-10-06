@@ -209,7 +209,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'spamit':
-			if(channelID == spamChannel){
+			if(channelID == spamChannel && message.substring(8) == spamPassword){
 				setTimeout(() => {
    					 bot.sendMessage({
 						 to: channelID,
