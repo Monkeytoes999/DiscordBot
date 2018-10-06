@@ -213,7 +213,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				setTimeout(() => {
    					 bot.sendMessage({
 						 to: channelID,
-						 message: prefix + 'spamit' + spamPassword
+						 message: prefix + 'spamit ' + spamPassword
 					 });
 				}, 1000);
 			}
