@@ -210,7 +210,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'spamit':
-			if(channelID == spamChannel && message.substring(8) == spamPassword){
+			if(channelID == spamChannel && message.substring(8) == spamPassword && allowSpam){
 				setTimeout(() => {
    					 bot.sendMessage({
 						 to: channelID,
