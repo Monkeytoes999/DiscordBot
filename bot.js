@@ -206,6 +206,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				message: serverID
 			});
 			break;
+		case 'spamit':
+			setTimeout(() => {
+   				 bot.sendMessage({
+					 to: channelID,
+					 message: prefix + 'spamit'
+				 });
+			}, 1000);
 		case 'confuse':
 			bot.simulateTyping(channelID);
 			bot.deleteMessage({
