@@ -83,14 +83,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			message: 'What\'s this?'
 		});
 	}
-	
-	if (message.includes('smh')){
-		bot.editMessage({
-			channelID: channelID,
-			messageID: evt.d.id,
-			message: message.substring(0, message.indexOf('smh')) + 'smhmh' + message.substring(message.indexOf('smh') +3)
-		});
-	}
 	    
 	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.') && custom2channelID == channelID){
 		resultList[1] = message;
@@ -212,6 +204,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				message: serverID
 			});
 			break;
+		case 'confuse':
+			bot.simulateTyping(channelID);
+			bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
 		case 'newRole':
 			bot.createRole(serverID, function(err, res) {
 				if (err) throw err;
