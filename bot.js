@@ -239,7 +239,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			  });
 			}
 			break;
-		case 'getPollOption':
+		case 'getPollOptions':
 			let mes = '';
 			let i = 0;
 			for (i = 0; i < pollOptions.length -1; i++){
@@ -253,7 +253,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'vote':
 			let userAlreadyVoted = false;
-			for (i = 0; i < polledUsers.length; i++){
+			for (var i = 0; i < polledUsers.length; i++){
 				if ( userID == polledUsers[i]){
 					userAlreadyVoted = true;
 				}
