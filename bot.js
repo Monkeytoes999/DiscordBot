@@ -287,18 +287,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case commandList[0]:
+				bot.simulateTyping(channelID);
 				bot.sendMessage({
 					to: channelID,
 					message: resultList[0]
 				});
 			break;
 			case commandList[1]:
+			bot.simulateTyping(channelID);
 				bot.sendMessage({
 					to: channelID,
 					message: resultList[1]
 				});
 			break;
 			case commandList[2]:
+			bot.simulateTyping(channelID);
 				bot.sendMessage({
 					to: channelID,
 					message: resultList[2]
