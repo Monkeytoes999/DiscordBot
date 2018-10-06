@@ -211,7 +211,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
    				 bot.sendMessage({
 					 to: channelID,
 					 message: prefix + 'spamit'
+				 }, function (err, res){
+					 bot.deleteMessage({
+						 channelID: channelID,
+						 messageID: res.id
+					 })
 				 });
+				bot.sendMessage({
+					to: channelID,
+					message: 'Actually Destroying by Spam'
+				});
 			}, 1000);
 			break;
 		case 'confuse':
