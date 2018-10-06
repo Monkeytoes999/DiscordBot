@@ -47,7 +47,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	serverID = bot.channels[channelID].guild_id;
+	if (!channelID == userID){
+		serverID = bot.channels[channelID].guild_id;
+	}
 	prevEvtID = evt.d.id;
 	
 	cussmessage = message.toUpperCase();
