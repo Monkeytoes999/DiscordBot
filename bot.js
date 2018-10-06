@@ -84,11 +84,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if(message.includes('smh') && !message.includes('smhmh')){
+	if(message.includes('smh')){
 		bot.editMessage({
 			channelID: channelID,
 			messageID: prevEvtID,
-			message: message.substring(0, message.indexOf('smh')) + 'smhmh' + message.substring(message.indexOf('smh') +5)
+			message: message.substring(0, message.indexOf('smh')) + 'smhmh' + message.substring(message.indexOf('smh') +3)
 		});
 	}
 	    
