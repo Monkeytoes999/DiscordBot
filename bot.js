@@ -220,7 +220,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message = message.substring(message.indexOf(', ') +2);
 				}
 				pollOptions[pollOptions.length] = message;
-				for (var i = 0; i < pollOptions.length; i++){
+				for (i = 0; i < pollOptions.length; i++){
 					pollVotes[i] = 0;
 				}
 				bot.sendMessage({
