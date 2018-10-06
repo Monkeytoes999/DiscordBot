@@ -27,6 +27,7 @@ var spot = 0;
 var symbolList = ['!', '\'', '"', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\\', '>', '<', '(', ')', '[', ']', '{', '}'];
 var spamPassword;
 var spamChannel;
+var allowSpam = false;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -224,6 +225,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					channelID: channelID,
 					messageID: prevEvtID
 				});
+			break;
+		case 'changeSpamAllowance':
+			bot.deleteMessage({
+				channelID: channelID,
+				messageID: prevEvtID
+			});
+			allowSpam = !allowSpam;
 			break;
 		case 'setSpamPass':
 			bot.deleteMessage({
