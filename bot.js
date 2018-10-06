@@ -213,6 +213,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					 message: prefix + 'spamit'
 				 });
 			}, 1000);
+			break;
 		case 'confuse':
 			bot.simulateTyping(channelID);
 			bot.deleteMessage({
