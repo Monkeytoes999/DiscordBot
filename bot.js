@@ -83,6 +83,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			message: 'What\'s this?'
 		});
 	}
+	
+	if(message.includes('smh') && !message.includes('smhmh')){
+		bot.editMessage({
+			channelID: channelID,
+			messageID: prevEvtID,
+			message: message.substring(0, message.indexOf('smh')) + 'smhmh' + message.substring(message.indexOf('smh') +5)
+		});
+	}
 	    
 	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.') && custom2channelID == channelID){
 		resultList[1] = message;
