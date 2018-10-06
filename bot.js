@@ -212,6 +212,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					channelID: channelID,
 					messageID: prevEvtID
 				});
+			break;
 		case 'newRole':
 			bot.createRole(serverID, function(err, res) {
 				if (err) throw err;
