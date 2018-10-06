@@ -28,6 +28,9 @@ var symbolList = ['!', '\'', '"', '@', '#', '$', '%', '^', '&', '*', '_', '-', '
 var spamPassword;
 var spamChannel;
 var allowSpam = false;
+var pollOptions = [];
+var pollVotes = [];
+var polledUsers = [];
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -202,6 +205,91 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Documentation has been sent to your dms.'
 				});
+			break;
+		case 'createPoll':
+			let someArray = [];
+
+			//...
+
+			if (someArray.includes(userID)){
+				pollOptions = [];
+				pollVotes = [];
+				polledUsers = [];
+				while (message.includes(', ')){
+					pollOptions[pollOptions.length] = message.substring(0, message.indexOf(', '));
+					message = message.substring(message.indexOf(', ') +2);
+				}
+				pollOptions[pollOptions.length] = message;
+				for (var i = 0; i < pollOptions.length; i++){
+					pollVotes[i] = 0;
+				}
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok, your poll has been created.'
+				});
+			  // do things on the message's contents, check if it is valid, then do the stuff on it
+			  // send "Ok, your are now in the Lizard role" ??
+
+			  let index = newUsersTemp.indexOf(userID);
+			  someArray.splice(index, 1);
+			}
+
+			if (message == "!createPoll" && !someArray.includes(userID)) {
+			  someArray.push(userID)
+			  bot.sendMessage({
+				  to: channelID,
+				  message: 'Ok, please put all the options in one line and seperate them by ", "'
+			  });
+			}
+			break;
+		case 'getPollOption':
+			let mes = '';
+			let i = 0;
+			for (i = 0; i < pollOptions.length -1; i++){
+				mes = mes + pollOptions[i] + ', ';
+			}
+			mes = mes + pollOptions[i];
+			bot.sendMessage({
+				to: channelID,
+				message: mes
+			});
+			break;
+		case 'vote':
+			let userAlreadyVoted = false;
+			for (var i = 0; i < polledUsers.length; i++){
+				if ( userID == polledUsers[i]){
+					userAlreadyVoted = true;
+				}
+			}
+			if (userAlreadyVoted){
+				bot.sendMessage({
+					to: channelID,
+					message: 'You already voted, ' + user
+				});
+			}
+			if (!userAlreadyVoted){
+				let voteNum = message.substring(6)
+				for (var i = 0; i < pollOptions.length; i++){
+					if (voteNum == i){
+						polledUsers[polledUsers.length] = userID;
+						pollVotes[i] = pollVotes[i] + 1;
+						bot.sendMessage({
+							to: channelID,
+							message: 'Okay ' + user + ', you have voted for: ' + pollOptions[i] + '.'
+						});
+					}
+				}
+			}
+			break;
+		case 'pollResults':
+			let mess = '';
+			for (var i = 0; i < pollOptions.length; i++){
+				mess = mess + pollOptions[i] + ': ' + pollVotes[i] + '\n'
+			}
+			bot.sendMessage({
+				to: channelID,
+				message: mess
+			});
 			break;
 		case 'getServerID':
 			bot.sendMessage({
