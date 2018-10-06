@@ -5,8 +5,8 @@ var passnum = 0;
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
 var knockknock = 0;
 var joke = '.';
-var curses = ['SHIT', 'THOT', 'BIKE', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
-var nonWordCurses = ['SHIT', 'THOT', 'no', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var curses = ['SHIT', 'THOT', 'BIKE', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var nonWordCurses = ['SHIT', 'THOT', 'no', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
 var prevEvtID = 0;
 var commandList = ['__', '__', '__'];
 var resultList = ['__', '__', '__'];
@@ -84,10 +84,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if(message.includes('smh')){
+	if (message.includes('smh')){
 		bot.editMessage({
 			channelID: channelID,
-			messageID: prevEvtID,
+			messageID: evt.d.id,
 			message: message.substring(0, message.indexOf('smh')) + 'smhmh' + message.substring(message.indexOf('smh') +3)
 		});
 	}
