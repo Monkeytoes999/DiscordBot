@@ -112,7 +112,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			  // do things on the message's contents, check if it is valid, then do the stuff on it
 			  // send "Ok, your are now in the Lizard role" ??
 
-			  let index = newUsersTemp.indexOf(userID);
+			  let index = someArray.indexOf(userID);
 			  someArray.splice(index, 1);
 			}
 	    
