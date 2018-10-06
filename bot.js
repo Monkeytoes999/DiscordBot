@@ -31,6 +31,7 @@ var allowSpam = false;
 var pollOptions = [];
 var pollVotes = [];
 var polledUsers = [];
+var someArray = [];
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -91,6 +92,29 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			message: 'What\'s this?'
 		});
 	}
+
+			if (someArray.includes(userID)){
+				pollOptions = [];
+				pollVotes = [];
+				polledUsers = [];
+				while (message.includes(', ')){
+					pollOptions[pollOptions.length] = message.substring(0, message.indexOf(', '));
+					message = message.substring(message.indexOf(', ') +2);
+				}
+				pollOptions[pollOptions.length] = message;
+				for (i = 0; i < pollOptions.length; i++){
+					pollVotes[i] = 0;
+				}
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok, your poll has been created.'
+				});
+			  // do things on the message's contents, check if it is valid, then do the stuff on it
+			  // send "Ok, your are now in the Lizard role" ??
+
+			  let index = newUsersTemp.indexOf(userID);
+			  someArray.splice(index, 1);
+			}
 	    
 	if (createResult2 && !message.includes('Ok, now please reply with the desired command output.') && custom2channelID == channelID){
 		resultList[1] = message;
@@ -207,33 +231,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			break;
 		case 'createPoll':
-			let someArray = [];
-
-			//...
-
-			if (someArray.includes(userID)){
-				pollOptions = [];
-				pollVotes = [];
-				polledUsers = [];
-				while (message.includes(', ')){
-					pollOptions[pollOptions.length] = message.substring(0, message.indexOf(', '));
-					message = message.substring(message.indexOf(', ') +2);
-				}
-				pollOptions[pollOptions.length] = message;
-				for (i = 0; i < pollOptions.length; i++){
-					pollVotes[i] = 0;
-				}
-				bot.sendMessage({
-					to: channelID,
-					message: 'Ok, your poll has been created.'
-				});
-			  // do things on the message's contents, check if it is valid, then do the stuff on it
-			  // send "Ok, your are now in the Lizard role" ??
-
-			  let index = newUsersTemp.indexOf(userID);
-			  someArray.splice(index, 1);
-			}
-
 			if (message == "!createPoll" && !someArray.includes(userID)) {
 			  someArray.push(userID)
 			  bot.sendMessage({
