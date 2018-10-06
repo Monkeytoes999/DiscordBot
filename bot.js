@@ -25,6 +25,8 @@ var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'
 var randNum = 0;
 var spot = 0;
 var symbolList = ['!', '\'', '"', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\\', '>', '<', '(', ')', '[', ']', '{', '}'];
+var spamPassword;
+var spamChannel;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -207,22 +209,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'spamit':
-			setTimeout(() => {
-				bot.deleteMessage({
-					channelID: channelID,
-					messageID: prevEvtID
-				});
-   				 bot.sendMessage({
-					 to: channelID,
-					 message: prefix + 'spamit'
-				 }, function (err, res){
-					 prevEvtID = res.id;
-				 });
-				bot.sendMessage({
-					to: channelID,
-					message: 'Actually Destroying by Spam'
-				});
-			}, 1000);
+			if(channelID == spamChannel){
+				setTimeout(() => {
+   					 bot.sendMessage({
+						 to: channelID,
+						 message: prefix + 'spamit' + spamPassword
+					 });
+				}, 1000);
+			}
 			break;
 		case 'confuse':
 			bot.simulateTyping(channelID);
@@ -230,6 +224,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					channelID: channelID,
 					messageID: prevEvtID
 				});
+			break;
+		case 'setSpamPass':
+			bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
+			spamPassword = message.substring(13);
+			spamChannel = channelID;
 			break;
 		case 'newRole':
 			bot.createRole(serverID, function(err, res) {
