@@ -24,7 +24,7 @@ var serverID = 0;
 var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'];
 var randNum = 0;
 var spot = 0;
-var symbolList = ['!', '\'', '"', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\\', '>', '<', '(', ')', '[', ']', '{', '}']; 
+var symbolList = ['!', '\'', '"', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\\', '>', '<', '(', ')', '[', ']', '{', '}'];
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -208,14 +208,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'spamit':
 			setTimeout(() => {
+				bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
    				 bot.sendMessage({
 					 to: channelID,
 					 message: prefix + 'spamit'
 				 }, function (err, res){
-					 bot.deleteMessage({
-						 channelID: channelID,
-						 messageID: res.id
-					 })
+					 prevEvtID = res.id;
 				 });
 				bot.sendMessage({
 					to: channelID,
