@@ -101,35 +101,34 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	if (message == '!yoyo'){
-				setTimeout(() => {
 					bot.sendMessage({
 						to: channelID,
 						message: yoyo[0]
+					}, function(err, res){
+						if (err) throw err;
+						yoyoNum = 1;
+						while(yoyoNum != -1){
+							setTimeout(() => {
+						bot.editMessage({
+							channelID: channelID,
+							messageID: res.id,
+							message: yoyo[yoyoNum]
+						});
+							}, 100);
+							if(!yoyoGoingDown){
+								yoyoNum = yoyoNum + 1;
+							}
+							if(yoyoGoingDown){
+								yoyoNum = yoyoNum - 1;
+							}
+							if(yoyoNum == 13){
+								yoyoGoingDown = true;
+							}
+							if(yoyoNum == -1){
+								yoyoGoingDown = false;
+							}
+						}
 					});
-				}, 1000);
-			yoyoNum = 1;
-			yoyoChannel = channelID;
-				while(yoyoNum != -1){
-		setTimeout(() => {
-					bot.editMessage({
-						 channelID: yoyoChannel,
-						messageID: evt.d.id,
-						 message: yoyo[yoyoNum]
-					 });
-				}, 1000);
-		if(!yoyoGoingDown){
-			yoyoNum = yoyoNum + 1;
-		}
-		if(yoyoGoingDown){
-			yoyoNum = yoyoNum - 1;
-		}
-		if(yoyoNum == 13){
-			yoyoGoingDown = true;
-		}
-		if(yoyoNum == -1){
-			yoyoGoingDown = false;
-		}
-	}
 	}
 	
 
