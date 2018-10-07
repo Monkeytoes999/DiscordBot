@@ -117,7 +117,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						}, function(errr, ress){
 							if (errr) throw errr;
 							canChangeYoyoNum = true;
-							);
+						});
 						}, 1000);
 						if(!yoyoGoingDown && canChangeYoyoNum){
 							yoyoNum = yoyoNum + 1;
