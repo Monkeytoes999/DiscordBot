@@ -253,8 +253,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'vote':
 			let userAlreadyVoted = false;
-			for (var j = 0; j < polledUsers.length; i++){
-				if ( userID == polledUsers[i]){
+			for (var j = 0; j < polledUsers.length; j++){
+				if ( userID == polledUsers[j]){
 					userAlreadyVoted = true;
 				}
 			}
@@ -266,10 +266,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			if (!userAlreadyVoted){
 				let voteNum = message.substring(6)
-				for (var l = 0; l < pollOptions.length; i++){
-					if (voteNum == i){
+				for (var l = 0; l < pollOptions.length; l++){
+					if (voteNum == l){
 						polledUsers[polledUsers.length] = userID;
-						pollVotes[i] = pollVotes[i] + 1;
+						pollVotes[l] = pollVotes[l] + 1;
 						bot.sendMessage({
 							to: channelID,
 							message: 'Okay ' + user + ', you have voted for: ' + pollOptions[i] + '.'
@@ -280,8 +280,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'pollResults':
 			let mess = '';
-			for (var k = 0; k < pollOptions.length; i++){
-				mess = mess + pollOptions[i] + ': ' + pollVotes[i] + '\n'
+			for (var k = 0; k < pollOptions.length; k++){
+				mess = mess + pollOptions[k] + ': ' + pollVotes[k] + '\n'
 			}
 			bot.sendMessage({
 				to: channelID,
