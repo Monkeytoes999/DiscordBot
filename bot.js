@@ -268,7 +268,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'There is currently no open poll'
 				});
 			}
-			break;
 			if (openPoll){
 				if (userID == pollOpener){
 					openPoll = false;
@@ -284,6 +283,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				}
 			}
+			break;
 		case 'vote':
 			let userAlreadyVoted = false;
 			for (var j = 0; j < polledUsers.length; j++){
