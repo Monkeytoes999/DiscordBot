@@ -267,7 +267,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (!userAlreadyVoted){
 				let voteNum = message.substring(6)
 				for (var l = 0; l < pollOptions.length; l++){
-					if (voteNum == l){
+					if (voteNum == l + 1){
 						polledUsers[polledUsers.length] = userID;
 						pollVotes[l] = pollVotes[l] + 1;
 						bot.sendMessage({
