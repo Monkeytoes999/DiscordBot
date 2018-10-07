@@ -233,6 +233,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Documentation has been sent to your dms.'
 				});
 			break;
+		case 'joinvoice':
+			bot.joinVoiceChannel(496791209788964874);
+			break;
 		case 'createPoll':
 			if (message == "!createPoll" && !someArray.includes(userID) && !openPoll) {
 				pollOpener = userID;
