@@ -100,6 +100,38 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
+	if (message == '!yoyo'){
+				setTimeout(() => {
+					bot.sendMessage({
+						to: channelID,
+						message: yoyo[0]
+					});
+				}, 1000);
+			yoyoNum = 1;
+			yoyoChannel = channelID;
+				for (yoyoNum = 1; yoyoNum != -1; yoyoNum + 0){
+		setTimeout(() => {
+					bot.editMessage({
+						 channelID: yoyoChannel,
+						messageID: evt.d.id,
+						 message: yoyo[yoyoNum]
+					 });
+				}, 77);
+		if(!yoyoGoingDown){
+			yoyoNum = yoyoNum + 1;
+		}
+		if(yoyoGoingDown){
+			yoyoNum = yoyoNum - 1;
+		}
+		if(yoyoNum == 13){
+			yoyoGoingDown = true;
+		}
+		if(yoyoNum == -1){
+			yoyoGoingDown = false;
+		}
+	}
+	}
+	
 
 			if (someArray.includes(userID) && userID == pollOpener){
 				pollOptions = [];
@@ -470,38 +502,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				message: 'slays'
 			});
-			break;
-			case 'yoyo':
-			yoyoNum = 0;
-				setTimeout(() => {
-					bot.sendMessage({
-						 to: channelID,
-						 message: yoyo[yoyoNum]
-					 });
-				}, 1000);
-			yoyoNum = 1;
-			yoyoChannel = channelID;
-				for (yoyoNum = 1; yoyoNum != -1; yoyoNum + 0){
-		setTimeout(() => {
-					bot.editMessage({
-						 channelID: yoyoChannel,
-						messageID: evt.d.id,
-						 message: yoyo[yoyoNum]
-					 });
-				}, 77);
-		if(!yoyoGoingDown){
-			yoyoNum = yoyoNum + 1;
-		}
-		if(yoyoGoingDown){
-			yoyoNum = yoyoNum - 1;
-		}
-		if(yoyoNum == 13){
-			yoyoGoingDown = true;
-		}
-		if(yoyoNum == -1){
-			yoyoGoingDown = false;
-		}
-	}
 			break;
 		case 'knockknock':
 			bot.sendMessage({
