@@ -311,6 +311,23 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 			}
 			break;
+		case 'addCustomResponse':
+			if(!openPoll){
+				bot.sendMessage({
+					to: channelID,
+					message: 'Sorry ' + user + ', there is currently no open poll.'
+				});
+			}
+			if(openPoll){
+				let customResponse = message.substring(19);
+				pollOptions[pollOptions.length] = customResponse;
+				pollVotes[pollVotes.length] = 0;
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok ' + user + ', your custom response, ' + customResponse + ', has been added, but not voted for.'
+				});
+			}
+			break;
 		case 'pollResults':
 			let mess = '';
 			for (var k = 0; k < pollOptions.length; k++){
