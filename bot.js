@@ -34,12 +34,6 @@ var polledUsers = [];
 var someArray = [];
 var openPoll = false;
 var pollOpener = 0;
-var yoyo = ['())', '-())', '--())', '---())', '----())', '-----())', '------())', '-------())', '--------())', '---------())', '----------())', '-----------())', '------------())', '-------------())']
-var yoyoNum = -1;
-var yoyoGoingDown = false;
-var yoyoMessage;
-var yoyoChannel;
-var canChangeYoyoNum = false;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -100,31 +94,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			message: 'What\'s this?'
 		});
 	}
-	
-	while (yoyoNum != 1){
-		setTimeout (() => {
-			bot.editMessage({
-				channelID: channelID,
-				messageID: evt.d.id,
-				message: yoyo[yoyoNum]
-			});
-		}, 1000);
-		if(!yoyoGoingDown && canChangeYoyoNum){
-			yoyoNum = yoyoNum + 1;
-			canChangeYoyoNum = false;
-		}
-		if(yoyoGoingDown && canChangeYoyoNum){
-			yoyoNum = yoyoNum - 1;
-			canChangeYoyoNum = false;
-		}
-		if(yoyoNum == 13){
-			yoyoGoingDown = true;
-		}
-		if(yoyoNum == -1){
-			yoyoGoingDown = false;
-		}
-	}
-	
 
 			if (someArray.includes(userID) && userID == pollOpener){
 				pollOptions = [];
@@ -263,16 +232,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Documentation has been sent to your dms.'
 				});
-			break;
-		case 'joinvoice':
-			bot.joinVoiceChannel(496791209788964874);
-			break;
-		case 'yoyo':
-			bot.sendMessage({
-				to: channelID,
-				message: '())'
-			});
-			yoyoNum = 1;
 			break;
 		case 'createPoll':
 			if (message == "!createPoll" && !someArray.includes(userID) && !openPoll) {
