@@ -100,31 +100,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	for (yoyoNum = 1; yoyoNum != -1; yoyoNum + 0){
-		setTimeout(() => {
-					bot.editMessage({
-						 channelID: yoyoChannel,
-						messageID: yoyoMessage,
-						 message: yoyo[yoyoNum]
-					 });
-			bot.sendMessage({
-				to: 495705429150793739,
-				message: 'message'
-			});
-				}, 77);
-		if(!yoyoGoingDown){
-			yoyoNum = yoyoNum + 1;
-		}
-		if(yoyoGoingDown){
-			yoyoNum = yoyoNum - 1;
-		}
-		if(yoyoNum == 13){
-			yoyoGoingDown = true;
-		}
-		if(yoyoNum == -1){
-			yoyoGoingDown = false;
-		}
-	}
 
 			if (someArray.includes(userID) && userID == pollOpener){
 				pollOptions = [];
@@ -508,6 +483,27 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}, 1000);
 			yoyoNum = 1;
 			yoyoChannel = channelID;
+				for (yoyoNum = 1; yoyoNum != -1; yoyoNum + 0){
+		setTimeout(() => {
+					bot.editMessage({
+						 channelID: yoyoChannel,
+						messageID: yoyoMessage,
+						 message: yoyo[yoyoNum]
+					 });
+				}, 77);
+		if(!yoyoGoingDown){
+			yoyoNum = yoyoNum + 1;
+		}
+		if(yoyoGoingDown){
+			yoyoNum = yoyoNum - 1;
+		}
+		if(yoyoNum == 13){
+			yoyoGoingDown = true;
+		}
+		if(yoyoNum == -1){
+			yoyoGoingDown = false;
+		}
+	}
 			break;
 		case 'knockknock':
 			bot.sendMessage({
