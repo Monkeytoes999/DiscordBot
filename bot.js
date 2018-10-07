@@ -35,7 +35,7 @@ var someArray = [];
 var openPoll = false;
 var pollOpener = 0;
 var yoyo = ['())', '-())', '--())', '---())', '----())', '-----())', '------())', '-------())', '--------())', '---------())', '----------())', '-----------())', '------------())', '-------------())']
-var yoyoNum = 0;
+var yoyoNum = -1;
 var yoyoGoingDown = false;
 var yoyoMessage;
 
@@ -99,7 +99,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if (yoyoNum != 0){
+	if (yoyoNum != -1){
 		setTimeout(() => {
 					bot.editMessage({
 						 channelID: channelID,
@@ -116,7 +116,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		if(yoyoNum == 13){
 			yoyoGoingDown = true;
 		}
-		if(yoyoNum == 0){
+		if(yoyoNum == -1){
 			yoyoGoingDown = false;
 		}
 	}
