@@ -39,6 +39,7 @@ var yoyoNum = -1;
 var yoyoGoingDown = false;
 var yoyoMessage;
 var yoyoChannel;
+var canChangeYoyoNum = false;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -113,20 +114,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							channelID: channelID,
 							messageID: res.id,
 							message: yoyo[yoyoNum]
-						});
-							if(!yoyoGoingDown){
-								yoyoNum = yoyoNum + 1;
-							}
-							if(yoyoGoingDown){
-								yoyoNum = yoyoNum - 1;
-							}
-							if(yoyoNum == 13){
-								yoyoGoingDown = true;
-							}
-							if(yoyoNum == -1){
-								yoyoGoingDown = false;
-							}
+						}, function(errr, ress){
+							if (errr) throw errr;
+							canChangeYoyoNum = true;
+							);
 						}, 1000);
+						if(!yoyoGoingDown && canChangeYoyoNum){
+							yoyoNum = yoyoNum + 1;
+							canChangeYoyoNum = false;
+						}
+						if(yoyoGoingDown && canChangeYoyoNum){
+							yoyoNum = yoyoNum - 1;
+							canChangeYoyoNum = false;
+						}
+						if(yoyoNum == 13){
+							yoyoGoingDown = true;
+						}
+						if(yoyoNum == -1){
+							yoyoGoingDown = false;
+						}
 						}
 					});
 	}
