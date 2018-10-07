@@ -108,10 +108,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					 });
 				}, 1000);
 		if(!yoyoGoingDown){
-			yoyoNum + 1 = yoyoNum;
+			yoyoNum = yoyoNum + 1;
 		}
 		if(yoyoGoingDown){
-			yoyoNum - 1 = yoyoNum;
+			yoyoNum = yoyoNum - 1;
 		}
 		if(yoyoNum == 13){
 			yoyoGoingDown = true;
