@@ -106,6 +106,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						messageID: yoyoMessage,
 						 message: yoyo[yoyoNum]
 					 });
+			bot.sendMessage({
+				to: channelID,
+				message: ''
+			}, function(err, res){
+				bot.deleteMessage({
+					channelID: channelID,
+					messageID: res.id
+				});
 				}, 1000);
 		if(!yoyoGoingDown){
 			yoyoNum = yoyoNum + 1;
