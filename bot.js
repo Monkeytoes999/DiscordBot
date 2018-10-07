@@ -104,7 +104,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					bot.editMessage({
 						 channelID: channelID,
 						messageID: yoyoMessage,
-						 message: yoyo[yoyoNum];
+						 message: yoyo[yoyoNum]
 					 });
 				}, 1000);
 		if(!yoyoGoingDown){
@@ -496,7 +496,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				setTimeout(() => {
 					bot.sendMessage({
 						 to: channelID,
-						 message: yoyo[yoyoNum];
+						 message: yoyo[yoyoNum]
 					 }, function(err, res){
 						yoyoMessage = res.id;
 					});
