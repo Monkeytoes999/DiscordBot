@@ -110,7 +110,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				message: ''
 			});
-				}, 1000);
+				}, 77);
 		if(!yoyoGoingDown){
 			yoyoNum = yoyoNum + 1;
 		}
