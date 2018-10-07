@@ -272,7 +272,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						pollVotes[l] = pollVotes[l] + 1;
 						bot.sendMessage({
 							to: channelID,
-							message: 'Okay ' + user + ', you have voted for: ' + pollOptions[i] + '.'
+							message: 'Okay ' + user + ', you have voted for: ' + pollOptions[l] + '.'
 						});
 					}
 				}
