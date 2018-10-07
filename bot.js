@@ -38,6 +38,7 @@ var yoyo = ['())', '-())', '--())', '---())', '----())', '-----())', '------())'
 var yoyoNum = -1;
 var yoyoGoingDown = false;
 var yoyoMessage;
+var yoyoChannel;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -102,13 +103,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (yoyoNum != -1){
 		setTimeout(() => {
 					bot.editMessage({
-						 channelID: channelID,
+						 channelID: yoyoChannel,
 						messageID: yoyoMessage,
 						 message: yoyo[yoyoNum]
 					 });
 			bot.sendMessage({
-				to: channelID,
-				message: ''
+				to: 495705429150793739,
+				message: 'message'
 			});
 				}, 77);
 		if(!yoyoGoingDown){
@@ -506,6 +507,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				}, 1000);
 			yoyoNum = 1;
+			yoyoChannel = channelID;
 			break;
 		case 'knockknock':
 			bot.sendMessage({
