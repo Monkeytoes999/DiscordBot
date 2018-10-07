@@ -32,6 +32,8 @@ var pollOptions = [];
 var pollVotes = [];
 var polledUsers = [];
 var someArray = [];
+var openPoll = false;
+var pollOpener = 0;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -93,7 +95,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 
-			if (someArray.includes(userID)){
+			if (someArray.includes(userID) && userID == pollOpener){
 				pollOptions = [];
 				pollVotes = [];
 				polledUsers = [];
@@ -109,6 +111,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: 'Ok, your poll has been created.'
 				});
+				openPoll = true;
 			  // do things on the message's contents, check if it is valid, then do the stuff on it
 			  // send "Ok, your are now in the Lizard role" ??
 
@@ -231,12 +234,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			break;
 		case 'createPoll':
-			if (message == "!createPoll" && !someArray.includes(userID)) {
+			if (message == "!createPoll" && !someArray.includes(userID) && !openPoll) {
+				pollOpener = userID;
 			  someArray.push(userID)
 			  bot.sendMessage({
 				  to: channelID,
 				  message: 'Ok, please put all the options in one line and seperate them by ", "'
 			  });
+			}
+			if (openPoll){
+				bot.sendMessage({
+					to: channelID,
+					message: 'Sorry ' + user  ', but a poll is already open. Please wait for this poll to finish'
+				});
 			}
 			break;
 		case 'getPollOptions':
@@ -250,6 +260,29 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				message: mes
 			});
+			break;
+		case 'closePoll':
+			if (openPoll){
+				if (userID == pollOpener){
+					openPoll = false;
+					bot.sendMessage({
+						to: channelID,
+						message: 'Ok, your poll has been closed.'
+					});
+				}
+				if (!(userID == pollOpener)){
+					bot.sendMessage({
+						to: channelID,
+						message: 'Sorry ' + user + ', but you do not own this poll so you cannot close it'
+					});
+				}
+			}
+			if (!openPoll){
+				bot.sendMessage({
+					to: channelID,
+					message: 'There is currently no open poll'
+				});
+			}
 			break;
 		case 'vote':
 			let userAlreadyVoted = false;
