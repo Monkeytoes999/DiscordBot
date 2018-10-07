@@ -100,7 +100,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if (yoyoNum != -1){
+	for (yoyoNum = 1; yoyoNum == -1; yoyoNum + 0){
 		setTimeout(() => {
 					bot.editMessage({
 						 channelID: yoyoChannel,
