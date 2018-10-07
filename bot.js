@@ -477,9 +477,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					bot.sendMessage({
 						 to: channelID,
 						 message: yoyo[yoyoNum]
-					 }, function(err, res){
-						yoyoMessage = res.id;
-					});
+					 });
 				}, 1000);
 			yoyoNum = 1;
 			yoyoChannel = channelID;
@@ -487,7 +485,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		setTimeout(() => {
 					bot.editMessage({
 						 channelID: yoyoChannel,
-						messageID: yoyoMessage,
+						messageID: evt.d.id,
 						 message: yoyo[yoyoNum]
 					 });
 				}, 77);
