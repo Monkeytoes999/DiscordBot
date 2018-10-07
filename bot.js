@@ -101,40 +101,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if (message == '!yoyo'){
-					bot.sendMessage({
-						to: channelID,
-						message: yoyo[0]
-					}, function(err, res){
-						if (err) throw err;
-						yoyoNum = 1;
-						while(yoyoNum != -1){
-							setTimeout(() => {
-						bot.editMessage({
-							channelID: channelID,
-							messageID: res.id,
-							message: yoyo[yoyoNum]
-						}, function(errr, ress){
-							if (errr) throw errr;
-							canChangeYoyoNum = true;
-						});
-						}, 1000);
-						if(!yoyoGoingDown && canChangeYoyoNum){
-							yoyoNum = yoyoNum + 1;
-							canChangeYoyoNum = false;
-						}
-						if(yoyoGoingDown && canChangeYoyoNum){
-							yoyoNum = yoyoNum - 1;
-							canChangeYoyoNum = false;
-						}
-						if(yoyoNum == 13){
-							yoyoGoingDown = true;
-						}
-						if(yoyoNum == -1){
-							yoyoGoingDown = false;
-						}
-						}
-					});
+	while (yoyoNum != 1){
+		setTimeout (() => {
+			bot.editMessage({
+				channelID: channelID,
+				messageID: evt.d.id,
+				message: yoyo[yoyoNum]
+			});
+		}, 1000);
+		if(!yoyoGoingDown && canChangeYoyoNum){
+			yoyoNum = yoyoNum + 1;
+			canChangeYoyoNum = false;
+		}
+		if(yoyoGoingDown && canChangeYoyoNum){
+			yoyoNum = yoyoNum - 1;
+			canChangeYoyoNum = false;
+		}
+		if(yoyoNum == 13){
+			yoyoGoingDown = true;
+		}
+		if(yoyoNum == -1){
+			yoyoGoingDown = false;
+		}
 	}
 	
 
@@ -280,6 +268,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.joinVoiceChannel(496791209788964874);
 			break;
 		case 'yoyo':
+			bot.sendMessage({
+				to: channelID,
+				message: '())'
+			});
+			yoyoNum = 1;
 			break;
 		case 'createPoll':
 			if (message == "!createPoll" && !someArray.includes(userID) && !openPoll) {
