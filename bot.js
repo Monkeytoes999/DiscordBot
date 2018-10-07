@@ -34,6 +34,10 @@ var polledUsers = [];
 var someArray = [];
 var openPoll = false;
 var pollOpener = 0;
+var yoyo = ['())', '-())', '--())', '---())', '----())', '-----())', '------())', '-------())', '--------())', '---------())', '----------())', '-----------())', '------------())', '-------------())']
+var yoyoNum = 0;
+var yoyoGoingDown = false;
+var yoyoMessage;
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -93,6 +97,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			to: channelID,
 			message: 'What\'s this?'
 		});
+	}
+	
+	if (yoyoNum != 0){
+		setTimeout(() => {
+					bot.editMessage({
+						 channelID: channelID,
+						messageID: yoyoMessage,
+						 message: yoyo[yoyoNum];
+					 });
+				}, 1000);
+		if(!yoyoGoingDown){
+			yoyoNum + 1 = yoyoNum;
+		}
+		if(yoyoGoingDown){
+			yoyoNum - 1 = yoyoNum;
+		}
+		if(yoyoNum == 13){
+			yoyoGoingDown = true;
+		}
+		if(yoyoNum == 0){
+			yoyoGoingDown = false;
+		}
 	}
 
 			if (someArray.includes(userID) && userID == pollOpener){
@@ -226,7 +252,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'help':
 				bot.sendMessage({
 					to: userID,
-					message: 'Our current commands are as follows. \n \n knockknock - responds to YOUR knockknock joke. \n \n ping - plays endless hours of pingpong with you, as long as you\'re up for it. \n \n changeMyNickname - changes your nickname to a select group of possible choices \n \n customCommand(1-3) - Create your own simple response command for the bot, as long as that custom command slot hasn\'t already been taken. If it has been, don\'t worry. You\'ll have another chance whenever the bot restarts or updates, as these are temporary. \n \n customCommands - check the current custom commands, seperated by commas. If a command is "__", that means that it can be edited with the corresponding customCommand command. \n \n cat - sends a few lines of meows, a text cat, and a true statement. \n \n neha - sends a totally rediculous response that was requested by a friend. \n \n yoyo - yoyos horizontally. \n \n intro - I really should just delete this one as it does nothing helpful. But hey, I\'m the kind of person who\'s too lazy to do that but is willing to right a few sentences about it. \n \n changePrefix - changes the prefix of the bot. \n \n destroy - a password protected command (!destroy [enter password here]) that spams a server by a significant chunk. \n \n If you say "Graham Channel Destroyer", the bot will tell you the current prefix and the current password number for the destroy password. \n \n This bot also comes equipped with a curse detector, (easy test curse = "bi ke", (without the space, obviously) because reasons), and will say, well you\'ll see, whenever a message contains "owo".'
+					message: 'Our current commands are as follows. \n \n createPoll - Creates a poll that you become the owner of. Can have infinite (probably I don\'t have the time to try that) options. Can only be done if no other poll is currently open \n \n getPollOptions - Gives a list of options. The first option = option 1 and so on. \n \n vote [option number] - adds your vote to that option. You can only vote once per poll. \n \n getPollResults - shows how many people voted for each option \n \n closePoll - ends the current poll making another poll possible; can only be done by poll owner \n \n knockknock - responds to YOUR knockknock joke. \n \n ping - plays endless hours of pingpong with you, as long as you\'re up for it. \n \n changeMyNickname - changes your nickname to a select group of possible choices \n \n customCommand(1-3) - Create your own simple response command for the bot, as long as that custom command slot hasn\'t already been taken. If it has been, don\'t worry. You\'ll have another chance whenever the bot restarts or updates, as these are temporary. \n \n customCommands - check the current custom commands, seperated by commas. If a command is "__", that means that it can be edited with the corresponding customCommand command. \n \n cat - sends a few lines of meows, a text cat, and a true statement. \n \n neha - sends a totally rediculous response that was requested by a friend. \n \n yoyo - yoyos horizontally. \n \n intro - I really should just delete this one as it does nothing helpful. But hey, I\'m the kind of person who\'s too lazy to do that but is willing to right a few sentences about it. \n \n changePrefix - changes the prefix of the bot. \n \n destroy - a password protected command (!destroy [enter password here]) that spams a server by a significant chunk. \n \n If you say "Graham Channel Destroyer", the bot will tell you the current prefix and the current password number for the destroy password. \n \n This bot also comes equipped with a curse detector, (easy test curse = "bi ke", (without the space, obviously) because reasons), and will say, well you\'ll see, whenever a message contains "owo".'
 				});
 				bot.sendMessage({
 					to: channelID,
@@ -396,8 +422,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				serverID: serverID,
 				userID: userID,
 				nick: nicknames[randNum]
-			}, function(err, res){
-			  console.log(err, res)
 			});
 			bot.sendMessage({
 				to: channelID,
@@ -468,10 +492,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 			case 'yoyo':
-				bot.sendMessage({
-					to: channelID,
-					message: '()) \n -()) \n --()) \n ---()) \n ----()) \n -----()) \n ------()) \n -------()) \n --------()) \n ---------()) \n ----------()) \n -----------()) \n ------------()) \n -------------()) \n -------------()) \n ------------()) \n -----------()) \n ----------()) \n ---------()) \n --------()) \n -------()) \n ------()) \n -----()) \n ----()) \n ---()) \n --()) \n -()) \n ())'
-				});
+			yoyoNum = 0;
+				setTimeout(() => {
+					bot.sendMessage({
+						 to: channelID,
+						 message: yoyo[yoyoNum];
+					 }, function(err, res){
+						yoyoMessage = res.id;
+					});
+				}, 1000);
+			yoyoNum = 1;
 			break;
 		case 'knockknock':
 			bot.sendMessage({
