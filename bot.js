@@ -244,8 +244,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			if (openPoll){
 				bot.sendMessage({
-					to: channelID,
-					message: 'Sorry ' + user  ', but a poll is already open. Please wait for this poll to finish'
+				  	to: channelID,
+				 	 message: 'Sorry ' + user + ', but a poll is already open. Please wait for this poll to finish'
 				});
 			}
 			break;
