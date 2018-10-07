@@ -109,7 +109,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}, 1000);
 			yoyoNum = 1;
 			yoyoChannel = channelID;
-				for (yoyoNum = 1; yoyoNum != -1; yoyoNum + 0){
+				while(yoyoNum != -1){
 		setTimeout(() => {
 					bot.editMessage({
 						 channelID: yoyoChannel,
@@ -273,6 +273,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'joinvoice':
 			bot.joinVoiceChannel(496791209788964874);
+			break;
+		case 'yoyo':
 			break;
 		case 'createPoll':
 			if (message == "!createPoll" && !someArray.includes(userID) && !openPoll) {
