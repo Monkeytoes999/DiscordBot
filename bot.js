@@ -396,7 +396,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				serverID: serverID,
 				userID: userID,
 				nick: nicknames[randNum]
-			} function(err, res){
+			}, function(err, res){
 			  console.log(err, res)
 			});
 			bot.sendMessage({
