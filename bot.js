@@ -38,6 +38,7 @@ var prevDay;
 var day;
 var allowBreedChange = false;
 var d = new Date();
+var monthNumbers = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -244,6 +245,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (currentHour < 0){
 				currentDay = currentDay - 1;
 				currentHour = 24 + currentHour;
+			}
+			if (currentDay < 1){
+				currentDay = monthNumbers[currentTime.getMonth()];
+			}
+			if (currentHour > 12){
+				currentHour = currentHour - 12
 			}
 			bot.sendMessage({
 				to: channelID,
