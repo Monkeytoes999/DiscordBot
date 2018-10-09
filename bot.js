@@ -242,7 +242,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				message: day + ' ' +  d.getMonth() + ' ' + d.getFullYear() + ' ' + d.getHours() + ' ' + d.getMinutes()
 			});
-			break;    
+			break;
+		case 'setDate()':
+			d.setFullYear(2018);
+			d.setMonth(9);
+			d.setDate(8);
+			d.setHours(21);
+			d.setMinutes(19);
+			d.setSeconds(0);
+			break;
 			case 'help':
 				bot.sendMessage({
 					to: userID,
