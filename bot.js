@@ -238,9 +238,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			allowBreedChange = true;
 			break;
 		case 'getDay':
+			let currentTime = new Date();
+			let currentHour = (currentTime.getHours() - 4);
+			let currentDay = currentTime.getDate();
+			if (currentHour < 0){
+				currentDay = currentDay - 1;
+				currentHour = 24 + currentHour;
+			}
 			bot.sendMessage({
 				to: channelID,
-				message: day + ' ' + d.getHours() + ':' + d.getMinutes()
+				message: currentDay + ' ' + currentHour + ':' + currentTime.getMinutes()
 			});
 			break;
 		case 'createPoll':
