@@ -68,7 +68,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	prevDay = day;
 	day = d.getDate();
 	
-	if (day != prevDay){
+	if (true){
+		let thisTime = new Date();
+			let thisHour = (thisTime.getHours() - 4);
+			let thisDay = thisTime.getDate();
+			if (thisHour < 0){
+				thisDay = thisDay - 1;
+				thisHour = 24 + thisHour;
+			}
+			if (thisDay < 1){
+				thisDay = monthNumbers[thisTime.getMonth()];
+			}
+			if (currentHour > 12){
+				thisHour = thisHour - 12
+			}
+		prevDay = day;
+		day = thisday;
+	}
+	
+	if (day != prevDay && allowBreedChange){
 		
 	}
 	
@@ -86,7 +104,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i]) && !cussmessage.includes('assure')){
+		if (cussmessage.includes(curses[i]) && !cussmessage.includes('assure') && !cussmessage.includes('assure')){
 			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
