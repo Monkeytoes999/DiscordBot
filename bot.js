@@ -240,7 +240,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'getDay':
 			bot.sendMessage({
 				to: channelID,
-				message: day + ' ' +  d.getMonth() + ' ' + d.getFullYear() + ' ' + d.getHours() + ' ' + d.getMinutes()
+				message: (d.getMonth() + 1) + '/' + day + '/' + d.getFullYear() + '; ' + (d.getHours() + 1) + ':' + (d.getMinutes() + 1)
 			});
 			break;
 		case 'setDate()':
