@@ -240,10 +240,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'getDay':
 			bot.sendMessage({
 				to: channelID,
-				message: (d.getMonth() + 1) + '/' + day + '/' + d.getFullYear() + '; ' + (d.getHours() + 1) + ':' + (d.getMinutes() + 1)
+				message: (d.getMonth() + 1) + '/' + d.getDate() + '/' + d.getFullYear() + '; ' + (d.getHours() + 1) + ':' + (d.getMinutes() + 1)
 			});
 			break;
-		case 'setDate()':
+		case 'setDate()22323232323333':
 			d.setFullYear(2018);
 			d.setMonth(9);
 			d.setDate(8);
