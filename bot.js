@@ -234,7 +234,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
-			    
+		case 'allowBreedChange':
+			allowBreedChange = true;
+			break;
+		case 'getDay':
+			bot.sendMessage({
+				to: channelID,
+				message: day + d.getMonth() + d.getFullYear()
+			});
+			break;    
 			case 'help':
 				bot.sendMessage({
 					to: userID,
@@ -271,15 +279,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({
 				to: channelID,
 				message: mes
-			});
-			break;
-		case 'allowBreedChange':
-			allowBreedChange = true;
-			break;
-		case 'getDay':
-			bot.sendMessage({
-				to: channelID,
-				message: day
 			});
 			break;
 		case 'closePoll':
