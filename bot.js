@@ -34,6 +34,10 @@ var polledUsers = [];
 var someArray = [];
 var openPoll = false;
 var pollOpener = 0;
+var prevDay;
+var day;
+var allowBreedChange = false;
+var d = new Date();
 
 // Configure logger settings
 logger.remove(logger.transports.Console);
@@ -59,6 +63,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (!bot.directMessages[channelID]) {
 		serverID = bot.channels[channelID].guild_id;
 	}
+	
+	prevDay = day;
+	day = d.getDate();
+	
+	if (day != prevDay){
+		
+	}
+	
 	prevEvtID = evt.d.id;
 	
 	cussmessage = message.toUpperCase();
@@ -259,6 +271,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({
 				to: channelID,
 				message: mes
+			});
+			break;
+		case 'allowBreedChange':
+			allowBreedChange = true;
+			break;
+		case 'getDay':
+			bot.sendMessage({
+				to: channelID,
+				message: day
 			});
 			break;
 		case 'closePoll':
