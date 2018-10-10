@@ -85,9 +85,32 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		prevDay = day;
 		day = thisDay;
 		if (day != prevDay && allowBreedChange){
-			//bot.editRole({
-				//serverID: 489547644138422302,
-				//roleID: 
+			bot.editRole({
+				serverID: 489547644138422302,
+				roleID: 499379170975940608,
+				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+			});
+			bot.editRole({
+				serverID: 489547644138422302,
+				roleID: 499379174352355341,
+				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+			});
+			bot.editRole({
+				serverID: 489547644138422302,
+				roleID: 499379172653793292,
+				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+			});
+			bot.editRole({
+				serverID: 489547644138422302,
+				roleID: 499379166626447361,
+				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+			});
+			bot.editRole({
+				serverID: 489547644138422302,
+				roleID: 499379169197817856,
+				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+			});
+			
 		}
 	}
 	
@@ -256,6 +279,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
 		case 'allowBreedChange':
 			allowBreedChange = true;
+			break;
+		case 'changeMyCatRoleTest':
+			if (allowBreedChange){
+				bot.editRole({
+				serverID: 489547644138422302,
+				roleID: 499379172653793292,
+				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+			});
+			}
 			break;
 		case 'findRoleID':
 			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
