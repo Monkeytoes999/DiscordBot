@@ -81,14 +81,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 		prevDay = day;
 		day = thisDay;
-		bot.sendMessage({
-			to: channelID,
-			message: prevDay + ' ' + day
-		});
-	}
-	
-	if (day != prevDay && allowBreedChange){
+		if (day != prevDay && allowBreedChange){
 		
+		}
 	}
 	
 	prevEvtID = evt.d.id;
