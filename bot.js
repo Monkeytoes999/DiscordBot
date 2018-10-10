@@ -65,9 +65,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		serverID = bot.channels[channelID].guild_id;
 	}
 	
-	prevDay = day;
-	day = d.getDate();
-	
 	if (true){
 		let thisTime = new Date();
 			let thisHour = (thisTime.getHours() - 4);
