@@ -85,7 +85,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		prevDay = day;
 		day = thisDay;
 		if (day != prevDay && allowBreedChange){
-		
+			//bot.editRole({
+				//serverID: 489547644138422302,
+			//	roleID: 
 		}
 	}
 	
@@ -254,6 +256,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
 		case 'allowBreedChange':
 			allowBreedChange = true;
+			break;
+		case 'findRoleID':
+			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.include(message.substring(12))).id;
+			bot.sendMessage({
+				to: channelID,
+				message: roleIDnum
+			});
 			break;
 		case 'getDay':
 			let currentTime = new Date();
