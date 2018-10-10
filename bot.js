@@ -87,28 +87,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		day = thisDay;
 		if (day != prevDay && allowBreedChange){
 			bot.editRole({
-				serverID: 489547644138422302,
-				roleID: 499379170975940608,
+				serverID: '489547644138422302',
+				roleID: '499379170975940608',
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
 			bot.editRole({
-				serverID: 489547644138422302,
-				roleID: 499379174352355341,
+				serverID: '489547644138422302',
+				roleID: '499379174352355341',
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
 			bot.editRole({
-				serverID: 489547644138422302,
-				roleID: 499379172653793292,
+				serverID: '489547644138422302',
+				roleID: '499379172653793292',
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
 			bot.editRole({
-				serverID: 489547644138422302,
-				roleID: 499379166626447361,
+				serverID: '489547644138422302',
+				roleID: '499379166626447361',
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
 			bot.editRole({
-				serverID: 489547644138422302,
-				roleID: 499379169197817856,
+				serverID: '489547644138422302',
+				roleID: '499379169197817856',
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
 			
@@ -283,8 +283,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'changeMyCatRoleTest':
 			bot.editRole({
-				serverID: 489547644138422302,
-				roleID: 499379169197817856,
+				serverID: '489547644138422302',
+				roleID: '499379169197817856',
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
 			break;
