@@ -299,7 +299,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			allowBreedChange = true;
 			break;
 		case 'findRoleID':
-			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).users;
+			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
 			bot.sendMessage({
 				to: channelID,
 				message: roleIDnum
