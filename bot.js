@@ -282,9 +282,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			allowBreedChange = true;
 			break;
 		case 'changeMyCatRoleTest':
-				bot.editRole({
+			bot.editRole({
 				serverID: 489547644138422302,
-				roleID: 499379172653793292,
+				roleID: 499379169197817856,
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
 			break;
