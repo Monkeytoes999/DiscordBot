@@ -69,7 +69,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		serverID = bot.channels[channelID].guild_id;
 	}
 	
-	member = bot.servers[bot.channels[channelID].guild_id].members[userID];
+	member = bot.servers[serverID].members[userID];
 	
 	if (true){
 		let thisTime = new Date();
@@ -288,7 +288,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Yes, you do'
 				});
 			}
-			else{
+			if (!haveRole){
 				bot.sendMessage({
 					to: channelID,
 					message: 'No, you don\'t'
