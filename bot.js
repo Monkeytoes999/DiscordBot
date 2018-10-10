@@ -79,7 +79,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (thisDay < 1){
 				thisDay = monthNumbers[thisTime.getMonth()];
 			}
-			if (currentHour > 12){
+			if (thisHour > 12){
 				thisHour = thisHour - 12
 			}
 		prevDay = day;
