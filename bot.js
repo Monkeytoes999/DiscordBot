@@ -83,7 +83,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				thisHour = thisHour - 12
 			}
 		prevDay = day;
-		day = thisday;
+		day = thisDay;
 		bot.sendMessage({
 			to: channelID,
 			message: prevDay + ' ' + day
