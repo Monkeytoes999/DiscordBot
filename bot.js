@@ -281,7 +281,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
             break;
 		case 'DothIHave?':
-			let haveRole = member.roles.includes('489547644138422302');
+			let haveRole = member.roles.includes('489550068022509568');
 			if(haveRole){
 				bot.sendMessage({
 					to: channelID,
