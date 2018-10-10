@@ -278,9 +278,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
             break;
 		case 'DothIHave?':
+			let haveRole = member.roles.includes(489550068022509568);
 			bot.sendMessage({
 				to: channelID,
-				message: member.roles.includes(roleID)
+				message: haveRole
 			});
 			break;
 		case 'allowBreedChange':
