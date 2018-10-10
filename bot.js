@@ -277,6 +277,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		case 'DothIHave?':
+			bot.sendMessage({
+				to: channelID,
+				message: (member[userID].roles.includes(489550068022509568))
+			});
+			break;
 		case 'allowBreedChange':
 			allowBreedChange = true;
 			break;
