@@ -282,10 +282,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
             break;
 		case 'DothIHave?':
 			let haveRole = member.roles.includes(489550068022509568);
-			bot.sendMessage({
-				to: channelID,
-				message: haveRole
-			});
+			if(haveRole){
+				bot.sendMessage({
+					to: channelID,
+					message: 'Yes, you do'
+				});
+			}
+			else{
+				bot.sendMessage({
+					to: channelID,
+					message: 'No, you don\'t'
+				});
+			}
 			break;
 		case 'allowBreedChange':
 			allowBreedChange = true;
