@@ -280,15 +280,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'allowBreedChange':
 			allowBreedChange = true;
 			break;
-		case 'changeMyCatRoleTest':
-			bot.editRole({
-				serverID: '489547644138422302',
-				roleID: '499379169197817856',
-				name: breedNames[Math.floor(Math.random() * breedNames.length)]
-			});
-			break;
 		case 'findRoleID':
-			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
+			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).users;
 			bot.sendMessage({
 				to: channelID,
 				message: roleIDnum
