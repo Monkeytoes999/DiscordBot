@@ -264,7 +264,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	if (message.indexOf((prefix + 'changePrefix')) == 0){
-		prefix = (message.substring(message.indexOf('changePrefix') + 13);
+		prefix = message.substring(message.indexOf('changePrefix') + 13);
 		bot.sendMessage({
 			to: channelID,
 			message: 'The prefix is now \'' + prefix + '\''
