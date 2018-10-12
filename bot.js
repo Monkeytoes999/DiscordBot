@@ -21,7 +21,7 @@ var custom2channelID = 0;
 var custom3channelID = 0;
 var cussmessage = '.';
 var serverID = 0;
-var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp'];
+var nicknames = ['Idiot', '\'-\'', 'I have no life lol', 'HAHHAHAHA', 'Pls Halp', 'Person of Honor', 'Thing 3', 'Gud Spelors', ':GWergCatPing:', 'LMAO', 'smhmh', 'smh'];
 var randNum = 0;
 var spot = 0;
 var symbolList = ['!', '\'', '"', '@', '#', '$', '%', '^', '&', '*', '_', '-', '+', '=', '~', '`', '1', '2', '3', '4', '5', '6', '7', '8', '9', '0', ',', '.', '/', '?', '|', '\\', '>', '<', '(', ')', '[', ']', '{', '}'];
@@ -523,7 +523,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				
 			break;
 		case 'changeMyNickname':
-			randNum = Math.floor(Math.random() * 5);
+			randNum = Math.floor(Math.random() * nicknames.length);
 			bot.editNickname({
 				serverID: serverID,
 				userID: userID,
@@ -655,10 +655,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 			break;
 		default: 
-			bot.sendMessage({
-				to: channelID,
-				message: 'Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help'
-			});
+			if(!message.includes('Hello my fellow team')){
+				bot.sendMessage({
+					to: channelID,
+					message: 'Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help'
+				});
+			}
             // Just add any case commands if you want to..
          }
      }
