@@ -286,16 +286,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                 });
             break;
 		case 'talkToMyTeam':
-			bot.deleteMessage({
-				channelID: channelID,
-				messageID: prevEvtID
-			}, function (err, res){
-				if (err) throw err;
 				bot.sendMessage({
+					to: channelID,
+					message: '!doitnow'
+				});
+			break;
+		case 'doitnow':
+			bot.sendMessage({
 					to: '499003285106196480',
 					message: 'Hello my fellow team blue members! \n Here is a conversation starter: \n ' + convoStarters[Math.floor(Math.random() * convoStarters.length)]
 				});
-			});
 			break;	
 		case 'DothIHave?':
 			let haveRole = member.roles.includes('489550068022509568');
