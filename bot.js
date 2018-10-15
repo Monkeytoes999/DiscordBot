@@ -45,7 +45,7 @@ var member;
 var convoStarters = ['What was the last funny video you saw?', 'What do you do to get rid of stress?', 'What is something you are obsessed with?', 'What is your favorite way to waste time?', 'If you had to change your name, what would your new name be?', 'What is the silliest fear you have?', 'What are you best at?', 'What was the last movie you watched? How was it?', 'Which do you prefer? Books or movies?', 'What book genres do you like to read?', 'How fast do you read?', 'How often do you go to the library?', 'What song always puts you in a good mood?', 'How many apps do you have on your phone?', 'What is the most annoying app you have tried?', 'Which app seemed like magic the first time you used it?', 'What apps have changed your life a lot?', 'How do you feel if you accidentally leave your phone at home?', 'What do you wish your phone could do?', 'What’s the worst fast food restaurant?', 'What was the best invention of the last 50 years?', 'What problems will technology solve in the next 5 years? What problems will it create?'];
 var lastHunMessIds = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
 var lastHunUserIds = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
-
+var lastHunChannelIds = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -91,6 +91,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			lastHunUserIds[userIDforArray] = lastHunUserIds[(userIDforArray - 1)];
 		}
 		lastHunUserIds[0] = user;
+		for (var channelIDforArray = 99; channelIDforArray > 0; channelIDforArray --){
+			lastHunChannelIds[channelIDforArray] = lastHunChannelIds[(channelIDforArray - 1)];
+		}
+		lastHunChannelIds[0] = channelID;
 	}
 	
 	
@@ -304,11 +308,35 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
-		//case 'prune':
-		//	if (message.length < 7){
-		//		user = 
-		//	for (var testArrayNum = 0; testArrayNum < 99; testArrayNum ++){
-				
+		case 'prune':
+			let arrayUserNeed = '';
+			if (message.length < 7){
+				arrayUserNeed = 'Graham Channel Destroyer';
+			}
+			else {
+				arrayUserNeed = user;
+			}
+			for (var testArrayNum = 0; testArrayNum < 100; testArrayNum ++){
+				if (arrayUserNeed == lastHunUserIds[testArrayNum]){
+					if (channelID == lastHunChannelIds[testArrayNum]){
+						bot.deleteMessage({
+							channelID: channelID,
+							messageID: lastHunMessIds[testArrayNum]
+						});
+					}
+				}
+			}
+			break;
+		case 'del20':
+			for (var dell = 0; dell < 20; dell ++){
+				if (channelID == lastHunChannelIds[dell]){
+						bot.deleteMessage({
+							channelID: channelID,
+							messageID: lastHunMessIds[dell]
+						});
+				}
+			}
+			break;
 		case 'getUser':
 			bot.sendMessage({
 				to: channelID,
