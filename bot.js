@@ -43,6 +43,9 @@ var breedNames = ['Abyssinian', 'Aegean', 'American Bobtail', 'American Curl', '
 var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 var member;
 var convoStarters = ['What was the last funny video you saw?', 'What do you do to get rid of stress?', 'What is something you are obsessed with?', 'What is your favorite way to waste time?', 'If you had to change your name, what would your new name be?', 'What is the silliest fear you have?', 'What are you best at?', 'What was the last movie you watched? How was it?', 'Which do you prefer? Books or movies?', 'What book genres do you like to read?', 'How fast do you read?', 'How often do you go to the library?', 'What song always puts you in a good mood?', 'How many apps do you have on your phone?', 'What is the most annoying app you have tried?', 'Which app seemed like magic the first time you used it?', 'What apps have changed your life a lot?', 'How do you feel if you accidentally leave your phone at home?', 'What do you wish your phone could do?', 'What’s the worst fast food restaurant?', 'What was the best invention of the last 50 years?', 'What problems will technology solve in the next 5 years? What problems will it create?'];
+var lastHunMessIds = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
+var lastHunUserIds = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
+
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -74,7 +77,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		serverID = bot.channels[channelID].guild_id;
 	}
 	
+	
+	prevEvtID = evt.d.id;
+	
+	prevDay = day;
+	day = thisDay;
+	
 	member = bot.servers[serverID].members[userID];
+	
+	if (true){
+		for (var messIDforArray = 99; messIDforArray > 0; messIDforArray --){
+			lastHunMessIds[messIDforArray] = lastHunMessIds[(messIDforArray - 1)];
+		}
+		lastHunMessIds[0] = prevEvtID;
+		for (var userIDforArray = 99; userIDforArray > 0; userIDforArray --){
+			lastHunUserIds[userIDforArray] = lastHunUserIds[(userIDforArray - 1)];
+		}
+		lastHunUserIds[0] = user;
+	}
+	
 	
 	if (true){
 		let thisTime = new Date();
@@ -90,8 +111,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (thisHour > 12){
 				thisHour = thisHour - 12
 			}
-		prevDay = day;
-		day = thisDay;
+
 		if (day != prevDay && allowBreedChange){
 			bot.editRole({
 				serverID: '489547644138422302',
@@ -121,9 +141,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			
 		}
 	}
-	
-	prevEvtID = evt.d.id;
-	
+		
 	cussmessage = message.toUpperCase();
 	
 	for (var i = 0; i < symbolList.length; i++){
@@ -285,6 +303,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		//case 'prune':
+		//	if (message.length < 7){
+		//		user = 
+		//	for (var testArrayNum = 0; testArrayNum < 99; testArrayNum ++){
+				
+		case 'getUser':
+			bot.sendMessage({
+				to: channelID,
+				message: user
+			});
+			break;
 		case 'talkToMyTeam':
 				bot.sendMessage({
 					to: channelID,
