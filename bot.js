@@ -80,9 +80,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	prevEvtID = evt.d.id;
 	
-	prevDay = day;
-	day = thisDay;
-	
 	member = bot.servers[serverID].members[userID];
 	
 	if (true){
@@ -111,7 +108,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (thisHour > 12){
 				thisHour = thisHour - 12
 			}
-
+		
+		prevDay = day;
+		day = thisDay;
+	
+		
 		if (day != prevDay && allowBreedChange){
 			bot.editRole({
 				serverID: '489547644138422302',
