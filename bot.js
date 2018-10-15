@@ -314,7 +314,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				arrayUserNeed = 'Graham Channel Destroyer';
 			}
 			else {
-				arrayUserNeed = user;
+				arrayUserNeed = message.substring(7);
 			}
 			for (var testArrayNum = 0; testArrayNum < 100; testArrayNum ++){
 				if (arrayUserNeed == lastHunUserIds[testArrayNum]){
