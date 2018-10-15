@@ -308,15 +308,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
-		case 'editConfig':
-			$ heroku config:set TESTLIST=['test4', 'test5', 'test6'];
-			break;
-		case 'tellmethem':
-			bot.sendMessage({
-				to: channelID,
-				message: process.env.testlist
-			});
-			break;
 		case 'prune':
 			let arrayUserNeed = '';
 			if (message.length < 7){
