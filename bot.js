@@ -316,6 +316,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		case 'tto':
+			bot.sendMessage({
+				to: channelID,
+				message: message.substring(5)
+			});
+			break;
 		case 'prune':
 			let arrayUserNeed = '';
 			if (message.length < 7){
