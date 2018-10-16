@@ -181,12 +181,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				message: 'What\'s this?'
 			});
 		}
-		if (serverID == 500864200378155008){
-			bot.sendMessage({
-				to: channelID,
-				message: 'owo'
-			});
-		}
 	}
 
 			if (someArray.includes(userID) && userID == pollOpener){
