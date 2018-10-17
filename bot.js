@@ -310,6 +310,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		case 'getChannelID':
+			bot.sendMessage({
+				to: channelID,
+				message: channelID
+			});
+			break;
 		case 'tto':
 			bot.sendMessage({
 				to: channelID,
