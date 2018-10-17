@@ -175,7 +175,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
        	
 	if (cussmessage.includes('OWO')){
-		if (serverID != 500864200378155008){
+		if (serverID != 500864200378155008 && channelID != 501934275860496395){
 	    		bot.sendMessage({
 				to: channelID,
 				message: 'What\'s this?'
