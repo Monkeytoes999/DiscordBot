@@ -324,6 +324,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			let ee = 0;
 			while (oragne.length > 0){
 				testmessage123 = testmessage123 + oragne[ee] + ' \n ';
+				oragne[0] = oragne[1];
+				oragne[1] = oragne[2];
 				ee++;
 			}
 			bot.sendMessage({
