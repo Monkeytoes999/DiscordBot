@@ -321,11 +321,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'test':
 			let oragne = test[0];
 			let testmessage123 = '';
-			while (oragne.includes(',')){
-				testmessage123 = testmessage123 + oragne.substring(0, oragne.indexOf(',')) + ' \n ';
-				oragne = oragne.substring(oragne.indexOf(',') + 1);
+			let ee = 0;
+			while (oragne.length > 0){
+				testmessage123 = testmessage123 + oragne[ee] + ' \n ';
+				ee++;
 			}
-			testmessage123 = testmessage123 + oragne;
 			bot.sendMessage({
 				to: channelID,
 				message: testmessage123
