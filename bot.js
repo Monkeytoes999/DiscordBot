@@ -310,6 +310,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		case 'portalCat':
+			bot.sendMessage({
+				to: channelID,
+				message: <:affa:502663197808132116>
+			)};
+			break;
 		case 'getChannelID':
 			bot.sendMessage({
 				to: channelID,
