@@ -319,9 +319,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'test':
+			let testmessage123 = '';
+			while (message.includes(',')){
+				testmessage123 = testmessage123 + message.substring(0, message.indexOf(',')) + ' \n ';
+				message = message.substring(message.indexOf(',') + 1);
+			}
+			testmessage123 = testmessage123 + message;
 			bot.sendMessage({
 				to: channelID,
-				message: test[1] + ' \n ' + test[2] + ' \n ' + test[3]
+				message: testmessage123
 			});
 			break;
 		case 'getChannelID':
