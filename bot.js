@@ -319,12 +319,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'test':
+			let oragne = test[0];
 			let testmessage123 = '';
-			while (message.includes(',')){
-				testmessage123 = testmessage123 + message.substring(0, message.indexOf(',')) + ' \n ';
-				message = message.substring(message.indexOf(',') + 1);
+			while (oragne.includes(',')){
+				testmessage123 = testmessage123 + oragne.substring(0, oragne.indexOf(',')) + ' \n ';
+				oragne = oragne.substring(oragne.indexOf(',') + 1);
 			}
-			testmessage123 = testmessage123 + message;
+			testmessage123 = testmessage123 + oragne;
 			bot.sendMessage({
 				to: channelID,
 				message: testmessage123
