@@ -381,10 +381,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'tto':
-			bot.sendMessage({
-				to: channelID,
-				message: message.substring(5)
-			});
+			setTimeout(() => {
+   				 bot.sendMessage({
+					to: channelID,
+					message: message.substring(5)
+				});
+			}, 1000);
 			break;
 		case 'prune':
 			let arrayUserNeed = '';
