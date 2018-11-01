@@ -161,7 +161,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i]) && !cussmessage.includes('assure') && !cussmessage.includes('associate') && !cussmessage.includes('assure')){
+		if (cussmessage.includes(curses[i]) && !channel.nsfw && !cussmessage.includes('assure') && !cussmessage.includes('associate') && !cussmessage.includes('assure')){
 			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
@@ -312,6 +312,47 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		case 'top':
+			bot.deleteMessage({
+					channelID: channelID,
+					messageID: evt.d.id
+				});
+			if (serverID == '505565358560772096'){
+				bot.addToRole({
+					serverID: serverID,
+					userID: userID,
+					roleID: '506938646029533214'
+				});
+			}
+			if (serverID == '500864200378155008'){
+			    bot.addToRole({
+				    serverID: serverID,
+				    userID: userID,
+				    roleID: '500864200378155008'
+			    });
+			}
+			if (serverID == '495699832313217064'){
+			    bot.addToRole({
+				    serverID: serverID,
+				    userID: userID,
+				    roleID: '495720344779358210'
+			    })
+			}
+			if (serverID == '489547644138422302'){
+				bot.addToRole({
+					serverID: serverID,
+					userID: userID,
+					roleID: '489550068022509568'
+				});
+			}
+			if (serverID == '429446593792442369'){
+				bot.addToRole({
+					serverID: serverID,
+					userID: userID,
+					roleID: '491801015436181504'
+				});
+			}
+			break;
 		case 'portalCat':
 			bot.sendMessage({
 				to: channelID,
