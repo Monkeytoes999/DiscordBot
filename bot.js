@@ -384,7 +384,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			setTimeout(() => {
    				 bot.sendMessage({
 					to: channelID,
-					message: message.substring(5)
+					message: bot.fixMessage(message.substring(5))
 				});
 			}, 1000);
 			break;
