@@ -323,7 +323,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.addToRole({
 					serverID: serverID,
 					userID: userID,
-					roleID: '506938646029533214'
+					roleID: '507688970717495296'
 				});
 			}
 			if (serverID == '500864200378155008'){
