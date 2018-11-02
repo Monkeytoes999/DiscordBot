@@ -55,7 +55,7 @@ var dayay;
 var allstar = ['**All Star by Smash Mouth**', 'Somebody once told me the world is gonna roll me \nI ain\'t the sharpest tool in the shed', 'She was looking kind of dumb with her finger and her thumb \nIn the shape of an "L" on her forehead', '\nWell the years start coming and they don\'t stop coming \nFed to the rules and I hit the ground running', 'Didn\'t make sense not to live for fun \nYour brain gets smart but your head gets dumb', 'So much to do, so much to see \nSo what\'s wrong with taking the back streets?', 'You\'ll never know if you don\'t go \nYou\'ll never shine if you don\'t glow', '\nHey now, you\'re an all-star, get your game on, go play \nHey now, you\'re a rock star, get the show on, get paid', 'And all that glitters is gold \nOnly shooting stars break the mold', '\nIt\'s a cool place and they say it gets colder \nYou\'re bundled up now, wait till you get older', 'But the meteor men beg to differ\nJudging by the hole in the satellite picture', 'The ice we skate is getting pretty thin \nThe water\'s getting warm so you might as well swim', 'My world\'s on fire, how about yours?\nThat\'s the way I like it and I never get bored', '\nHey now, you\'re an all-star, get your game on, go play \nHey now, you\'re a rock star, get the show on, get paid', 'All that glitters is gold \nOnly shooting stars break the mold', '\nHey now, you\'re an all-star, get your game on, go play \nHey now, you\'re a rock star, get the show, on get paid', 'And all that glitters is gold \nOnly shooting stars', '\nSomebody once asked could I spare some change for gas? \nI need to get myself away from this place', 'I said yep what a concept \nI could use a little fuel myself', 'And we could all use a little change', '\nWell, the years start coming and they don\'t stop coming \nFed to the rules and I hit the ground running', 'Didn\'t make sense not to live for fun \nYour brain gets smart but your head gets dumb', 'So much to do, so much to see \nSo what\'s wrong with taking the back streets?', 'You\'ll never know if you don\'t go (go!) \nYou\'ll never shine if you don\'t glow', '\nHey now, you\'re an all-star, get your game on, go play \nHey now, you\'re a rock star, get the show on, get paid', 'And all that glitters is gold \nOnly shooting stars break the mold', '\nAnd all that glitters is gold \nOnly shooting stars break the mold'];
 var countryroads = ['**Country Roads by John Denver**', 'Almost heaven, West Virginia \nBlue Ridge Mountains, Shenandoah River', 'Life is old there, older than the trees \nYounger than the mountains, blowing like a breeze', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'All my memories gather round her \nMiner\'s lady, stranger to blue water', 'Dark and dusty, painted on the sky \nMisty taste of moonshine, teardrop in my eye', 'Country roads, take me home \nTo the place I belong',  'West Virginia, mountain mama \nTake me home, country roads', 'I hear her voice, in the morning hour she calls me \nThe radio reminds me of my home far away', 'And driving down the road I get a feeling \nThat I should have been home yesterday, yesterday', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'Take me home, down country roads \nTake me home, down country roads'];
 var songs = [allstar, countryroads];
-var songtest = ['testtest', 'test123', 'testing', 'testplease'];
+var songPlaying = false;
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -159,10 +159,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						message: 'Today is a weekend! Enjoy!'
 					});
 					bot.sendMessage({
-						to: '193104123506196481',
-						message: 'Today is a weekend! Enjoy!'
-					});
-					bot.sendMessage({
 						to: '194966921362407424',
 						message: 'Today is a weekend! Enjoy!'
 					});
@@ -181,10 +177,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				} else {
 					bot.sendMessage({
 						to: '458809225120972800',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '193104123506196481',
 						message: 'Today is a(n) ' + scDay + ' day.'
 					});
 					bot.sendMessage({
@@ -208,10 +200,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (!scDayChange){
 				bot.sendMessage({
 					to: '458809225120972800',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-				});
-				bot.sendMessage({
-					to: '193104123506196481',
 					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				bot.sendMessage({
@@ -298,7 +286,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		}
 	}
-
+	
+	if (message == 'Shut up you dumb bot!' && userID == '495703108912021545'){
+		bot.sendMessage({
+			to: channelID,
+			message: '$noU'
+		});
+	}
+	
 			if (someArray.includes(userID) && userID == pollOpener){
 				pollOptions = [];
 				pollVotes = [];
@@ -474,15 +469,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'music':
-			let song2play = songs[Math.floor(Math.random() * songs.length)];
-			let line2play = 0;
-			for (let line2play = 0; line2play < song2play.length; line2play++){
-				setTimeout(() => {
-   					 bot.sendMessage({
-						 to: channelID,
-						 message: song2play[line2play]
-					 });
-				}, 3000*line2play);
+			if (!songPlaying){
+				songPlaying = true;
+				let song2play = songs[Math.floor(Math.random() * songs.length)];
+				let line2play = 0;
+				for (let line2play = 0; line2play < song2play.length; line2play++){
+					setTimeout(() => {
+						 bot.sendMessage({
+							 to: channelID,
+							 message: song2play[line2play]
+						 });
+					}, 3000*line2play);
+				}
+				songPlaying = false;
 			}
 			break;
 		case 'test':
@@ -543,42 +542,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			scDayChange = false;
 			break;
 		case 'setScDay':
-			scDay = message.substring(9);
-			bot.sendMessage({
-				to: channelID,
-				message: 'Ok, today is now a ' + scDay + ' day.'
-			});
-			break;
-		case 'getUser':
-			bot.sendMessage({
-				to: channelID,
-				message: user
-			});
-			break;
-		case 'talkToMyTeam':
+			if (message.length = 10){
+				scDay = message.substring(9);
 				bot.sendMessage({
 					to: channelID,
-					message: '!doitnow'
-				});
-			break;
-		case 'doitnow':
-			bot.sendMessage({
-					to: '499003285106196480',
-					message: 'Hello my fellow team blue members! \n Here is a conversation starter: \n ' + convoStarters[Math.floor(Math.random() * convoStarters.length)]
-				});
-			break;	
-		case 'DothIHave?':
-			let haveRole = member.roles.includes('489550068022509568');
-			if(haveRole){
-				bot.sendMessage({
-					to: channelID,
-					message: 'Yes, you do'
-				});
-			}
-			if (!haveRole){
-				bot.sendMessage({
-					to: channelID,
-					message: 'No, you don\'t'
+					message: 'Ok, today is now a ' + scDay + ' day.'
 				});
 			}
 			break;
@@ -586,12 +554,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			let usrID = userID;
 			bot.sendMessage({
 				to: userID,
-				message: 'Our current commands are as follows. \n \n createPoll - Creates a poll that you become the owner of. Can have infinite (probably I don\'t have the time to try that) options. Can only be done if no other poll is currently open \n \n getPollOptions - Gives a list of options. The first option = option 1 and so on. \n \n vote [option number] - adds your vote to that option. You can only vote once per poll. \n \n addCustomResponse - allows you to add new responses to a poll in progress. \n \n getPollResults - shows how many people voted for each option \n \n closePoll - ends the current poll making another poll possible; can only be done by poll owner \n \n knockknock - responds to YOUR knockknock joke. \n \n ping - plays endless hours of pingpong with you, as long as you\'re up for it. \n \n changeMyNickname - changes your nickname to a select group of possible choices \n \n customCommand(1-3) - Create your own simple response command for the bot, as long as that custom command slot hasn\'t already been taken. If it has been, don\'t worry. You\'ll have another chance whenever the bot restarts or updates, as these are temporary.'
+				message: 'Our current commands are as follows. \n \n**Entertainment** \n``ping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list.`` \n \n**Useful** \n``help - displays this, duh. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nCustomCommand [1/2/3] - allows users to create custom commands by following instrucions. \nknockknock - responds to YOUR knock knock joke.``'
 			}, function(err, res){
 				if (err) throw err;
 				bot.sendMessage({
 					to: usrID,
-					message: ' \n \n customCommands - check the current custom commands, seperated by commas. If a command is "__", that means that it can be edited with the corresponding customCommand command. \n \n cat - sends a few lines of meows, a text cat, and a true statement. \n \n neha - sends a totally rediculous response that was requested by a friend. \n \n intro - I really should just delete this one as it does nothing helpful. But hey, I\'m the kind of person who\'s too lazy to do that but is willing to right a few sentences about it. \n \n changePrefix - changes the prefix of the bot. \n \n destroy - a password protected command (!destroy [enter password here]) that spams a server by a significant chunk. \n \n If you say "Graham Channel Destroyer", the bot will tell you the current prefix and the current password number for the destroy password. \n \n This bot also comes equipped with a curse detector, (easy test curse = "bi ke", (without the space, obviously) because reasons), and will say, well you\'ll see, whenever a message contains "owo".'
+					message: ' \n \n**Utilites** \n``test - returns output for random test code. \ngetChannelID - returns the ID of the current channel. \ntto [input] - repeats the input given. \nfindRoleID [role] - returns the ID of the role given. \ngetServerID - returns the ID of your current server. \ndestroy [pass from list] - spams "Destroying by spam" if you enter the right password.`` \n \n**Non-commands** \n``This bot comes equipped with a curse censoring feature, which will cause curses to be deleted. I am currently working on a command for server owner that will turn this off. \nThis bot will DM specific users to let them know if it is a [A] or [B] day. \nThis bot has a feature where it will change the name of specific roles to be new cat breeds daily. \nThis bot comes with a detector that will say "What\'s this?" whenever someone says any form of "owo". \nSaying "Graham Channel Destroyer" will prompt the bot to tell the current prefix, and the array number of the current spam password.``'
 				});
 			});
 			bot.sendMessage({
@@ -603,11 +571,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			allowBreedChange = true;
 			break;
 		case 'findRoleID':
-			let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
-			bot.sendMessage({
-				to: channelID,
-				message: roleIDnum
-			});
+			if (message.length > 11){
+				let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
+				bot.sendMessage({
+					to: channelID,
+					message: roleIDnum
+				});
+			}
 			break;
 		case 'getDay':
 			let currentTime = new Date();
@@ -644,7 +614,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 			break;
-		case 'getPollOptions':
+		case 'pollOptions':
 			let mes = '';
 			let i = 0;
 			for (i = 0; i < pollOptions.length -1; i++){
@@ -669,6 +639,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					bot.sendMessage({
 						to: channelID,
 						message: 'Ok, your poll has been closed.'
+					});
+					let mess2 = '';
+					for (var k = 0; k < pollOptions.length; k++){
+						mess2 = mess2 + pollOptions[k] + ': ' + pollVotes[k] + '\n'
+					}
+					bot.sendMessage({
+						to: channelID,
+						message: '**Poll Results** \n' + mess2
 					});
 				}
 				if (!(userID == pollOpener)){
@@ -734,10 +712,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'getServerID':
-			bot.sendMessage({
-				to: channelID,
-				message: serverID
-			});
+			if (!bot.directMessages[channelID]){
+				bot.sendMessage({
+					to: channelID,
+					message: serverID
+				});
+			} else {
+				bot.sendMessage({ 
+					to: channelID,
+					message: 'You are currently in a DM, which doesn\'t have a "Server ID"'
+				});
+			}
 			break;
 		case 'spamit':
 			if(channelID == spamChannel && message.substring(8) == spamPassword && allowSpam && ((userID == 393586279964475393) || (userID == 495705429150793739))){
@@ -868,12 +853,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: resultList[2]
 				});
 			break;
-		case 'neha':
-			bot.sendMessage({
-				to: channelID,
-				message: 'slays'
-			});
-			break;
 		case 'knockknock':
 			bot.sendMessage({
 				to: channelID,
@@ -888,17 +867,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				bot.sendMessage({
 					to: channelID,
-					message: 'Cats are legit bro'
-				});
-				bot.sendMessage({
-					to: channelID,
 					message: '|             A    A \n |        (= ^w^ = )'
-				});
-			break;
-			case 'intro':
-				bot.sendMessage({
-					to: channelID,
-					message: 'Really? You waited all this time just to test that one piece of code? Lame. I hope this response was worth it :P'
 				});
 			break;
 			case 'destroy':
@@ -932,12 +901,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 			break;
 		default: 
-			if(!message.includes('Hello my fellow team')){
-				bot.sendMessage({
-					to: channelID,
-					message: 'Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help'
-				});
-			}
+			bot.sendMessage({
+				to: channelID,
+				message: 'Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help'
+			});
             // Just add any case commands if you want to..
          }
      }
