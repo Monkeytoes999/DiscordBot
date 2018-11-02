@@ -485,17 +485,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			break;
 		case 'test':
-			let oragne = test[0];
-			let testmessage123 = '';
-			let ee = 0;
-			while (ee < oragne.length){
-				testmessage123 = testmessage123 + oragne[ee] + '\n';
-				ee++;
-			}
 			bot.sendMessage({
 				to: channelID,
-				message: testmessage123
-			});
+				embed: {
+					color: 255,
+					fields: [{
+						name: 'oof',
+						value: 'ooftest'
+					}, {
+						name: 'oof2',
+						value: 'ooftest2'
+					}]}});
 			break;
 		case 'getChannelID':
 			bot.sendMessage({
