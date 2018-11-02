@@ -86,12 +86,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (!remdSent){
 		remdSent = true;
 		bot.sendMessage({
-			to: '495998900008910863',
+			to: '393586279964475393',
 			message: 'What rotation day is it?'
 		});
 	}
 	
-	if (remdSent && scDay == 'oof' && channelID == '495998900008910863' && userID == '393586279964475393'){
+	if (remdSent && scDay == 'oof' && channelID == '393586279964475393' && userID == '393586279964475393'){
 		scDay = message;
 		bot.sendMessage({
 			to: channelID,
@@ -148,9 +148,49 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						to: '458809225120972800',
 						message: 'Today is a weekend! Enjoy!'
 					});
+					bot.sendMessage({
+						to: '193104123506196481',
+						message: 'Today is a weekend! Enjoy!'
+					});
+					bot.sendMessage({
+						to: '194966921362407424',
+						message: 'Today is a weekend! Enjoy!'
+					});
+					bot.sendMessage({
+						to: '486985623161274378',
+						message: 'Today is a weekend! Enjoy!'
+					});
+					bot.sendMessage({
+						to: '336507246227881984',
+						message: 'Today is a weekend! Enjoy!'
+					});
+					bot.sendMessage({
+						to: '393586279964475393',
+						message: 'Today is a weekend! Enjoy!'
+					});
 				} else {
 					bot.sendMessage({
 						to: '458809225120972800',
+						message: 'Today is a ' + scDay + ' day.'
+					});
+					bot.sendMessage({
+						to: '193104123506196481',
+						message: 'Today is a ' + scDay + ' day.'
+					});
+					bot.sendMessage({
+						to: '194966921362407424',
+						message: 'Today is a ' + scDay + ' day.'
+					});
+					bot.sendMessage({
+						to: '486985623161274378',
+						message: 'Today is a ' + scDay + ' day.'
+					});
+					bot.sendMessage({
+						to: '336507246227881984',
+						message: 'Today is a ' + scDay + ' day.'
+					});
+					bot.sendMessage({
+						to: '393586279964475393',
 						message: 'Today is a ' + scDay + ' day.'
 					});
 				}
@@ -158,6 +198,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (!scDayChange){
 				bot.sendMessage({
 					to: '458809225120972800',
+					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+				});
+				bot.sendMessage({
+					to: '193104123506196481',
+					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+				});
+				bot.sendMessage({
+					to: '194966921362407424',
+					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+				});
+				ot.sendMessage({
+					to: '486985623161274378',
+					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+				});
+				bot.sendMessage({
+					to: '336507246227881984',
+					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+				});
+				bot.sendMessage({
+					to: '393586279964475393',
 					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				scDayChange = true;
