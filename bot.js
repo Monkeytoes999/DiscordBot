@@ -56,6 +56,7 @@ var allstar = ['**All Star by Smash Mouth**', 'Somebody once told me the world i
 var countryroads = ['**Country Roads by John Denver**', 'Almost heaven, West Virginia \nBlue Ridge Mountains, Shenandoah River', 'Life is old there, older than the trees \nYounger than the mountains, blowing like a breeze', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'All my memories gather round her \nMiner\'s lady, stranger to blue water', 'Dark and dusty, painted on the sky \nMisty taste of moonshine, teardrop in my eye', 'Country roads, take me home \nTo the place I belong',  'West Virginia, mountain mama \nTake me home, country roads', 'I hear her voice, in the morning hour she calls me \nThe radio reminds me of my home far away', 'And driving down the road I get a feeling \nThat I should have been home yesterday, yesterday', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'Take me home, down country roads \nTake me home, down country roads'];
 var songs = [allstar, countryroads];
 var songPlaying = false;
+var arrayTest[[1,2,3],[1,2]];
 
 
 //team blue 499003285106196480
@@ -488,15 +489,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'test':
 			bot.sendMessage({
 				to: channelID,
-				embed: {
-					color: 255,
-					fields: [{
-						name: 'oof',
-						value: 'ooftest'
-					}]}});
-			bot.sendMessage({ to: channelID, embed: { color: 255, fields: [{	name: '2oof',
-						value: '2ooftest'
-					}]}});
+				message: arrayTest.length + ' ' + arrayTest[1].length + ' ' + arraytest[0].length
 			break;
 		case 'getChannelID':
 			bot.sendMessage({
