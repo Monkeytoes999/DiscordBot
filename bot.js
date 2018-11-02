@@ -482,6 +482,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					 });
 				}, 1000);
 			}
+			break;
 		case 'test':
 			let oragne = test[0];
 			let testmessage123 = '';
