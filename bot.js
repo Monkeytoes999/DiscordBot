@@ -86,7 +86,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (!remdSent){
 		remdSent = true;
 		bot.sendMessage({
-			to: '393586279964475393',
+			to: '495998900008910863',
 			message: 'What rotation day is it?'
 		});
 	}
@@ -143,7 +143,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				} else if (scDay.toUpperCase() == 'B'){
 					scDay = 'A';
 				}
-				if (getDay() == 5 || getDay() == 6){
+				if (thisTime.getDay() == 5 || thisTime.getDay() == 6){
 					bot.sendMessage({
 						to: '458809225120972800',
 						message: 'Today is a weekend! Enjoy!'
