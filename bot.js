@@ -57,6 +57,11 @@ var countryroads = ['**Country Roads by John Denver**', 'Almost heaven, West Vir
 var songs = [allstar, countryroads];
 var songPlaying = false;
 var arrayTest = [[1,2,3],[1,2]];
+var pollAtappOptions = [];
+var pollAtappVotes = [];
+var polledAtappUsers = [];
+var openAtappPoll = false;
+var pollAtappOpener = 0;
 
 
 //team blue 499003285106196480
@@ -313,9 +318,29 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Ok, your poll has been created.'
 				});
 				openPoll = true;
-			  // do things on the message's contents, check if it is valid, then do the stuff on it
-			  // send "Ok, your are now in the Lizard role" ??
-
+				
+			  let index = someArray.indexOf(userID);
+			  someArray.splice(index, 1);
+			}
+	
+			if (someArray.includes(userID) && userID == pollAtappOpener){
+				pollAtappOptions = [];
+				pollAtappVotes = [];
+				polledAtappUsers = [];
+				while (message.includes(', ')){
+					pollAtappOptions[pollAtappOptions.length] = message.substring(0, message.indexOf(', '));
+					message = message.substring(message.indexOf(', ') +2);
+				}
+				pollAtappOptions[pollAtappOptions.length] = message;
+				for (i = 0; i < pollAtappOptions.length; i++){
+					pollVotes[i] = 0;
+				}
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok, your "all that apply" poll has been created.'
+				});
+				openAtappPoll = true;
+				
 			  let index = someArray.indexOf(userID);
 			  someArray.splice(index, 1);
 			}
@@ -432,7 +457,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.addToRole({
 					serverID: serverID,
 					userID: userID,
-					roleID: '507688970717495296'
+					roleID: '508031833766625282'
 				});
 			}
 			if (serverID == '500864200378155008'){
