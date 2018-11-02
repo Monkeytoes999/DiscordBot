@@ -492,7 +492,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					fields: [{
 						name: 'oof',
 						value: 'ooftest'
-					}, {
+					}, { name: 'oof2.5', value: 'ooftest2.5\n'}, {
 						name: 'oof2',
 						value: 'ooftest2'
 					}]}});
