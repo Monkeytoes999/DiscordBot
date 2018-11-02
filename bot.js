@@ -78,7 +78,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	if (!bot.directMessages[channelID]) {
+	if (!bot.directMessages[channelID] && channelID != 458809225120972800 && channelID != 495998900008910863) {
 		serverID = bot.channels[channelID].guild_id;
 		channel = bot.channels[channelID];
 	}
