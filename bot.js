@@ -48,7 +48,9 @@ var lastHunUserIds = ['','','','','','','','','','','','','','','','','','','','
 var lastHunChannelIds = ['','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','','',''];
 var test = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 var channel;
-
+var scDayChange = true;
+var scDay = 'oof';
+var remdSent = false;
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -81,6 +83,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		channel = bot.channels[channelID];
 	}
 	
+	if (!remdSent){
+		remdSent = true;
+		bot.sendMessage({
+			to: 393586279964475393,
+			message: 'What rotation day is it?'
+		});
+	}
+	
+	if (remdSent && scDay == oof && channelID == 495998900008910863){
+		scDay = message;
+		bot.sendMessage({
+			to: channelID,
+			message: 'Ok, today is now a ' + scDay + ' day.'
+		});
+	}
 	
 	prevEvtID = evt.d.id;
 	
@@ -119,8 +136,33 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		
 		prevDay = day;
 		day = thisDay;
-	
-		
+		if (day != prevDay){
+			if (scDayChange){
+				if (scDay.toUpperCase() == 'A'){
+					scDay = 'B';
+				} else if (scDay.toUpperCase() == 'B'){
+					scDay = 'A';
+				}
+				if (getDay() == 5 || getDay() == 6){
+					bot.sendMessage({
+						to: 
+						message: 'Today is a weekend! Enjoy!'
+					});
+				} else {
+					bot.sendMessage({
+						to: 
+						message: 'Today is a ' + scDay + ' day.'
+					});
+				}
+			}
+			if (!scDayChange){
+				bot.sendMessage({
+					to: 
+					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+				});
+				scDayChange = true;
+			}
+		}
 		if (day != prevDay && allowBreedChange){
 			bot.editRole({
 				serverID: '489547644138422302',
@@ -381,12 +423,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'tto':
-			setTimeout(() => {
    				 bot.sendMessage({
 					to: channelID,
 					message: bot.fixMessage(message.substring(5))
 				});
-			}, 1000);
 			break;
 		case 'prune':
 			let arrayUserNeed = '';
@@ -416,6 +456,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 				}
 			}
+			break;
+		case 'preventScDayChange':
+			scDayChange = false;
+			break;
+		case 'setScDay':
+			scDay = message.substring(9);
+			bot.sendMessage({
+				to: channelID,
+				message: 'Ok, today is now a ' + scDay + ' day.'
+			});
 			break;
 		case 'getUser':
 			bot.sendMessage({
