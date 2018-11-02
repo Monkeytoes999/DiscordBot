@@ -91,7 +91,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if (remdSent && scDay == oof && channelID == '495998900008910863'){
+	if (remdSent && scDay == 'oof' && channelID == '495998900008910863'){
 		scDay = message;
 		bot.sendMessage({
 			to: channelID,
