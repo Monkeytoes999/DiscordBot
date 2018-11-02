@@ -177,54 +177,54 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				} else {
 					bot.sendMessage({
 						to: '458809225120972800',
-						message: 'Today is a ' + scDay + ' day.'
+						message: 'Today is a(n) ' + scDay + ' day.'
 					});
 					bot.sendMessage({
 						to: '193104123506196481',
-						message: 'Today is a ' + scDay + ' day.'
+						message: 'Today is a(n) ' + scDay + ' day.'
 					});
 					bot.sendMessage({
 						to: '194966921362407424',
-						message: 'Today is a ' + scDay + ' day.'
+						message: 'Today is a(n) ' + scDay + ' day.'
 					});
 					bot.sendMessage({
 						to: '486985623161274378',
-						message: 'Today is a ' + scDay + ' day.'
+						message: 'Today is a(n) ' + scDay + ' day.'
 					});
 					bot.sendMessage({
 						to: '336507246227881984',
-						message: 'Today is a ' + scDay + ' day.'
+						message: 'Today is a(n) ' + scDay + ' day.'
 					});
 					bot.sendMessage({
 						to: '393586279964475393',
-						message: 'Today is a ' + scDay + ' day.'
+						message: 'Today is a(n) ' + scDay + ' day.'
 					});
 				}
 			}
 			if (!scDayChange){
 				bot.sendMessage({
 					to: '458809225120972800',
-					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				bot.sendMessage({
 					to: '193104123506196481',
-					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				bot.sendMessage({
 					to: '194966921362407424',
-					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				ot.sendMessage({
 					to: '486985623161274378',
-					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				bot.sendMessage({
 					to: '336507246227881984',
-					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				bot.sendMessage({
 					to: '393586279964475393',
-					message: 'Yesterday was a ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 				});
 				scDayChange = true;
 			}
