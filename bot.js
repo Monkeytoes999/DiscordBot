@@ -479,7 +479,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				setTimeout(() => {
    					 bot.sendMessage({
 						 to: channelID,
-						 message: '/tts ' + song2play[line2play]
+						 message: song2play[line2play],
+						 tts: true
 					 });
 				}, 3000*line2play);
 			}
