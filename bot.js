@@ -124,6 +124,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		let thisTime = new Date();
 			let thisHour = (thisTime.getHours() - 4);
 			let thisDay = thisTime.getDate();
+			let thisDayay = (thisTime.getDay() - 2);
 			if (thisHour < 0){
 				thisDay = thisDay - 1;
 				thisHour = 24 + thisHour;
@@ -131,13 +132,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (thisDay < 1){
 				thisDay = monthNumbers[thisTime.getMonth()];
 			}
+			if (thisDayay < 0){
+				thisDayay = 6 + (thisDayay + 1);
 			if (thisHour > 12){
 				thisHour = thisHour - 12
 			}
 		
 		prevDay = day;
 		day = thisDay;
-		dayay = thisTime.getDay();
+		dayay = thisDayay;
 		if (day != prevDay){
 			if (scDayChange){
 				if (scDay.toUpperCase() == 'A'){
@@ -145,7 +148,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				} else if (scDay.toUpperCase() == 'B'){
 					scDay = 'A';
 				}
-				if (thisTime.getDay() == 5 || thisTime.getDay() == 6){
+				if (thisDayay == 5 || thisDayay == 6){
 					bot.sendMessage({
 						to: '458809225120972800',
 						message: 'Today is a weekend! Enjoy!'
