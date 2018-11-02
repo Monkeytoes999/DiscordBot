@@ -492,9 +492,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					fields: [{
 						name: 'oof',
 						value: 'ooftest'
-					}, { name: '\noof1.5', value: 'ooftest2.5\n'}, { name: '', value: ''}, {
-						name: 'oof2',
-						value: 'ooftest2'
+					}]}});
+			bot.sendMessage({ to: channelID, embed: { color: 255, fields: [{	name: '2oof',
+						value: '2ooftest'
 					}]}});
 			break;
 		case 'getChannelID':
