@@ -475,12 +475,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'music':
 			let song2play = songs[Math.floor(Math.random() * 1)];
 			let line2play = 0;
-			for (line2play = 0; line2play < songtest.length; line2play++){
+			while (line2play < songtest.length){
 				setTimeout(() => {
    					 bot.sendMessage({
 						 to: channelID,
 						 message: songtest[line2play]
 					 });
+					line2play = line2play + 1;
 				}, 1000);
 			}
 			break;
