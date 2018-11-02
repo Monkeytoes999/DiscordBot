@@ -51,6 +51,7 @@ var channel;
 var scDayChange = true;
 var scDay = 'oof';
 var remdSent = false;
+var dayay;
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -91,7 +92,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if (remdSent && scDay == 'oof' && channelID == '393586279964475393' && userID == '393586279964475393'){
+	if (remdSent && scDay == 'oof' && channelID == '495998900008910863' && userID == '393586279964475393'){
 		scDay = message;
 		bot.sendMessage({
 			to: channelID,
@@ -136,6 +137,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		
 		prevDay = day;
 		day = thisDay;
+		dayay = thisTime.getDay();
 		if (day != prevDay){
 			if (scDayChange){
 				if (scDay.toUpperCase() == 'A'){
@@ -603,7 +605,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			bot.sendMessage({
 				to: channelID,
-				message: currentDay + ' ' + currentHour + ':' + currentTime.getMinutes()
+				message: dayay;
 			});
 			break;
 		case 'createPoll':
