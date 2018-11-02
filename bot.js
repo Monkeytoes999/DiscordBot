@@ -134,6 +134,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			if (thisDayay < 0){
 				thisDayay = 6 + (thisDayay + 1);
+			}
 			if (thisHour > 12){
 				thisHour = thisHour - 12
 			}
