@@ -489,7 +489,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'test':
 			bot.sendMessage({
 				to: channelID,
-				message: arrayTest.length + ' ' + arrayTest[1].length + ' ' + arraytest[0].length
+				message: arrayTest.length + ' ' + arrayTest[1].length + ' ' + arrayTest[0].length
 			});
 			break;
 		case 'getChannelID':
