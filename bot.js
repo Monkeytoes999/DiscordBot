@@ -1,6 +1,5 @@
 var Discord = require('discord.io');
 var logger = require('winston');
-var serverOptions = require('./serverOptions.json');
 var prefix = '!';
 var passnum = 0; 
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
@@ -57,8 +56,6 @@ var allstar = ['**All Star by Smash Mouth**', 'Somebody once told me the world i
 var countryroads = ['**Country Roads by John Denver**', 'Almost heaven, West Virginia \nBlue Ridge Mountains, Shenandoah River', 'Life is old there, older than the trees \nYounger than the mountains, blowing like a breeze', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'All my memories gather round her \nMiner\'s lady, stranger to blue water', 'Dark and dusty, painted on the sky \nMisty taste of moonshine, teardrop in my eye', 'Country roads, take me home \nTo the place I belong',  'West Virginia, mountain mama \nTake me home, country roads', 'I hear her voice, in the morning hour she calls me \nThe radio reminds me of my home far away', 'And driving down the road I get a feeling \nThat I should have been home yesterday, yesterday', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'Country roads, take me home \nTo the place I belong', 'West Virginia, mountain mama \nTake me home, country roads', 'Take me home, down country roads \nTake me home, down country roads'];
 var songs = [allstar, countryroads];
 var songPlaying = false;
-var cursingIsOk2018 = false;
-var owoingIsOk2018 = true;
 
 
 //team blue 499003285106196480
@@ -263,15 +260,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
 			i = i-1;
 		}
-	}
-	cursingIsOk2018 = false;
-	if (serverOptions[serverID] != undefined){
-		cursingIsOk2018 = serverOptions[serverID][allowCussing];
-	}
-	
-	owoingIsOk2018 = true;
-	if (serverOptions[serverID] != undefined){
-		cursingIsOk2018 = serverOptions[serverID][allowOwoing];
 	}
 
 
