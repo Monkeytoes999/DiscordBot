@@ -142,7 +142,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		prevDay = day;
 		day = thisDay;
 		dayay = thisDayay;
-		if (day != prevDay){
+		if (day != prevDay && scDay != 'oof'){
 			if (scDayChange){
 				if (scDay.toUpperCase() == 'A'){
 					scDay = 'B';
