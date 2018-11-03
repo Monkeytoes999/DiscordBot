@@ -441,7 +441,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		knockknock = 2;
 	}
 	
-	if (message.substring(0, 24) == 'Graham Channel Destroyer'){
+	if (message.substring(0, 24) == 'Graham Channel Destroyer' && channelID != '508329340652748800'){
 		bot.sendMessage({
 			to: channelID,
 			message: 'The current prefix is ' + prefix + ', and the current password is password number ' + passnum + '. To see documentation, please say ' + prefix + 'help'
