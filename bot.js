@@ -59,6 +59,7 @@ var songPlaying = false;
 var arrayTest = [[1,2,3],[1,2]];
 var pollAtappOptions = [];
 var pollAtappVotes = [];
+var polledAtappUsers = [];
 var openAtappPoll = false;
 var pollAtappOpener = 0;
 
@@ -573,7 +574,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			let usrID = userID;
 			bot.sendMessage({
 				to: userID,
-				message: 'Our current commands are as follows. \n \n**Entertainment** \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \n \n**Useful** \nhelp - displays this, duh. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nCustomCommand [1/2/3] - allows users to create custom commands by following instrucions. \nknockknock - responds to YOUR knock knock joke.'
+				message: 'Our current commands are as follows. \n \n**Entertainment** \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \n \n**Useful** \nhelp - displays this, duh. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \n"all that apply" polls. createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instrucions.'
 			}, function(err, res){
 				if (err) throw err;
 				bot.sendMessage({
@@ -799,9 +800,24 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'voteAtapp':
+			let userAlreadyAtappVoted = false;
+			for (var ja = 0; ja < polledAtappUsers.length; ja++){
+				if ( userID == polledAtappUsers[ja] && polledAtappUsers[ja+1] == message.substring(11)){
+					userAlreadyAtappVoted = true;
+				}
+			}
+			if (userAlreadyAtappVoted){
+				bot.sendMessage({
+					to: channelID,
+					message: 'You already voted for this option, ' + user
+				});
+			}
+			if (!userAlreadyAtappVoted){
 				let voteNumAtapp = message.substring(11)
 				for (var la = 0; la < pollAtappOptions.length; la++){
 					if (voteNumAtapp == la + 1){
+						polledAtappUsers[polledAtappUsers.length] = userID;
+						polledAtappUsers[polledAtappUsers.length] = message.substring(11);
 						pollAtappVotes[la] = pollAtappVotes[la] + 1;
 						bot.sendMessage({
 							to: channelID,
@@ -809,6 +825,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				}
+			}
 			break;
 		case 'closeAtappPoll':
 			if (!openAtappPoll){
