@@ -98,6 +98,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		member = bot.servers[serverID].members[userID];
 	}
 	
+	if (bot.directMessages[channelID] && channelID != '393586279964475393'){
+		bot.sendMessage({
+			to: '508329340652748800',
+			message: user + ': ' + message
+		});
+	}
+	
 	if (!remdSent){
 		remdSent = true;
 		bot.sendMessage({
