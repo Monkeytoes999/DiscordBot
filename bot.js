@@ -290,7 +290,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	var hasMistakenCuss = false;
 	for (var i = 0; i < notCusses.length; i++){
-		if cussmessage.includes(notCusses[i]){
+		if (cussmessage.includes(notCusses[i])){
 			var hasMistakenCuss = true;
 		}
 	}
