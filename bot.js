@@ -1,6 +1,6 @@
 var Discord = require('discord.io');
 var logger = require('winston');
-var serverOptions = require('/serverOptions.json');
+var serverOptions = require('./serverOptions.json');
 var prefix = '!';
 var passnum = 0; 
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
