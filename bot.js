@@ -98,7 +98,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		member = bot.servers[serverID].members[userID];
 	}
 	
-	if (bot.directMessages[channelID] && channelID != '393586279964475393'){
+	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
 		bot.sendMessage({
 			to: '508329340652748800',
 			message: user + ': ' + message
@@ -522,6 +522,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({
 				to: channelID,
 				message: '<a:affa:502663197808132116>'
+			});
+			break;
+		case 'ttb':
+			bot.sendMessage({
+				to: '486985623161274378',
+				message: user + ' wanted me to tell you this: ' + message.substring(5)
 			});
 			break;
 		case 'music':
