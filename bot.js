@@ -1,5 +1,6 @@
 var Discord = require('discord.io');
 var logger = require('winston');
+var serverOptions = require('/serverOptions.json');
 var prefix = '!';
 var passnum = 0; 
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
@@ -62,7 +63,8 @@ var pollAtappVotes = [];
 var polledAtappUsers = [];
 var openAtappPoll = false;
 var pollAtappOpener = 0;
-
+var allowOwo = true;
+var allowCuss = false;
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -260,6 +262,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		
 	cussmessage = message.toUpperCase();
 	
+	allowOwo = true;
+	allowCuss = false;
+	if (serverOptions[serverID] != undefined){
+		allowCuss = serverOptions[serverID]["allowCussing"];
+		allowOwo = serverOptions[serverID]["allowOwoing"];
+	}
+	
+	
+		
+		
 	for (var i = 0; i < symbolList.length; i++){
 		if (cussmessage.includes(symbolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
@@ -270,7 +282,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i]) && !channel.nsfw && !cussmessage.includes('assure') && !cussmessage.includes('associate') && !cussmessage.includes('assume')){
+		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !cussmessage.includes('assure') && !cussmessage.includes('associate') && !cussmessage.includes('assume')){
 			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
@@ -286,7 +298,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
        	
 	if (cussmessage.includes('OWO')){
-		if (serverID != 500864200378155008 && serverID != 505565358560772096 && channelID != 501934275860496395){
+		if (serverID != 500864200378155008 && allowOwo && serverID != 505565358560772096 && channelID != 501934275860496395){
 	    		bot.sendMessage({
 				to: channelID,
 				message: 'What\'s this?'
