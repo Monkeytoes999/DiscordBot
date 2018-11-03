@@ -95,6 +95,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (!bot.directMessages[channelID] && channelID != 458809225120972800 && channelID != 495998900008910863) {
 		serverID = bot.channels[channelID].guild_id;
 		channel = bot.channels[channelID];
+		member = bot.servers[serverID].members[userID];
 	}
 	
 	if (!remdSent){
@@ -114,9 +115,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	prevEvtID = evt.d.id;
-	
-	member = bot.servers[serverID].members[userID];
-	
+		
 	if (true){
 		for (var messIDforArray = 99; messIDforArray > 0; messIDforArray --){
 			lastHunMessIds[messIDforArray] = lastHunMessIds[(messIDforArray - 1)];
