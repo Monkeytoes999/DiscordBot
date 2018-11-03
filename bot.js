@@ -295,7 +295,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			}
 		}
-		if (cussmessage.includes('BIKE')){
+		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
 		  	bot.deleteMessage({
 				channelID: channelID,
 				messageID: prevEvtID
