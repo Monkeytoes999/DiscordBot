@@ -866,7 +866,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						to: channelID,
 						message: 'Ok, your "all that apply" poll has been closed.'
 					});
-			d		let mess2Atapp = '';
+					let mess2Atapp = '';
 					for (var ka = 0; ka < pollAtappOptions.length; ka++){
 						mess2Atapp = mess2Atapp + pollAtappOptions[ka] + ': ' + pollAtappVotes[ka] + '\n'
 					}
