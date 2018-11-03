@@ -101,7 +101,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
 		bot.sendMessage({
 			to: '508329340652748800',
-			message: user + ': ' + message
+			message: user + ': ' + message + ' (' + channelID + ')'
 		});
 	}
 	
@@ -528,6 +528,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({
 				to: '486985623161274378',
 				message: user + ' wanted me to tell you this: ' + message.substring(5)
+			});
+			break;
+		case 'ttu':
+			bot.sendMessage({
+				to: message.substring(5,23),
+				message: message.substring(24)
 			});
 			break;
 		case 'music':
