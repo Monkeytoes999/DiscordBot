@@ -605,10 +605,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: ' \n \n**Utilites** \n test - returns output for random test code. \ngetChannelID - returns the ID of the current channel. \ntto [input] - repeats the input given. \nfindRoleID [role] - returns the ID of the role given. \ngetServerID - returns the ID of your current server. \ndestroy [pass from list] - spams "Destroying by spam" if you enter the right password. \n \n**Non-commands** \nThis bot comes equipped with a curse censoring feature, which will cause curses to be deleted. I am currently working on a command for server owner that will turn this off. \nThis bot will DM specific users to let them know if it is a [A] or [B] day. \nThis bot has a feature where it will change the name of specific roles to be new cat breeds daily. \nThis bot comes with a detector that will say "What\'s this?" whenever someone says any form of "owo". \nSaying "Graham Channel Destroyer" will prompt the bot to tell the current prefix, and the array number of the current spam password.'
 				});
 			});
-			bot.sendMessage({
-				to: channelID,
-				message: 'Documentation has been sent to your dms.'
-			});
+			if(!!bot.directMessages[channelID]){
+				bot.sendMessage({
+					to: channelID,
+					message: 'Documentation has been sent to your dms.'
+				});
+			}
 			break;
 		case 'allowBreedChange':
 			allowBreedChange = true;
@@ -864,7 +866,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						to: channelID,
 						message: 'Ok, your "all that apply" poll has been closed.'
 					});
-					let mess2Atapp = '';
+			d		let mess2Atapp = '';
 					for (var ka = 0; ka < pollAtappOptions.length; ka++){
 						mess2Atapp = mess2Atapp + pollAtappOptions[ka] + ': ' + pollAtappVotes[ka] + '\n'
 					}
