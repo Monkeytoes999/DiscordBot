@@ -450,6 +450,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
+	if (message == 'Shut up you dumb bot!' && userID == '495703108912021545'){
+		bot.deleteMessage({
+			channelID: channelID,
+			messageID: prevEvtID
+		});
+	}
+	
     if (message.indexOf(prefix) == 0) {
 	knockknock = 0
         var args = message.substring(1).split(' ');
