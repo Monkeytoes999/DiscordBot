@@ -59,7 +59,6 @@ var songPlaying = false;
 var arrayTest = [[1,2,3],[1,2]];
 var pollAtappOptions = [];
 var pollAtappVotes = [];
-var polledAtappUsers = [];
 var openAtappPoll = false;
 var pollAtappOpener = 0;
 
@@ -744,6 +743,106 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 			break;
+		case 'createAtappPoll':
+			if (!someArray.includes(userID) && !openAtappPoll) {
+				pollAtappOpener = userID;
+			  someArray.push(userID)
+			  bot.sendMessage({
+				  to: channelID,
+				  message: 'Ok, please put all the options in one line and seperate them by ", "'
+			  });
+			}
+			if (openAtappPoll){
+				bot.sendMessage({
+				  	to: channelID,
+				 	 message: 'Sorry ' + user + ', but a "all that apply" poll is already open. Please wait for this poll to finish'
+				});
+			}
+			break;
+		case 'pollAtappOptions':
+			let mesAtapp = '';
+			let i = 0;
+			for (i = 0; i < pollAtappOptions.length -1; i++){
+				mesAtapp = mesAtapp + pollAtappOptions[i] + ', ';
+			}
+			mesAtapp = mesAtapp + pollAtappOptions[i];
+			bot.sendMessage({
+				to: channelID,
+				message: mesAtapp
+			});
+		break;
+		case 'addCustomAtappResponse':
+			if(!openAtappPoll){
+				bot.sendMessage({
+					to: channelID,
+					message: 'Sorry ' + user + ', there is currently no open "all that apply" poll.'
+				});
+			}
+			if(openPoll){
+				let customResponseAtapp = message.substring(24);
+				pollAtappOptions[pollAtappOptions.length] = customResponseAtapp;
+				pollAtappVotes[pollAtappVotes.length] = 0;
+				bot.sendMessage({
+					to: channelID,
+					message: 'Ok ' + user + ', your custom response, ' + customResponseAtapp + ', has been added to the "all that apply" poll, but not voted for.'
+				});
+			}
+		break;
+		case 'pollAtappResults':
+			let messAtapp = '';
+			for (var k = 0; k < pollAtappOptions.length; k++){
+				messAtapp = messAtapp + pollAtappOptions[k] + ': ' + pollAtappVotes[k] + '\n'
+			}
+			bot.sendMessage({
+				to: channelID,
+				message: messAtapp
+			});
+			break;
+		case 'voteAtapp':
+			if (!userAlreadyVoted){
+				let voteNumAtapp = message.substring(11)
+				for (var la = 0; la < pollAtappOptions.length; la++){
+					if (voteNumAtapp == la + 1){
+						pollAtappVotes[la] = pollAtappVotes[la] + 1;
+						bot.sendMessage({
+							to: channelID,
+							message: 'Okay ' + user + ', you have voted for: ' + pollAtappOptions[la] + '.'
+						});
+					}
+				}
+			}
+			break;
+		case 'closeAtappPoll':
+			if (!openAtappPoll){
+				bot.sendMessage({
+					to: channelID,
+					message: 'There is currently no open "all that apply" poll'
+				});
+			}
+			if (openAtappPoll){
+				if (userID == pollAtappOpener){
+					openAtappPoll = false;
+					bot.sendMessage({
+						to: channelID,
+						message: 'Ok, your "all that apply" poll has been closed.'
+					});
+					let mess2Atapp = '';
+					for (var ka = 0; ka < pollAtappOptions.length; ka++){
+						mess2Atapp = mess2Atapp + pollAtappOptions[ka] + ': ' + pollAtappVotes[ka] + '\n'
+					}
+					bot.sendMessage({
+						to: channelID,
+						message: '**Poll Results** \n' + mess2Atapp
+					});
+				}
+				if (!(userID == pollAtappOpener)){
+					bot.sendMessage({
+						to: channelID,
+						message: 'Sorry ' + user + ', but you do not own this "all that apply" poll so you cannot close it'
+					});
+				}
+			}
+		break;
 		case 'spamit':
 			if(channelID == spamChannel && message.substring(8) == spamPassword && allowSpam && ((userID == 393586279964475393) || (userID == 495705429150793739))){
 				setTimeout(() => {
