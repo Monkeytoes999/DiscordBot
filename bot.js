@@ -799,7 +799,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'voteAtapp':
-			if (!userAlreadyVoted){
 				let voteNumAtapp = message.substring(11)
 				for (var la = 0; la < pollAtappOptions.length; la++){
 					if (voteNumAtapp == la + 1){
@@ -810,7 +809,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				}
-			}
 			break;
 		case 'closeAtappPoll':
 			if (!openAtappPoll){
