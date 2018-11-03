@@ -300,6 +300,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				channelID: channelID,
 				messageID: prevEvtID
 			});
+			bot.sendMessage({
+				to: channelID,
+				message: user + ', please don\'t curse. Thank you.'
+			});
 		}
 	}
        	
