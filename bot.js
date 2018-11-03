@@ -761,11 +761,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'pollAtappOptions':
 			let mesAtapp = '';
-			let i = 0;
-			for (i = 0; i < pollAtappOptions.length -1; i++){
-				mesAtapp = mesAtapp + pollAtappOptions[i] + ', ';
+			let ia = 0;
+			for (ia = 0; ia < pollAtappOptions.length -1; ia++){
+				mesAtapp = mesAtapp + pollAtappOptions[ia] + ', ';
 			}
-			mesAtapp = mesAtapp + pollAtappOptions[i];
+			mesAtapp = mesAtapp + pollAtappOptions[ia];
 			bot.sendMessage({
 				to: channelID,
 				message: mesAtapp
