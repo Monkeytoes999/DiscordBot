@@ -304,6 +304,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				message: user + ', please don\'t curse. Thank you.'
 			});
+			break;
 		}
 	}
        	
