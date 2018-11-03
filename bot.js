@@ -65,6 +65,8 @@ var openAtappPoll = false;
 var pollAtappOpener = 0;
 var allowOwo = true;
 var allowCuss = false;
+var notCusses = ['ASSU', 'ASSE', 'ASSA', 'ASSI', 'ASSO', 'ASSY', 'ASSM'];
+var hasMistakenCuss = false;
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -285,10 +287,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			i = i-1;
 		}
 	}
+	
+	var hasMistakenCuss = false;
+	for (var i = 0; i < notCusses.length; i++){
+		if cussmessage.includes(notCusses[i]){
+			var hasMistakenCuss = true;
+		}
+	}
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !cussmessage.includes('ASSURE') && !cussmessage.includes('ASSOCIATE') && !cussmessage.includes('ASSUME') && !cussmessage.includes('ASSUM')){
+		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !hasMistakenCuss){
 			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
