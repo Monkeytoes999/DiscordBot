@@ -288,7 +288,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !cussmessage.includes('assure') && !cussmessage.includes('associate') && !cussmessage.includes('assume')){
+		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !cussmessage.includes('ASSURE') && !cussmessage.includes('ASSOCIATE') && !cussmessage.includes('ASSUME') && !cussmessage.includes('ASSUM')){
 			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
