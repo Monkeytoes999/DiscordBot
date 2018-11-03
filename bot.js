@@ -297,8 +297,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !hasMistakenCuss){
-			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
+		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !hasMistakenCuss || message.includes('A$$H0L3')){
+			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
