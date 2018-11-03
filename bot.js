@@ -295,6 +295,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			}
 		}
+		if (cussmessage.includes('BIKE')){
+		  	bot.deleteMessage({
+				channelID: channelID,
+				messageID: prevEvtID
+			});
+		}
 	}
        	
 	if (cussmessage.includes('OWO')){
