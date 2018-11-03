@@ -317,13 +317,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 	
-	if (message == 'Shut up you dumb bot!' && userID == '495703108912021545'){
-		bot.sendMessage({
-			to: channelID,
-			message: '$noU'
-		});
-	}
-	
 			if (someArray.includes(userID) && userID == pollOpener){
 				pollOptions = [];
 				pollVotes = [];
