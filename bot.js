@@ -332,7 +332,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				pollAtappOptions[pollAtappOptions.length] = message;
 				for (i = 0; i < pollAtappOptions.length; i++){
-					pollVotes[i] = 0;
+					pollAtappVotes[i] = 0;
 				}
 				bot.sendMessage({
 					to: channelID,
@@ -778,7 +778,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: 'Sorry ' + user + ', there is currently no open "all that apply" poll.'
 				});
 			}
-			if(openPoll){
+			if(openAtappPoll){
 				let customResponseAtapp = message.substring(24);
 				pollAtappOptions[pollAtappOptions.length] = customResponseAtapp;
 				pollAtappVotes[pollAtappVotes.length] = 0;
