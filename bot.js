@@ -192,14 +192,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	
-	if (member.roles.includes('503389475054026752') && !bot.directMessages[channelID] && (Math.floor(Math.random() * 5)) > 4){
-		bot.sendMessage({
-			to: channelID,
-			message: bullyingList[Math.floor(Math.random() * bullyingList.length)]
-		});
-	}
-	
-	
 	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
 		bot.sendMessage({
 			to: '508329340652748800',
@@ -763,11 +755,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'findRoleID':
 			if (message.length > 11){
-				let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
-				bot.sendMessage({
-					to: channelID,
-					message: roleIDnum
-				});
+				if (Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))) != undefined){
+					let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
+					bot.sendMessage({
+						to: channelID,
+						message: roleIDnum
+					});
+				}
 			}
 			break;
 		case 'getDay':
