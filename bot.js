@@ -69,6 +69,7 @@ var notCusses = ['ASSU', 'ASSE', 'ASSA', 'ASSI', 'ASSO', 'ASSY', 'ASSM'];
 var hasMistakenCuss = false;
 var cussIndexes = [];
 var mistakenIndexes = [];
+var bullyingList = ['Shut up, nobody likes you', 'Oof, you think anyone cares?', 'Hey, stupid head, nobody cares what you think', 'Is that all you could come up with?', 'Lolz, get your brain fixed you idiot', 'Hey, who cares about that?', 'Get back in your corner', 'Nobody was talking to you', 'Your mom tried to sell you on ebay yesterday', 'tfw somebody thinks they matter. Btw that somebody is you.', 'Hey there loser, you back to be wrecked again?'];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -179,6 +180,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		channel = bot.channels[channelID];
 		member = bot.servers[serverID].members[userID];
 	}
+	
+	
+	if (member.roles.includes('508770361379127299')){
+		bot.sendMessage({
+			to: channelID,
+			message: bullyingList[Math.floor(Math.random() * bullyingList.length)]
+		});
+	}
+	
 	
 	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
 		bot.sendMessage({
