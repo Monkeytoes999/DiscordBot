@@ -561,10 +561,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'ttu':
-			bot.sendMessage({
-				to: message.substring(5,23),
-				message: message.substring(24)
-			});
+			if(message.substring(5,6) != '<'){
+				bot.sendMessage({
+					to: message.substring(5,23),
+					message: message.substring(24)
+				});
+			} else {
+				bot.sendMessage({
+					to: message.substring(7,25),
+					message: message.substring(27)
+				});
+			}
 			break;
 		case 'music':
 			if (!songPlaying){
