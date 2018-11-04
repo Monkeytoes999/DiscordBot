@@ -318,7 +318,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
+		if (!(userID == 408785106942164992) cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
 			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
