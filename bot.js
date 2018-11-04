@@ -308,6 +308,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	for (var i = 0; i < cussIndexes.length; i = i){
 		if (mistakenIndexes.includes(cussIndexes[i])){
 		    cussIndexes.splice(i, 1);
+		} else {
+			i++
 		}
 	}
 
