@@ -130,7 +130,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 	for (var i = 0; i < curses.length; i++){
 		if (cussmessage.includes(curses[i])){
-			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
+			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 		    		cussIndexes.push(cussmessage.indexOf(curses[i]));
 			}
 		}
@@ -145,7 +145,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 
 
-		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
+		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || newMsgData.content.includes('A$$H0L3')){
 				bot.deleteMessage({
 					channelID: newMsgData.channel_id,
 					messageID: newMsgData.id
