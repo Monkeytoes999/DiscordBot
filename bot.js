@@ -192,7 +192,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	
-	if (member.roles.includes('508770361379127299') && !bot.directMessages[channelID] && (Math.floor(Math.random() * 5)) > 4){
+	if (member.roles.includes('503389475054026752') && !bot.directMessages[channelID] && (Math.floor(Math.random() * 5)) > 4){
 		bot.sendMessage({
 			to: channelID,
 			message: bullyingList[Math.floor(Math.random() * bullyingList.length)]
