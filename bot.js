@@ -96,7 +96,7 @@ bot.on('ready', function (evt) {
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
-	
+	if (!bot.users[newMsgData.author.id].bot){
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
@@ -166,6 +166,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
 				});
 		}
+	}
 	
 });
 bot.on('message', function (user, userID, channelID, message, evt) {
@@ -182,7 +183,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	
-	if (member.roles.includes('508770361379127299') && (Math.floor(Math.random() * 2000)) > 1800){
+	if (member.roles.includes('508770361379127299') && !bot.directMessages[channelID] && (Math.floor(Math.random() * 2000)) > 1600){
 		bot.sendMessage({
 			to: channelID,
 			message: bullyingList[Math.floor(Math.random() * bullyingList.length)]
