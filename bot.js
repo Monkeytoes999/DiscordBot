@@ -94,10 +94,11 @@ bot.on('ready', function (evt) {
 
 
 bot.on('messageUpdate', function (user, userID, channelID, message, evt){
+	console.log(user, userID, channelID, message, evt)
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
-	cussmessage = message.toUpperCase();
+	cussmessage = newMsg.toUpperCase();
 	
 	allowOwo = true;
 	allowCuss = false;
