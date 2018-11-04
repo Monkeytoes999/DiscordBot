@@ -318,8 +318,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
-			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
+		if (userID == 194966921362407424 || cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
+			if (userID == 194966921362407424 || nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
