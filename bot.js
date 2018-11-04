@@ -96,6 +96,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
+	cussIndexes = [];
+	mistakenIndexes = [];
+	
 	if (!bot.directMessages[channelID] && channelID != 458809225120972800 && channelID != 495998900008910863) {
 		serverID = bot.channels[channelID].guild_id;
 		channel = bot.channels[channelID];
@@ -290,7 +293,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 	
-	var hasMistakenCuss = false;
+	hasMistakenCuss = false;
 	for (var i = 0; i < notCusses.length; i++){
 		if (cussmessage.includes(notCusses[i])){
 			var hasMistakenCuss = true;
