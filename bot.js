@@ -92,6 +92,79 @@ bot.on('ready', function (evt) {
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
+
+bot.on('messageUpdate', function (user, userID, channelID, message, evt){
+	cussIndexes = [];
+	mistakenIndexes = [];
+	
+	cussmessage = message.toUpperCase();
+	
+	allowOwo = true;
+	allowCuss = false;
+	if (serverOptions[serverID] != undefined){
+		allowCuss = serverOptions[serverID]["allowCussing"];
+		allowOwo = serverOptions[serverID]["allowOwoing"];
+	}
+	
+	
+		
+		
+	for (var i = 0; i < symbolList.length; i++){
+		if (cussmessage.includes(symbolList[i])){
+			spot = cussmessage.indexOf(symbolList[i]);
+			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
+			i = i-1;
+		}
+	}
+	
+	hasMistakenCuss = false;
+	for (var i = 0; i < notCusses.length; i++){
+		if (cussmessage.includes(notCusses[i])){
+			var hasMistakenCuss = true;
+			mistakenIndexes.push(cussmessage.indexOf(notCusses[i]));
+		}
+	}
+
+	
+	for (var i = 0; i < curses.length; i++){
+		if (cussmessage.includes(curses[i])){
+			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
+		    		cussIndexes.push(cussmessage.indexOf(curses[i]));
+			}
+		}
+	}
+	
+	for (var i = 0; i < cussIndexes.length; i = i){
+		if (mistakenIndexes.includes(cussIndexes[i])){
+		    cussIndexes.splice(i, 1);
+		} else {
+			i++
+		}
+	}
+
+
+		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
+				bot.deleteMessage({
+					channelID: channelID,
+					messageID: prevEvtID
+				});
+				bot.sendMessage({
+					to: channelID,
+					message: user + ', please don\'t curse. Thank you.'
+				});
+		}
+		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
+		  	bot.deleteMessage({
+				channelID: channelID,
+				messageID: prevEvtID
+			});
+			bot.sendMessage({
+				to: channelID,
+				message: user + ', please don\'t curse. Thank you.'
+			});
+		}
+	
+}
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
