@@ -304,7 +304,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	for (var i = 0; i < curses.length; i++){
 		if (cussmessage.includes(curses[i])){
-		    cussIndexes.push(cussmessage.indexOf(curses[i]));
+			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
+		    		cussIndexes.push(cussmessage.indexOf(curses[i]));
+			}
 		}
 	}
 	
@@ -317,9 +319,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 
 
-	for (var i = 0; i < curses.length; i++){
 		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
-			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
@@ -329,7 +329,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					message: user + ', please don\'t curse. Thank you.'
 				});
 				break;
-			}
 		}
 		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
 		  	bot.deleteMessage({
@@ -342,7 +341,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		}
-	}
        	
 	if (cussmessage.includes('OWO')){
 		if (serverID != 500864200378155008 && allowOwo && serverID != 505565358560772096 && channelID != 501934275860496395){
