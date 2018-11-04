@@ -328,7 +328,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: user + ', please don\'t curse. Thank you.'
 				});
-				break;
 		}
 		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
 		  	bot.deleteMessage({
@@ -339,7 +338,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: channelID,
 				message: user + ', please don\'t curse. Thank you.'
 			});
-			break;
 		}
        	
 	if (cussmessage.includes('OWO')){
