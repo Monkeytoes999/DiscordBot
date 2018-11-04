@@ -93,28 +93,19 @@ bot.on('ready', function (evt) {
 });
 
 
-bot.on('messageUpdate', function (user, userID, channelID, message, evt){
-	console.log(user)
-	console.log('arg1^')
-	console.log(userID)
-	console.log('arg2^')
-	console.log(channelID)
-	console.log('arg3^')
-	console.log(message)
-	console.log('arg4^')
-	console.log(message)
-	console.log('arg5^')
+bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
+	
 	
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
-	cussmessage = newMsg.toUpperCase();
+	cussmessage = newMsgData.content.toUpperCase();
 	
 	allowOwo = true;
 	allowCuss = false;
-	if (serverOptions[serverID] != undefined){
-		allowCuss = serverOptions[serverID]["allowCussing"];
-		allowOwo = serverOptions[serverID]["allowOwoing"];
+	if (serverOptions[newMsgData.author.guild_id] != undefined){
+		allowCuss = serverOptions[newMsgData.author.guild_id]["allowCussing"];
+		allowOwo = serverOptions[newMsgData.author.guild_id]["allowOwoing"];
 	}
 	
 	
@@ -154,25 +145,25 @@ bot.on('messageUpdate', function (user, userID, channelID, message, evt){
 	}
 
 
-		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
+		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
 				bot.deleteMessage({
-					channelID: channelID,
-					messageID: prevEvtID
+					channelID: newMsgData.channel_id,
+					messageID: newMsgData.id
 				});
 				bot.sendMessage({
-					to: channelID,
-					message: user + ', please don\'t curse. Thank you.'
+					to: newMsgData.channel_id,
+					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
 				});
 		}
-		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
-		  	bot.deleteMessage({
-				channelID: channelID,
-				messageID: prevEvtID
-			});
-			bot.sendMessage({
-				to: channelID,
-				message: user + ', please don\'t curse. Thank you.'
-			});
+		if (cussmessage.includes('BIKE') && newMsgData.author.guild_id == 490695949786677248){
+		  		bot.deleteMessage({
+					channelID: newMsgData.channel_id,
+					messageID: newMsgData.id
+				});
+				bot.sendMessage({
+					to: newMsgData.channel_id,
+					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
+				});
 		}
 	
 });
