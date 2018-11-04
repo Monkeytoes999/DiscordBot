@@ -67,6 +67,8 @@ var allowOwo = true;
 var allowCuss = false;
 var notCusses = ['ASSU', 'ASSE', 'ASSA', 'ASSI', 'ASSO', 'ASSY', 'ASSM'];
 var hasMistakenCuss = false;
+var cussIndexes = [];
+var mistakenIndexes = [];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -292,12 +294,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	for (var i = 0; i < notCusses.length; i++){
 		if (cussmessage.includes(notCusses[i])){
 			var hasMistakenCuss = true;
+			mistakenIndexes.push(cussmessage.indexOf(notCusses[i]));
+		}
+	}
+
+	
+	for (var i = 0; i < curses.length; i++){
+		if (cussmessage.includes(curses[i])){
+		    cussIndexes.push(cussmessage.indexOf(curses[i]));
+		}
+	}
+	
+	for (var i = 0; i < cussIndexes.length; i = i){
+		if (mistakenIndexes.includes(cussIndexes[i])){
+		    cussIndexes.splice(i, 1);
 		}
 	}
 
 
 	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i]) && !allowCuss && !channel.nsfw && !hasMistakenCuss || message.includes('A$$H0L3')){
+		if (cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
 			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
 				bot.deleteMessage({
 					channelID: channelID,
