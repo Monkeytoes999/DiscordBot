@@ -94,7 +94,17 @@ bot.on('ready', function (evt) {
 
 
 bot.on('messageUpdate', function (user, userID, channelID, message, evt){
-	console.log(user, userID, channelID, message, evt)
+	console.log(user)
+	console.log('arg1^')
+	console.log(userID)
+	console.log('arg2^')
+	console.log(channelID)
+	console.log('arg3^')
+	console.log(message)
+	console.log('arg4^')
+	console.log(message)
+	console.log('arg5^')
+	
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
