@@ -70,6 +70,7 @@ var hasMistakenCuss = false;
 var cussIndexes = [];
 var mistakenIndexes = [];
 var bullyingList = ['Shut up, nobody likes you', 'Oof, you think anyone cares?', 'Hey, stupid head, nobody cares what you think', 'Is that all you could come up with?', 'Lolz, get your brain fixed you idiot', 'Hey, who cares about that?', 'Get back in your corner', 'Nobody was talking to you', 'Your mom tried to sell you on ebay yesterday', 'tfw somebody thinks they matter. Btw that somebody is you.', 'Hey there loser, you back to be wrecked again?'];
+var superRareResponseList = ['Feeed meeeeee', 'I have to use the restroom. Excuse me...', 'Hey there, is it morning yet? No? Goodnight again then', 'HAHAHAHAHAHAHHAHAHAHHAAHAHAHAHAHAHAHAHHAHAHAHHAHAHAHAHAHAHAHAHAHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHHAHAHAHHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHHAHHAHA'];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -93,6 +94,9 @@ bot.on('ready', function (evt) {
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
+bot.on('any', function(event) {
+    console.log(event);
+});
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
@@ -183,7 +187,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	
-	if (member.roles.includes('508770361379127299') && !bot.directMessages[channelID] && (Math.floor(Math.random() * 2000)) > 1600){
+	if (member.roles.includes('508770361379127299') && !bot.directMessages[channelID] && (Math.floor(Math.random() * 5)) > 4){
 		bot.sendMessage({
 			to: channelID,
 			message: bullyingList[Math.floor(Math.random() * bullyingList.length)]
