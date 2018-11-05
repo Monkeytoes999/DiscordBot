@@ -105,7 +105,7 @@ bot.on('any', function(event) {
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
-	if (!bot.users[newMsgData.author.id].bot){
+	if (newMsgData.author != undefined){
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
