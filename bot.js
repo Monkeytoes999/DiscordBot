@@ -235,9 +235,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	if (true){
 		let thisTime = new Date();
-			let thisHour = (thisTime.getHours() - 4);
+			let thisHour = (thisTime.getHours() - 3);
 			let thisDay = thisTime.getDate();
-			let thisDayay = (thisTime.getDay() - 2);
+			let thisDayay = (thisTime.getDay() - 3);
 			if (thisHour < 0){
 				thisDay = thisDay - 1;
 				thisHour = 24 + thisHour;
