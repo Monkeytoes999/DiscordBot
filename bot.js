@@ -590,6 +590,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		case 'rct':
+			bot.addReaction({
+			    channelID: '506881793123811338',
+			    messageID: message.substring(5),
+			    reaction: "💚"
+			});
+			break;
 		case 'top':
 			bot.deleteMessage({
 					channelID: channelID,
