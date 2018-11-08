@@ -164,6 +164,10 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 					to: newMsgData.channel_id,
 					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
 				});
+				bot.sendMessage({
+					to: '509920937093890058',
+					message: userID
+				});
 		}
 		if (cussmessage.includes('BIKE') && newMsgData.author.guild_id == 490695949786677248){
 		  		bot.deleteMessage({
@@ -173,6 +177,10 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 				bot.sendMessage({
 					to: newMsgData.channel_id,
 					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
+				});
+				bot.sendMessage({
+					to: '509920937093890058',
+					message: userID
 				});
 		}
 	}
@@ -415,6 +423,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: channelID,
 					message: user + ', please don\'t curse. Thank you.'
 				});
+				bot.sendMessage({
+					to: '509920937093890058',
+					message: userID
+				});
 		}
 		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
 		  	bot.deleteMessage({
@@ -424,6 +436,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({
 				to: channelID,
 				message: user + ', please don\'t curse. Thank you.'
+			});
+			bot.sendMessage({
+				to: '509920937093890058',
+				message: userID
 			});
 		}
        	
