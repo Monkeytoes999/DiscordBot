@@ -364,6 +364,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				roleID: '499379169197817856',
 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
 			});
+			bot.sendMessage({
+				to: '499380162589097996',
+				message: '<@&497234733709918229>, check out your new cat breed!'
 			
 		}
 	}
