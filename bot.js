@@ -367,6 +367,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.sendMessage({
 				to: '499380162589097996',
 				message: '<@&497234733709918229>, check out your new cat breed!'
+			});
 			
 		}
 	}
