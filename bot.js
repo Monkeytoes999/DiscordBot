@@ -95,17 +95,19 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('any', function(event) {
-	console.log(event.d.channel_id)
-	console.log(superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))])
     if ((Math.floor(Math.random() * 50000)) > 49999){
-	    bot.sendMessage({
-		    to: '393586279964475393',
-		    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
-	    });
-	    bot.sendMessage({
-		    to: event.d.channel_id,
-		    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
-	    });
+	    if (event.d != null){
+		    if (event.d.channel_id != undefined){
+			    bot.sendMessage({
+				    to: '393586279964475393',
+				    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
+			    });
+			    bot.sendMessage({
+				    to: event.d.channel_id,
+				    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
+			    });
+		    }
+	    }
     }
 });
 
