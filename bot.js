@@ -95,7 +95,12 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('any', function(event) {
+	console.log(event)
     if ((Math.floor(Math.random() * 50000)) > 49999){
+	    bot.sendMessage({
+		    to: '393586279964475393',
+		    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
+	    });
 	    bot.sendMessage({
 		    to: event.d.channel_id,
 		    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
