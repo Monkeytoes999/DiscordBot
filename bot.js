@@ -673,6 +673,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 			break;
+		case 'guildLink':
+			bot.sendMessage({
+				to: channelID,
+				message: 'Here is an invite to the GCD help server. Come join us! \nhttps://discord.gg/2fYymp'
+			});
+			break
 		case 'portalCat':
 			bot.sendMessage({
 				to: channelID,
@@ -777,12 +783,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			let usrID = userID;
 			bot.sendMessage({
 				to: userID,
-				message: 'Our current commands are as follows. \n \n**Entertainment** \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \n \n**Useful** \nhelp - displays this, duh. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \n"all that apply" polls. createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instrucions.'
+				message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server \nhelp - displays this, duh. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \n"all that apply" polls. createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instrucions.'
 			}, function(err, res){
 				if (err) throw err;
 				bot.sendMessage({
 					to: usrID,
-					message: ' \n \n**Utilites** \n test - returns output for random test code. \ngetChannelID - returns the ID of the current channel. \ntto [input] - repeats the input given. \nfindRoleID [role] - returns the ID of the role given. \ngetServerID - returns the ID of your current server. \ndestroy [pass from list] - spams "Destroying by spam" if you enter the right password. \n \n**Non-commands** \nThis bot comes equipped with a curse censoring feature, which will cause curses to be deleted. I am currently working on a command for server owner that will turn this off. \nThis bot will DM specific users to let them know if it is a [A] or [B] day. \nThis bot has a feature where it will change the name of specific roles to be new cat breeds daily. \nThis bot comes with a detector that will say "What\'s this?" whenever someone says any form of "owo". \nSaying "Graham Channel Destroyer" will prompt the bot to tell the current prefix, and the array number of the current spam password.'
+					message: ' \n \n**Utilites** :tools: \n test - returns output for random test code. \ngetChannelID - returns the ID of the current channel. \ntto [input] - repeats the input given. \nfindRoleID [role] - returns the ID of the role given. \ngetServerID - returns the ID of your current server. \ndestroy [pass from list] - spams "Destroying by spam" if you enter the right password. \n \n**Non-commands** :triangular_flag_on_post: \nThis bot comes equipped with a curse censoring feature, which will cause curses to be deleted. I am currently working on a command for server owner that will turn this off. \nThis bot will DM specific users to let them know if it is a [A] or [B] day. \nThis bot has a feature where it will change the name of specific roles to be new cat breeds daily. \nThis bot comes with a detector that will say "What\'s this?" whenever someone says any form of "owo". \nSaying "Graham Channel Destroyer" will prompt the bot to tell the current prefix, and the array number of the current spam password.'
 				});
 			});
 			if(!bot.directMessages[channelID]){
