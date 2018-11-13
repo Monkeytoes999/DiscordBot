@@ -1244,7 +1244,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		default: 
 			bot.sendMessage({
 				to: channelID,
-				message: 'Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help'
+				message: ':no_entry_sign: Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help :no_entry_sign:'
 			});
             // Just add any case commands if you want to..
          }
