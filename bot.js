@@ -618,6 +618,56 @@ bot.on('message', function (user, userID, channelID, message, evt) {
                     message: 'Pong!'
                 });
             break;
+		case 'joinFollowers':
+			if (serverID == '511698216199258112'){
+				if (member.roles.includes('511736694605611009')){
+					bot.sendMessage({
+						to: channelID,
+						message: 'You are already a follower ' + user
+					});
+				} else {
+					bot.sendMessage({
+						to: channelID,
+						message: 'You have successfully become a follower!'
+					});
+					bot.addToRole({
+						serverID: '511698216199258112',
+						userID: userID,
+						roleID: '511736694605611009'
+					});
+				}
+			} else {
+				bot.sendMessage({
+					to: channelID,
+					message: 'This is only usable in the GCD support server'
+				});
+			}
+			break;
+		case 'leaveFollowers':
+			if (serverID == '511698216199258112'){
+				if (!member.roles.includes('511736694605611009')){
+					bot.sendMessage({
+						to: channelID,
+						message: 'You are not currently a follower ' + user
+					});
+				} else {
+					bot.sendMessage({
+						to: channelID,
+						message: 'You have successfully revoked your follower status.'
+					});
+					bot.removeFromRole({
+						serverID: '511698216199258112',
+						userID: userID,
+						roleID: '511736694605611009'
+					});
+				}
+			} else {
+				bot.sendMessage({
+					to: channelID,
+					message: 'This is only usable in the GCD support server'
+				});
+			}
+			break;
 		case 'feedback':
 			bot.sendMessage({
 				to: channelID,
