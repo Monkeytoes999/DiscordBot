@@ -121,6 +121,8 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		channel = bot.channels[newMsgData.channel_ID];
 	}
 		
+		console.log(bikCussServers)
+		console.log(newMsgData.author.guild_id)
 	if (bikCussServers.includes(newMsgData.author.guild_id)){
 		curses.push('BIKE')
 		nonWordCurses.push('no')
@@ -174,7 +176,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 
 
-		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !channel.nsfw && !allowCuss || newMsgData.content.includes('A$$H0L3')){
+		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
 				bot.deleteMessage({
 					channelID: newMsgData.channel_id,
 					messageID: newMsgData.id
