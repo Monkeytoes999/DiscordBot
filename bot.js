@@ -174,7 +174,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 
 
-		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || newMsgData.content.includes('A$$H0L3')){
+		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
 				bot.deleteMessage({
 					channelID: newMsgData.channel_id,
 					messageID: newMsgData.id
