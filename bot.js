@@ -6,8 +6,8 @@ var passnum = 0;
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
 var knockknock = 0;
 var joke = '.';
-var curses = ['SHIT', 'FUCC', 'THOT', 'DAMN', 'CUNT', 'BIKE', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'SEMEN', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
-var nonWordCurses = ['SHIT', 'FUCC', 'THOT', 'DAMN', 'CUNT', 'no', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'no', 'SEMEN', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var curses = ['SHIT', 'FUCC', 'THOT', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'SEMEN', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var nonWordCurses = ['SHIT', 'FUCC', 'THOT', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'no', 'SEMEN', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
 var prevEvtID = 0;
 var commandList = ['__', '__', '__'];
 var resultList = ['__', '__', '__'];
@@ -65,12 +65,13 @@ var openAtappPoll = false;
 var pollAtappOpener = 0;
 var allowOwo = true;
 var allowCuss = false;
-var notCusses = ['ASSU', 'ASSE', 'ASSA', 'ASSI', 'ASSO', 'ASSY', 'ASSM'];
+var notCusses = ['ASSU', 'ASSE', 'ASSA', 'ASSI', 'ASSO', 'ASSY', 'ASSM', 'TITLE'];
 var hasMistakenCuss = false;
 var cussIndexes = [];
 var mistakenIndexes = [];
 var bullyingList = ['Shut up, nobody likes you', 'Oof, you think anyone cares?', 'Hey, stupid head, nobody cares what you think', 'Is that all you could come up with?', 'Lolz, get your brain fixed you idiot', 'Hey, who cares about that?', 'Get back in your corner', 'Nobody was talking to you', 'Your mom tried to sell you on ebay yesterday', 'tfw somebody thinks they matter. Btw that somebody is you.', 'Hey there loser, you back to be wrecked again?'];
 var superRareResponseList = ['Feeed meeeeee', 'I have to use the restroom. Excuse me...', 'Hey there, is it morning yet? No? Goodnight again then', 'HAHAHAHAHAHAHHAHAHAHHAAHAHAHAHAHAHAHAHHAHAHAHHAHAHAHAHAHAHAHAHAHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHHAHAHAHHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHHAHHAHA'];
+var bikCussSevers = process.env.bikServers;
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -116,7 +117,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	if (newMsgData.author != undefined){
 	cussIndexes = [];
 	mistakenIndexes = [];
-	
+		
 	cussmessage = newMsgData.content.toUpperCase();
 	
 	allowOwo = true;
@@ -125,7 +126,6 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		allowCuss = serverOptions[newMsgData.author.guild_id]["allowCussing"];
 		allowOwo = serverOptions[newMsgData.author.guild_id]["allowOwoing"];
 	}
-	
 	
 		
 		
@@ -201,12 +201,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
+	
 	if (!bot.directMessages[channelID] && channelID != 458809225120972800 && channelID != 495998900008910863) {
 		serverID = bot.channels[channelID].guild_id;
 		channel = bot.channels[channelID];
 		member = bot.servers[serverID].members[userID];
 	}
 	
+	if (bikCussServers.includes(serverID)){
+		curses.push('BIKE')
+		nonWordCurses.push('no')
+	}
 	
 	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
 		bot.sendMessage({
@@ -454,6 +459,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				message: userID
 			});
 		}
+	
+	if (bikCussServers.includes(serverID)){
+		curses.splice(curses.length - 1, 1)
+		nonWordCurses.splice(nonWordCurses.length - 1, 1)
+	}
        	
 	if (cussmessage.includes('OWO')){
 		if (serverID != 500864200378155008 && allowOwo && serverID != 505565358560772096 && channelID != 501934275860496395){
