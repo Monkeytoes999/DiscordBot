@@ -116,12 +116,12 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 	if (newMsgData.author != undefined){
 	
-	if (!bot.directMessages[newMsgData.channelID] && newMsgData.channelID != 458809225120972800 && newMsgData.channelID != 495998900008910863) {
+	if (!bot.directMessages[newMsgData.channel_ID] && newMsgData.channel_ID != 458809225120972800 && newMsgData.channel_ID != 495998900008910863) {
 		serverID = newMsgData.author.guild_id;
-		channel = bot.channels[newMsgData.channelID];
+		channel = bot.channels[newMsgData.channel_ID];
 	}
 		
-	if (bikCussServers.includes(serverID)){
+	if (bikCussServers.includes(newMsgData.author.guild_id)){
 		curses.push('BIKE')
 		nonWordCurses.push('no')
 	}
@@ -174,7 +174,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 
 
-		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
+		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !channel.nsfw && !allowCuss || newMsgData.content.includes('A$$H0L3')){
 				bot.deleteMessage({
 					channelID: newMsgData.channel_id,
 					messageID: newMsgData.id
@@ -203,7 +203,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 				});
 		}
 		
-	if (bikCussServers.includes(serverID)){
+	if (bikCussServers.includes(newMsgData.author.guild_id)){
 		curses.splice(curses.length - 1, 1)
 		nonWordCurses.splice(nonWordCurses.length - 1, 1)
 	}
