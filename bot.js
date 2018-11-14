@@ -122,8 +122,9 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 		
 		console.log(bikCussServers)
-		console.log(newMsgData.author.guild_id)
-	if (bikCussServers.includes(newMsgData.author.guild_id)){
+		console.log(newMsgData.author.guild_ID)
+		console.log(evt)
+	if (bikCussServers.includes(newMsgData.author.guild_ID)){
 		curses.push('BIKE')
 		nonWordCurses.push('no')
 	}
