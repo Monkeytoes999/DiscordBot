@@ -96,7 +96,6 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('any', function(event) {
-	console.log(event)
     if ((Math.floor(Math.random() * 50000)) > 49999){
 	    if (event.d != null){
 		    if (event.d.channel_id != undefined){
