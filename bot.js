@@ -116,9 +116,9 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 	if (newMsgData.author != undefined){
 	
-	if (!bot.directMessages[newMsgData.channelID] && channelID != 458809225120972800 && channelID != 495998900008910863) {
-		serverID = bot.channels[channel_ID].guild_id;
-		channel = bot.channels[channel_ID];
+	if (!bot.directMessages[newMsgData.channelID] && newMsgData.channelID != 458809225120972800 && newMsgData.channelID != 495998900008910863) {
+		serverID = bot.channels[newMsgData.channelID].guild_id;
+		channel = bot.channels[newMsgData.channelID];
 		member = bot.servers[serverID].members[newMsgData.author.ID];
 	}
 		
@@ -186,7 +186,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 				});
 				bot.sendMessage({
 					to: '509920937093890058',
-					message: userID
+					message: newMsgData.author.ID
 				});
 		}
 		if (cussmessage.includes('BIKE') && newMsgData.author.guild_id == 490695949786677248){
@@ -200,7 +200,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 				});
 				bot.sendMessage({
 					to: '509920937093890058',
-					message: userID
+					message: newMsgData.author.ID
 				});
 		}
 		
