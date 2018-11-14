@@ -117,7 +117,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	if (newMsgData.author != undefined){
 	
 	if (!bot.directMessages[newMsgData.channelID] && newMsgData.channelID != 458809225120972800 && newMsgData.channelID != 495998900008910863) {
-		serverID = bot.channels[newMsgData.channelID].guild_id;
+		serverID = newMsgData.author.guild_id;
 		channel = bot.channels[newMsgData.channelID];
 		member = bot.servers[serverID].members[newMsgData.author.ID];
 	}
