@@ -115,7 +115,19 @@ bot.on('any', function(event) {
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 	if (newMsgData.author != undefined){
-	cussIndexes = [];
+	
+	if (!bot.directMessages[newMsgData.channelID] && channelID != 458809225120972800 && channelID != 495998900008910863) {
+		serverID = bot.channels[channel_ID].guild_id;
+		channel = bot.channels[channel_ID];
+		member = bot.servers[serverID].members[newMsgData.author.ID];
+	}
+		
+	if (bikCussServers.includes(serverID)){
+		curses.push('BIKE')
+		nonWordCurses.push('no')
+	}
+		
+		cussIndexes = [];
 	mistakenIndexes = [];
 		
 	cussmessage = newMsgData.content.toUpperCase();
@@ -191,6 +203,12 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 					message: userID
 				});
 		}
+		
+	if (bikCussServers.includes(serverID)){
+		curses.splice(curses.length - 1, 1)
+		nonWordCurses.splice(nonWordCurses.length - 1, 1)
+	}
+		
 	}
 	
 });
