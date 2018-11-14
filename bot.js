@@ -119,7 +119,6 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	if (!bot.directMessages[newMsgData.channelID] && newMsgData.channelID != 458809225120972800 && newMsgData.channelID != 495998900008910863) {
 		serverID = newMsgData.author.guild_id;
 		channel = bot.channels[newMsgData.channelID];
-		member = bot.servers[serverID].members[newMsgData.author.ID];
 	}
 		
 	if (bikCussServers.includes(serverID)){
