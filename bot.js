@@ -96,6 +96,7 @@ bot.on('ready', function (evt) {
 });
 
 bot.on('any', function(event) {
+	console.log(event)
     if ((Math.floor(Math.random() * 50000)) > 49999){
 	    if (event.d != null){
 		    if (event.d.channel_id != undefined){
@@ -117,14 +118,14 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	if (newMsgData.author != undefined){
 	
 	if (!bot.directMessages[newMsgData.channel_ID] && newMsgData.channel_ID != 458809225120972800 && newMsgData.channel_ID != 495998900008910863) {
-		serverID = newMsgData.author.guild_id;
+		serverID = newMsgData.guild_id;
 		channel = bot.channels[newMsgData.channel_ID];
 	}
 		
 		console.log(bikCussServers)
-		console.log(newMsgData.author.guild_ID)
-		console.log(evt)
-	if (bikCussServers.includes(newMsgData.author.guild_ID)){
+		console.log(serverID)
+		console.log(newMsgData)
+	if (bikCussServers.includes(serverID)){
 		curses.push('BIKE')
 		nonWordCurses.push('no')
 	}
@@ -137,8 +138,8 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	allowOwo = true;
 	allowCuss = false;
 	if (serverOptions[newMsgData.author.guild_id] != undefined){
-		allowCuss = serverOptions[newMsgData.author.guild_id]["allowCussing"];
-		allowOwo = serverOptions[newMsgData.author.guild_id]["allowOwoing"];
+		allowCuss = serverOptions[newMsgData.guild_id]["allowCussing"];
+		allowOwo = serverOptions[newMsgData.guild_id]["allowOwoing"];
 	}
 	
 		
@@ -188,10 +189,10 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 				});
 				bot.sendMessage({
 					to: '509920937093890058',
-					message: newMsgData.author.ID
+					message: newMsgData.author.id
 				});
 		}
-		if (cussmessage.includes('BIKE') && newMsgData.author.guild_id == 490695949786677248){
+		if (cussmessage.includes('BIKE') && newMsgData.guild_id == 490695949786677248){
 		  		bot.deleteMessage({
 					channelID: newMsgData.channel_id,
 					messageID: newMsgData.id
@@ -202,11 +203,11 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 				});
 				bot.sendMessage({
 					to: '509920937093890058',
-					message: newMsgData.author.ID
+					message: newMsgData.author.id
 				});
 		}
 		
-	if (bikCussServers.includes(newMsgData.author.guild_id)){
+	if (bikCussServers.includes(serverID)){
 		curses.splice(curses.length - 1, 1)
 		nonWordCurses.splice(nonWordCurses.length - 1, 1)
 	}
