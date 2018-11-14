@@ -121,9 +121,6 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		channel = bot.channels[newMsgData.channel_ID];
 	}
 		
-		console.log(bikCussServers)
-		console.log(serverID)
-		console.log(newMsgData)
 	if (bikCussServers.includes(serverID)){
 		curses.push('BIKE')
 		nonWordCurses.push('no')
