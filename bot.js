@@ -824,7 +824,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'test':
 			bot.sendMessage({
 				to: channelID,
-				message: arrayTest.length + ' ' + arrayTest[1].length + ' ' + arrayTest[0].length
+				message: bot.servers[serverID].roles['511699639255302147'].position + ' ADM'
+			});
+			bot.sendMessage({
+				to: channelID,
+				message: bot.servers[serverID].roles['511699682238398464'].position + ' CRT'
 			});
 			break;
 		case 'getChannelID':
