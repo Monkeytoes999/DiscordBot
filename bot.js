@@ -372,7 +372,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			    messageID: '512741593657376778'
 		    }, function(err, res){
 			    scDay == res.content
-		    }	
+		    });
 		}
 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
 			bot.editRole({
