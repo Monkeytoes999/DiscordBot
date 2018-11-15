@@ -831,11 +831,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
 					}
 				}
-				if (topRole != 0){
-					bot.sendMessage({
-						to: channelID,
-						message: topRole + ' ' + topRoleID + ', ' + bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR
-					});
+				if (message.length > 30){
+					if (topRole != 0){
+					    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
+							bot.sendMessage({
+								to: channelID,
+								message: 'Working so far...'
+							});
+						}
+					}
 				}
 				bot.sendMessage({
 					to: channelID,
