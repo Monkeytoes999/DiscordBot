@@ -825,7 +825,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (!bot.directMessages[channelID]){
 				let topRole = 0;
 				let topRoleID = serverID;
-				for (var iooof = 0; iooof < member.roles.length; i++){
+				for (var iooof = 0; iooof < member.roles.length; iooof++){
 					if (bot.servers[serverID].roles[member.roles[iooof]].position > topRole){
 						topRole = bot.servers[serverID].roles[member.roles[iooof]].position
 					}
