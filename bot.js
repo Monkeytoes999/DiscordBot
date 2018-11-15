@@ -371,7 +371,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			    channelID: '512739420764635136',
 			    messageID: '512741593657376778'
 		    }, function(err, res){
-			    scDay == res.content
+			    scDay = res.content
 		    });
 		}
 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
