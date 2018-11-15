@@ -225,6 +225,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		member = bot.servers[serverID].members[userID];
 	}
 	
+	bot.setPresence({
+		game: {
+			type: 0,
+			name: ' in ' + Object.keys(bot.servers).length + ' servers!'
+		}
+	});
+	
 	if (bikCussServers.includes(serverID)){
 		curses.push('BIKE')
 		nonWordCurses.push('no')
