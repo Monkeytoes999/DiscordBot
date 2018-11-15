@@ -828,12 +828,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				for (var iooof = 0; iooof < member.roles.length; iooof++){
 					if (bot.servers[serverID].roles[member.roles[iooof]].position > topRole){
 						topRole = bot.servers[serverID].roles[member.roles[iooof]].position
+						topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
 					}
 				}
-				bot.sendMessage({
-					to: channelID,
-					message: topRole + ', ' + bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR
-				});
+				if (topRole != 0){
+					bot.sendMessage({
+						to: channelID,
+						message: topRole + ' ' + topRoleID + ', ' + bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR
+					});
+				}
 				bot.sendMessage({
 					to: channelID,
 					message: bot.servers[serverID].roles['511699639255302147'].GENERAL_ADMINISTRATOR + ' ADM'
