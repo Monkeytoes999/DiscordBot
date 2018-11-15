@@ -36,8 +36,8 @@ var someArray = [];
 var openPoll = false;
 var pollOpener = 0;
 var prevDay;
-var day;
-var allowBreedChange = false;
+var day = 'oof';
+var allowBreedChange = true;
 var d = new Date();
 var monthNumbers = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 var breedNames = ['Abyssinian', 'Aegean', 'American Bobtail', 'American Curl', 'American Ringtail', 'American Shorthair', 'American Wirehair', 'Arabian Mau', 'Malayan', 'Asian Longhair', 'Australian Mist', 'Balinese', 'Bambino', 'Bengal', 'Birman', 'Bombay', 'Bramble', 'Brazilian Shorthair', 'British Longhair', 'British Shorthair', 'Burmese', 'Burmilla', 'California Sprangled', 'Chantilly', 'Chartreux', 'Chausie', 'Cheetoh', 'Cornish Rex', 'Cymric', 'Desert Lynx', 'Devon Rex', 'Donskoy', 'Dragon Li', 'Egyptian Mau', 'European Shorthair', 'Exotic Shorthair', 'FoldEx', 'German Rex', 'Havana Brown', 'Highlander', 'Himalayan', 'Isle of Man', 'Japanese Bobtail', 'Javanese', 'Jungle Curl', 'Khao Manee', 'Korat', 'Kurilian Bobtail', 'Kucing Malaysia', 'Lambkin', 'LaPerm', 'Lykoi', 'Maine Coon', 'Mandalay', 'Manx', 'Mexican Hairless', 'Minskin', 'Minuet / Napolean', 'Mojave', 'Munchkin', 'Nebelung', 'Norwegian Forest', 'Ocicat', 'Oregon Rex', 'Oriental Longhair', 'Oriental Shorthair', 'Owyhee', 'Pantherette', 'Persian', 'Peterbald', 'Pittsburgh Refrigerator', 'Pixie Bob', 'Poddlecat', 'Raas / Busok / Madura', 'Ragdoll', 'Raggamuffin', 'Russian Blue', 'Russian White', 'Safari', 'Sam Sawet', 'Savannah', 'Scottish Fold', 'Selkirk Rex', 'Serengeti', 'Serrade Petit', 'Siamese', 'Siberian Forest', 'Singapura', 'Skokuum', 'Snowshoe', 'Sokoke', 'Somali', 'Sphynx', 'Stone Cougar', 'Suphalak', 'Thai', 'Tonkinese', 'Toybob', 'Toyger', 'Turkish Angora', 'Turkish Van', 'Ukrainian Levkoy', 'York Chocolate'];
@@ -95,22 +95,22 @@ bot.on('ready', function (evt) {
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
-bot.on('any', function(event) {
-    if ((Math.floor(Math.random() * 50000)) > 49999){
-	    if (event.d != null){
-		    if (event.d.channel_id != undefined && event.d.guild_id != '264445053596991498'){
-			    bot.sendMessage({
-				    to: '393586279964475393',
-				    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
-			    });
-			    bot.sendMessage({
-				    to: event.d.channel_id,
-				    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
-			    });
-		    }
-	    }
-    }
-});
+// bot.on('any', function(event) {
+//     if ((Math.floor(Math.random() * 50000)) > 49999){
+// 	    if (event.d != null){
+// 		    if (event.d.channel_id != undefined && event.d.guild_id != '264445053596991498'){
+// 			    bot.sendMessage({
+// 				    to: '393586279964475393',
+// 				    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
+// 			    });
+// 			    bot.sendMessage({
+// 				    to: event.d.channel_id,
+// 				    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
+// 			    });
+// 		    }
+// 	    }
+//     }
+// });
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
@@ -244,21 +244,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if (!remdSent){
-		remdSent = true;
-		bot.sendMessage({
-			to: '393586279964475393',
-			message: 'What rotation day is it?'
-		});
-	}
 	
-	if (remdSent && scDay == 'oof' && channelID == '495998900008910863' && userID == '393586279964475393'){
-		scDay = message;
-		bot.sendMessage({
-			to: channelID,
-			message: 'Ok, today is now a ' + scDay + ' day.'
-		});
-	}
 	
 	prevEvtID = evt.d.id;
 		
@@ -307,6 +293,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				} else if (scDay.toUpperCase() == 'B'){
 					scDay = 'A';
 				}
+				bot.editMessage({
+					channelID: '512739420764635136',
+					messageID: '512741593657376778',
+					message: scDay
+				});
 				if (thisDayay == 5 || thisDayay == 6){
 					bot.sendMessage({
 						to: '458809225120972800',
@@ -375,7 +366,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				scDayChange = true;
 			}
 		}
-		if (day != prevDay && allowBreedChange){
+		if (scDay == 'oof'){
+		    bot.getMessage({
+			    channelID: '512739420764635136',
+			    messageID: '512741593657376778'
+		    }, function(err, res){
+			    scDay == res.content
+		    }	
+		}
+		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
 			bot.editRole({
 				serverID: '489547644138422302',
 				roleID: '499379170975940608',
@@ -405,7 +404,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: '499380162589097996',
 				message: '<@&497234733709918229>, check out your new cat breed!'
 			});
-			
 		}
 	}
 		
@@ -873,12 +871,31 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'preventScDayChange':
 			scDayChange = false;
 			break;
+		case 'getScDay':
+			bot.sendMessage({
+				to: channelID,
+				message: scDay + '(scDay)'
+			});
+			bot.getMessage({
+				channelID: '512739420764635136',
+				messageID: '512741593657376778'
+			}, function(err, res){
+			bot.sendMessage({
+				to: channelID,
+				message: res.content
+			});
+				break;
 		case 'setScDay':
 			if (message.length = 10){
 				scDay = message.substring(9);
 				bot.sendMessage({
 					to: channelID,
 					message: 'Ok, today is now a ' + scDay + ' day.'
+				});
+				bot.editMessage({
+					channelID: '512739420764635136',
+					messageID: '512741593657376778',
+					message: scDay
 				});
 			}
 			break;
