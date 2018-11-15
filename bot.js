@@ -1310,6 +1310,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			knockknock = 1;
 			break;
+		case 'crtty':
+			console.log(bot.servers)
 			case 'cat':
 				bot.sendMessage({
 					to: channelID,
