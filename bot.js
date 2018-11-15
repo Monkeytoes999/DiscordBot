@@ -880,11 +880,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				channelID: '512739420764635136',
 				messageID: '512741593657376778'
 			}, function(err, res){
-			bot.sendMessage({
-				to: channelID,
-				message: res.content
+				bot.sendMessage({
+					to: channelID,
+					message: res.content
+				});
 			});
-				break;
+			break;
 		case 'setScDay':
 			if (message.length = 10){
 				scDay = message.substring(9);
