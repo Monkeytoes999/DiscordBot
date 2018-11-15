@@ -824,11 +824,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'test':
 			bot.sendMessage({
 				to: channelID,
-				message: bot.servers[serverID].roles['511699639255302147']._permissions + ' ADM'
+				message: bot.servers[serverID].roles['511699639255302147'].GENERAL_ADMINISTRATOR + ' ADM'
 			});
 			bot.sendMessage({
 				to: channelID,
-				message: bot.servers[serverID].roles['511699682238398464']._permissions + ' CRT'
+				message: bot.servers[serverID].roles['511736694605611009'].GENERAL_ADMINISTRATOR + ' FOL'
 			});
 			break;
 		case 'getChannelID':
