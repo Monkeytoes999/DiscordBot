@@ -822,14 +822,32 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			break;
 		case 'test':
-			bot.sendMessage({
-				to: channelID,
-				message: bot.servers[serverID].roles['511699639255302147'].GENERAL_ADMINISTRATOR + ' ADM'
-			});
-			bot.sendMessage({
-				to: channelID,
-				message: bot.servers[serverID].roles['511736694605611009'].GENERAL_ADMINISTRATOR + ' FOL'
-			});
+			if (!bot.directMessages[channelID]){
+				let topRole = 0;
+				let topRoleID = serverID;
+				for (var i = 0; i < member.roles.length; i++){
+					if (bot.servers[serverID].roles[member.roles[i]].position > topRole){
+						topRole = bot.servers[serverID].roles[member.roles[i]].position
+					}
+				}
+				bot.sendMessage({
+					to: channelID,
+					message: topRole + ', ' + bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR
+				});
+				bot.sendMessage({
+					to: channelID,
+					message: bot.servers[serverID].roles['511699639255302147'].GENERAL_ADMINISTRATOR + ' ADM'
+				});
+				bot.sendMessage({
+					to: channelID,
+					message: bot.servers[serverID].roles['511736694605611009'].GENERAL_ADMINISTRATOR + ' FOL'
+				});
+			} else {
+				bot.sendMessage({
+					to: channelID,
+					message: 'You can\'t do this in a DM'
+				});
+			}
 			break;
 		case 'getChannelID':
 			bot.sendMessage({
