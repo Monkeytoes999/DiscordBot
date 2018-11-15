@@ -874,16 +874,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'getScDay':
 			bot.sendMessage({
 				to: channelID,
-				message: scDay + '(scDay)'
-			});
-			bot.getMessage({
-				channelID: '512739420764635136',
-				messageID: '512741593657376778'
-			}, function(err, res){
-				bot.sendMessage({
-					to: channelID,
-					message: res.content
-				});
+				message: 'Today is a ' + scDay + ' day!'
 			});
 			break;
 		case 'setScDay':
