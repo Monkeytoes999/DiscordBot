@@ -119,7 +119,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 	bot.sendMessage({
 		to: '513109176097046548',
-		message: newMsgData
+		message: bot.fixMessage(newMsgData)
 	});
 	
 	if (newMsgData.author != undefined){
@@ -237,7 +237,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (channelID != '513109176097046548'){
 		bot.sendMessage({
 			to: '513109176097046548',
-			message: message + ': from: ' + user + ' servID: ' + serverID
+			message: bot.fixMessage(message + ': from: ' + user + ' servID: ' + serverID)
 		});
 	}
 	
