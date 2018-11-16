@@ -234,7 +234,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		member = bot.servers[serverID].members[userID];
 	}
 	
-	if (channelID != '513109176097046548'){
+	if (channelID != '513116265439821832'){
 		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
 		bot.sendMessage({
 			to: '513116265439821832',
