@@ -834,9 +834,30 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (message.length > 30){
 					if (topRole != 0){
 					    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
-							bot.sendMessage({
-								to: channelID,
-								message: 'Working so far...'
+							bot.getMessage({
+								channelID: '512776592536109057',
+								messageID: '512782505284206593'
+							}, function(err, res){
+								if (res.content.length + serverID < 2000){
+									bot.getMessage({
+										channelID: '512776592536109057',
+										messageID: '512782505284206593'
+									}, function(errr, ress){
+										if (ress.content.length + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19).length < 2000){
+											bot.getMessage({
+												channelID: '512776592536109057',
+												messageID: '512782505284206593'
+											}, function(errr, ress){
+												if (ress.content.length + message.substring(30).length < 2000){
+													bot.sendMessage({
+														to: channelID,
+														message: 'WORKING STILL!'
+													});
+												}
+											});
+										}
+									});
+								}
 							});
 						}
 					}
