@@ -885,6 +885,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'test':
+			break;
+		case 'rcCM':
 			if (!bot.directMessages[channelID]){
 				let topRole = 0;
 				let topRoleID = serverID;
@@ -939,21 +941,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 													});
 												}
 											});
+										} else {
+											bot.sendMessage({
+												to: channelID,
+												message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
+											});
 										}
 									});
+								}  else {
+									bot.sendMessage({
+										to: channelID,
+										message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
+									});
 								}
+							});
+						}  else {
+							bot.sendMessage({
+								to: channelID,
+								message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
 							});
 						}
 					}
 				}
-				bot.sendMessage({
-					to: channelID,
-					message: bot.servers[serverID].roles['511699639255302147'].GENERAL_ADMINISTRATOR + ' ADM'
-				});
-				bot.sendMessage({
-					to: channelID,
-					message: bot.servers[serverID].roles['511736694605611009'].GENERAL_ADMINISTRATOR + ' FOL'
-				});
 			} else {
 				bot.sendMessage({
 					to: channelID,
