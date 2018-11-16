@@ -874,8 +874,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		case 'cttest':
 			bot.editMessage({
 				channelID: '512776592536109057',
-				messageID: '512782505284206593',
+				messageID: '512783273601138698',
 				message: 'cTrole, tester'
+			});
+			bot.editMessage({
+				channelID: '512776592536109057',
+				messageID: '512782505284206593',
+				message: '511698216199258112, 511698216199258112'
 			});
 			break;
 		case 'test':
