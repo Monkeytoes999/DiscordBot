@@ -916,9 +916,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'LVTest':
-			bot.leaveServer({
-				serverID: '264445053596991498'
-			});
+			bot.leaveServer('264445053596991498');
 			break;
 		case 'rcCM':
 			if (!bot.directMessages[channelID]){
