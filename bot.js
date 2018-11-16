@@ -838,19 +838,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								channelID: '512776592536109057',
 								messageID: '512782505284206593'
 							}, function(err, res){
-								console.log(1)
-								if (res.content.length + serverID < 2000){
+// 								console.log(1)
+								if (res.content.length + serverID.length < 2000){
 									bot.getMessage({
 										channelID: '512776592536109057',
 										messageID: '512782965613395971'
 									}, function(errr, ress){
-										console.log(2)
+// 										console.log(2)
 										if (ress.content.length + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19).length < 2000){
 											bot.getMessage({
 												channelID: '512776592536109057',
 												messageID: '512783273601138698'
 											}, function(errr, ress){
-												console.log(3)
+// 												console.log(3)
 												if (ress.content.length + message.substring(30).length < 2000){
 													bot.sendMessage({
 														to: channelID,
