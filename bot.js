@@ -843,6 +843,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				message: user + ' wanted me to tell you this: ' + message.substring(5)
 			});
 			break;
+		case 'ttw':
+			bot.sendMessage({
+				to: '264445053596991498',
+				message: message.substring(4)
+			});
+			break;
 		case 'ttu':
 			if(message.substring(5,6) != '<'){
 				bot.sendMessage({
