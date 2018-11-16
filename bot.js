@@ -235,7 +235,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 	if (channelID != '513109176097046548'){
-		let sndMess = message + ': from: ' + user + ' servID: ' + serverID
+		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
 		bot.sendMessage({
 			to: '513109176097046548',
 			message: bot.fixMessage(sndMess)
@@ -899,6 +899,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			break;
 		case 'test':
+			bot.createInvite({
+				channelID: '511001300209631272',
+				max_users: 1,
+				max_age: 300,
+				temporary: false
+			}, function(err, res){
+				console.log(res)
+				console.log(err)
+			});
+			'500864200378155008'
 			break;
 		case 'rcCM':
 			if (!bot.directMessages[channelID]){
