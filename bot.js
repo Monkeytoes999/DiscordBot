@@ -260,8 +260,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			messageID: '512783273601138698'
 		}, function(err, res){
 			let toFillServ = res.content;
-			for (var messRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
-				messRK.push(toFillServ.substring(0, 18));
+			for (var commRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
+				commRK.push(toFillServ.substring(0, 18));
 			}
 		});
 		
@@ -868,7 +868,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			bot.sendMessage({
 				to: channelID,
-				message: messRK + ' m'
+				message: commRK + ' m'
 			});
 		break;
 		case 'test':
@@ -919,7 +919,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 														messageID: '512782505284206593',
 														message: resss.content + ', ' + message.substring(30)
 													});
-													messRK.push(message.substring(30));
+													commRK.push(message.substring(30));
 													bot.sendMessage({
 														to: channelID,
 														message: 'Your commmand has been created.'
