@@ -955,6 +955,23 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 			break;
+		for (var oqo = 0; oqo < servRK.length; oqo++){
+			if (!bot.directMessages[channelID]){
+				if (serverID == servRK[oqo]){
+					case messRK[oqo]:
+						bot.addToRole({
+							serverID: serverID,
+							userID: userID,
+							roleID: roleRK[oqo]
+						});
+						bot.sendMessage({
+							to: channelID,
+							message: 'You have successfully added yourself to the role.'
+						});
+					break;
+				}
+			}
+		}
 		case 'getChannelID':
 			bot.sendMessage({
 				to: channelID,
