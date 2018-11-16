@@ -261,7 +261,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}, function(err, res){
 			let toFillServ = res.content;
 			for (var commRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
-				commRK.push(toFillServ.substring(0, 18));
+				commRK.push(toFillServ.substring(0, toFillServ.indexOf(',') -1));
 			}
 		});
 		
