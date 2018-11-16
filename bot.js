@@ -118,7 +118,7 @@ bot.on('ready', function (evt) {
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 	bot.sendMessage({
-		to: '513109176097046548',
+		to: '513116265439821832',
 		message: newMsgData
 	});
 	
@@ -237,7 +237,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (channelID != '513109176097046548'){
 		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
 		bot.sendMessage({
-			to: '513109176097046548',
+			to: '513116265439821832',
 			message: bot.fixMessage(sndMess)
 		});
 	}
