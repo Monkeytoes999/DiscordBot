@@ -939,6 +939,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 														to: channelID,
 														message: 'Your commmand has been created.'
 													});
+												} else {
+													bot.sendMessage({
+														to: channelID,
+														message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
+													});
 												}
 											});
 										} else {
@@ -958,7 +963,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						}  else {
 							bot.sendMessage({
 								to: channelID,
-								message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
+								message: 'You must have admin in your server to run this command!'
 							});
 						}
 					}
