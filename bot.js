@@ -875,7 +875,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.editMessage({
 				channelID: '512776592536109057',
 				messageID: '512782505284206593',
-				message: '511698216199258112'
+				message: 'cTrole, tester'
 			});
 			break;
 		case 'test':
@@ -924,9 +924,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 													bot.editMessage({
 														channelID: '512776592536109057',
 														messageID: '512783273601138698',
-														message: resss.content + ', ' + message.substring(30)
+														message: resss.content + ', ' + message.substring(29)
 													});
-													commRK.push(message.substring(30));
+													commRK.push(message.substring(29));
 													bot.sendMessage({
 														to: channelID,
 														message: 'Your commmand has been created.'
