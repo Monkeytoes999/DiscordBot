@@ -906,7 +906,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'test':
 			bot.createInvite({
-				channelID: '264445053596991498',
+				channelID: '500393595207942164',
 				max_users: 1,
 				max_age: 300,
 				temporary: false
