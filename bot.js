@@ -960,10 +960,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									});
 								}
 							});
-						}  else {
+						}  else if (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
 							bot.sendMessage({
 								to: channelID,
-								message: 'You must have admin in your server to run this command!'
+								message: 'Your highest role must be higher in rank than the role you are trying to allow access to.'
+							});
+						} else {
+							bot.sendMessage({
+								to: channelID,
+								message: 'The highest role you have in this server must have admin to run this command!'
 							});
 						}
 					}
@@ -1043,7 +1048,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			let usrID = userID;
 			bot.sendMessage({
 				to: userID,
-				message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply" polls. createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instrucions. \nfeedback - sends feedback to the creator. suggest - sends a suggestion to the creator.'
+				message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin, and must be higher than the role you are trying to give access to. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply" polls. createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instrucions. \nfeedback - sends feedback to the creator. suggest - sends a suggestion to the creator.'
 			}, function(err, res){
 				if (err) throw err;
 				bot.sendMessage({
