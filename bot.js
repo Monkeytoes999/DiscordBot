@@ -915,6 +915,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				console.log(err)
 			});
 			break;
+		case 'LVTest':
+			bot.leaveServer({
+				serverID: '264445053596991498'
+			});
+			break;
 		case 'rcCM':
 			if (!bot.directMessages[channelID]){
 				let topRole = 0;
