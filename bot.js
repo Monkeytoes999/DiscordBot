@@ -831,7 +831,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
 					}
 				}
-				if (message.length > 30){
+				if (message.length > 30 && message.length < 45){
 					if (topRole != 0){
 					    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
 							bot.getMessage({
@@ -839,22 +839,37 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								messageID: '512782505284206593'
 							}, function(err, res){
 // 								console.log(1)
-								if (res.content.length + serverID.length < 2000){
+								if (res.content.length + serverID.length + 2 < 2000){
 									bot.getMessage({
 										channelID: '512776592536109057',
 										messageID: '512782965613395971'
 									}, function(errr, ress){
 // 										console.log(2)
-										if (ress.content.length + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19).length < 2000){
+										if (ress.content.length + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19).length + 2 < 2000){
 											bot.getMessage({
 												channelID: '512776592536109057',
 												messageID: '512783273601138698'
-											}, function(errr, ress){
+											}, function(errr, resss){
 // 												console.log(3)
-												if (ress.content.length + message.substring(30).length < 2000){
+												if (resss.content.length + message.substring(30).length + 2 < 2000){
+													bot.editMessage({
+														channelID: '512776592536109057',
+														messaggeID: '512782505284206593',
+														message: res.content + ', ' + serverID
+													});
+													bot.editMessage({
+														channelID: '512776592536109057',
+														messaggeID: '512782505284206593',
+														message: ress.content + ', ' + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)
+													});
+													bot.editMessage({
+														channelID: '512776592536109057',
+														messaggeID: '512782505284206593',
+														message: resss.content + ', ' + message.substring(30)
+													});
 													bot.sendMessage({
 														to: channelID,
-														message: 'WORKING STILL!'
+														message: 'Your commmand has been created.'
 													});
 												}
 											});
