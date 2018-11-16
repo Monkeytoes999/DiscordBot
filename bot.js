@@ -955,23 +955,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 			break;
-		for (var oqo = 0; oqo < servRK.length; oqo++){
-			if (!bot.directMessages[channelID]){
-				if (serverID == servRK[oqo]){
-					case messRK[oqo]:
-						bot.addToRole({
-							serverID: serverID,
-							userID: userID,
-							roleID: roleRK[oqo]
-						});
-						bot.sendMessage({
-							to: channelID,
-							message: 'You have successfully added yourself to the role.'
-						});
-					break;
-				}
-			}
-		}
 		case 'getChannelID':
 			bot.sendMessage({
 				to: channelID,
@@ -1507,11 +1490,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 			break;
 		default:
-			if (serverID != '264445053596991498'){
-				bot.sendMessage({
-					to: channelID,
-					message: ':no_entry_sign: Sorry, I didn\'t understand that. Please try again. For a list of commands, please say ' + prefix + 'help :no_entry_sign:'
-				});
+			for (var oqo = 0; oqo < servRK.length; oqo++){
+				if (!bot.directMessages[channelID]){
+					if (serverID == servRK[oqo]){
+						if (message.substring(1) == commRK[oqo]){
+							bot.addToRole({
+								serverID: serverID,
+								userID: userID,
+								roleID: roleRK[oqo]
+							});
+							bot.sendMessage({
+								to: channelID,
+								message: 'You have successfully added yourself to the role.'
+							});
+						}
+					}
+				}
 			}
             // Just add any case commands if you want to..
          }
