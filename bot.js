@@ -236,7 +236,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	});
 	
 	
-	if (prevDay != undefined){
+	if (prevDay == undefined){
 		bot.getMessage({
 			channelID: '512776592536109057',
 			messageID: '512782505284206593'
