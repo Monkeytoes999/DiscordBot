@@ -260,10 +260,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			messageID: '512783273601138698'
 		}, function(err, res){
 			let toFillServ = res.content;
-			toFillServ = toFillServ + ', '
-			for (var commRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 1)){
+			for (var commRKi = 0; toFillServ.includes(','); toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 1)){
 				commRK.push(toFillServ.substring(0, toFillServ.indexOf(',') -1));
 			}
+			commRK.push(toFillServ)
 		});
 		
 	}
