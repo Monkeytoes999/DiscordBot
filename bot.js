@@ -72,6 +72,9 @@ var mistakenIndexes = [];
 var bullyingList = ['Shut up, nobody likes you', 'Oof, you think anyone cares?', 'Hey, stupid head, nobody cares what you think', 'Is that all you could come up with?', 'Lolz, get your brain fixed you idiot', 'Hey, who cares about that?', 'Get back in your corner', 'Nobody was talking to you', 'Your mom tried to sell you on ebay yesterday', 'tfw somebody thinks they matter. Btw that somebody is you.', 'Hey there loser, you back to be wrecked again?'];
 var superRareResponseList = ['Feeed meeeeee', 'I have to use the restroom. Excuse me...', 'Hey there, is it morning yet? No? Goodnight again then', 'HAHAHAHAHAHAHHAHAHAHHAAHAHAHAHAHAHAHAHHAHAHAHHAHAHAHAHAHAHAHAHAHHAHAHAHHAHAHAHAHHAHAHAHAHAHAHHAHAHAHHAHAHAHAHAHAHAHAHAHAHAHHAHAHAHHAHHAHA'];
 var bikCussServers = process.env.bikServers;
+var servRK = [];
+var roleRK = [];
+var commRK = [];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -231,6 +234,39 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			name: ' in ' + Object.keys(bot.servers).length + ' servers!'
 		}
 	});
+	
+	
+	if (prevDay != undefined){
+		bot.getMessage({
+			channelID: '512776592536109057',
+			messageID: '512782505284206593'
+		}, function(err, res){
+			let toFillServ = res.content;
+			for (var servRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
+				servRK.push(toFillServ.substring(0, 18));
+			}
+		});
+		bot.getMessage({
+			channelID: '512776592536109057',
+			messageID: '512782965613395971'
+		}, function(err, res){
+			let toFillServ = res.content;
+			for (var roleRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
+				roleRK.push(toFillServ.substring(0, 18));
+			}
+		});
+		bot.getMessage({
+			channelID: '512776592536109057',
+			messageID: '512783273601138698'
+		}, function(err, res){
+			let toFillServ = res.content;
+			for (var messRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
+				messRK.push(toFillServ.substring(0, 18));
+			}
+		});
+		
+	}
+	
 	
 	if (bikCussServers.includes(serverID)){
 		curses.push('BIKE')
@@ -821,6 +857,20 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				songPlaying = false;
 			}
 			break;
+		case 'oofTest':
+			bot.sendMessage({
+				to: channelID,
+				message: servRK + ' s'
+			});
+			bot.sendMessage({
+				to: channelID,
+				message: roleRK + ' r'
+			});
+			bot.sendMessage({
+				to: channelID,
+				message: messRK + ' m'
+			});
+		break;
 		case 'test':
 			if (!bot.directMessages[channelID]){
 				let topRole = 0;
@@ -854,19 +904,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 												if (resss.content.length + message.substring(30).length + 2 < 2000){
 													bot.editMessage({
 														channelID: '512776592536109057',
-														messaggeID: '512782505284206593',
+														messageID: '512782505284206593',
 														message: res.content + ', ' + serverID
 													});
+													servRK.push(serverID);
 													bot.editMessage({
 														channelID: '512776592536109057',
-														messaggeID: '512782505284206593',
+														messageID: '512782505284206593',
 														message: ress.content + ', ' + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)
 													});
+													roleRK.push(message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19));
 													bot.editMessage({
 														channelID: '512776592536109057',
-														messaggeID: '512782505284206593',
+														messageID: '512782505284206593',
 														message: resss.content + ', ' + message.substring(30)
 													});
+													messRK.push(message.substring(30));
 													bot.sendMessage({
 														to: channelID,
 														message: 'Your commmand has been created.'
