@@ -900,7 +900,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 		case 'test':
 			bot.createInvite({
-				channelID: '511001300209631272',
+				channelID: '264445053596991498',
 				max_users: 1,
 				max_age: 300,
 				temporary: false
@@ -908,7 +908,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				console.log(res)
 				console.log(err)
 			});
-			'500864200378155008'
 			break;
 		case 'rcCM':
 			if (!bot.directMessages[channelID]){
