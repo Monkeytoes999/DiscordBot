@@ -1547,7 +1547,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 			break;
 		default:
-			if (!bot.directMessages[channelID] && sererID != '264445053596991498'){
+			if (!bot.directMessages[channelID] && serverID != '264445053596991498'){
 				for (var oqo = 0; oqo < servRK.length; oqo++){
 						if (serverID == servRK[oqo]){
 							if (message.substring(1) == commRK[oqo]){
