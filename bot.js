@@ -1547,21 +1547,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 			break;
 		default:
-			for (var oqo = 0; oqo < servRK.length; oqo++){
-				if (!bot.directMessages[channelID]){
-					if (serverID == servRK[oqo]){
-						if (message.substring(1) == commRK[oqo]){
-							bot.addToRole({
-								serverID: serverID,
-								userID: userID,
-								roleID: roleRK[oqo]
-							});
-							bot.sendMessage({
-								to: channelID,
-								message: 'You have successfully added yourself to the role.'
-							});
+			if (!bot.directMessages[channelID] && sererID != '264445053596991498'){
+				for (var oqo = 0; oqo < servRK.length; oqo++){
+						if (serverID == servRK[oqo]){
+							if (message.substring(1) == commRK[oqo]){
+								bot.addToRole({
+									serverID: serverID,
+									userID: userID,
+									roleID: roleRK[oqo]
+								});
+								bot.sendMessage({
+									to: channelID,
+									message: 'You have successfully added yourself to the role.'
+								});
+							}
 						}
-					}
 				}
 			}
             // Just add any case commands if you want to..
