@@ -117,11 +117,6 @@ bot.on('ready', function (evt) {
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
-	bot.sendMessage({
-		to: '513116265439821832',
-		message: newMsgData
-	});
-	
 	if (newMsgData.author != undefined){
 	
 	if (!bot.directMessages[newMsgData.channel_ID] && newMsgData.channel_ID != 458809225120972800 && newMsgData.channel_ID != 495998900008910863) {
@@ -247,6 +242,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			type: 0,
 			name: ' in ' + Object.keys(bot.servers).length + ' servers!'
 		}
+	}, function(err, res){
+		if (err) console.log(err)
 	});
 	
 	
@@ -255,6 +252,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			channelID: '512776592536109057',
 			messageID: '512782505284206593'
 		}, function(err, res){
+			if (err) console.log(err)
 			let toFillServ = res.content;
 			for (var servRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
 				servRK.push(toFillServ.substring(0, 18));
@@ -264,6 +262,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			channelID: '512776592536109057',
 			messageID: '512782965613395971'
 		}, function(err, res){
+			if (err) console.log(err)
 			let toFillServ = res.content;
 			for (var roleRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
 				roleRK.push(toFillServ.substring(0, 18));
@@ -273,6 +272,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			channelID: '512776592536109057',
 			messageID: '512783273601138698'
 		}, function(err, res){
+			if (err) console.log(err)
 			let toFillServ = res.content;
 			for (var commRKi = 0; toFillServ.includes(','); toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 2)){
 				commRK.push(toFillServ.substring(0, toFillServ.indexOf(',') -1));
