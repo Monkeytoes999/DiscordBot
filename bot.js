@@ -118,7 +118,9 @@ bot.on('ready', function (evt) {
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 	if (newMsgData.author != undefined){
-	
+	if (!(bot.users[newMsgData.author.id] == undefined)){
+	if (!(bot.users[newMsgData.author.id].bot)){
+		
 	if (!bot.directMessages[newMsgData.channel_ID] && newMsgData.channel_ID != 458809225120972800 && newMsgData.channel_ID != 495998900008910863) {
 		serverID = newMsgData.guild_id;
 		channel = bot.channels[newMsgData.channel_ID];
@@ -211,6 +213,8 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		nonWordCurses.splice(nonWordCurses.length - 1, 1)
 	}
 		
+	}
+	}
 	}
 	
 });
