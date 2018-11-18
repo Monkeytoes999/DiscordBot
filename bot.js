@@ -1193,30 +1193,37 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			break;
 		case 'vote':
-			let userAlreadyVoted = false;
-			for (var j = 0; j < polledUsers.length; j++){
-				if ( userID == polledUsers[j]){
-					userAlreadyVoted = true;
-				}
-			}
-			if (userAlreadyVoted){
-				bot.sendMessage({
-					to: channelID,
-					message: 'You already voted, ' + user
-				});
-			}
-			if (!userAlreadyVoted){
-				let voteNum = message.substring(6)
-				for (var l = 0; l < pollOptions.length; l++){
-					if (voteNum == l + 1){
-						polledUsers[polledUsers.length] = userID;
-						pollVotes[l] = pollVotes[l] + 1;
-						bot.sendMessage({
-							to: channelID,
-							message: 'Okay ' + user + ', you have voted for: ' + pollOptions[l] + '.'
-						});
+			if (openPoll){
+				let userAlreadyVoted = false;
+				for (var j = 0; j < polledUsers.length; j++){
+					if ( userID == polledUsers[j]){
+						userAlreadyVoted = true;
 					}
 				}
+				if (userAlreadyVoted){
+					bot.sendMessage({
+						to: channelID,
+						message: 'You already voted, ' + user
+					});
+				}
+				if (!userAlreadyVoted){
+					let voteNum = message.substring(6)
+					for (var l = 0; l < pollOptions.length; l++){
+						if (voteNum == l + 1){
+							polledUsers[polledUsers.length] = userID;
+							pollVotes[l] = pollVotes[l] + 1;
+							bot.sendMessage({
+								to: channelID,
+								message: 'Okay ' + user + ', you have voted for: ' + pollOptions[l] + '.'
+							});
+						}
+					}
+				}
+			} else {
+				bot.sendMessage({
+					to: channelID,
+					message: user + ', there is no open poll right now'
+				});
 			}
 			break;
 		case 'addCustomResponse':
