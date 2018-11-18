@@ -543,7 +543,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		nonWordCurses.splice(nonWordCurses.length - 1, 1)
 	}
 	
-	if (!(bot.users[userID].bot){
+	if (!(bot.users[userID].bot)){
 
 		if (cussmessage.includes('OWO')){
 			if (serverID != 500864200378155008 && allowOwo && serverID != 505565358560772096 && channelID != 501934275860496395){
