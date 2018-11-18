@@ -292,6 +292,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		bot.sendMessage({
 			to: '508329340652748800',
 			message: user + ': ' + message + ' (' + channelID + ')'
+		}, function(err, res){
+			if (err) console.log(err)
 		});
 	}
 	
@@ -348,6 +350,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					channelID: '512739420764635136',
 					messageID: '512741593657376778',
 					message: scDay
+				}, function(err, res){
+					if (err) console.log(err)
 				});
 				if (thisDayay == 5 || thisDayay == 6){
 					bot.sendMessage({
@@ -422,6 +426,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			    channelID: '512739420764635136',
 			    messageID: '512741593657376778'
 		    }, function(err, res){
+			    if (err) console.log(err)
 			    scDay = res.content
 		    });
 		}
@@ -1555,6 +1560,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									serverID: serverID,
 									userID: userID,
 									roleID: roleRK[oqo]
+								}, function(err, res){
+									if (err) console.log(err)
 								});
 								bot.sendMessage({
 									to: channelID,
