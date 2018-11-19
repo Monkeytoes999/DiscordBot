@@ -247,7 +247,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			name: ' in ' + Object.keys(bot.servers).length + ' servers!'
 		}
 	}, function(err, res){
-		if (err) console.log(err)
+		if (err) throw err
 	});
 	
 	
@@ -256,7 +256,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			channelID: '512776592536109057',
 			messageID: '512782505284206593'
 		}, function(err, res){
-			if (err) console.log(err)
+			if (err) throw err
 			let toFillServ = res.content;
 			for (var servRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
 				servRK.push(toFillServ.substring(0, 18));
@@ -266,7 +266,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			channelID: '512776592536109057',
 			messageID: '512782965613395971'
 		}, function(err, res){
-			if (err) console.log(err)
+			if (err) throw err
 			let toFillServ = res.content;
 			for (var roleRKi = 0; toFillServ.length > 0; toFillServ = toFillServ.substring(20)){
 				roleRK.push(toFillServ.substring(0, 18));
@@ -276,7 +276,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			channelID: '512776592536109057',
 			messageID: '512783273601138698'
 		}, function(err, res){
-			if (err) console.log(err)
+			if (err) throw err
 			let toFillServ = res.content;
 			for (var commRKi = 0; toFillServ.includes(','); toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 2)){
 				commRK.push(toFillServ.substring(0, toFillServ.indexOf(',') -1));
@@ -296,7 +296,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			to: '508329340652748800',
 			message: user + ': ' + message + ' (' + channelID + ')'
 		}, function(err, res){
-			if (err) console.log(err)
+			if (err) throw err
 		});
 	}
 	
@@ -354,7 +354,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					messageID: '512741593657376778',
 					message: scDay
 				}, function(err, res){
-					if (err) console.log(err)
+					if (err) throw err
 				});
 				if (thisDayay == 5 || thisDayay == 6){
 					bot.sendMessage({
@@ -429,7 +429,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			    channelID: '512739420764635136',
 			    messageID: '512741593657376778'
 		    }, function(err, res){
-			    if (err) console.log(err)
+			    if (err) throw err
 			    scDay = res.content
 		    });
 		}
@@ -1569,7 +1569,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										userID: userID,
 										roleID: roleRK[oqo]
 									}, function(err, res){
-										if (err) console.log(err)
+										if (err) throw err
 									});
 									bot.sendMessage({
 										to: channelID,
