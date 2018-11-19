@@ -553,6 +553,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.sendMessage({
 					to: channelID,
 					message: 'What\'s this?'
+				}, function(err, res){
+					console.log(err)
 				});
 			}
 		}
@@ -690,12 +692,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		}
 
-		if (message == 'Shut up you dumb bot!' && userID == '495703108912021545'){
-			bot.deleteMessage({
-				channelID: channelID,
-				messageID: prevEvtID
-			});
-		}
 
 	    if (message.indexOf(prefix) == 0) {
 		knockknock = 0
