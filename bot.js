@@ -115,109 +115,109 @@ bot.on('ready', function (evt) {
 //     }
 // });
 
-bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
+// bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
-	if (newMsgData.author != undefined){
-	if (!(bot.users[newMsgData.author.id] == undefined)){
-	if (!(bot.users[newMsgData.author.id].bot)){
+// 	if (newMsgData.author != undefined){
+// 	if (!(bot.users[newMsgData.author.id] == undefined)){
+// 	if (!(bot.users[newMsgData.author.id].bot)){
 		
-	if (!bot.directMessages[newMsgData.channel_ID] && newMsgData.channel_ID != 458809225120972800 && newMsgData.channel_ID != 495998900008910863) {
-		serverID = newMsgData.guild_id;
-		channel = bot.channels[newMsgData.channel_ID];
-	}
+// 	if (!bot.directMessages[newMsgData.channel_ID] && newMsgData.channel_ID != 458809225120972800 && newMsgData.channel_ID != 495998900008910863) {
+// 		serverID = newMsgData.guild_id;
+// 		channel = bot.channels[newMsgData.channel_ID];
+// 	}
 		
-	if (bikCussServers.includes(serverID)){
-		curses.push('BIKE')
-		nonWordCurses.push('no')
-	}
+// 	if (bikCussServers.includes(serverID)){
+// 		curses.push('BIKE')
+// 		nonWordCurses.push('no')
+// 	}
 		
-		cussIndexes = [];
-	mistakenIndexes = [];
+// 		cussIndexes = [];
+// 	mistakenIndexes = [];
 		
-	cussmessage = newMsgData.content.toUpperCase();
+// 	cussmessage = newMsgData.content.toUpperCase();
 	
-	allowOwo = true;
-	allowCuss = false;
-	if (serverOptions[newMsgData.author.guild_id] != undefined){
-		allowCuss = serverOptions[newMsgData.guild_id]["allowCussing"];
-		allowOwo = serverOptions[newMsgData.guild_id]["allowOwoing"];
-	}
+// 	allowOwo = true;
+// 	allowCuss = false;
+// 	if (serverOptions[newMsgData.author.guild_id] != undefined){
+// 		allowCuss = serverOptions[newMsgData.guild_id]["allowCussing"];
+// 		allowOwo = serverOptions[newMsgData.guild_id]["allowOwoing"];
+// 	}
 	
 		
 		
-	for (var i = 0; i < symbolList.length; i++){
-		if (cussmessage.includes(symbolList[i])){
-			spot = cussmessage.indexOf(symbolList[i]);
-			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
-			i = i-1;
-		}
-	}
+// 	for (var i = 0; i < symbolList.length; i++){
+// 		if (cussmessage.includes(symbolList[i])){
+// 			spot = cussmessage.indexOf(symbolList[i]);
+// 			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
+// 			i = i-1;
+// 		}
+// 	}
 	
-	hasMistakenCuss = false;
-	for (var i = 0; i < notCusses.length; i++){
-		if (cussmessage.includes(notCusses[i])){
-			var hasMistakenCuss = true;
-			mistakenIndexes.push(cussmessage.indexOf(notCusses[i]));
-		}
-	}
+// 	hasMistakenCuss = false;
+// 	for (var i = 0; i < notCusses.length; i++){
+// 		if (cussmessage.includes(notCusses[i])){
+// 			var hasMistakenCuss = true;
+// 			mistakenIndexes.push(cussmessage.indexOf(notCusses[i]));
+// 		}
+// 	}
 
 	
-	for (var i = 0; i < curses.length; i++){
-		if (cussmessage.includes(curses[i])){
-			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
-		    		cussIndexes.push(cussmessage.indexOf(curses[i]));
-			}
-		}
-	}
+// 	for (var i = 0; i < curses.length; i++){
+// 		if (cussmessage.includes(curses[i])){
+// 			if (nonWordCurses[i] != 'no' || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
+// 		    		cussIndexes.push(cussmessage.indexOf(curses[i]));
+// 			}
+// 		}
+// 	}
 	
-	for (var i = 0; i < cussIndexes.length; i = i){
-		if (mistakenIndexes.includes(cussIndexes[i])){
-		    cussIndexes.splice(i, 1);
-		} else {
-			i++
-		}
-	}
+// 	for (var i = 0; i < cussIndexes.length; i = i){
+// 		if (mistakenIndexes.includes(cussIndexes[i])){
+// 		    cussIndexes.splice(i, 1);
+// 		} else {
+// 			i++
+// 		}
+// 	}
 
 
-		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
-				bot.deleteMessage({
-					channelID: newMsgData.channel_id,
-					messageID: newMsgData.id
-				});
-				bot.sendMessage({
-					to: newMsgData.channel_id,
-					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
-				});
-				bot.sendMessage({
-					to: '509920937093890058',
-					message: newMsgData.author.id
-				});
-		}
-		if (cussmessage.includes('BIKE') && newMsgData.guild_id == 490695949786677248){
-		  		bot.deleteMessage({
-					channelID: newMsgData.channel_id,
-					messageID: newMsgData.id
-				});
-				bot.sendMessage({
-					to: newMsgData.channel_id,
-					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
-				});
-				bot.sendMessage({
-					to: '509920937093890058',
-					message: newMsgData.author.id
-				});
-		}
+// 		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
+// 				bot.deleteMessage({
+// 					channelID: newMsgData.channel_id,
+// 					messageID: newMsgData.id
+// 				});
+// 				bot.sendMessage({
+// 					to: newMsgData.channel_id,
+// 					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
+// 				});
+// 				bot.sendMessage({
+// 					to: '509920937093890058',
+// 					message: newMsgData.author.id
+// 				});
+// 		}
+// 		if (cussmessage.includes('BIKE') && newMsgData.guild_id == 490695949786677248){
+// 		  		bot.deleteMessage({
+// 					channelID: newMsgData.channel_id,
+// 					messageID: newMsgData.id
+// 				});
+// 				bot.sendMessage({
+// 					to: newMsgData.channel_id,
+// 					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
+// 				});
+// 				bot.sendMessage({
+// 					to: '509920937093890058',
+// 					message: newMsgData.author.id
+// 				});
+// 		}
 		
-	if (bikCussServers.includes(serverID)){
-		curses.splice(curses.length - 1, 1)
-		nonWordCurses.splice(nonWordCurses.length - 1, 1)
-	}
+// 	if (bikCussServers.includes(serverID)){
+// 		curses.splice(curses.length - 1, 1)
+// 		nonWordCurses.splice(nonWordCurses.length - 1, 1)
+// 	}
 		
-	}
-	}
-	}
+// 	}
+// 	}
+// 	}
 	
-});
+// });
 bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
