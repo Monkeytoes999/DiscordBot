@@ -308,167 +308,167 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	prevEvtID = evt.d.id;
 		
-	if (true){
-		for (var messIDforArray = 99; messIDforArray > 0; messIDforArray --){
-			lastHunMessIds[messIDforArray] = lastHunMessIds[(messIDforArray - 1)];
-		}
-		lastHunMessIds[0] = prevEvtID;
-		for (var userIDforArray = 99; userIDforArray > 0; userIDforArray --){
-			lastHunUserIds[userIDforArray] = lastHunUserIds[(userIDforArray - 1)];
-		}
-		lastHunUserIds[0] = user;
-		for (var channelIDforArray = 99; channelIDforArray > 0; channelIDforArray --){
-			lastHunChannelIds[channelIDforArray] = lastHunChannelIds[(channelIDforArray - 1)];
-		}
-		lastHunChannelIds[0] = channelID;
-	}
+// 	if (true){
+// 		for (var messIDforArray = 99; messIDforArray > 0; messIDforArray --){
+// 			lastHunMessIds[messIDforArray] = lastHunMessIds[(messIDforArray - 1)];
+// 		}
+// 		lastHunMessIds[0] = prevEvtID;
+// 		for (var userIDforArray = 99; userIDforArray > 0; userIDforArray --){
+// 			lastHunUserIds[userIDforArray] = lastHunUserIds[(userIDforArray - 1)];
+// 		}
+// 		lastHunUserIds[0] = user;
+// 		for (var channelIDforArray = 99; channelIDforArray > 0; channelIDforArray --){
+// 			lastHunChannelIds[channelIDforArray] = lastHunChannelIds[(channelIDforArray - 1)];
+// 		}
+// 		lastHunChannelIds[0] = channelID;
+// 	}
 	
 	
-	if (true){
-		let thisTime = new Date();
-			let thisHour = (thisTime.getHours() - 5);
-			let thisDay = thisTime.getDate();
-			let thisDayay = (thisTime.getDay() - 1);
-			if (thisHour < 0){
-				thisDay = thisDay - 1;
-				thisHour = 24 + thisHour;
-			}
-			if (thisDay < 1){
-				thisDay = monthNumbers[thisTime.getMonth()];
-			}
-			if (thisDayay < 0){
-				thisDayay = 6 + (thisDayay + 1);
-			}
-			if (thisHour > 12){
-				thisHour = thisHour - 12
-			}
+// 	if (true){
+// 		let thisTime = new Date();
+// 			let thisHour = (thisTime.getHours() - 5);
+// 			let thisDay = thisTime.getDate();
+// 			let thisDayay = (thisTime.getDay() - 1);
+// 			if (thisHour < 0){
+// 				thisDay = thisDay - 1;
+// 				thisHour = 24 + thisHour;
+// 			}
+// 			if (thisDay < 1){
+// 				thisDay = monthNumbers[thisTime.getMonth()];
+// 			}
+// 			if (thisDayay < 0){
+// 				thisDayay = 6 + (thisDayay + 1);
+// 			}
+// 			if (thisHour > 12){
+// 				thisHour = thisHour - 12
+// 			}
 		
-		prevDay = day;
-		day = thisDay;
-		dayay = thisDayay;
-		if (day != prevDay && scDay != 'oof'){
-			if (scDayChange){
-				if (scDay.toUpperCase() == 'A'){
-					scDay = 'B';
-				} else if (scDay.toUpperCase() == 'B'){
-					scDay = 'A';
-				}
-				bot.editMessage({
-					channelID: '512739420764635136',
-					messageID: '512741593657376778',
-					message: scDay
-				}, function(err, res){
-					if (err) throw err
-				});
-				if (thisDayay == 5 || thisDayay == 6){
-					bot.sendMessage({
-						to: '458809225120972800',
-						message: 'Today is a weekend! Enjoy!'
-					});
-					bot.sendMessage({
-						to: '194966921362407424',
-						message: 'Today is a weekend! Enjoy!'
-					});
-					bot.sendMessage({
-						to: '486985623161274378',
-						message: 'Today is a weekend! Enjoy!'
-					});
-					bot.sendMessage({
-						to: '336507246227881984',
-						message: 'Today is a weekend! Enjoy!'
-					});
-					bot.sendMessage({
-						to: '393586279964475393',
-						message: 'Today is a weekend! Enjoy!'
-					});
-				} else {
-					bot.sendMessage({
-						to: '458809225120972800',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '194966921362407424',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '486985623161274378',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '336507246227881984',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '393586279964475393',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-				}
-			}
-			if (!scDayChange){
-				bot.sendMessage({
-					to: '458809225120972800',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-				});
-				bot.sendMessage({
-					to: '194966921362407424',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-				});
-				ot.sendMessage({
-					to: '486985623161274378',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-				});
-				bot.sendMessage({
-					to: '336507246227881984',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-				});
-				bot.sendMessage({
-					to: '393586279964475393',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-				});
-				scDayChange = true;
-			}
-		}
-		if (scDay == 'oof'){
-		    bot.getMessage({
-			    channelID: '512739420764635136',
-			    messageID: '512741593657376778'
-		    }, function(err, res){
-			    if (err) throw err
-			    scDay = res.content
-		    });
-		}
-		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
-			bot.editRole({
-				serverID: '489547644138422302',
-				roleID: '499379170975940608',
-				name: breedNames[Math.floor(Math.random() * breedNames.length)]
-			});
-			bot.editRole({
-				serverID: '489547644138422302',
-				roleID: '499379174352355341',
-				name: breedNames[Math.floor(Math.random() * breedNames.length)]
-			});
-			bot.editRole({
-				serverID: '489547644138422302',
-				roleID: '499379172653793292',
-				name: breedNames[Math.floor(Math.random() * breedNames.length)]
-			});
-			bot.editRole({
-				serverID: '489547644138422302',
-				roleID: '499379166626447361',
-				name: breedNames[Math.floor(Math.random() * breedNames.length)]
-			});
-			bot.editRole({
-				serverID: '489547644138422302',
-				roleID: '499379169197817856',
-				name: breedNames[Math.floor(Math.random() * breedNames.length)]
-			});
-			bot.sendMessage({
-				to: '499380162589097996',
-				message: '<@&497234733709918229>, check out your new cat breed!'
-			});
-		}
-	}
+// 		prevDay = day;
+// 		day = thisDay;
+// 		dayay = thisDayay;
+// 		if (day != prevDay && scDay != 'oof'){
+// 			if (scDayChange){
+// 				if (scDay.toUpperCase() == 'A'){
+// 					scDay = 'B';
+// 				} else if (scDay.toUpperCase() == 'B'){
+// 					scDay = 'A';
+// 				}
+// 				bot.editMessage({
+// 					channelID: '512739420764635136',
+// 					messageID: '512741593657376778',
+// 					message: scDay
+// 				}, function(err, res){
+// 					if (err) throw err
+// 				});
+// 				if (thisDayay == 5 || thisDayay == 6){
+// 					bot.sendMessage({
+// 						to: '458809225120972800',
+// 						message: 'Today is a weekend! Enjoy!'
+// 					});
+// 					bot.sendMessage({
+// 						to: '194966921362407424',
+// 						message: 'Today is a weekend! Enjoy!'
+// 					});
+// 					bot.sendMessage({
+// 						to: '486985623161274378',
+// 						message: 'Today is a weekend! Enjoy!'
+// 					});
+// 					bot.sendMessage({
+// 						to: '336507246227881984',
+// 						message: 'Today is a weekend! Enjoy!'
+// 					});
+// 					bot.sendMessage({
+// 						to: '393586279964475393',
+// 						message: 'Today is a weekend! Enjoy!'
+// 					});
+// 				} else {
+// 					bot.sendMessage({
+// 						to: '458809225120972800',
+// 						message: 'Today is a(n) ' + scDay + ' day.'
+// 					});
+// 					bot.sendMessage({
+// 						to: '194966921362407424',
+// 						message: 'Today is a(n) ' + scDay + ' day.'
+// 					});
+// 					bot.sendMessage({
+// 						to: '486985623161274378',
+// 						message: 'Today is a(n) ' + scDay + ' day.'
+// 					});
+// 					bot.sendMessage({
+// 						to: '336507246227881984',
+// 						message: 'Today is a(n) ' + scDay + ' day.'
+// 					});
+// 					bot.sendMessage({
+// 						to: '393586279964475393',
+// 						message: 'Today is a(n) ' + scDay + ' day.'
+// 					});
+// 				}
+// 			}
+// 			if (!scDayChange){
+// 				bot.sendMessage({
+// 					to: '458809225120972800',
+// 					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+// 				});
+// 				bot.sendMessage({
+// 					to: '194966921362407424',
+// 					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+// 				});
+// 				ot.sendMessage({
+// 					to: '486985623161274378',
+// 					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+// 				});
+// 				bot.sendMessage({
+// 					to: '336507246227881984',
+// 					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+// 				});
+// 				bot.sendMessage({
+// 					to: '393586279964475393',
+// 					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+// 				});
+// 				scDayChange = true;
+// 			}
+// 		}
+// 		if (scDay == 'oof'){
+// 		    bot.getMessage({
+// 			    channelID: '512739420764635136',
+// 			    messageID: '512741593657376778'
+// 		    }, function(err, res){
+// 			    if (err) throw err
+// 			    scDay = res.content
+// 		    });
+// 		}
+// 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
+// 			bot.editRole({
+// 				serverID: '489547644138422302',
+// 				roleID: '499379170975940608',
+// 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+// 			});
+// 			bot.editRole({
+// 				serverID: '489547644138422302',
+// 				roleID: '499379174352355341',
+// 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+// 			});
+// 			bot.editRole({
+// 				serverID: '489547644138422302',
+// 				roleID: '499379172653793292',
+// 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+// 			});
+// 			bot.editRole({
+// 				serverID: '489547644138422302',
+// 				roleID: '499379166626447361',
+// 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+// 			});
+// 			bot.editRole({
+// 				serverID: '489547644138422302',
+// 				roleID: '499379169197817856',
+// 				name: breedNames[Math.floor(Math.random() * breedNames.length)]
+// 			});
+// 			bot.sendMessage({
+// 				to: '499380162589097996',
+// 				message: '<@&497234733709918229>, check out your new cat breed!'
+// 			});
+// 		}
+// 	}
 		
 	cussmessage = message.toUpperCase();
 	
