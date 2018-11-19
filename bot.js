@@ -1555,12 +1555,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					for (var oqo = 0; oqo < servRK.length; oqo++){
 						console.log(1);
 						console.log(servRK.length);
+						console.log(oqo);
 							if (serverID == servRK[oqo]){
-								console.log(2)
-								console.log(message.substring(1))
-								console.log(commRK[oqo])
 								if (message.substring(1) == commRK[oqo]){
-									console.log(3)
 									bot.addToRole({
 										serverID: serverID,
 										userID: userID,
