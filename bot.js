@@ -245,17 +245,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-// 	bot.setPresence({
-// 		game: {
-// 			type: 0,
-// 			name: ' in ' + Object.keys(bot.servers).length + ' servers!'
-// 		}
-// 	}, function(err, res){
-// 		if (err) throw err
-// 	});
-	
-	
 	if (prevDay == undefined){
+		bot.setPresence({
+			game: {
+				type: 0,
+				name: ' in ' + Object.keys(bot.servers).length + ' servers!'
+			}
+		}, function(err, res){
+			if (err) throw err
+		});
 		bot.getMessage({
 			channelID: '512776592536109057',
 			messageID: '512782505284206593'
