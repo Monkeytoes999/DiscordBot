@@ -222,7 +222,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
     // Our bot needs to know if it will execute a command
     // It will listen for messages that will start with `!`
 	
-	
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
@@ -232,6 +231,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		channel = bot.channels[channelID];
 		member = bot.servers[serverID].members[userID];
 	}
+	
+	if (serverID != '264445053596991498'){
 	
 	if (channelID != '513116265439821832'){
 		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
@@ -1583,5 +1584,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		 }
 	    }
 	}
-     }
+	}
+	}
 });
