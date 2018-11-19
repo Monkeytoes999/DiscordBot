@@ -126,9 +126,11 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		channel = bot.channels[newMsgData.channel_ID];
 	}
 		
-	if (bikCussServers.includes(serverID)){
-		curses.push('BIKE')
-		nonWordCurses.push('no')
+	if (bikCussServers != undefined){
+		if (bikCussServers.includes(serverID)){
+			curses.push('BIKE')
+			nonWordCurses.push('no')
+		}
 	}
 		
 		cussIndexes = [];
@@ -207,10 +209,12 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 					message: newMsgData.author.id
 				});
 		}
-		
-	if (bikCussServers.includes(serverID)){
-		curses.splice(curses.length - 1, 1)
-		nonWordCurses.splice(nonWordCurses.length - 1, 1)
+	
+	if (bikCussServers != undefined){
+		if (bikCussServers.includes(serverID)){
+			curses.splice(curses.length - 1, 1)
+			nonWordCurses.splice(nonWordCurses.length - 1, 1)
+		}
 	}
 		
 	}
