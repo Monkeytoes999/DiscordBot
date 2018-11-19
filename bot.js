@@ -232,8 +232,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		member = bot.servers[serverID].members[userID];
 	}
 	
-	if (serverID != '264445053596991498'){
-	
 	if (channelID != '513116265439821832'){
 		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
 		bot.sendMessage({
@@ -286,6 +284,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 		
 	}
+	
+	if (serverID != '264445053596991498'){
 	
 // 	if (bikCussServers.includes(serverID)){
 // 		curses.push('BIKE')
