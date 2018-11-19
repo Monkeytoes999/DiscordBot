@@ -281,7 +281,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (err) throw err
 			let toFillServ = res.content;
 			for (var commRKi = 0; toFillServ.includes(','); toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 2)){
-				commRK.push(toFillServ.substring(0, toFillServ.indexOf(',') -1));
+				commRK.push(toFillServ.substring(0, toFillServ.indexOf(',')));
 			}
 			commRK.push(toFillServ)
 		});
@@ -1554,6 +1554,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (!bot.directMessages[channelID] && serverID != '264445053596991498'){
 					for (var oqo = 0; oqo < servRK.length; oqo++){
 						console.log(1);
+						console.log(servRK.length);
 							if (serverID == servRK[oqo]){
 								console.log(2)
 								console.log(message.substring(1))
