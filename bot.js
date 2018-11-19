@@ -1515,6 +1515,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						message: '|             A    A \n |        (= ^w^ = )'
 					});
 				break;
+			case 'die':
+				if (userID == '393586279964475393'){
+					bot.disconnect();
+				}
+				break;
 				case 'Aflac':
 					var password = message.substring(9);
 					if (password == passwords[passnum]){
@@ -1548,8 +1553,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			default:
 				if (!bot.directMessages[channelID] && serverID != '264445053596991498'){
 					for (var oqo = 0; oqo < servRK.length; oqo++){
+						console.log(1);
 							if (serverID == servRK[oqo]){
+								console.log(2)
 								if (message.substring(1) == commRK[oqo]){
+									console.log(3)
 									bot.addToRole({
 										serverID: serverID,
 										userID: userID,
