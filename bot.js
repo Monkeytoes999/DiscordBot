@@ -245,14 +245,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	bot.setPresence({
-		game: {
-			type: 0,
-			name: ' in ' + Object.keys(bot.servers).length + ' servers!'
-		}
-	}, function(err, res){
-		if (err) throw err
-	});
+// 	bot.setPresence({
+// 		game: {
+// 			type: 0,
+// 			name: ' in ' + Object.keys(bot.servers).length + ' servers!'
+// 		}
+// 	}, function(err, res){
+// 		if (err) throw err
+// 	});
 	
 	
 // 	if (prevDay == undefined){
@@ -295,14 +295,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 // 		nonWordCurses.push('no')
 // 	}
 	
-	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
-		bot.sendMessage({
-			to: '508329340652748800',
-			message: user + ': ' + message + ' (' + channelID + ')'
-		}, function(err, res){
-			if (err) throw err
-		});
-	}
+// 	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
+// 		bot.sendMessage({
+// 			to: '508329340652748800',
+// 			message: user + ': ' + message + ' (' + channelID + ')'
+// 		}, function(err, res){
+// 			if (err) throw err
+// 		});
+// 	}
 	
 	
 	
