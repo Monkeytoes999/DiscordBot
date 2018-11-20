@@ -1517,7 +1517,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'die':
 				if (userID == '393586279964475393'){
-					bot.disconnect();
+					bot.sendMessage({
+						to: channelID,
+						message: 'Beep Boop. I died.'
+					}, function (err, res){
+						bot.disconnect();
+					});
 				}
 				break;
 				case 'Aflac':
