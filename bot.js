@@ -946,7 +946,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 															messageID: '512782505284206593',
 															message: res.content + ', ' + bot.channels[channelID].guild_id
 														});
-														servRK.push(serverID);
+														servRK.push(bot.channels[channelID].guild_id);
 														bot.editMessage({
 															channelID: '512776592536109057',
 															messageID: '512782965613395971',
