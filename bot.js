@@ -1553,11 +1553,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			default:
 				if (!bot.directMessages[channelID] && serverID != '264445053596991498'){
 					for (var oqo = 0; oqo < servRK.length; oqo++){
-						console.log(1);
-						console.log(servRK.length);
-						console.log(oqo);
 							if (serverID == servRK[oqo]){
+								console.log(commRK[oqo])
+								console.log(message.substring(1))
+								console.log(commRK[oqo] == message.substring(1))
 								if (message.substring(1) == commRK[oqo]){
+									console.log('It is this not that')
 									bot.addToRole({
 										serverID: serverID,
 										userID: userID,
