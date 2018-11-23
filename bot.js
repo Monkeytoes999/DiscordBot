@@ -98,7 +98,8 @@ bot.on('ready', function (evt) {
     logger.info(bot.username + ' - (' + bot.id + ')');
 });
 
-// bot.on('any', function(event) {
+bot.on('any', function(event) {
+	console.log(event);
 //     if ((Math.floor(Math.random() * 50000)) > 49999){
 // 	    if (event.d != null){
 // 		    if (event.d.channel_id != undefined && event.d.guild_id != '264445053596991498'){
@@ -113,7 +114,7 @@ bot.on('ready', function (evt) {
 // 		    }
 // 	    }
 //     }
-// });
+});
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
