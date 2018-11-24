@@ -115,11 +115,11 @@ bot.on('any', function(event) {
 //     }
 });
 
-bot.on('presenceUpdate', function(a, b, c){
+bot.on('presenceUpdate', function(event){
 	console.log(a)
 	console.log(b)
 	console.log(c)
-       if(c.d.user.id == '393586279964475393'){
+       if(event.d.user.id == '393586279964475393'){
 		bot.sendMessage({
 			to: '514213516538806304',
 			message: 'OOF!! I\'ll do more with this later'
