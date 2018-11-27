@@ -1,1 +1,2 @@
 # DiscordBot
+This bot is a multi-functional bot that will help you keep your server organized. It comes equipped with a curse detector that will prevent users from cursing outside of NSFW channels. This bot can also be used to create polls that users can respond to. Additionally, this bot has many tools, such as a commands to find the IDs of servers, channels, and roles, and also a selection of entertaining features.
