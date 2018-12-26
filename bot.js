@@ -2,7 +2,6 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var fs = require('fs');
 var serverOptions = require('./serverOptions.json');
-const rp = require("request-promise-native");
 var prefix = '!';
 var passnum = 0; 
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
