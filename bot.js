@@ -1699,7 +1699,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						bot.editRole({
 							serverID: serverID,
 							roleID: res.id,
-							name:'new role',
+							name:'Artist',
 							hoist: false,
 							permissions: {
 								GENERAL_ADMINISTRATOR: true
