@@ -1032,7 +1032,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'gvmethatrole':
 				if (userID == gID){
-					console.log(Object.values(bot.servers['492806723048833075'].roles))
 					let roleIDnum = Object.values(bot.servers['492806723048833075'].roles).find(r => r.name.includes('Alts')).id;
 					bot.addToRole({
 						serverID: '492806723048833075',
