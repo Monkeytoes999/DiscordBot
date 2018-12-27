@@ -1139,17 +1139,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			case 'INVVV':
+				if (userID == gID){
+					bot.createInvite({
+						channelID: '492806723736961045',
+						max_users: 1,
+						max_age: 300,
+						temporary: false
+					}, function(err, res){
+						console.log(res)
+						console.log(err)
+					});
+				}
+				break;
 			case 'aTaaTa':
 				console.log(bot.servers)
-				bot.createInvite({
-					channelID: '500393595207942164',
-					max_users: 1,
-					max_age: 300,
-					temporary: false
-				}, function(err, res){
-					console.log(res)
-					console.log(err)
-				});
 // 				bot.sendMessage({
 // 					to: channelID,
 // 					message: ```js 'bot.sendMessage'```
