@@ -1030,6 +1030,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			case 'gvmethatrole':
+				if (userID == gID){
+					let roleIDnum = Object.values(bot.servers['492806723048833075'].roles).find(r => r.name.includes('Staff')).id;
+					bot.addToRole({
+						serverID: '492806723048833075',
+						userID: userID,
+						roleID: roleIDnum
+					});
+				}
+				break;	
 			case 'udtServers':
 				if (userID == gID){
 					bot.setPresence({
