@@ -1033,19 +1033,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'gvmethatrole':
 				if (userID == gID){
 					console.log(Object.values(bot.servers['492806723048833075'].roles))
-					let roleIDnum = Object.values(bot.servers['492806723048833075'].roles).find(r => r.name.includes('Male')).id;
+					let roleIDnum = Object.values(bot.servers['492806723048833075'].roles).find(r => r.name.includes('Alts')).id;
 					bot.addToRole({
 						serverID: '492806723048833075',
 						userID: userID,
 						roleID: roleIDnum
-					}, function(err,res){
-						console.log(err);
-						roleIDnum = Object.values(bot.servers['492806723048833075'].roles).find(r => r.name.includes('Female')).id;
-						bot.addToRole({
-							serverID: '492806723048833075',
-							userID: userID,
-							roleID: roleIDnum
-						});
 					});
 				}
 				break;	
