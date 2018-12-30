@@ -369,85 +369,108 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}, function(err, res){
 				if (err) throw err
 			});
-			if (scDayChange){
-				if (scDay.toUpperCase() == 'A'){
-					scDay = 'B';
-				} else if (scDay.toUpperCase() == 'B'){
-					scDay = 'A';
+			if (scDay.length == 1){
+				if (scDayChange){
+					if (scDay.toUpperCase() == 'A'){
+						scDay = 'B';
+					} else if (scDay.toUpperCase() == 'B'){
+						scDay = 'A';
+					}
+					bot.editMessage({
+						channelID: '512739420764635136',
+						messageID: '512741593657376778',
+						message: scDay
+					}, function(err, res){
+						if (err) throw err
+					});
+					if (thisDayay == 5 || thisDayay == 6){
+						bot.sendMessage({
+							to: '458809225120972800',
+							message: 'Today is a weekend! Enjoy!'
+						});
+						bot.sendMessage({
+							to: '194966921362407424',
+							message: 'Today is a weekend! Enjoy!'
+						});
+						bot.sendMessage({
+							to: '486985623161274378',
+							message: 'Today is a weekend! Enjoy!'
+						});
+						bot.sendMessage({
+							to: '336507246227881984',
+							message: 'Today is a weekend! Enjoy!'
+						});
+						bot.sendMessage({
+							to: '393586279964475393',
+							message: 'Today is a weekend! Enjoy!'
+						});
+					} else {
+						bot.sendMessage({
+							to: '458809225120972800',
+							message: 'Today is a(n) ' + scDay + ' day.'
+						});
+						bot.sendMessage({
+							to: '194966921362407424',
+							message: 'Today is a(n) ' + scDay + ' day.'
+						});
+						bot.sendMessage({
+							to: '486985623161274378',
+							message: 'Today is a(n) ' + scDay + ' day.'
+						});
+						bot.sendMessage({
+							to: '336507246227881984',
+							message: 'Today is a(n) ' + scDay + ' day.'
+						});
+						bot.sendMessage({
+							to: '393586279964475393',
+							message: 'Today is a(n) ' + scDay + ' day.'
+						});
+					}
 				}
-				bot.editMessage({
-					channelID: '512739420764635136',
-					messageID: '512741593657376778',
-					message: scDay
-				}, function(err, res){
-					if (err) throw err
-				});
-				if (thisDayay == 5 || thisDayay == 6){
+				if (!scDayChange){
 					bot.sendMessage({
 						to: '458809225120972800',
-						message: 'Today is a weekend! Enjoy!'
+						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					});
 					bot.sendMessage({
 						to: '194966921362407424',
-						message: 'Today is a weekend! Enjoy!'
+						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					});
-					bot.sendMessage({
+					ot.sendMessage({
 						to: '486985623161274378',
-						message: 'Today is a weekend! Enjoy!'
+						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					});
 					bot.sendMessage({
 						to: '336507246227881984',
-						message: 'Today is a weekend! Enjoy!'
+						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					});
 					bot.sendMessage({
 						to: '393586279964475393',
-						message: 'Today is a weekend! Enjoy!'
+						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					});
-				} else {
-					bot.sendMessage({
-						to: '458809225120972800',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '194966921362407424',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '486985623161274378',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '336507246227881984',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
-					bot.sendMessage({
-						to: '393586279964475393',
-						message: 'Today is a(n) ' + scDay + ' day.'
-					});
+					scDayChange = true;
 				}
-			}
-			if (!scDayChange){
+			} else {
 				bot.sendMessage({
 					to: '458809225120972800',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: scDay
 				});
 				bot.sendMessage({
 					to: '194966921362407424',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: scDay
 				});
-				ot.sendMessage({
+				bot.sendMessage({
 					to: '486985623161274378',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: scDay
 				});
 				bot.sendMessage({
 					to: '336507246227881984',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: scDay
 				});
 				bot.sendMessage({
 					to: '393586279964475393',
-					message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
+					message: scDay
 				});
-				scDayChange = true;
 			}
 		}
 		if (scDay == 'oof'){
