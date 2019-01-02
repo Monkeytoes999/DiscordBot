@@ -260,7 +260,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		member = bot.servers[serverID].members[userID];
 	}
 	
-	if (channelID == '517100710199033857' && message != '<@&522551255873224704>'){
+	if (channelID == '517100710199033857' && bot.users[userID].bot && message != '<@&522551255873224704>'){
 		bot.sendMessage({
 			to: '517100710199033857',
 			message: '<@&522551255873224704>'
