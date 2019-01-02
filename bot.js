@@ -1300,10 +1300,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'tto':
+				if (channelID != '517100710199033857'){
 					 bot.sendMessage({
 						to: channelID,
 						message: bot.fixMessage(message.substring(5))
 					});
+				}
 				commRand = true;
 				break;
 			case 'prune':
