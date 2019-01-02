@@ -450,7 +450,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 					scDayChange = true;
 				}
-			} else {
+			} else if(scDay.toUpperCase != 'NONE'){
 				bot.sendMessage({
 					to: '458809225120972800',
 					message: scDay
