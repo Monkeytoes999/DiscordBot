@@ -841,11 +841,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							roleID: '511736694605611009'
 						});
 					}
-				} else {
-					bot.sendMessage({
-						to: channelID,
-						message: 'This is only usable in the GCD support server'
-					});
 				}
 				commRand = true;
 				break;
@@ -881,11 +876,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							roleID: '511736694605611009'
 						});
 					}
-				} else {
-					bot.sendMessage({
-						to: channelID,
-						message: 'This is only usable in the GCD support server'
-					});
 				}
 				commRand = true;
 				break;
@@ -1210,97 +1200,90 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 // 				commRand = true;
 // 				break;
 			case 'rcCM':
-				if (!bot.directMessages[channelID]){
-					let topRole = 0;
-					let topRoleID = serverID;
-					for (var iooof = 0; iooof < member.roles.length; iooof++){
-						if (bot.servers[serverID].roles[member.roles[iooof]].position > topRole){
-							topRole = bot.servers[serverID].roles[member.roles[iooof]].position
-							topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
+				let topRole = 0;
+				let topRoleID = serverID;
+				for (var iooof = 0; iooof < member.roles.length; iooof++){
+					if (bot.servers[serverID].roles[member.roles[iooof]].position > topRole){
+						topRole = bot.servers[serverID].roles[member.roles[iooof]].position
+						topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
+					}
+				}
+				if (message.length > 30 && message.length < 45 && message.includes('<@&')){
+					if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
+					    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
+							bot.getMessage({
+								channelID: '512776592536109057',
+								messageID: '512782505284206593'
+							}, function(err, res){
+	// 							console.log(1)
+								if (res.content.length + serverID.length + 2 < 2000){
+									bot.getMessage({
+										channelID: '512776592536109057',
+										messageID: '512782965613395971'
+									}, function(errr, ress){
+// 										console.log(2)
+										if (ress.content.length + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19).length + 2 < 2000){
+											bot.getMessage({
+												channelID: '512776592536109057',
+												messageID: '512783273601138698'
+											}, function(errr, resss){
+	// 											console.log(3)
+												if (resss.content.length + message.substring(30).length + 2 < 2000){
+													bot.editMessage({
+														channelID: '512776592536109057',
+														messageID: '512782505284206593',
+														message: res.content + ', ' + bot.channels[channelID].guild_id
+													});
+													servRK.push(bot.channels[channelID].guild_id);
+													bot.editMessage({
+														channelID: '512776592536109057',
+														messageID: '512782965613395971',
+														message: ress.content + ', ' + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)
+													});
+													roleRK.push(message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19));
+													bot.editMessage({
+														channelID: '512776592536109057',
+														messageID: '512783273601138698',
+														message: resss.content + ', ' + message.substring(29)
+													});
+													commRK.push(message.substring(29));
+													bot.sendMessage({
+														to: channelID,
+														message: 'Your commmand has been created.'
+													});
+												} else {
+													bot.sendMessage({
+														to: channelID,
+														message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
+													});
+												}
+											});
+										} else {
+											bot.sendMessage({
+												to: channelID,
+												message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
+											});
+										}
+									});
+								}  else {
+									bot.sendMessage({
+										to: channelID,
+										message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
+									});
+								}
+							});
+						}  else if (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
+							bot.sendMessage({
+								to: channelID,
+								message: 'Your highest role must be higher in rank than the role you are trying to allow access to.'
+							});
+						} else {
+							bot.sendMessage({
+								to: channelID,
+								message: 'The highest role you have in this server must have admin to run this command!'
+							});
 						}
 					}
-					if (message.length > 30 && message.length < 45 && message.includes('<@&')){
-						if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
-						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
-								bot.getMessage({
-									channelID: '512776592536109057',
-									messageID: '512782505284206593'
-								}, function(err, res){
-	// 								console.log(1)
-									if (res.content.length + serverID.length + 2 < 2000){
-										bot.getMessage({
-											channelID: '512776592536109057',
-											messageID: '512782965613395971'
-										}, function(errr, ress){
-	// 										console.log(2)
-											if (ress.content.length + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19).length + 2 < 2000){
-												bot.getMessage({
-													channelID: '512776592536109057',
-													messageID: '512783273601138698'
-												}, function(errr, resss){
-	// 												console.log(3)
-													if (resss.content.length + message.substring(30).length + 2 < 2000){
-														bot.editMessage({
-															channelID: '512776592536109057',
-															messageID: '512782505284206593',
-															message: res.content + ', ' + bot.channels[channelID].guild_id
-														});
-														servRK.push(bot.channels[channelID].guild_id);
-														bot.editMessage({
-															channelID: '512776592536109057',
-															messageID: '512782965613395971',
-															message: ress.content + ', ' + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)
-														});
-														roleRK.push(message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19));
-														bot.editMessage({
-															channelID: '512776592536109057',
-															messageID: '512783273601138698',
-															message: resss.content + ', ' + message.substring(29)
-														});
-														commRK.push(message.substring(29));
-														bot.sendMessage({
-															to: channelID,
-															message: 'Your commmand has been created.'
-														});
-													} else {
-														bot.sendMessage({
-															to: channelID,
-															message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
-														});
-													}
-												});
-											} else {
-												bot.sendMessage({
-													to: channelID,
-													message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
-												});
-											}
-										});
-									}  else {
-										bot.sendMessage({
-											to: channelID,
-											message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
-										});
-									}
-								});
-							}  else if (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
-								bot.sendMessage({
-									to: channelID,
-									message: 'Your highest role must be higher in rank than the role you are trying to allow access to.'
-								});
-							} else {
-								bot.sendMessage({
-									to: channelID,
-									message: 'The highest role you have in this server must have admin to run this command!'
-								});
-							}
-						}
-					}
-				} else {
-					bot.sendMessage({
-						to: channelID,
-						message: 'You can\'t do this in a DM'
-					});
 				}
 				commRand = true;
 				break;
@@ -1381,7 +1364,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				let usrID = userID;
 				bot.sendMessage({
 					to: userID,
-					message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin, and must be higher than the role you are trying to give access to. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply polls, createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instructions. \nfeedback - sends feedback to the creator. \nsuggest - sends a suggestion to the creator.'
+					message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin, and must be higher than the role you are trying to give access to. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nAll that apply polls: createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instructions. \nfeedback - sends feedback to the creator. \nsuggest - sends a suggestion to the creator.'
 				}, function(err, res){
 					if (err) throw err;
 					bot.sendMessage({
@@ -1564,11 +1547,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					bot.sendMessage({
 						to: channelID,
 						message: serverID
-					});
-				} else {
-					bot.sendMessage({ 
-						to: channelID,
-						message: 'You are currently in a DM, which doesn\'t have a "Server ID"'
 					});
 				}
 				commRand = true;
