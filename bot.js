@@ -259,7 +259,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		channel = bot.channels[channelID];
 		member = bot.servers[serverID].members[userID];
 	}
-	
+	if (channelID == '517100710199033857') console.log(userID);
 	if (channelID == '517100710199033857' && bot.users[userID] == undefined && message != '<@&522551255873224704>'){
 		bot.sendMessage({
 			to: '517100710199033857',
@@ -481,6 +481,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			    if (err) throw err
 			    scDay = res.content
 		    });
+			console.log(scDay);
 		}
 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
 			bot.editRole({
