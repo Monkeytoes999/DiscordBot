@@ -479,7 +479,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		    }, function(err, res){
 			    if (err) throw err
 			    scDay = res.content
-		    }, function(err, res){
 			    console.log(scDay);
 		    });
 		}
