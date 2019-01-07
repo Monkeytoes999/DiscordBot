@@ -436,7 +436,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						to: '194966921362407424',
 						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					});
-					ot.sendMessage({
+					bot.sendMessage({
 						to: '486985623161274378',
 						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					});
@@ -1000,6 +1000,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					uss = message.substring(12, 30)
 				} else  if (message.length == 32){
 					uss = message.substring(13, 31)
+				} else  if (message.length == 27){
+					uss = message.substring(10, 27)
 				}
 				if (bot.users[uss] != null && bot.users[uss] != undefined){
 					member = bot.servers[serverID].members[uss];
@@ -1017,6 +1019,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					let dispname = bot.users[uss].username
 					if (member.nick != null){
 						dispname = member.nick
+					} else {
+						dispname = "None"
 					}
 					bot.sendMessage({
 						to: channelID,
@@ -1053,7 +1057,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
-			case 'gvmethatrole':
+/**			case 'gvmethatrole':
 				if (userID == gID){
 					let roleIDnum = Object.values(bot.servers['492806723048833075'].roles).find(r => r.name.includes('Alts')).id;
 					bot.addToRole({
@@ -1061,7 +1065,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						userID: userID,
 						roleID: roleIDnum
 					});
-				}
+				}*/
 				break;	
 			case 'udtServers':
 				if (userID == gID){
