@@ -449,7 +449,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 					scDayChange = true;
 				}
-			} else if(scDay.toUpperCase != 'NONE'){
+			} else if(scDay.toUpperCase() != 'NONE'){
 				bot.sendMessage({
 					to: '458809225120972800',
 					message: scDay
@@ -479,7 +479,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		    }, function(err, res){
 			    if (err) throw err
 			    scDay = res.content
-			    console.log(scDay);
+			    console.log(scDay.length);
 		    });
 		}
 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
