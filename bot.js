@@ -267,14 +267,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
-	if (channelID != '513116265439821832'){
-		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
-		bot.sendMessage({
-			to: '513116265439821832',
-			message: bot.fixMessage(sndMess)
-		});
-	}
-	
 	if (prevDay == undefined){
 		bot.setPresence({
 			game: {
