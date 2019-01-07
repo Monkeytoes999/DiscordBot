@@ -1543,12 +1543,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'getServerID':
-				if (!bot.directMessages[channelID]){
-					bot.sendMessage({
-						to: channelID,
-						message: serverID
-					});
-				}
+				bot.sendMessage({
+					to: channelID,
+					message: serverID
+				});
 				commRand = true;
 				break;
 			case 'createAtappPoll':
