@@ -752,7 +752,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 
 
-	    if (message.indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null) {
+	    if (message.indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null && !bot.directMessages[channelID]) {
 		knockknock = 0
 		var args = message.substring(1).split(' ');
 		var cmd = args[0];
