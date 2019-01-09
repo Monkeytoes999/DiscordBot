@@ -786,7 +786,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				bot.sendMessage({
 					to: channelID,
-					message: 'Here is your voting link!: \nhttps://discordbots.org/bot/495705429150793739/vote \n' + votcomm
+					message: 'Here is your voting link!: \nhttps://discordbots.org/bot/495705429150793739/vote \n'
 				});
 				commRand = true;
 				break;
