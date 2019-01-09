@@ -84,7 +84,6 @@ var randSong = ['https://www.youtube.com/watch?v=pYCPGEEvkJU','https://m.youtube
 var randVideo = ['https://m.youtube.com/watch?v=W9gxFkOz2_4'];
 var commRand = false;
 
-
 //team blue 499003285106196480
 //team red 499003389955407872
 //team green 499003482922024960
@@ -100,6 +99,8 @@ var bot = new Discord.Client({
    token: process.env.token,
    autorun: true
 });
+const DBL = require("dblapi.js");
+const dbl = new DBL(process.env.dtoken, bot);
 
 bot.on('ready', function (evt) {
     logger.info('Connected');
@@ -775,6 +776,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.sendMessage({
 					to: channelID,
 					message: 'Thank you, your suggestion will be considered. Please keep in mind that all suggestions must be English, curse free, and less than 15 minutes long.'
+				});
+				commRand = true;
+				break;
+			case 'vote':
+				let votcomm = 'You have not voted yet today!'
+				if (dbl.hasVoted(userID)){
+					votcomm = 'You have already voted today! Thanks!'
+				}
+				bot.sendMessage({
+					to: channelID,
+					message: 'Here is your voting link!: \nhttps://discordbots.org/bot/495705429150793739/vote \n' + votcomm
 				});
 				commRand = true;
 				break;
