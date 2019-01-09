@@ -480,7 +480,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		    }, function(err, res){
 			    if (err) throw err
 			    scDay = res.content
-			    console.log(scDay.length);
 		    });
 		}
 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
@@ -781,9 +780,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'vote':
 				let votcomm = 'You have not voted yet today!'
-				if (dbl.hasVoted(userID)){
+				dbl.hasVoted(userID).then( res => {
 					votcomm = 'You have already voted today! Thanks!'
-				}
+				}).catch( err => {
+					console.log(err)
+				})
 				bot.sendMessage({
 					to: channelID,
 					message: 'Here is your voting link!: \nhttps://discordbots.org/bot/495705429150793739/vote \n'
