@@ -598,16 +598,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (!(bot.users[userID].bot)){
 
 
-		if (cussmessage.includes('OWO') && process.env.bikServers.includes(serverID)){
-			if (serverID != 500864200378155008 && allowOwo && serverID != 505565358560772096 && channelID != 501934275860496395){
-				bot.sendMessage({
-					to: channelID,
-					message: 'What\'s this?'
-				}, function(err, res){
-					console.log(err)
-				});
-			}
-		}
+// 		if (cussmessage.includes('OWO')){
+// 			if (serverID != 500864200378155008 && allowOwo && serverID != 505565358560772096 && channelID != 501934275860496395){
+// 				bot.sendMessage({
+// 					to: channelID,
+// 					message: 'What\'s this?'
+// 				}, function(err, res){
+// 					console.log(err)
+// 				});
+// 			}
+// 		}
 				
 		if(someDelArray.includes(userID) && channelID == delNextChannel){
 			bot.deleteMessage({
