@@ -850,6 +850,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			case 'inviteInfo':
+				bot.queryInvite(message.substring(12), function(err, res){
+					let output = 'Invalid Invite'
+					if (res){
+						output = 'Server Name: ' res.name + 'Server ID: ' + res.id
+					}
+					bot.sendMessage({
+						to: channelID,
+						message: output
+					});
+				});
+				commRand = true;
+				break;
 			case 'EDTmess':
 				if (userID == gID){
 					bot.editMessage({
