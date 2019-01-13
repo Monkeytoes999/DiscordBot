@@ -325,7 +325,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		nonWordCurses.push('no')
 	}
 	
-	if (bot.directMessages[channelID] && channelID != '495705429150793739'){
+	if (bot.directMessages[channelID] && channelID != '495705429150793739' && message.indexOf("Our current commands are as follows:") == -1 && message.indexOf("Today is a ") == -1){
 		bot.sendMessage({
 			to: '508329340652748800',
 			message: user + ': ' + message + ' (' + channelID + ')'
