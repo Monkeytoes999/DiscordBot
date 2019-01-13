@@ -854,7 +854,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.queryInvite(message.substring(12), function(err, res){
 					let output = 'Invalid Invite'
 					if (res){
-						output = 'Server Name: ' res.name + 'Server ID: ' + res.id
+						output = 'Server Name: ' + res.name + 'Server ID: ' + res.id
 					}
 					bot.sendMessage({
 						to: channelID,
