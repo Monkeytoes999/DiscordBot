@@ -853,7 +853,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'inviteInfo':
 				bot.queryInvite(message.substring(12), function(err, res){
 					let output = 'Invalid Invite'
-					console.log(res)
 					if (res){
 						output = 'Server Info: \Name:' + res.guild.name + ' ID: ' + res.guild.id + '\nInviter Info: \nName: ' + res.inviter.nickname + ' ID: ' + res.inviter.id
 					}
