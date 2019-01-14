@@ -328,7 +328,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		nonWordCurses.push('no')
 	}
 	
-	if (bot.directMessages[channelID] && channelID != '495705429150793739' && message.indexOf("Our current commands are as follows.") == -1 && message.indexOf("Today is a") == -1 && message.indexOf("will prompt the bot to tell the current prefix,") == -1){
+	if (bot.directMessages[channelID] && channelID != '495705429150793739' && message.indexOf("Our current commands are as follows.") == -1 && message.indexOf("Today is a") == -1 && message.indexOf("This bot comes equipped with a curse censoring feature,") == -1){
 		bot.sendMessage({
 			to: '508329340652748800',
 			message: user + ': ' + message + ' (' + channelID + ')'
