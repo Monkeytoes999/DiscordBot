@@ -83,6 +83,8 @@ var imback = ['I\'mmmmmm baaaack!', 'Did you miss me?', 'Geez, how long was I go
 var randSong = ['https://www.youtube.com/watch?v=pYCPGEEvkJU','https://m.youtube.com/watch?v=1kup8efewac','https://m.youtube.com/watch?v=6jCNibY1LOk','https://www.youtube.com/watch?v=d0RmRJsgP28', 'https://m.youtube.com/watch?v=OvwleF1pOZ0', 'https://m.youtube.com/watch?v=IIaUKTqOEmc'];
 var randVideo = ['https://m.youtube.com/watch?v=W9gxFkOz2_4'];
 var commRand = false;
+var commands = ['ping', 'music', 'portalCat', 'changeMyNickname', 'knockknock', 'randVideo', 'randSong', 'videoSongSuggestions', 'guildLink', 'help', 'rcCM', 'createPoll', 'pollOptions', 'pollResults', 'addCustomResponse', 'vote', 'closePoll', 'createAtappPoll', 'pollAtappOptions', 'addCustomatAtappResponse', 'pollAtappResults', 'votAtapp', 'closeAtapp', 'customCommand', 'feedback', 'suggest', 'userInfo', 'test', 'getChannelID', 'tto', 'findRoleID', 'getServerID', 'inviteInfo'];
+var commandHelp = ['Replys "Pong!", perfect for a game of never-ending ping pong.', 'Replys with the lyrics of a random song.', 'Replys with an animated emoji of a cat jumping into a portal.', 'Changes your nickname to a random nickname from a list.', 'Replys to YOUR knock-knock joke.', 'Replys with a link to a user-suggested video.', 'Replys with a link to a user-suggested song.', 'Sends your video/song suggestion to the owner for review. \nSuggestions must be (mainly) English, curse-free, and under 15 minutes long.', 'Replys with an invite to the GCD Support Server.', 'There are two ways to use this command. \nhelp: DMs you a complete list of commands and descriptions. \nhelp [command]: Replys with a description of that command.', 'Usage: rcCM [@role] [cmd] \nAllows users to join the mentioned role by saying ' + prefix + 'cmd \nTo run the command, your highest role must have admin, and must be higher than the role you are trying to give access to.', 'Follow directions after using this command to create a poll users can respond to.', 'Replys with the options to the current poll.', 'Replys with the current results of the current poll.', 'Usage: addCustomResponse [custom] \nAllows you to add a custom response to a poll.', 'Usage: vote [optionNum] \nAdds your vote to the option specified, you can only vote once per poll.', 'Can only be done by the poll opener, closes the current poll.', 'After using this command, follow directions to create an \'All that apply\' poll.', 'Replys with the options for the current \'All that apply\' poll.', 'Usage: addCustomAtappResponse [custom] \nAllows you to add a custom response to an \'All that apply\' poll.' 'Replys with the current results for the current \'All that apply\' poll.', 'Allows you to vote for an option in an \'All that apply\' poll. Can be used multiple times.', 'Allows the owner of an \'All that apply\' poll to close it.', 'Usage: customCommand[1/2/3] \nAllows users to create custom (temporary) commands by running the command and following instructions', 'Usage: feeback [feedback] \nSends your feedback to the creator.', 'Usage: suggest [suggestion] \nSends your suggestion to the creator.', 'Usage: useInfo [@user] \nReplys with information about the mentioned user.', 'Replys with a sample of code currently in development.', 'Replys with the ID of the current channel.', 'Usage: tto [input] \nRepeats the input back', 'Usage: findRoleID [@role] \nReplys with the ID of the mentioned role.', 'Replys with the ID of the current server.', 'Usage: inviteInfo [invite] \nReplys with info about the invite given.'];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -94,7 +96,7 @@ logger.add(new logger.transports.Console, {
     colorize: true
 });
 logger.level = 'debug';
-// Initialize Discord Bot
+// Initialize Discord Bot 
 var bot = new Discord.Client({
    token: process.env.token,
    autorun: true
@@ -1393,22 +1395,43 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'help':
 				let usrID = userID;
-				bot.sendMessage({
-					to: userID,
-					message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin, and must be higher than the role you are trying to give access to. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply polls, createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], clostAtappPoll. These work the same as regular polls, but users can choose multiple responses \nCustomCommand [1/2/3] - allows users to create custom commands by following instructions. \nfeedback - sends feedback to the creator. \nsuggest - sends a suggestion to the creator.'
-				}, function(err, res){
-					if (err) throw err;
+				if (message.length == 5){
 					bot.sendMessage({
-						to: usrID,
-						message: '<:Spacer:511733500035203108>\n**Utilites** \nuserInfo [@user] - Will display information about the requested user. :tools: \ntest - returns output for random test code. \ngetChannelID - returns the ID of the current channel. \ntto [input] - repeats the input given. \nfindRoleID [role] - returns the ID of the role given. \ngetServerID - returns the ID of your current server. \n \n**Non-commands** :triangular_flag_on_post: \nThis bot comes equipped with a curse censoring feature, which will cause curses to be deleted. I am currently working on a command for server owner that will turn this off. \nThis bot will DM specific users to let them know if it is a [A] or [B] day. \nThis bot has a feature where it will change the name of specific roles to be new cat breeds daily. \nThis bot comes with a detector that will say "What\'s this?" whenever someone says any form of "owo". \nSaying "Graham Channel Destroyer" will prompt the bot to tell the current prefix, and the array number of the current spam password.'
+						to: userID,
+						message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nhelp [command] - displays information about the given command. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin, and must be higher than the role you are trying to give access to. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply polls, createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], closeAtappPoll. These work the same as regular polls, but users can choose multiple responses \ncustomCommand[1/2/3] - allows users to create custom commands by following instructions. \nfeedback - sends feedback to the creator. \nsuggest - sends a suggestion to the creator.'
+					}, function(err, res){
+						if (err) throw err;
+						bot.sendMessage({
+							to: usrID,
+							message: '<:Spacer:511733500035203108>\n**Utilites** \nuserInfo [@user] - Will display information about the requested user. :tools: \ntest - returns output for random test code. \ngetChannelID - returns the ID of the current channel. \ntto [input] - repeats the input given. \nfindRoleID [role] - returns the ID of the role given. \ngetServerID - returns the ID of your current server. \ninviteInfo [invite code]: This command will give you relevant information about the invite in question \n \n**Non-commands** :triangular_flag_on_post: \nThis bot comes equipped with a curse censoring feature, which will cause curses to be deleted. I am currently working on a command for server owner that will turn this off. \nThis bot will DM specific users to let them know if it is a [A] or [B] day. \nThis bot has a feature where it will change the name of specific roles to be new cat breeds daily. \nThis bot comes with a detector that will say "What\'s this?" whenever someone says any form of "owo". \nSaying "Graham Channel Destroyer" will prompt the bot to tell the current prefix.'
+						});
 					});
-				});
-				if(!bot.directMessages[channelID]){
-					bot.sendMessage({
-						to: channelID,
-						message: 'Documentation has been sent to your dms.'
-					});
-				}
+					if(!bot.directMessages[channelID]){
+						bot.sendMessage({
+							to: channelID,
+							message: 'Documentation has been sent to your dms.'
+						});
+					}
+				} else {
+					let commandHelper = message.substring(6).toLowerCase();
+					let commandCheck = 0;
+					let commandCheckFound = false;
+					while (commandCheck < commands.length && !commandCheckFound){
+						if (commands[commandCheck].toLowerCase() == commandHelper){
+							commandCheckFound = true;
+							bot.sendMessage({
+								to: channelID,
+								message: '**' + commands[commandCheck] + '** \n' + commandHelp[commandCheck]
+							});
+						}
+					}
+					if (!commandCheckFound){
+						bot.sendMessage({
+							to: channelID,
+							message: 'Invalid command'
+						});
+					}
+				}	
 				commRand = true;
 				break;
 			case 'allowBreedChange':
