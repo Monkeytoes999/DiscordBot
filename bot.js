@@ -1426,6 +1426,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								message: '**' + commands[commandCheck] + '** \n' + commandHelp[commandCheck]
 							});
 						}
+						commandCheck = commandCheck + 1;
 					}
 					if (!commandCheckFound){
 						bot.sendMessage({
