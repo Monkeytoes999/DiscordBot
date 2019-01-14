@@ -1413,11 +1413,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				} else {
+					console.log('here');
 					let commandHelper = message.substring(6).toLowerCase();
 					let commandCheck = 0;
 					let commandCheckFound = false;
 					while (commandCheck < commands.length && !commandCheckFound){
 						if (commands[commandCheck].toLowerCase() == commandHelper){
+							console.log('here too');
 							commandCheckFound = true;
 							bot.sendMessage({
 								to: channelID,
