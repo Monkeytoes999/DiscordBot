@@ -10,6 +10,8 @@ var joke = '.';
 var gID = '393586279964475393';
 var curses = ['SHIT', 'FUCC', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'SEMEN', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
 var nonWordCurses = ['SHIT', 'FUCC', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'no', 'no', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var cussSymbols = ['$'];
+var cussLetters = ['S'];
 var prevEvtID = 0;
 var commandList = ['__', '__', '__'];
 var resultList = ['__', '__', '__'];
@@ -177,6 +179,14 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		if (cussmessage.includes(symbolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
 			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
+			i = i-1;
+		}
+	}
+		
+	for (var i = 0; i < cussSymbols.length; i++){
+		if (cussmessage.includes(cussSymbols[i])){
+			spot = cussmessage.indexOf(cussSymbols[i]);
+			cussmessage = cussmessage.substring(0, spot) + cussLetters[i] + cussmessage.substring(spot + 1);
 			i = i-1;
 		}
 	}
@@ -533,6 +543,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		if (cussmessage.includes(symbolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
 			cussmessage = cussmessage.substring(0, spot) + cussmessage.substring(spot + 1);
+			i = i-1;
+		}
+	}
+	
+	for (var i = 0; i < cussSymbols.length; i++){
+		if (cussmessage.includes(cussSymbols[i])){
+			spot = cussmessage.indexOf(cussSymbols[i]);
+			cussmessage = cussmessage.substring(0, spot) + cussLetters[i] + cussmessage.substring(spot + 1);
 			i = i-1;
 		}
 	}
