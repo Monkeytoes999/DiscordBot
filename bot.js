@@ -2,14 +2,15 @@ var Discord = require('discord.io');
 var logger = require('winston');
 var fs = require('fs');
 var serverOptions = require('./serverOptions.json');
-var prefix = '!';
+var ffmpeg = require('ffmpeg');
+var prefix = 'gcd.';
 var passnum = 0; 
 var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE', 'PiXIs', 'MuchACHA', 'AkeYLA'];
 var knockknock = 0;
 var joke = '.';
 var gID = '393586279964475393';
-var curses = ['SHIT', 'FUCC', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'SEMEN', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
-var nonWordCurses = ['SHIT', 'FUCC', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'no', 'no', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var curses = ['SHIT', 'FUCC', 'SCROTUM', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'SEMEN', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var nonWordCurses = ['SHIT', 'FUCC', 'SCROTUM', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'no', 'no', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
 var prevEvtID = 0;
 var commandList = ['__', '__', '__'];
 var resultList = ['__', '__', '__'];
@@ -67,7 +68,7 @@ var openAtappPoll = false;
 var pollAtappOpener = 0;
 var allowOwo = true;
 var allowCuss = false;
-var notCusses = ['ASSU', 'ASSE', 'ASSA', 'ASSI', 'ASSO', 'ASSY', 'ASSM', 'TITLE', 'CUMULATIVE', 'SEXY', 'SEXISM'];
+var notCusses = ['ASSU', 'ASSE', 'ASSA', 'ASSI', 'ASSO', 'ASSY', 'ASSM', 'TITLE', 'CUMULATIVE', 'SEXY', 'SEXISM', 'TITAN','TRAPEZE'];
 var hasMistakenCuss = false;
 var cussIndexes = [];
 var mistakenIndexes = [];
@@ -83,8 +84,8 @@ var imback = ['I\'mmmmmm baaaack!', 'Did you miss me?', 'Geez, how long was I go
 var randSong = ['https://www.youtube.com/watch?v=pYCPGEEvkJU','https://m.youtube.com/watch?v=1kup8efewac','https://m.youtube.com/watch?v=6jCNibY1LOk','https://www.youtube.com/watch?v=d0RmRJsgP28', 'https://m.youtube.com/watch?v=OvwleF1pOZ0', 'https://m.youtube.com/watch?v=IIaUKTqOEmc'];
 var randVideo = ['https://m.youtube.com/watch?v=W9gxFkOz2_4'];
 var commRand = false;
-var commands = ['ping', 'music', 'portalCat', 'changeMyNickname', 'knockknock', 'randVideo', 'randSong', 'videoSongSuggestions', 'guildLink', 'help', 'rcCM', 'createPoll', 'pollOptions', 'pollResults', 'addCustomResponse', 'vote', 'closePoll', 'createAtappPoll', 'pollAtappOptions', 'addCustomatAtappResponse', 'pollAtappResults', 'votAtapp', 'closeAtapp', 'customCommand', 'feedback', 'suggest', 'userInfo', 'test', 'getChannelID', 'tto', 'findRoleID', 'getServerID', 'inviteInfo'];
-var commandHelp = ['Replys "Pong!", perfect for a game of never-ending ping pong.', 'Replys with the lyrics of a random song.', 'Replys with an animated emoji of a cat jumping into a portal.', 'Changes your nickname to a random nickname from a list.', 'Replys to YOUR knock-knock joke.', 'Replys with a link to a user-suggested video.', 'Replys with a link to a user-suggested song.', 'Sends your video/song suggestion to the owner for review. \nSuggestions must be (mainly) English, curse-free, and under 15 minutes long.', 'Replys with an invite to the GCD Support Server.', 'There are two ways to use this command. \nhelp: DMs you a complete list of commands and descriptions. \nhelp [command]: Replys with a description of that command.', 'Usage: rcCM [@role] [cmd] \nAllows users to join the mentioned role by saying ' + prefix + 'cmd \nTo run the command, your highest role must have admin, and must be higher than the role you are trying to give access to.', 'Follow directions after using this command to create a poll users can respond to.', 'Replys with the options to the current poll.', 'Replys with the current results of the current poll.', 'Usage: addCustomResponse [custom] \nAllows you to add a custom response to a poll.', 'Usage: vote [optionNum] \nAdds your vote to the option specified, you can only vote once per poll.', 'Can only be done by the poll opener, closes the current poll.', 'After using this command, follow directions to create an \'All that apply\' poll.', 'Replys with the options for the current \'All that apply\' poll.', 'Usage: addCustomAtappResponse [custom] \nAllows you to add a custom response to an \'All that apply\' poll.', 'Replys with the current results for the current \'All that apply\' poll.', 'Allows you to vote for an option in an \'All that apply\' poll. Can be used multiple times.', 'Allows the owner of an \'All that apply\' poll to close it.', 'Usage: customCommand[1/2/3] \nAllows users to create custom (temporary) commands by running the command and following instructions', 'Usage: feeback [feedback] \nSends your feedback to the creator.', 'Usage: suggest [suggestion] \nSends your suggestion to the creator.', 'Usage: useInfo [@user] \nReplys with information about the mentioned user.', 'Replys with a sample of code currently in development.', 'Replys with the ID of the current channel.', 'Usage: tto [input] \nRepeats the input back', 'Usage: findRoleID [@role] \nReplys with the ID of the mentioned role.', 'Replys with the ID of the current server.', 'Usage: inviteInfo [invite] \nReplys with info about the invite given.'];
+var commands = ['ping', 'music', 'portalCat', 'changeMyNickname', 'knockknock', 'randVideo', 'randSong', 'videoSongSuggestions', 'guildLink', 'help', 'rcCM', 'createPoll', 'pollOptions', 'pollResults', 'addCustomResponse', 'vote', 'closePoll', 'createAtappPoll', 'pollAtappOptions', 'addCustomatAtappResponse', 'pollAtappResults', 'votAtapp', 'closeAtapp', 'customCommand', 'feedback', 'suggest', 'userInfo', 'test', 'getChannelID', 'tto', 'findRoleID', 'getServerID', 'inviteInfo', 'purge'];
+var commandHelp = ['Replys "Pong!", perfect for a game of never-ending ping pong.', 'Replys with the lyrics of a random song.', 'Replys with an animated emoji of a cat jumping into a portal.', 'Changes your nickname to a random nickname from a list.', 'Replys to YOUR knock-knock joke.', 'Replys with a link to a user-suggested video.', 'Replys with a link to a user-suggested song.', 'Sends your video/song suggestion to the owner for review. \nSuggestions must be (mainly) English, curse-free, and under 15 minutes long.', 'Replys with an invite to the GCD Support Server.', 'There are two ways to use this command. \nhelp: DMs you a complete list of commands and descriptions. \nhelp [command]: Replys with a description of that command.', 'Usage: rcCM [@role] [cmd] \nAllows users to join the mentioned role by saying ' + prefix + 'cmd \nTo run the command, your highest role must have admin, and must be higher than the role you are trying to give access to.', 'Follow directions after using this command to create a poll users can respond to.', 'Replys with the options to the current poll.', 'Replys with the current results of the current poll.', 'Usage: addCustomResponse [custom] \nAllows you to add a custom response to a poll.', 'Usage: vote [optionNum] \nAdds your vote to the option specified, you can only vote once per poll.', 'Can only be done by the poll opener, closes the current poll.', 'After using this command, follow directions to create an \'All that apply\' poll.', 'Replys with the options for the current \'All that apply\' poll.', 'Usage: addCustomAtappResponse [custom] \nAllows you to add a custom response to an \'All that apply\' poll.', 'Replys with the current results for the current \'All that apply\' poll.', 'Allows you to vote for an option in an \'All that apply\' poll. Can be used multiple times.', 'Allows the owner of an \'All that apply\' poll to close it.', 'Usage: customCommand[1/2/3] \nAllows users to create custom (temporary) commands by running the command and following instructions', 'Usage: feeback [feedback] \nSends your feedback to the creator.', 'Usage: suggest [suggestion] \nSends your suggestion to the creator.', 'Usage: useInfo [@user] \nReplys with information about the mentioned user.', 'Replys with a sample of code currently in development.', 'Replys with the ID of the current channel.', 'Usage: tto [input] \nRepeats the input back', 'Usage: findRoleID [@role] \nReplys with the ID of the mentioned role.', 'Replys with the ID of the current server.', 'Usage: inviteInfo [invite] \nReplys with info about the invite given.', 'Usage: purge [num] \nPurges the number of messages requested (This number does not include the gcd.purge message, which is also deleted)'];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -282,7 +283,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		bot.setPresence({
 			game: {
 				type: 0,
-				name: 'in ' + Object.keys(bot.servers).length + ' servers!'
+				name: 'in ' + Object.keys(bot.servers).length + ' servers! gcd.help | gcd.guildLink'
 			}
 		}, function(err, res){
 			if (err) throw err
@@ -328,7 +329,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		nonWordCurses.push('no')
 	}
 	
-	if (bot.directMessages[channelID] && channelID != '495705429150793739' && message.indexOf("Our current commands are as follows.") == -1 && message.indexOf("Today is a") == -1 && message.indexOf("will prompt the bot to tell the current prefix,") == -1){
+	if (bot.directMessages[channelID] && channelID != '495705429150793739' && message.indexOf("Our current commands are as follows.") == -1 && message.indexOf("Today is a") == -1 && message.indexOf("This bot comes equipped with a curse censoring feature,") == -1){
 		bot.sendMessage({
 			to: '508329340652748800',
 			message: user + ': ' + message + ' (' + channelID + ')'
@@ -367,7 +368,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			bot.setPresence({
 				game: {
 					type: 0,
-					name: 'in ' + Object.keys(bot.servers).length + ' servers!'
+					name: 'in ' + Object.keys(bot.servers).length + ' servers! gcd.help | gcd.guildLink'
 				}
 			}, function(err, res){
 				if (err) throw err
@@ -565,7 +566,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 
 
-		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
+		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
 				bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
@@ -577,6 +578,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.sendMessage({
 					to: '509920937093890058',
 					message: userID
+				});
+				bot.sendMessage({
+					to: '524703539801489418',
+					message: message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
 				});
 		}
 		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
@@ -747,7 +752,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		}
 
-		if (message.indexOf((prefix + 'changePrefix')) == 0){
+		if (message.toLowerCase().indexOf((prefix + 'changePrefix')) == 0 && userID == gID){
 			prefix = message.substring(message.indexOf('changePrefix') + 13);
 			bot.sendMessage({
 				to: channelID,
@@ -756,12 +761,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 
 
-	    if (message.indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null && !bot.directMessages[channelID]) {
+	    if (message.toLowerCase().indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null && !bot.directMessages[channelID]) {
 		knockknock = 0
-		var args = message.substring(1).split(' ');
+		var args = message.substring(4).split(' ');
 		var cmd = args[0];
 
-		args = args.splice(1);
+		args = args.splice(4);
 		switch(cmd) {
 		    // !ping
 		    case 'ping':
@@ -774,7 +779,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'videoSongSuggestions':
 				bot.sendMessage({
 					to: '522570244502454273',
-					message: user + ' suggests: ' + message.substring(22)
+					message: user + ' suggests: ' + message.substring(25)
 				});
 				bot.sendMessage({
 					to: channelID,
@@ -782,17 +787,105 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			case 'leaveVC':
+				bot.leaveVoiceChannel(bot.servers[serverID].members['495705429150793739'].voice_channel_id);
+				commRand = true;
+				break;
+			case 'purge':
+				if (message.length < 11 || !(message.substring(9, 10) == ' ')){
+					bot.sendMessage({
+						to: channelID,
+						message: 'Please include the number of messages to purge (gcd.purge [num])'
+					});
+				} else if (parseInt(message.substring(10)) > 100){
+					bot.sendMessage({
+						to: channelID,
+						message: 'The max number of messages to purge is 100'
+					});
+				} else	{
+					let purgeMess = prevEvtID
+					bot.getMessages({
+						channelID: channelID,
+						limit: parseInt(message.substring(10)),
+						before: prevEvtID
+					}, function(err, res){
+						let resMesIDs = []
+						let resMesIDnum = 0;
+						while (resMesIDnum < parseInt(message.substring(10))){
+						       resMesIDs.push(res[resMesIDnum].id)
+							resMesIDnum = resMesIDnum + 1
+						}
+						bot.deleteMessages({
+							channelID: channelID,
+							messageIDs: resMesIDs
+						})
+						bot.sendMessage({
+							to: channelID,
+							message: parseInt(message.substring(10)) + ' messages deleted.'
+						}, function(errr, ress){
+							setTimeout(() => {
+								bot.deleteMessage({
+									channelID: channelID,
+									messageID: ress.id
+								});
+								bot.deleteMessage({
+									channelID: channelID,
+									messageID: purgeMess
+								});
+							}, 2000);
+						});
+					});
+				}
+				commRand = true;
+				break;
 			case 'vote':
-				let votcomm = 'You have not voted yet today!'
-				dbl.hasVoted(userID).then( res => {
-					votcomm = 'You have already voted today! Thanks!'
-				}).catch( err => {
-					console.log(err)
-				})
-				bot.sendMessage({
-					to: channelID,
-					message: 'Here is your voting link!: \nhttps://discordbots.org/bot/495705429150793739/vote \n' + votcomm
-				});
+				if (message.length < 9){
+					let votcomm = 'You have not voted yet today!'
+					dbl.hasVoted(userID).then( res => {
+						if (res) votcomm = 'You have already voted today! Thanks!'
+					}).catch( err => {
+						console.log(err)
+					})
+					setTimeout(() => {
+						bot.sendMessage({
+							to: channelID,
+							message: 'Here is your voting link!: \nhttps://discordbots.org/bot/495705429150793739/vote \n' + votcomm
+						});
+					}, 1000)
+				} else {
+					if (openPoll){
+						let userAlreadyVoted = false;
+						for (var j = 0; j < polledUsers.length; j++){
+							if ( userID == polledUsers[j]){
+								userAlreadyVoted = true;
+							}
+						}
+						if (userAlreadyVoted){
+							bot.sendMessage({
+								to: channelID,
+								message: 'You already voted, ' + user
+							});
+						}
+						if (!userAlreadyVoted){
+							let voteNum = message.substring(9)
+							for (var l = 0; l < pollOptions.length; l++){
+								if (voteNum == l + 1){
+									polledUsers[polledUsers.length] = userID;
+									pollVotes[l] = pollVotes[l] + 1;
+									bot.sendMessage({
+										to: channelID,
+										message: 'Okay ' + user + ', you have voted for: ' + pollOptions[l] + '.'
+									});
+								}
+							}
+						}
+					} else {
+						bot.sendMessage({
+							to: channelID,
+							message: user + ', there is no open poll right now'
+						});
+					}
+				}
 				commRand = true;
 				break;
 			case 'randVideo':
@@ -855,7 +948,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'inviteInfo':
-				bot.queryInvite(message.substring(12), function(err, res){
+				bot.queryInvite(message.substring(15), function(err, res){
 					let output = 'Invalid Invite'
 					if (res){
 						output = '**Server Info:** \nName: ' + res.guild.name + '\nID: ' + res.guild.id + '\n**Inviter Info:** \nName: ' + res.inviter.username + '\nID: ' + res.inviter.id
@@ -871,8 +964,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (userID == gID){
 					bot.editMessage({
 						channelID: channelID,
-						messageID: message.substring(9, 28),
-						message: message.substring(29)
+						messageID: message.substring(12, 31),
+						message: message.substring(32)
 					});	
 				}
 				commRand = true;
@@ -914,7 +1007,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				bot.sendMessage({
 					to: '511728374704504847',
-					message: user + ' says: ' + message.substring(10)
+					message: user + ' says: ' + message.substring(13)
 				});
 				commRand = true;
 				break;
@@ -925,12 +1018,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				bot.sendMessage({
 					to: '511700319294717974',
-					message: user + ' suggests: ' + message.substring(9)
+					message: user + ' suggests: ' + message.substring(12)
 				});
 				case 'drct':
 				bot.removeReaction({
 				    channelID: '506881793123811338',
-				    messageID: message.substring(6),
+				    messageID: message.substring(9),
 				    reaction: "💚"
 				});
 				commRand = true;
@@ -938,7 +1031,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'rct':
 				bot.addReaction({
 				    channelID: '506881793123811338',
-				    messageID: message.substring(5),
+				    messageID: message.substring(8),
 				    reaction: "💚"
 				});
 				commRand = true;
@@ -949,6 +1042,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							channelID: channelID,
 							messageID: evt.d.id
 						});
+					if (serverID == '537403192699387914'){
+					    bot.addToRole({
+					    	serverID: serverID,
+					    	userID: userID,
+					    	roleID: '537456735867240448',
+					    });
+					}
 					if (serverID == '505565358560772096'){
 						bot.addToRole({
 							serverID: serverID,
@@ -1026,10 +1126,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 // 				});
 				let play = 'Nothing'
 				let uss = userID
-				if (message.length == 31){
-					uss = message.substring(12, 30)
-				} else  if (message.length == 32){
-					uss = message.substring(13, 31)
+				if (message.length == 34){
+					uss = message.substring(15, 33)
+				} else  if (message.length == 35){
+					uss = message.substring(16, 34)
 				}
 				if (bot.users[uss] != null && bot.users[uss] != undefined){
 					member = bot.servers[serverID].members[uss];
@@ -1098,7 +1198,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					bot.setPresence({
 						game: {
 							type: 0,
-							name: 'in ' + Object.keys(bot.servers).length + ' servers!'
+							name: 'in ' + Object.keys(bot.servers).length + ' servers! gcd.help | gcd.guildLink'
 						}
 					}, function(err, res){
 						if (err) throw err
@@ -1109,27 +1209,27 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'ttb':
 				bot.sendMessage({
 					to: '486985623161274378',
-					message: user + ' wanted me to tell you this: ' + message.substring(5)
+					message: user + ' wanted me to tell you this: ' + message.substring(8)
 				});
 				commRand = true;
 				break;
 			case 'ttw':
 				bot.sendMessage({
 					to: '264445053596991498',
-					message: message.substring(4)
+					message: message.substring(7)
 				});
 				commRand = true;
 				break;
 			case 'ttu':
-				if(message.substring(5,6) != '<'){
+				if(message.substring(8,9) != '<'){
 					bot.sendMessage({
-						to: message.substring(5,23),
-						message: message.substring(24)
+						to: message.substring(8,26),
+						message: message.substring(27)
 					});
 				} else {
 					bot.sendMessage({
-						to: message.substring(7,25),
-						message: message.substring(27)
+						to: message.substring(10,28),
+						message: message.substring(30)
 					});
 				}
 				commRand = true;
@@ -1180,26 +1280,21 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'test':
-				if (userID = gID){
-					bot.ban({
-						serverID:'505565358560772096',
-						userID: '275270122082533378'
+				bot.sendMessage({
+					to: channelID,
+					message: "RUN THIS COMMAND WHILE IN A VC"
+				});
+				let vcID = member.voice_channel_id
+				bot.joinVoiceChannel(vcID, function(err, res){
+					console.log(err, res)
+					if (err) return console.error(err);
+					bot.getAudioContext(vcID, function(error, stream){
+						if (error) return console.error(error);
+				    		fs.createReadStream('https://www.youtube.com/watch?v=SjHUb7NSrNk').pipe(stream, {end: false});
+						stream.on('done', function() {
+						});
 					});
-					bot.ban({
-						serverID:'505565358560772096',
-						userID: '495703108912021545'
-					});
-					bot.ban({
-						serverID:'505565358560772096',
-						userID: '408785106942164992'
-					});
-					bot.removeFromRole({
-						serverID: '505565358560772096',
-						userID: '336507246227881984',
-						roleID: '507688970717495296'
-					});
-						
-				}
+				});
 				commRand = true;
 				break;
 			case 'INVVV':
@@ -1257,7 +1352,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 													messageID: '512783273601138698'
 												}, function(errr, resss){
 	// 												console.log(3)
-													if (resss.content.length + message.substring(30).length + 2 < 2000){
+													if (resss.content.length + message.substring(33).length + 2 < 2000){
 														bot.editMessage({
 															channelID: '512776592536109057',
 															messageID: '512782505284206593',
@@ -1273,9 +1368,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 														bot.editMessage({
 															channelID: '512776592536109057',
 															messageID: '512783273601138698',
-															message: resss.content + ', ' + message.substring(29)
+															message: resss.content + ', ' + message.substring(32)
 														});
-														commRK.push(message.substring(29));
+														commRK.push(message.substring(32));
 														bot.sendMessage({
 															to: channelID,
 															message: 'Your commmand has been created.'
@@ -1333,7 +1428,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (channelID != '517100710199033857'){
 					 bot.sendMessage({
 						to: channelID,
-						message: bot.fixMessage(message.substring(5))
+						message: bot.fixMessage(message.substring(8))
 					});
 				}
 				commRand = true;
@@ -1344,7 +1439,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					arrayUserNeed = 'Graham Channel Destroyer';
 				}
 				else {
-					arrayUserNeed = message.substring(7);
+					arrayUserNeed = message.substring(10);
 				}
 				for (var testArrayNum = 0; testArrayNum < 100; testArrayNum ++){
 					if (arrayUserNeed == lastHunUserIds[testArrayNum]){
@@ -1381,8 +1476,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'setScDay':
-				if (message.length = 10 && userID == gID){
-					scDay = message.substring(9);
+				if (message.length = 13 && userID == gID){
+					scDay = message.substring(12);
 					bot.sendMessage({
 						to: channelID,
 						message: 'Ok, today is now a ' + scDay + ' day.'
@@ -1397,10 +1492,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'help':
 				let usrID = userID;
-				if (message.length == 5){
+				if (message.length == 8){
 					bot.sendMessage({
 						to: userID,
-						message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nhelp [command] - displays information about the given command. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin, and must be higher than the role you are trying to give access to. \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply polls, createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], closeAtappPoll. These work the same as regular polls, but users can choose multiple responses \ncustomCommand[1/2/3] - allows users to create custom commands by following instructions. \nfeedback - sends feedback to the creator. \nsuggest - sends a suggestion to the creator.'
+						message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nhelp [command] - displays information about the given command. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin, and must be higher than the role you are trying to give access to. \npurge [num] - Purges the number of messages requested (This number does not include the gcd.purge message, which is also deleted). \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply polls, createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], closeAtappPoll. These work the same as regular polls, but users can choose multiple responses \ncustomCommand[1/2/3] - allows users to create custom commands by following instructions. \nfeedback - sends feedback to the creator. \nsuggest - sends a suggestion to the creator.'
 					}, function(err, res){
 						if (err) throw err;
 						bot.sendMessage({
@@ -1415,7 +1510,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				} else {
-					let commandHelper = message.substring(6).toLowerCase();
+					let commandHelper = message.substring(9).toLowerCase();
 					let commandCheck = 0;
 					let commandCheckFound = false;
 					while (commandCheck < commands.length && !commandCheckFound){
@@ -1442,9 +1537,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'findRoleID':
-				if (message.length > 11){
-					if (Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))) != undefined){
-						let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(12))).id;
+				if (message.length > 14){
+					if (Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(15))) != undefined){
+						let roleIDnum = Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(15))).id;
 						bot.sendMessage({
 							to: channelID,
 							message: roleIDnum
@@ -1474,7 +1569,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'createPoll':
-				if (message == "!createPoll" && !someArray.includes(userID) && !openPoll) {
+				if (message.toLowerCase() == "gcd.createpoll" && !someArray.includes(userID) && !openPoll) {
 					pollOpener = userID;
 				  someArray.push(userID)
 				  bot.sendMessage({
@@ -1535,41 +1630,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
-			case 'vote':
-				if (openPoll){
-					let userAlreadyVoted = false;
-					for (var j = 0; j < polledUsers.length; j++){
-						if ( userID == polledUsers[j]){
-							userAlreadyVoted = true;
-						}
-					}
-					if (userAlreadyVoted){
-						bot.sendMessage({
-							to: channelID,
-							message: 'You already voted, ' + user
-						});
-					}
-					if (!userAlreadyVoted){
-						let voteNum = message.substring(6)
-						for (var l = 0; l < pollOptions.length; l++){
-							if (voteNum == l + 1){
-								polledUsers[polledUsers.length] = userID;
-								pollVotes[l] = pollVotes[l] + 1;
-								bot.sendMessage({
-									to: channelID,
-									message: 'Okay ' + user + ', you have voted for: ' + pollOptions[l] + '.'
-								});
-							}
-						}
-					}
-				} else {
-					bot.sendMessage({
-						to: channelID,
-						message: user + ', there is no open poll right now'
-					});
-				}
-				commRand = true;
-				break;
 			case 'addCustomResponse':
 				if(!openPoll){
 					bot.sendMessage({
@@ -1578,7 +1638,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				}
 				if(openPoll){
-					let customResponse = message.substring(19);
+					let customResponse = message.substring(22);
 					pollOptions[pollOptions.length] = customResponse;
 					pollVotes[pollVotes.length] = 0;
 					bot.sendMessage({
@@ -1651,7 +1711,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				}
 				if(openAtappPoll){
-					let customResponseAtapp = message.substring(24);
+					let customResponseAtapp = message.substring(27);
 					pollAtappOptions[pollAtappOptions.length] = customResponseAtapp;
 					pollAtappVotes[pollAtappVotes.length] = 0;
 					bot.sendMessage({
@@ -1675,7 +1735,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'voteAtapp':
 				let userAlreadyAtappVoted = false;
 				for (var ja = 0; ja < polledAtappUsers.length; ja++){
-					if ( userID == polledAtappUsers[ja] && polledAtappUsers[ja+1] == message.substring(11)){
+					if ( userID == polledAtappUsers[ja] && polledAtappUsers[ja+1] == message.substring(14)){
 						userAlreadyAtappVoted = true;
 					}
 				}
@@ -1686,11 +1746,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				}
 				if (!userAlreadyAtappVoted){
-					let voteNumAtapp = message.substring(11)
+					let voteNumAtapp = message.substring(14)
 					for (var la = 0; la < pollAtappOptions.length; la++){
 						if (voteNumAtapp == la + 1){
 							polledAtappUsers[polledAtappUsers.length] = userID;
-							polledAtappUsers[polledAtappUsers.length] = message.substring(11);
+							polledAtappUsers[polledAtappUsers.length] = message.substring(14);
 							pollAtappVotes[la] = pollAtappVotes[la] + 1;
 							bot.sendMessage({
 								to: channelID,
@@ -1734,7 +1794,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 			break;
 			case 'spamit':
-				if(channelID == spamChannel && message.substring(8) == spamPassword && allowSpam && ((userID == 393586279964475393) || (userID == 495705429150793739))){
+				if(channelID == spamChannel && message.substring(11) == spamPassword && allowSpam && ((userID == 393586279964475393) || (userID == 495705429150793739))){
 					setTimeout(() => {
 						 bot.sendMessage({
 							 to: channelID,
@@ -1748,7 +1808,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				bot.simulateTyping(channelID);
 				bot.deleteMessage({
 						channelID: channelID,
-						messageID: prevEvtID
+						messageID: prevEvtId
 					});
 				commRand = true;
 				break;
@@ -1765,7 +1825,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						channelID: channelID,
 						messageID: prevEvtID
 					});
-				spamPassword = message.substring(13);
+				spamPassword = message.substring(16);
 				spamChannel = channelID;
 				commRand = true;
 				break;
@@ -1906,7 +1966,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 				case 'Aflac':
-					var password = message.substring(9);
+					var password = message.substring(12);
 					if (password == passwords[passnum]){
 						passnum = passnum + 1;
 						bot.deleteMessage({
@@ -1940,7 +2000,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (!bot.directMessages[channelID] && serverID != '264445053596991498'){
 					for (var oqo = 0; oqo < servRK.length; oqo++){
 							if (serverID == servRK[oqo]){
-								if (message.substring(1) == commRK[oqo]){
+								if (message.substring(4) == commRK[oqo]){
 									commRand = true;
 									bot.addToRole({
 										serverID: serverID,
