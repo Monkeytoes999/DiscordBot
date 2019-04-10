@@ -1350,6 +1350,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
 						}
 					}
+					console.log(bot.servers[serverID].roles[topRoleID])
 					if (message.length > 30 && message.length < 45 && message.includes('<@&')){
 						if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
 						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
