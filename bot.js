@@ -1341,7 +1341,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 // 				commRand = true;
 // 				break;
 			case 'toggleNSFW':
-				console.log(bot.servers[serverID].channels[channelID])
 				if (!bot.directMessages[channelID]){
 					let topRole = 0;
 					let topRoleID = serverID;
