@@ -1354,7 +1354,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					if ((bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 16, 1073741824))){
 						bot.editChannelInfo({
 							channelID: channelID,
-							nsfw: bot.servers[serverID].channels[channelID].nsfw
+							nsfw: !bot.servers[serverID].channels[channelID].nsfw
 						});
 					}
 				}
