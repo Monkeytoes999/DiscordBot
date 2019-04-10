@@ -1350,10 +1350,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
 						}
 					}
-					console.log(bot.servers[serverID].roles[topRoleID])
 					if (message.length > 30 && message.length < 45 && message.includes('<@&')){
 						if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
-						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
+						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID].'_permissions'), 268435456, 1073741824)))){
 								bot.getMessage({
 									channelID: '512776592536109057',
 									messageID: '512782505284206593'
@@ -1415,7 +1414,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										});
 									}
 								});
-							}  else if (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR){
+							}  else if (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID].'_permissions'), 268435456, 1073741824))){
 								bot.sendMessage({
 									to: channelID,
 									message: 'Your highest role must be higher in rank than the role you are trying to allow access to.'
@@ -1423,7 +1422,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							} else {
 								bot.sendMessage({
 									to: channelID,
-									message: 'The highest role you have in this server must have admin to run this command!'
+									message: 'The highest role you have in this server must have admin/manage roles to run this command!'
 								});
 							}
 						}
