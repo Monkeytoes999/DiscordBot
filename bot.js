@@ -1340,6 +1340,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 // 				bot.leaveServer('264445053596991498');
 // 				commRand = true;
 // 				break;
+			case 'toggleNSFW':
+				console.log(bot.servers[serverID].channels[channelID])
+				if (!bot.directMessages[channelID]){
+					let topRole = 0;
+					let topRoleID = serverID;
+					for (var iooof = 0; iooof < member.roles.length; iooof++){
+						if (bot.servers[serverID].roles[member.roles[iooof]].position > topRole){
+							topRole = bot.servers[serverID].roles[member.roles[iooof]].position
+							topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
+						}
+					}
+					if ((bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 16, 1073741824))){
+						bot.editChannelInfo({
+							channelID: channelID,
+							nsfw: bot.servers[serverID].channels[channelID].nsfw
+						});
+					}
+				}
+				commRand = true;
+				break;
 			case 'rcCM':
 				if (!bot.directMessages[channelID]){
 					let topRole = 0;
@@ -1350,7 +1370,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
 						}
 					}
-					if (message.length > 30 && message.length < 45 && message.includes('<@&')){
+					if (message.length > 33 && message.length < 48 && message.includes('<@&')){
 						if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
 						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 268435456, 1073741824))){
 								bot.getMessage({
