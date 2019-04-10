@@ -1356,7 +1356,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							channelID: channelID,
 							nsfw: !bot.servers[serverID].channels[channelID].nsfw
 						});
-					}, else {
+					} else {
 						bot.sendMessage({
 							to: channelID,
 							message: 'Your highest role in this server needs to have admin/manage channels to do this!'
