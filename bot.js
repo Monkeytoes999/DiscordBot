@@ -1352,7 +1352,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					}
 					if (message.length > 30 && message.length < 45 && message.includes('<@&')){
 						if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
-						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 268435456, 1073741824)))){
+						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 268435456, 1073741824))){
 								bot.getMessage({
 									channelID: '512776592536109057',
 									messageID: '512782505284206593'
