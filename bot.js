@@ -91,6 +91,24 @@ var commandHelp = ['Replys "Pong!", perfect for a game of never-ending ping pong
 //team red 499003389955407872
 //team green 499003482922024960
 
+//check a permission function. Usage: 1. role permission ID that you're checking, 2. role permission ID that you're looking for, 3. 1073741824. MUST BE 1073741824.
+//This function returns true if role permission you're looking for is inside the roleID permissions ID, otherwise false.
+function checkPerms (roleID, roleIDcheck, currentRoleID){
+  if(currentRoleID==roleIDcheck){
+    if(roleID>=roleIDcheck){
+      return true;
+    }else{
+      return false;
+    }
+  }else{
+    if(roleID>=currentRoleID){
+      return checkPerms((roleID-currentRoleID), roleIDcheck, (currentRoleID/2));
+    }else{
+      return checkPerms((roleID), roleIDcheck, (currentRoleID/2));
+    }
+  }
+}
+
 // Configure logger settings
 logger.remove(logger.transports.Console);
 logger.add(new logger.transports.Console, {
