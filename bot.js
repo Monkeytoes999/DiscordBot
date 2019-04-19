@@ -2047,7 +2047,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			default:
 				if (!bot.directMessages[channelID] && serverID != '264445053596991498'){
-					dtb.query('SELECT roleid FROM rccm WHERE serverid = \'' + serverID + '\' AND command = \'' + message + '\'', function(err, res){
+					let rcMsg = message.substring(4);
+					dtb.query('SELECT roleid FROM rccm WHERE serverid = \'' + serverID + '\' AND command = \'' + rcMsg + '\'', function(err, res){
 						if (err) throw err;
 						if (res.rows[0] != undefined){
 							bot.addToRole({
