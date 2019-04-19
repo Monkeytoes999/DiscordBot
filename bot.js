@@ -85,7 +85,7 @@ var randSong = ['https://www.youtube.com/watch?v=pYCPGEEvkJU','https://m.youtube
 var randVideo = ['https://m.youtube.com/watch?v=W9gxFkOz2_4'];
 var commRand = false;
 var commands = ['ping', 'music', 'portalCat', 'changeMyNickname', 'knockknock', 'randVideo', 'randSong', 'videoSongSuggestions', 'guildLink', 'help', 'rcCM', 'createPoll', 'pollOptions', 'pollResults', 'addCustomResponse', 'vote', 'closePoll', 'createAtappPoll', 'pollAtappOptions', 'addCustomatAtappResponse', 'pollAtappResults', 'votAtapp', 'closeAtapp', 'customCommand', 'feedback', 'suggest', 'userInfo', 'test', 'getChannelID', 'tto', 'findRoleID', 'getServerID', 'inviteInfo', 'purge','gcd.toggleNSFW'];
-var commandHelp = ['Replys "Pong!", perfect for a game of never-ending ping pong.', 'Replys with the lyrics of a random song.', 'Replys with an animated emoji of a cat jumping into a portal.', 'Changes your nickname to a random nickname from a list.', 'Replys to YOUR knock-knock joke.', 'Replys with a link to a user-suggested video.', 'Replys with a link to a user-suggested song.', 'Sends your video/song suggestion to the owner for review. \nSuggestions must be (mainly) English, curse-free, and under 15 minutes long.', 'Replys with an invite to the GCD Support Server.', 'There are two ways to use this command. \nhelp: DMs you a complete list of commands and descriptions. \nhelp [command]: Replys with a description of that command.', 'Usage: rcCM [@role] [cmd] \nAllows users to join the mentioned role by saying ' + prefix + 'cmd \nTo run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to.', 'Follow directions after using this command to create a poll users can respond to.', 'Replys with the options to the current poll.', 'Replys with the current results of the current poll.', 'Usage: addCustomResponse [custom] \nAllows you to add a custom response to a poll.', 'Usage: vote [optionNum] \nAdds your vote to the option specified, you can only vote once per poll.', 'Can only be done by the poll opener, closes the current poll.', 'After using this command, follow directions to create an \'All that apply\' poll.', 'Replys with the options for the current \'All that apply\' poll.', 'Usage: addCustomAtappResponse [custom] \nAllows you to add a custom response to an \'All that apply\' poll.', 'Replys with the current results for the current \'All that apply\' poll.', 'Allows you to vote for an option in an \'All that apply\' poll. Can be used multiple times.', 'Allows the owner of an \'All that apply\' poll to close it.', 'Usage: customCommand[1/2/3] \nAllows users to create custom (temporary) commands by running the command and following instructions', 'Usage: feeback [feedback] \nSends your feedback to the creator.', 'Usage: suggest [suggestion] \nSends your suggestion to the creator.', 'Usage: useInfo [@user] \nReplys with information about the mentioned user.', 'Replys with a sample of code currently in development.', 'Replys with the ID of the current channel.', 'Usage: tto [input] \nRepeats the input back', 'Usage: findRoleID [@role] \nReplys with the ID of the mentioned role.', 'Replys with the ID of the current server.', 'Usage: inviteInfo [invite] \nReplys with info about the invite given.', 'Usage: purge [num] \nPurges the number of messages requested (This number does not include the gcd.purge message, which is also deleted)','Toggles the NSFW quality for the current channel. \nTo run the command, your highest role must have admin/manage channels.'];
+var commandHelp = ['Replys "Pong!", perfect for a game of never-ending ping pong.', 'Replys with the lyrics of a random song.', 'Replys with an animated emoji of a cat jumping into a portal.', 'Changes your nickname to a random nickname from a list.', 'Replys to YOUR knock-knock joke.', 'Replys with a link to a user-suggested video.', 'Replys with a link to a user-suggested song.', 'Sends your video/song suggestion to the owner for review. \nSuggestions must be (mainly) English, curse-free, and under 15 minutes long.', 'Replys with an invite to the GCD Support Server.', 'There are two ways to use this command. \nhelp: DMs you a complete list of commands and descriptions. \nhelp [command]: Replys with a description of that command.', 'Usage: rcCM [@role] [cmd] \nAllows users to join/leave the mentioned role by saying ' + prefix + 'cmd \nTo run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to.', 'Follow directions after using this command to create a poll users can respond to.', 'Replys with the options to the current poll.', 'Replys with the current results of the current poll.', 'Usage: addCustomResponse [custom] \nAllows you to add a custom response to a poll.', 'Usage: vote [optionNum] \nAdds your vote to the option specified, you can only vote once per poll.', 'Can only be done by the poll opener, closes the current poll.', 'After using this command, follow directions to create an \'All that apply\' poll.', 'Replys with the options for the current \'All that apply\' poll.', 'Usage: addCustomAtappResponse [custom] \nAllows you to add a custom response to an \'All that apply\' poll.', 'Replys with the current results for the current \'All that apply\' poll.', 'Allows you to vote for an option in an \'All that apply\' poll. Can be used multiple times.', 'Allows the owner of an \'All that apply\' poll to close it.', 'Usage: customCommand[1/2/3] \nAllows users to create custom (temporary) commands by running the command and following instructions', 'Usage: feeback [feedback] \nSends your feedback to the creator.', 'Usage: suggest [suggestion] \nSends your suggestion to the creator.', 'Usage: useInfo [@user] \nReplys with information about the mentioned user.', 'Replys with a sample of code currently in development.', 'Replys with the ID of the current channel.', 'Usage: tto [input] \nRepeats the input back', 'Usage: findRoleID [@role] \nReplys with the ID of the mentioned role.', 'Replys with the ID of the current server.', 'Usage: inviteInfo [invite] \nReplys with info about the invite given.', 'Usage: purge [num] \nPurges the number of messages requested (This number does not include the gcd.purge message, which is also deleted)','Toggles the NSFW quality for the current channel. \nTo run the command, your highest role must have admin/manage channels.'];
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -133,7 +133,8 @@ dtb.connect();
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');
+    logger.info(bot.username + ' - (' + bot.id + ')');\
+	//Sends a message to GCD support server informing that the bot has come back online.
 	bot.sendMessage({
 		to: '520394437461803010',
 		message: imback[Math.floor(Math.random() * imback.length)]
@@ -169,6 +170,7 @@ bot.on('presenceUpdate', function(event){
 
 bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
+	
 	if (newMsgData.author != undefined){
 	if (!(bot.users[newMsgData.author.id] == undefined)){
 	if (!(bot.users[newMsgData.author.id].bot)){
@@ -178,6 +180,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		channel = bot.channels[newMsgData.channel_ID];
 	}
 	
+	//Adds 'bike' to the list of cusses if the server has that setting yeah
 	if (bikCussServers != undefined){
 		if (bikCussServers.includes(serverID)){
 			curses.push('BIKE')
@@ -198,7 +201,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 	
 		
-		
+	//Censors cuss words added to a message in an edit.	
 	for (var i = 0; i < symbolList.length; i++){
 		if (cussmessage.includes(symbolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
@@ -263,6 +266,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 				});
 		}
 	
+	//Removes "bike" from the list of cuss words if it was added
 	if (bikCussServers != undefined){
 		if (bikCussServers.includes(serverID)){
 			curses.splice(curses.length - 1, 1)
@@ -275,9 +279,8 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 	
 });
+
 bot.on('message', function (user, userID, channelID, message, evt) {
-    // Our bot needs to know if it will execute a command
-    // It will listen for messages that will start with `!`
 	
 	
 	cussIndexes = [];
@@ -289,6 +292,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		channel = bot.channels[channelID];
 		member = bot.servers[serverID].members[userID];
 	}
+	//Pings GH followers in GCD support server if github webhook sent
 	if (channelID == '517100710199033857' && bot.users[userID] == undefined && message != '<@&522551255873224704>'){
 		bot.sendMessage({
 			to: '517100710199033857',
@@ -296,6 +300,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		});
 	}
 	
+	//Don't. Ask.
 	if (channelID != '513116265439821832'){
 		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
 		bot.sendMessage({
@@ -313,39 +318,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}, function(err, res){
 			if (err) throw err
 		});
-		bot.getMessage({
-			channelID: '512776592536109057',
-			messageID: '512782505284206593'
-		}, function(err, res){
-			if (err) throw err
-			let toFillServ = res.content;
-			for (var servRKi = 0; toFillServ.includes(','); toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 2)){
-				servRK.push(toFillServ.substring(0, toFillServ.indexOf(',')));
-			}
-			servRK.push(toFillServ)
-		});
-		bot.getMessage({
-			channelID: '512776592536109057',
-			messageID: '512782965613395971'
-		}, function(err, res){
-			if (err) throw err
-			let toFillServ = res.content;
-			for (var roleRKi = 0; toFillServ.includes(','); toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 2)){
-				roleRK.push(toFillServ.substring(0, toFillServ.indexOf(',')));
-			}
-			roleRK.push(toFillServ)
-		});
-		bot.getMessage({
-			channelID: '512776592536109057',
-			messageID: '512783273601138698'
-		}, function(err, res){
-			if (err) throw err
-			let toFillServ = res.content;
-			for (var commRKi = 0; toFillServ.includes(','); toFillServ = toFillServ.substring(toFillServ.indexOf(',') + 2)){
-				commRK.push(toFillServ.substring(0, toFillServ.indexOf(',')));
-			}
-			commRK.push(toFillServ)
-		});
 		
 	}
 	
@@ -354,6 +326,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		nonWordCurses.push('no')
 	}
 	
+	//If you don't understand this... I'm ok with that.
 	if (bot.directMessages[channelID] && channelID != '495705429150793739' && message.indexOf("Our current commands are as follows.") == -1 && message.indexOf("Today is a") == -1 && message.indexOf("This bot comes equipped with a curse censoring feature,") == -1){
 		bot.sendMessage({
 			to: '508329340652748800',
@@ -367,7 +340,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	prevEvtID = evt.d.id;
 	
+	//lol
 	if (true){
+		//Sets variables for time/date
 		let thisTime = new Date();
 			let thisHour = (thisTime.getHours() - 5);
 			let thisDay = thisTime.getDate();
@@ -385,11 +360,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (thisHour > 12){
 				thisHour = thisHour - 12
 			}
-		
+		//So basically, this allows it to detect if the date changed.
 		prevDay = day;
 		day = thisDay;
 		dayay = thisDayay;
+		//If day did change...
 		if (day != prevDay && scDay != 'oof'){
+			//Update server count.
 			bot.setPresence({
 				game: {
 					type: 0,
@@ -398,6 +375,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}, function(err, res){
 				if (err) throw err
 			});
+			//A/B day rotation notification setting.
 			if (scDay.length == 1){
 				if (scDayChange){
 					if (scDay.toUpperCase() == 'A'){
@@ -412,6 +390,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					}, function(err, res){
 						if (err) throw err
 					});
+					//If it is Sat/Sun
 					if (thisDayay == 5 || thisDayay == 6){
 						bot.sendMessage({
 							to: '458809225120972800',
@@ -434,6 +413,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							message: 'Today is a weekend! Enjoy!'
 						});
 					} else {
+						//Tells ppl the A/B rotation day
 						bot.sendMessage({
 							to: '458809225120972800',
 							message: 'Today is a(n) ' + scDay + ' day.'
@@ -456,6 +436,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				}
+				//I don't really use this, so basically it's useless at this point?
 				if (!scDayChange){
 					bot.sendMessage({
 						to: '458809225120972800',
@@ -479,6 +460,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 					scDayChange = true;
 				}
+				//If I set the day to be somthing like... "Halloween"
 			} else if(scDay.toUpperCase() != 'NONE'){
 				bot.sendMessage({
 					to: '458809225120972800',
@@ -502,6 +484,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 		}
+		//If A/B rotation variable not set yet, set it from its storage location
 		if (scDay == 'oof'){
 		    bot.getMessage({
 			    channelID: '512739420764635136',
@@ -511,6 +494,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			    scDay = res.content
 		    });
 		}
+		//If day changed, change specific roles to new cat breeds, ping the people.
 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
 			bot.editRole({
 				serverID: '489547644138422302',
@@ -555,7 +539,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	
 		
-		
+	//Cuts symbols out of message
 	for (var i = 0; i < symbolList.length; i++){
 		if (cussmessage.includes(symbolList[i])){
 			spot = cussmessage.indexOf(symbolList[i]);
@@ -564,7 +548,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 	
-	
+	//Checks for words that could be mistaken by the bot as a cuss
 	hasMistakenCuss = false;
 	for (var i = 0; i < notCusses.length; i++){
 		if (cussmessage.includes(notCusses[i])){
@@ -573,7 +557,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 
-	
+	//Checks for cusses
 	for (var i = 0; i < curses.length; i++){
 		if (cussmessage.includes(curses[i])){
 			if (nonWordCurses[i] != 'no' || message.includes('A$$H0L3') || cussmessage.substring(0, (curses[i].length)) == curses[i] || cussmessage.includes(' ' + curses[i])){
@@ -582,6 +566,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 	
+	//Checks if the cusses are the same as the mistaken cusses, removes them if so.
 	for (var i = 0; i < cussIndexes.length; i = i){
 		if (mistakenIndexes.includes(cussIndexes[i])){
 		    cussIndexes.splice(i, 1);
@@ -631,7 +616,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	if (!(bot.users[userID] == undefined)){
 	if (!(bot.users[userID].bot)){
 
-
+		//Only specific servers have this, but sends 'What's this' if message has 'owo'
 		if (cussmessage.includes('OWO') && process.env.bikServers.includes(serverID)){
 			if (serverID != 500864200378155008 && allowOwo && serverID != 505565358560772096 && channelID != 501934275860496395){
 				bot.sendMessage({
@@ -642,7 +627,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 			}
 		}
-				
+		
+		//Deletes a message conditionally
 		if(someDelArray.includes(userID) && channelID == delNextChannel){
 			bot.deleteMessage({
 				channelID: channelID,
@@ -651,7 +637,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			let index = someDelArray.indexOf(userID);
 			someDelArray.splice(index, 1);
 		}
-
+				//Creates an array with poll options based on user input
 				if (someArray.includes(userID) && userID == pollOpener){
 					pollOptions = [];
 					pollVotes = [];
@@ -673,7 +659,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				  let index = someArray.indexOf(userID);
 				  someArray.splice(index, 1);
 				}
-
+		
+				//Same as above, but with 'All that apply' polls
 				if (someArray.includes(userID) && userID == pollAtappOpener){
 					pollAtappOptions = [];
 					pollAtappVotes = [];
@@ -696,6 +683,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				  someArray.splice(index, 1);
 				}
 
+		//Allows users to create custom commands
 		if (createResult2 && !message.includes('Ok, now please reply with the desired command output.') && custom2channelID == channelID){
 			resultList[1] = message;
 			bot.sendMessage({
@@ -722,7 +710,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			createResult1 = false;
 		}
-
+		
 		if (createCommand1 && !message.includes('Ok, please reply with your command without the ' + prefix) && custom1channelID == channelID){
 			commandList[0] = message;
 			    bot.sendMessage({
@@ -752,7 +740,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			createCommand3 = false;
 			createResult3 = true;
 		}
-
+		
+		//Next few are for knock knock joke response.
 		if (knockknock == 2 && message != joke && !message.includes('?') && !message.includes('knock')){
 			bot.sendMessage({
 				to: channelID,
@@ -770,13 +759,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			knockknock = 2;
 		}
 
-		if (message.substring(0, 24) == 'Graham Channel Destroyer' && channelID != '508329340652748800'){
+		//If message begins with that, tell people current prefix.
+		if (message.substring(0, 21) == 'Graham Cuss Destroyer' && channelID != '508329340652748800'){
 			bot.sendMessage({
 				to: channelID,
 				message: 'The current prefix is ' + prefix + ', and the current password is password number ' + passnum + '. To see documentation, please say ' + prefix + 'help'
 			});
 		}
-
+		
+		//Allows me to change bot prefix
 		if (message.toLowerCase().indexOf((prefix + 'changePrefix')) == 0 && userID == gID){
 			prefix = message.substring(message.indexOf('changePrefix') + 13);
 			bot.sendMessage({
@@ -785,15 +776,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 		}
 
-
+		//Doesn't let bots run commands, doesn't run commands in bot list server, yeah.
 	    if (message.toLowerCase().indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null && !bot.directMessages[channelID]) {
 		knockknock = 0
 		var args = message.substring(4).split(' ');
 		var cmd = args[0];
-
+		    
+		    //args = command, w/o prefix.
 		args = args.splice(4);
 		switch(cmd) {
-		    // !ping
+		    // If u say ping, I say pong. Well, not me.
 		    case 'ping':
 			bot.sendMessage({
 			    to: channelID,
@@ -801,6 +793,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			commRand = true;
 		    break;
+			//Suggest a video to us
 			case 'videoSongSuggestions':
 				bot.sendMessage({
 					to: '522570244502454273',
@@ -812,10 +805,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Makes the bot leave a VC
 			case 'leaveVC':
 				bot.leaveVoiceChannel(bot.servers[serverID].members['495705429150793739'].voice_channel_id);
 				commRand = true;
 				break;
+			//Deletes 2-99 messages.
 			case 'purge':
 				if (message.length < 11 || !(message.substring(9, 10) == ' ')){
 					bot.sendMessage({
@@ -863,6 +858,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Vote for the bot in bot list/vote for a poll option
 			case 'vote':
 				if (message.length < 9){
 					let votcomm = 'You have not voted yet today!'
@@ -913,6 +909,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Displays a random video for you
 			case 'randVideo':
 				bot.sendMessage({
 					to: channelID,
@@ -924,6 +921,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Displays a random song for you
 			case 'randSong':
 				bot.sendMessage({
 					to: channelID,
@@ -935,6 +933,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Ok, so if it says (userID = gID), I'm not going out of my way to explain it because I'm the only one who can use it
 			case 'delNext':
 				if (userID == gID){
 					bot.deleteMessage({
@@ -946,6 +945,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Allows people in the GCD support server to join the follower role to get pinged and stuff
 			case 'joinFollowers':
 				if (serverID == '511698216199258112'){
 					if (member.roles.includes('511736694605611009')){
@@ -972,6 +972,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Displays information about a provided server invite code
 			case 'inviteInfo':
 				bot.queryInvite(message.substring(15), function(err, res){
 					let output = 'Invalid Invite'
@@ -995,10 +996,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Hahahahahahaha I want this to do something... but it doesn't yet.
 			case 'announce':
 // 				console.log(bot.servers)
 				commRand = true;
 				break;
+			//Allows people in the GCD support server to leave the follower role to not get pinged and stuff
 			case 'leaveFollowers':
 				if (serverID == '511698216199258112'){
 					if (!member.roles.includes('511736694605611009')){
@@ -1025,6 +1028,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Send feedback about the code to us
 			case 'feedback':
 				bot.sendMessage({
 					to: channelID,
@@ -1036,6 +1040,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Send suggestions about the bot to us
 			case 'suggest':
 				bot.sendMessage({
 					to: channelID,
@@ -1045,7 +1050,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: '511700319294717974',
 					message: user + ' suggests: ' + message.substring(12)
 				});
-				case 'drct':
+			//This does nothing. I swear to you it has no use. It really should be deleted.
+			case 'drct':
 				bot.removeReaction({
 				    channelID: '506881793123811338',
 				    messageID: message.substring(9),
@@ -1053,6 +1059,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Same
 			case 'rct':
 				bot.addReaction({
 				    channelID: '506881793123811338',
@@ -1140,6 +1147,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Displays information about you/a pinged person.
 			case 'userInfo':
 // 				bot.addServerEmoji({
 // 				    serverID: serverID,
@@ -1194,6 +1202,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Provides you a link to the GCD support server
 			case 'guildLink':
 				bot.sendMessage({
 					to: channelID,
@@ -1201,6 +1210,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break
+			//Sends a gif to you. (Pls halp)
 			case 'portalCat':
 				bot.sendMessage({
 					to: channelID,
@@ -1231,6 +1241,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//DMs a person.... Yeah this shouldn't exist.
 			case 'ttb':
 				bot.sendMessage({
 					to: '486985623161274378',
@@ -1238,6 +1249,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//If I'm being honest... I don't remember what this does.
 			case 'ttw':
 				bot.sendMessage({
 					to: '264445053596991498',
@@ -1245,6 +1257,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Sends a messae to a specified channel
 			case 'ttu':
 				if(message.substring(8,9) != '<'){
 					bot.sendMessage({
@@ -1259,6 +1272,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Sends a really long string of text (song lyrics)
 			case 'music':
 				if (!songPlaying){
 					songPlaying = true;
@@ -1276,34 +1290,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
-			case 'oofTest':
-				bot.sendMessage({
-					to: channelID,
-					message: servRK + ' s'
-				});
-				bot.sendMessage({
-					to: channelID,
-					message: roleRK + ' r'
-				});
-				bot.sendMessage({
-					to: channelID,
-					message: commRK + ' m'
-				});
-				commRand = true;
-			break;
-			case 'cttest':
-				bot.editMessage({
-					channelID: '512776592536109057',
-					messageID: '512783273601138698',
-					message: 'cTrole, tester'
-				});
-				bot.editMessage({
-					channelID: '512776592536109057',
-					messageID: '512782505284206593',
-					message: '511698216199258112, 511698216199258112'
-				});
-				commRand = true;
-				break;
+			//Test code.
 			case 'test':
 				bot.sendMessage({
 					to: channelID,
@@ -1335,6 +1322,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				}
 				break;
+			//Logs the servers the bot is in.
 			case 'aTaaTa':
 				console.log(bot.servers)
 // 				bot.sendMessage({
@@ -1347,6 +1335,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 // 				bot.leaveServer('264445053596991498');
 // 				commRand = true;
 // 				break;
+			//Toggle a channel's NSFW property
 			case 'toggleNSFW':
 				if (!bot.directMessages[channelID]){
 					let topRole = 0;
@@ -1371,6 +1360,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Create a command to allow users to add themselves to roles.
 			case 'rcCM':
 				if (!bot.directMessages[channelID]){
 					let topRole = 0;
@@ -1421,6 +1411,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Repeats your message
 			case 'tto':
 				if (channelID != '517100710199033857'){
 					 bot.sendMessage({
@@ -1430,39 +1421,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
-			case 'prune':
-				let arrayUserNeed = '';
-				if (message.length < 7){
-					arrayUserNeed = 'Graham Channel Destroyer';
-				}
-				else {
-					arrayUserNeed = message.substring(10);
-				}
-				for (var testArrayNum = 0; testArrayNum < 100; testArrayNum ++){
-					if (arrayUserNeed == lastHunUserIds[testArrayNum]){
-						if (channelID == lastHunChannelIds[testArrayNum]){
-							bot.deleteMessage({
-								channelID: channelID,
-								messageID: lastHunMessIds[testArrayNum]
-							});
-						}
-					}
-				}
-				commRand = true;
-				break;
-			case 'del20':
-				for (var dell = 0; dell < 20; dell ++){
-					if (channelID == lastHunChannelIds[dell]){
-							bot.deleteMessage({
-								channelID: channelID,
-								messageID: lastHunMessIds[dell]
-							});
-					}
-				}
-				commRand = true;
-				break;
 			case 'preventScDayChange':
-				scDayChange = false;
+				if (userID = gID){
+					scDayChange = false;
+				}
 				commRand = true;
 				break;
 			case 'getScDay':
@@ -1487,12 +1449,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Help stuff
 			case 'help':
 				let usrID = userID;
 				if (message.length == 8){
 					bot.sendMessage({
 						to: userID,
-						message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nhelp [command] - displays information about the given command. \nrcCM [\@role] [cmd] - Allows a user to join [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to. \ntoggleNSFW - Will toggle the NSFW quality for the channel you run it in. Your highest role in the server must have admin/manage channels to do this. \npurge [num] - Purges the number of messages requested (This number does not include the gcd.purge message, which is also deleted). \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply polls, createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], closeAtappPoll. These work the same as regular polls, but users can choose multiple responses \ncustomCommand[1/2/3] - allows users to create custom commands by following instructions.'
+						message: 'Our current commands are as follows. \n \n**Entertainment** :tada: \nping - responds "Pong!", enjoy yourself some ping pong. \nmusic - displays the lyrics of a random song from a list \nportalCat - displays a fun infinite gif of a cat jumping into a portal. \nchangeMyNickname - changes your nickname to a random nickname from a list. \nknockknock - responds to YOUR knock knock joke. \nrandVideo - gives a link to a random video. \nrandSong - gives a link to a random song. \nvideoSongSuggestions - suggest your favorite video/song for randVideo/randSong, all suggestions must be English, curse free, and less than 15 minutes long. \n \n**Useful** :paperclip: \nguildLink - gives the invite for the GCD help server. \nhelp - displays this, duh. \nhelp [command] - displays information about the given command. \nrcCM [\@role] [cmd] - Allows a user to join/leave [\@role] by saying the prefix + [cmd]. To run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to. \ntoggleNSFW - Will toggle the NSFW quality for the channel you run it in. Your highest role in the server must have admin/manage channels to do this. \npurge [num] - Purges the number of messages requested (This number does not include the gcd.purge message, which is also deleted). \ncreatePoll - Follow instruction to create a poll. \npollOptions - displays the options to the current poll. \npollResults - displays the current results of the poll. \naddCustomResponse [custom] - allows users to add a custom response to a poll. \nvote [optionNum] - votes for the option number given. \nclosePoll - Can only be done by poll creator, closes poll and displas results. \nall that apply polls, createAtappPoll, pollAtappOptions, addCustomAtappResponse [custom], pollAtappResults, voteAtapp [vote], closeAtappPoll. These work the same as regular polls, but users can choose multiple responses \ncustomCommand[1/2/3] - allows users to create custom commands by following instructions.'
 					}, function(err, res){
 						if (err) throw err;
 						bot.sendMessage({
@@ -1530,9 +1493,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'allowBreedChange':
-				allowBreedChange = true;
+				if (userID == gID){
+					allowBreedChange = true;
+				}
 				commRand = true;
 				break;
+			//Tells you the id of a role
 			case 'findRoleID':
 				if (message.length > 14){
 					if (Object.values(bot.servers[serverID].roles).find(r => r.name.includes(message.substring(15))) != undefined){
@@ -1545,6 +1511,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Tells you the day/time/ect
 			case 'getDay':
 				let currentTime = new Date();
 				let currentHour = (currentTime.getHours() - 4);
@@ -1565,6 +1532,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Create a poll
 			case 'createPoll':
 				if (message.toLowerCase() == "gcd.createpoll" && !someArray.includes(userID) && !openPoll) {
 					pollOpener = userID;
@@ -1582,6 +1550,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Get the options to vote for
 			case 'pollOptions':
 				let mes = '';
 				let i = 0;
@@ -1595,6 +1564,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Close the poll
 			case 'closePoll':
 				if (!openPoll){
 					bot.sendMessage({
@@ -1627,6 +1597,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Add your own poll response
 			case 'addCustomResponse':
 				if(!openPoll){
 					bot.sendMessage({
@@ -1645,6 +1616,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Get results of the poll
 			case 'pollResults':
 				let mess = '';
 				for (var k = 0; k < pollOptions.length; k++){
@@ -1656,6 +1628,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Get the id of the server
 			case 'getServerID':
 				if (!bot.directMessages[channelID]){
 					bot.sendMessage({
@@ -1670,6 +1643,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//I'm not telling you all the stuff again, this is the same but for 'All that apply' polls
 			case 'createAtappPoll':
 				if (!someArray.includes(userID) && !openAtappPoll) {
 					pollAtappOpener = userID;
@@ -1790,6 +1764,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 			break;
+			//BTW this no happen likely
 			case 'spamit':
 				if(channelID == spamChannel && message.substring(11) == spamPassword && allowSpam && ((userID == 393586279964475393) || (userID == 495705429150793739))){
 					setTimeout(() => {
@@ -1801,6 +1776,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			//Makes it look like the bot is 'typing'
 			case 'confuse':
 				bot.simulateTyping(channelID);
 				bot.deleteMessage({
@@ -1827,32 +1803,35 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'newRole':
-				bot.createRole(serverID, function(err, res) {
-					if (err) throw err;
+				if (userID == gID){
+					bot.createRole(serverID, function(err, res) {
+						if (err) throw err;
 
-						bot.editRole({
+							bot.editRole({
+								serverID: serverID,
+								roleID: res.id,
+								name:'Artist',
+								hoist: false,
+								permissions: {
+									GENERAL_ADMINISTRATOR: true
+								},
+								mentionable: false
+							});
+
+						bot.addToRole({
 							serverID: serverID,
-							roleID: res.id,
-							name:'Artist',
-							hoist: false,
-							permissions: {
-								GENERAL_ADMINISTRATOR: true
-							},
-							mentionable: false
+							userID: userID,
+							roleID: res.id
 						});
-
-					bot.addToRole({
-						serverID: serverID,
-						userID: userID,
-						roleID: res.id
 					});
-				});
-				bot.deleteMessage({
-						channelID: channelID,
-						messageID: prevEvtID
-					});
+					bot.deleteMessage({
+							channelID: channelID,
+							messageID: prevEvtID
+						});
+				}
 				commRand = true;
 				break;
+			//Makes ur nickname random nickname oof
 			case 'changeMyNickname':
 				randNum = Math.floor(Math.random() * nicknames.length);
 				bot.editNickname({
@@ -1866,7 +1845,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
-				case 'customCommand1':
+			//Create custom command
+			case 'customCommand1':
 				if (commandList[0] == '__'){
 					createCommand1 = true;
 					bot.sendMessage({
@@ -1906,6 +1886,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				});
 				commRand = true;
 				break;
+			//Custom command output
 			case commandList[0]:
 					bot.simulateTyping(channelID);
 					bot.sendMessage({
@@ -1930,6 +1911,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				commRand = true;
 				break;
+			//Responds to ur knockkock
 			case 'knockknock':
 				bot.sendMessage({
 					to: channelID,
@@ -1938,9 +1920,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				knockknock = 1;
 				commRand = true;
 				break;
+			//lol
 			case 'crtty':
 				console.log(bot.servers)
-				case 'cat':
+			//Bes a cat
+			case 'cat':
 					bot.sendMessage({
 						to: channelID,
 						message: 'Meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow meow'
