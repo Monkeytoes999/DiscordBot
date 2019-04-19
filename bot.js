@@ -133,7 +133,7 @@ dtb.connect();
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
-    logger.info(bot.username + ' - (' + bot.id + ')');\
+    logger.info(bot.username + ' - (' + bot.id + ')');
 	//Sends a message to GCD support server informing that the bot has come back online.
 	bot.sendMessage({
 		to: '520394437461803010',
