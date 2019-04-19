@@ -1999,17 +1999,37 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					dtb.query('SELECT roleid FROM rccm WHERE serverid = \'' + serverID + '\' AND command = \'' + rcMsg + '\'', function(err, res){
 						if (err) throw err;
 						if (res.rows[0] != undefined){
-							bot.addToRole({
-								serverID: serverID,
-								userID: userID,
-								roleID: res.rows[0].roleid
-							}, function(err, res){
-								if (err) throw err
-							});
-							bot.sendMessage({
-								to: channelID,
-								message: 'You have successfully added yourself to the role.'
-							});
+							let rAdd = true;
+							for (let rToI = 0; member.roles[rToI] != undefined && rAdd; rToI++){
+								if (res.rows[0] == member.roles[rToI]){
+									rAdd = false;
+								}
+							}
+							if (rAdd){
+								bot.addToRole({
+									serverID: serverID,
+									userID: userID,
+									roleID: res.rows[0].roleid
+								}, function(err, res){
+									if (err) throw err
+								});
+								bot.sendMessage({
+									to: channelID,
+									message: 'You have successfully added yourself to the role.'
+								});
+							} else {
+								bot.removeFromRole({
+									serverID: serverID,
+									userID: userID,
+									roleID: res.rows[0].roleid
+								}, function(err, res){
+									if (err) throw err
+								});
+								bot.sendMessage({
+									to: channelID,
+									message: 'You have successfully removed yourself from the role.'
+								});
+							}
 						}
 					})
 				}
