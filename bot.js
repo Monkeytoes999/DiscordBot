@@ -1374,7 +1374,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						to: channelID,
 						message: 'Ok, today is now a ' + scDay + ' day.'
 					});
-					client.query('UPDATE day SET day = \'' + scDay + '\'', function(err, res){
+					dtb.query('UPDATE day SET day = \'' + scDay + '\'', function(err, res){
 						if (err) throw err;
 					})
 				}
