@@ -123,6 +123,13 @@ var bot = new Discord.Client({
 const DBL = require("dblapi.js");
 const dbl = new DBL(process.env.dtoken, bot);
 
+const { Client } = require('pg');
+const dtb = new Client({
+  connectionString: process.env.DATABASE_URL,
+  ssl: true,
+});
+dtb.connect();
+
 bot.on('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
@@ -2040,24 +2047,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			default:
 				if (!bot.directMessages[channelID] && serverID != '264445053596991498'){
-					for (var oqo = 0; oqo < servRK.length; oqo++){
-							if (serverID == servRK[oqo]){
-								if (message.substring(4) == commRK[oqo]){
-									commRand = true;
-									bot.addToRole({
-										serverID: serverID,
-										userID: userID,
-										roleID: roleRK[oqo]
-									}, function(err, res){
-										if (err) throw err
-									});
-									bot.sendMessage({
-										to: channelID,
-										message: 'You have successfully added yourself to the role.'
-									});
-								}
-							}
-					}
+					dtb.query('SELECT roleid FROM rccm WHERE serverid = \'' + serverID + '\' AND command = \'' + message + '\'', function(err, res){
+						if (err) throw err;
+						if (res.rows[0] != undefined){
+							bot.addToRole({
+								serverID: serverID,
+								userID: userID,
+								roleID: res.rows[0].roleid
+							}, function(err, res){
+								if (err) throw err
+							});
+							bot.sendMessage({
+								to: channelID,
+								message: 'You have successfully added yourself to the role.'
+							});
+						}
+					})
 				}
 		    // Just add any case commands if you want to..
 		 }
