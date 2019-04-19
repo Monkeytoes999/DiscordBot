@@ -376,123 +376,52 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (err) throw err
 			});
 			//A/B day rotation notification setting.
+			let scAnMsg = scDay;
 			if (scDay.length == 1){
 				if (scDayChange){
 					if (scDay.toUpperCase() == 'A'){
+						dtb.query('UPDATE day SET day = \'B\'');
 						scDay = 'B';
 					} else if (scDay.toUpperCase() == 'B'){
 						scDay = 'A';
+						dtb.query('UPDATE day SET day = \'A\'');
 					}
-					bot.editMessage({
-						channelID: '512739420764635136',
-						messageID: '512741593657376778',
-						message: scDay
-					}, function(err, res){
-						if (err) throw err
-					});
 					//If it is Sat/Sun
 					if (thisDayay == 5 || thisDayay == 6){
-						bot.sendMessage({
-							to: '458809225120972800',
-							message: 'Today is a weekend! Enjoy!'
-						});
-						bot.sendMessage({
-							to: '194966921362407424',
-							message: 'Today is a weekend! Enjoy!'
-						});
-						bot.sendMessage({
-							to: '486985623161274378',
-							message: 'Today is a weekend! Enjoy!'
-						});
-						bot.sendMessage({
-							to: '336507246227881984',
-							message: 'Today is a weekend! Enjoy!'
-						});
-						bot.sendMessage({
-							to: '393586279964475393',
-							message: 'Today is a weekend! Enjoy!'
-						});
+						scAnMsg = 'Today is a weekend! Enjoy!'
 					} else {
 						//Tells ppl the A/B rotation day
-						bot.sendMessage({
-							to: '458809225120972800',
-							message: 'Today is a(n) ' + scDay + ' day.'
-						});
-						bot.sendMessage({
-							to: '194966921362407424',
-							message: 'Today is a(n) ' + scDay + ' day.'
-						});
-						bot.sendMessage({
-							to: '486985623161274378',
-							message: 'Today is a(n) ' + scDay + ' day.'
-						});
-						bot.sendMessage({
-							to: '336507246227881984',
-							message: 'Today is a(n) ' + scDay + ' day.'
-						});
-						bot.sendMessage({
-							to: '393586279964475393',
-							message: 'Today is a(n) ' + scDay + ' day.'
-						});
+						scAnMsg = 'Today is a(n) ' + scDay + ' day.'
 					}
 				}
 				//I don't really use this, so basically it's useless at this point?
 				if (!scDayChange){
-					bot.sendMessage({
-						to: '458809225120972800',
-						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-					});
-					bot.sendMessage({
-						to: '194966921362407424',
-						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-					});
-					bot.sendMessage({
-						to: '486985623161274378',
-						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-					});
-					bot.sendMessage({
-						to: '336507246227881984',
-						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-					});
-					bot.sendMessage({
-						to: '393586279964475393',
-						message: 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
-					});
+					scAnMsg = 'Yesterday was a(n) ' + scDay + ' day, and I guess today is one too. Holiday? Testing crap? Whatever it is, enjoy it.'
 					scDayChange = true;
 				}
-				//If I set the day to be somthing like... "Halloween"
-			} else if(scDay.toUpperCase() != 'NONE'){
-				bot.sendMessage({
-					to: '458809225120972800',
-					message: scDay
-				});
-				bot.sendMessage({
-					to: '194966921362407424',
-					message: scDay
-				});
-				bot.sendMessage({
-					to: '486985623161274378',
-					message: scDay
-				});
-				bot.sendMessage({
-					to: '336507246227881984',
-					message: scDay
-				});
-				bot.sendMessage({
-					to: '393586279964475393',
-					message: scDay
-				});
+			//If I set the day to be somthing like... "Halloween"
+			}
+			if(scDay.toUpperCase() != 'NONE'){
+				let scAnMsg = scDay;
+				let scAnnounce = 0;
+				let scAnnArr = ['458809225120972800','194966921362407424','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336']
+				while (scAnnounce < scAnnArr){
+					setTimeout(() => {
+						bot.sendMessage({
+							to: scAnnArr[scAnnounce],
+							message: scAnMsg
+						});
+					}, 1000*(scAnnounce + 1));
+					scAnnounce++;
+				}
 			}
 		}
 		//If A/B rotation variable not set yet, set it from its storage location
 		if (scDay == 'oof'){
-		    bot.getMessage({
-			    channelID: '512739420764635136',
-			    messageID: '512741593657376778'
-		    }, function(err, res){
-			    if (err) throw err
-			    scDay = res.content
-		    });
+			dtb.query('SELECT day FROM day', function(err, res){
+				if (err) throw err;
+				scDay = res.rows[0].day
+			})
 		}
 		//If day changed, change specific roles to new cat breeds, ping the people.
 		if (day != prevDay && prevDay != 'oof' && allowBreedChange){
@@ -1428,24 +1357,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'getScDay':
-				bot.sendMessage({
-					to: channelID,
-					message: 'Today is a(n) ' + scDay + ' day!'
-				});
+				dtb.query('SELECT day FROM day', function(err, res){
+					if (err) throw err;
+					scDay = res.rows[0].day
+					bot.sendMessage({
+						to: channelID,
+						message: 'Today is a(n) ' + scDay + ' day!'
+					});
+				})
 				commRand = true;
 				break;
 			case 'setScDay':
-				if (message.length = 13 && userID == gID){
-					scDay = message.substring(12);
+				if (userID == gID){
+					scDay = message.substring(13);
 					bot.sendMessage({
 						to: channelID,
 						message: 'Ok, today is now a ' + scDay + ' day.'
 					});
-					bot.editMessage({
-						channelID: '512739420764635136',
-						messageID: '512741593657376778',
-						message: scDay
-					});
+					client.query('UPDATE day SET day = \'' + scDay + '\'', function(err, res){
+						if (err) throw err;
+					})
 				}
 				commRand = true;
 				break;
