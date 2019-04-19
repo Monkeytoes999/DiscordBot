@@ -1384,66 +1384,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					if (message.length > 33 && message.length < 48 && message.includes('<@&')){
 						if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
 						    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 268435456, 1073741824))){
-								bot.getMessage({
-									channelID: '512776592536109057',
-									messageID: '512782505284206593'
-								}, function(err, res){
-	// 								console.log(1)
-									if (res.content.length + serverID.length + 2 < 2000){
-										bot.getMessage({
-											channelID: '512776592536109057',
-											messageID: '512782965613395971'
-										}, function(errr, ress){
-	// 										console.log(2)
-											if (ress.content.length + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19).length + 2 < 2000){
-												bot.getMessage({
-													channelID: '512776592536109057',
-													messageID: '512783273601138698'
-												}, function(errr, resss){
-	// 												console.log(3)
-													if (resss.content.length + message.substring(33).length + 2 < 2000){
-														bot.editMessage({
-															channelID: '512776592536109057',
-															messageID: '512782505284206593',
-															message: res.content + ', ' + bot.channels[channelID].guild_id
-														});
-														servRK.push(bot.channels[channelID].guild_id);
-														bot.editMessage({
-															channelID: '512776592536109057',
-															messageID: '512782965613395971',
-															message: ress.content + ', ' + message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)
-														});
-														roleRK.push(message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19));
-														bot.editMessage({
-															channelID: '512776592536109057',
-															messageID: '512783273601138698',
-															message: resss.content + ', ' + message.substring(32)
-														});
-														commRK.push(message.substring(32));
-														bot.sendMessage({
-															to: channelID,
-															message: 'Your commmand has been created.'
-														});
-													} else {
-														bot.sendMessage({
-															to: channelID,
-															message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
-														});
-													}
-												});
-											} else {
-												bot.sendMessage({
-													to: channelID,
-													message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
-												});
-											}
-										});
-									}  else {
-										bot.sendMessage({
-											to: channelID,
-											message: 'Please contact the creator via the GCD help server. Tell them: "Error Code: 947"'
-										});
-									}
+								let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
+								let rcCMD = message.substring(32)
+								dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
+									if (err) throw err;
+									bot.sendMessage({
+										to: channelID,
+										message: 'Your commmand has been created.'
+									});
 								});
 							}  else if (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 268435456, 1073741824))){
 								bot.sendMessage({
