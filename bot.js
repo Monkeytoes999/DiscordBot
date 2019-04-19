@@ -2001,7 +2001,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						if (res.rows[0] != undefined){
 							let rAdd = true;
 							for (let rToI = 0; member.roles[rToI] != undefined && rAdd; rToI++){
-								if (res.rows[0] == ('\'' + member.roles[rToI] + '\'')){
+								console.log(rToI, member.roles[rToI], rAdd, res.rows[0]);
+								if (member.roles[rToI] == ('\'' + res.rows[0] + '\'')){
 									rAdd = false;
 								}
 							}
