@@ -1898,7 +1898,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					bot.sendMessage({
 						to: channelID,
 						embed: {
-							//color: ___,
+							color: 65280,
 							author: {
 								name: '"' + userID + '"',
 								icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
