@@ -1894,7 +1894,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						pfTC = r.rows[0].totalnum
 						pfTV = r.rows[0].totalvote
 						pfSD = r.rows[0].selfdesc
-						let yellow = ""
+						let yellow = 0
+						console.log(pfU, pfN, pfCD, r);
 						bot.sendMessage({
 							to: channelID,
 							embed: {
