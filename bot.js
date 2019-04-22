@@ -1894,6 +1894,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						pfTC = r.rows[0].totalnum
 						pfTV = r.rows[0].totalvote
 						pfSD = r.rows[0].selfdesc
+						let yellow = "green"
 						bot.sendMessage({
 							to: channelID,
 							embed: {
@@ -1905,7 +1906,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								fields: [
 									{
 										name: "Username:",
-										value: "oof"
+										value: yellow
 									}
 									/**{
 										name: "Username:",
