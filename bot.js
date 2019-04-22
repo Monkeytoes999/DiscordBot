@@ -139,6 +139,9 @@ bot.on('ready', function (evt) {
 		to: '520394437461803010',
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
+	dtb.query('INSERT INTO profile(id, lastcommand, lastuse, lastvote, nickname, self, totalnum, totalvote, username) VALUES (393586279964475393, \'NA\', \'NA\', \'NA\', \'NA\', \'NA\', 0, 0, \'Monkeytoes999\')', function(err, res){
+		if (err) throw err
+	});
 });
 
 bot.on('any', function(event) {
