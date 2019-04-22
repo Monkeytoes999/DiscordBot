@@ -1939,7 +1939,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								]
 						}
 					}, function(err,res){
-						if (err) throw err;
+						console.log(err);
 					});
 				}
 				commRand = true;
