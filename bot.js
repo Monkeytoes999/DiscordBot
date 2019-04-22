@@ -1871,6 +1871,28 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				commRand = true;
 				break;
+			case 'profile':
+				if (serverID == '568917420811747338'){
+					let dispname = bot.users[userID].username
+					bot.sendMessage({
+						to: channelID,
+						embed: {
+							//color: ___,
+							author: {
+								name: dispname,
+								icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
+							},
+							fields: [
+								{
+									name: "Username",
+									value: dtb.query('SELECT username FROM profile WHERE id = ' + userID + ')');
+								}
+								]
+						}
+					});
+				}
+				commRand = true;
+				break;
 			case 'die':
 				if (userID == '393586279964475393'){
 					bot.sendMessage({
