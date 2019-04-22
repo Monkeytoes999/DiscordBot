@@ -1877,24 +1877,65 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (serverID == '568917420811747338'){
 					let dispname = bot.users[userID].username
 					let pfU = '';
-					let pfI = '';
+					let pfN = '';
+					let pfCD = '';
+					let pfC = '';
+					let pfVD = '';
+					let pfTC = 0;
+					let pfTV = 0;
+					let pfSD = '';
 					dtb.query('SELECT username FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (e) throw e;
-						console.log(res);
+						pfU = res.rows[0].username
+						pfN = res.rows[0].nickname
+						pfCD = res.rows[0].lastuse
+						pfC = res.rows[0].lastcommand
+						pfVD = res.rows[0].lastvote
+						pfTC = res.rows[0].totalnum
+						pfTV = res.rows[0].totalvote
+						pfSD = res.rows[0].self
 					})
 					bot.sendMessage({
 						to: channelID,
 						embed: {
 							//color: ___,
 							author: {
-								name: dispname,
+								name: '"' + userID + '"',
 								icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
 							},
 							fields: [
 								{
-									name: "Username",
+									name: "Username:",
 									value: pfU
-								}
+								},
+								{
+									name: "Nickname:",
+									value: pfN
+								},
+								{
+									name: "Last command used:",
+									value: pfC
+								},
+								{
+									name: "Date of last use:",
+									value: pfCD
+								},
+								{
+									name: "Total commands used:",
+									value: pfTC
+								},
+								{
+									name: "Date of last vote:",
+									value: pfVD
+								},
+								{
+									name: "Total votes:",
+									value: pfTV
+								},
+								{
+									name: "Self description:",
+									value: pfSD
+								},
 								]
 						}
 					});
