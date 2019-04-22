@@ -1884,7 +1884,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					let pfTC = 0;
 					let pfTV = 0;
 					let pfSD = '';
-					dtb.query('SELECT username FROM profile WHERE id = \'' + userID + '\'', function(e, r){
+					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (e) throw e;
 						pfU = r.rows[0].username
 						pfN = r.rows[0].nickname
@@ -1894,8 +1894,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						pfTC = r.rows[0].totalnum
 						pfTV = r.rows[0].totalvote
 						pfSD = r.rows[0].selfdesc
-						let yellow = 0
-						console.log(pfU, pfN, pfCD, r);
 						bot.sendMessage({
 							to: channelID,
 							embed: {
@@ -1906,10 +1904,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								},
 								fields: [
 									{
-										name: "Username:",
-										value: yellow
-									}
-									/**{
 										name: "Username:",
 										value: pfU
 									},
@@ -1940,7 +1934,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									{
 										name: "Self description:",
 										value: pfSD
-									}**/
+									}
 									]
 							}
 						}, function(err,res){
