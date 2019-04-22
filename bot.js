@@ -1876,6 +1876,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'profile':
 				if (serverID == '568917420811747338'){
 					let dispname = bot.users[userID].username
+					let pfU = '';
+					let pfI = '';
+					dtb.query('SELECT username FROM profile WHERE id = \'' + userID + '\'', function(e, r){
+						if (e) throw e;
+						console.log(res);
+					})
 					bot.sendMessage({
 						to: channelID,
 						embed: {
@@ -1887,7 +1893,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							fields: [
 								{
 									name: "Username",
-									value: dtb.query('SELECT username FROM profile WHERE id = \'' + userID + '\'')
+									value: pfU
 								}
 								]
 						}
