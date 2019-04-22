@@ -140,7 +140,7 @@ bot.on('ready', function (evt) {
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
 	dtb.query('DELETE FROM profile', function(e, r){
-		dtb.query('INSERT INTO profile(id, lastcommand, lastuse, lastvote, nickname, self, totalnum, totalvote, username) VALUES (393586279964475393, \'NA\', \'NA\', \'NA\', \'NA\', \'NA\', 0, 0, \'Monkeytoes999\')', function(err, res){
+		dtb.query('INSERT INTO profile(id, lastcommand, lastuse, lastvote, nickname, selfdesc, totalnum, totalvote, username) VALUES (393586279964475393, \'NA\', \'NA\', \'NA\', \'NA\', \'NA\', 0, 0, \'Monkeytoes999\')', function(err, res){
 			if (err) throw err
 		});
 	})
