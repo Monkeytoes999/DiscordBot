@@ -1910,7 +1910,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									{
 										name: "Nickname:",
 										value: pfN
-									},
+									}/**,
 									{
 										name: "Last command used:",
 										value: pfC
@@ -1934,7 +1934,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									{
 										name: "Self description:",
 										value: pfSD
-									}
+									}**/
 									]
 							}
 						}, function(err,res){
