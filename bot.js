@@ -1894,7 +1894,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						pfTC = r.rows[0].totalnum
 						pfTV = r.rows[0].totalvote
 						pfSD = r.rows[0].self
-					})
+					});
 					bot.sendMessage({
 						to: channelID,
 						embed: {
@@ -1938,6 +1938,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								},
 								]
 						}
+					}, function(err,res){
+						if (err) throw err;
 					});
 				}
 				commRand = true;
