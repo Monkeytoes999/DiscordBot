@@ -1886,14 +1886,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					let pfSD = '';
 					dtb.query('SELECT username FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (e) throw e;
-						pfU = res.rows[0].username
-						pfN = res.rows[0].nickname
-						pfCD = res.rows[0].lastuse
-						pfC = res.rows[0].lastcommand
-						pfVD = res.rows[0].lastvote
-						pfTC = res.rows[0].totalnum
-						pfTV = res.rows[0].totalvote
-						pfSD = res.rows[0].self
+						pfU = r.rows[0].username
+						pfN = r.rows[0].nickname
+						pfCD = r.rows[0].lastuse
+						pfC = r.rows[0].lastcommand
+						pfVD = r.rows[0].lastvote
+						pfTC = r.rows[0].totalnum
+						pfTV = r.rows[0].totalvote
+						pfSD = r.rows[0].self
 					})
 					bot.sendMessage({
 						to: channelID,
