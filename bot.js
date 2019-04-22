@@ -1935,7 +1935,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								{
 									name: "Self description:",
 									value: pfSD
-								},
+								}
 								]
 						}
 					}, function(err,res){
