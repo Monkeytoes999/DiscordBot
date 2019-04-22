@@ -1905,12 +1905,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								fields: [
 									{
 										name: "Username:",
+										value: "oof"
+									}
+									/**{
+										name: "Username:",
 										value: pfU
 									},
 									{
 										name: "Nickname:",
 										value: pfN
-									}/**,
+									},
 									{
 										name: "Last command used:",
 										value: pfC
