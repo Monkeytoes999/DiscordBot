@@ -1893,7 +1893,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						pfVD = r.rows[0].lastvote
 						pfTC = r.rows[0].totalnum
 						pfTV = r.rows[0].totalvote
-						pfSD = r.rows[0].self
+						pfSD = r.rows[0].selfdesc
 					});
 					bot.sendMessage({
 						to: channelID,
