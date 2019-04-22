@@ -1894,52 +1894,52 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						pfTC = r.rows[0].totalnum
 						pfTV = r.rows[0].totalvote
 						pfSD = r.rows[0].selfdesc
-					});
-					bot.sendMessage({
-						to: channelID,
-						embed: {
-							color: 65280,
-							author: {
-								name: '"' + userID + '"',
-								icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
-							},
-							fields: [
-								{
-									name: "Username:",
-									value: pfU
+						bot.sendMessage({
+							to: channelID,
+							embed: {
+								color: 65280,
+								author: {
+									name: '"' + userID + '"',
+									icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
 								},
-								{
-									name: "Nickname:",
-									value: pfN
-								},
-								{
-									name: "Last command used:",
-									value: pfC
-								},
-								{
-									name: "Date of last use:",
-									value: pfCD
-								},
-								{
-									name: "Total commands used:",
-									value: pfTC
-								},
-								{
-									name: "Date of last vote:",
-									value: pfVD
-								},
-								{
-									name: "Total votes:",
-									value: pfTV
-								},
-								{
-									name: "Self description:",
-									value: pfSD
-								}
-								]
-						}
-					}, function(err,res){
-						console.log(err);
+								fields: [
+									{
+										name: "Username:",
+										value: pfU
+									},
+									{
+										name: "Nickname:",
+										value: pfN
+									},
+									{
+										name: "Last command used:",
+										value: pfC
+									},
+									{
+										name: "Date of last use:",
+										value: pfCD
+									},
+									{
+										name: "Total commands used:",
+										value: pfTC
+									},
+									{
+										name: "Date of last vote:",
+										value: pfVD
+									},
+									{
+										name: "Total votes:",
+										value: pfTV
+									},
+									{
+										name: "Self description:",
+										value: pfSD
+									}
+									]
+							}
+						}, function(err,res){
+							console.log(err);
+						});
 					});
 				}
 				commRand = true;
