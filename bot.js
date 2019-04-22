@@ -1887,7 +1887,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							fields: [
 								{
 									name: "Username",
-									value: dtb.query('SELECT username FROM profile WHERE id = ' + userID)
+									value: dtb.query('SELECT username FROM profile WHERE id = \'' + userID + '\'')
 								}
 								]
 						}
