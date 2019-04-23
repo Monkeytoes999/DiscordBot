@@ -1872,7 +1872,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
-							dtb.query('UPDATE profile SET selfdesc = \'' + message.substring(15) + '\' WHERE id = \'' + userID + '\'');
+							dtb.query('UPDATE profile SET nickname = \'' + message.substring(15) + '\' WHERE id = \'' + userID + '\'');
 						} else {
 							bot.sendMessage({
 								to: channelID,
@@ -1882,6 +1882,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						
 					});
 				}
+				commRand = true;
+				break;
 			case 'profile':
 				if (serverID == '568917420811747338'){
 					let newPUser = false;
@@ -1917,7 +1919,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										fields: [
 											{
 												name: "Username:",
-												value: pfU
+												value: dispname
 											},
 											{
 												name: "Nickname:",
@@ -1963,7 +1965,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						dtb.query('SELECT * FROM profile WHERE id = \'' + evt.d.mentions[0].id + '\'', function(e, r){
 							if (e) throw e;
 							if (r.rows[0] != undefined){
-								pfU = r.rows[0].username
+								pfU = bot.users[evt.d.mentions[0].id].username
 								pfN = r.rows[0].nickname
 								pfCD = r.rows[0].lastuse
 								pfC = r.rows[0].lastcommand
