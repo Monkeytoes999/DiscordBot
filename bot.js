@@ -1868,6 +1868,20 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				commRand = true;
 				break;
+			case 'pfNickname':
+				if (serverID == '568917420811747338'){
+					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
+						if (r.rows[0] != undefined){
+							dtb.query('UPDATE profile SET selfdesc = \'' + message.substring(15) + '\' WHERE id = \'' + userID + '\'');
+						} else {
+							bot.sendMessage({
+								to: channelID,
+								message: bot.users[userID].username + ', you don\' have a profile with GCD yet. Please run "gcd.profile"'
+							});
+						}
+						
+					});
+				}
 			case 'profile':
 				if (serverID == '568917420811747338'){
 					let newPUser = false;
@@ -1930,7 +1944,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 												value: pfTV
 											},
 											{
-												name: "Self description:",
+												name: "Bio:",
 												value: pfSD
 											}
 											]
@@ -1995,7 +2009,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 												value: pfTV
 											},
 											{
-												name: "Self description:",
+												name: "Bio:",
 												value: pfSD
 											}
 											]
