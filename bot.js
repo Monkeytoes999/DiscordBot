@@ -1871,8 +1871,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'profile':
 				if (serverID == '568917420811747338'){
 					let newPUser = true;
-					dtb.query('SELECT * FROM profile WHERE id = \'' + userID '\''), function(e, r){
-						let newPUser = (r.rows[0] = undefined);
+					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\''), function(e, r){
+						let newPUser = (r.rows[0] == undefined);
 					}
 					if (!newPUser){
 						let dispname = bot.users[userID].username
