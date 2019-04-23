@@ -1884,6 +1884,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									to: channelID,
 									message: 'Nickname must be at least one character long.'
 								});
+							}
 						} else {
 							bot.sendMessage({
 								to: channelID,
