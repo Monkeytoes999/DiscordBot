@@ -1872,11 +1872,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
-							if (message.length > 15){
+							if (message.length > 15 && message.length < 47){
 								dtb.query('UPDATE profile SET nickname = \'' + message.substring(15) + '\' WHERE id = \'' + userID + '\'');
 								bot.sendMessage({
 									to: channelID,
-									message: 'Your nickname is now \'' + message.substring(15) + '.'
+									message: 'Your nickname is now \'' + message.substring(15) + '\'.'
 								});
 							} else {
 								bot.sendMessage({
@@ -1884,10 +1884,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									message: 'Nickname must be at least one character long.'
 								});
 							}
-						} else {
+						} else if (message.length < 47){
 							bot.sendMessage({
 								to: channelID,
 								message: bot.users[userID].username + ', you don\' have a profile with GCD yet. Please run "gcd.profile"'
+							});
+						} else {
+							bot.sendMessage({
+								to: channelID,
+								message: bot.users[userID].username + ', your nickname must be less than 32 characters'
 							});
 						}
 						
