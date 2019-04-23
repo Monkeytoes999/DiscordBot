@@ -1913,7 +1913,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 											value: pfC
 										},
 										{
-											name: "Date of last use:",
+											name: "Date of last use (EST):",
 											value: pfCD
 										},
 										{
@@ -2048,7 +2048,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 			});
 			let thisTime = new Date();
-			let thisHour = (thisTime.getHours() - 5);
+			let thisHour = (thisTime.getHours() - 6);
 			let thisDay = thisTime.getDate();
 			let thisDayay = (thisTime.getDay() - 1);
 			let thisMonth = (thisTime.getMonth() + 1);
