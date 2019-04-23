@@ -139,6 +139,7 @@ bot.on('ready', function (evt) {
 		to: '520394437461803010',
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
+	dtb.query('UPDATE profile SET nickname = Use "gcd.pfNickname [nickname] to set"');
 });
 
 bot.on('any', function(event) {
@@ -1872,7 +1873,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
-							dtb.query('UPDATE profile SET nickname = \'' + message.substring(15) + '\' WHERE id = \'' + userID + '\'');
+							if (message.length > 15){
+								dtb.query('UPDATE profile SET nickname = \'' + message.substring(15) + '\' WHERE id = \'' + userID + '\'');
+								bot.sendMessage({
+									to: channelID,
+									message: 'Your nickname is now \'' + message.substring(15) + '.'
+								});
+							} else {
+								bot.sendMessage({
+									to: channelID,
+									message: 'Nickname must be at least one character long."
+								});
 						} else {
 							bot.sendMessage({
 								to: channelID,
