@@ -2044,9 +2044,34 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			dtb.query('SELECT totalnum FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 				if (r.rows[0] != undefined){
-					dtb.query('UPDATE profile SET totalnum = ' + (r.rows[0].totalnum + 1));
+					dtb.query('UPDATE profile SET totalnum = ' + (r.rows[0].totalnum + 1) + ' WHERE id = \'' + userID + '\'');
 				}
 			});
+			let thisTime = new Date();
+			let thisHour = (thisTime.getHours() - 5);
+			let thisDay = thisTime.getDate();
+			let thisDayay = (thisTime.getDay() - 1);
+			let thisMonth = (thisTime.getMonth() + 1);
+			let thisYear = thisTime.getFullYear();
+			if (thisHour < 0){
+				thisDay = thisDay - 1;
+				thisHour = 24 + thisHour;
+			}
+			if (thisDay < 1){
+				thisDay = monthNumbers[thisTime.getMonth()];
+				thisMonth = thisMonth - 1
+			}
+			if (thisMonth < 1){
+				thisMonth = 12;
+				thisYear = thisYear - 1;
+			}
+			if (thisDayay < 0){
+				thisDayay = 6 + (thisDayay + 1);
+			}
+			if (thisHour > 12){
+				thisHour = thisHour - 12
+			}
+			dtb.query('UPDATE profile SET lastuse = \'' + thisMonth + '-' + thisDay + '-' + thisYear + '\' WHERE id = \'' + userID + '\'');
 		}
 	}
 	}
