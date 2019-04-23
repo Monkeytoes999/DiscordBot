@@ -2044,7 +2044,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			dtb.query('SELECT totalnum FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 				if (r.rows[0] != undefined){
-					dtb.query('UPDATE profile SET totalnum = ' + r.rows[0].totalnum + 1);
+					dtb.query('UPDATE profile SET totalnum = ' + (r.rows[0].totalnum + 1));
 				}
 			});
 		}
