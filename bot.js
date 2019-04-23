@@ -139,11 +139,6 @@ bot.on('ready', function (evt) {
 		to: '520394437461803010',
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
-	dtb.query('DELETE FROM profile', function(e, r){
-		dtb.query('INSERT INTO profile(id, lastcommand, lastuse, lastvote, nickname, selfdesc, totalnum, totalvote, username) VALUES (393586279964475393, \'NA\', \'NA\', \'NA\', \'NA\', \'NA\', 0, 0, \'Monkeytoes999\')', function(err, res){
-			if (err) throw err
-		});
-	})
 });
 
 bot.on('any', function(event) {
@@ -1875,72 +1870,83 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'profile':
 				if (serverID == '568917420811747338'){
-					let dispname = bot.users[userID].username
-					let pfU = '';
-					let pfN = '';
-					let pfCD = '';
-					let pfC = '';
-					let pfVD = '';
-					let pfTC = 0;
-					let pfTV = 0;
-					let pfSD = '';
-					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
-						if (e) throw e;
-						pfU = r.rows[0].username
-						pfN = r.rows[0].nickname
-						pfCD = r.rows[0].lastuse
-						pfC = r.rows[0].lastcommand
-						pfVD = r.rows[0].lastvote
-						pfTC = r.rows[0].totalnum
-						pfTV = r.rows[0].totalvote
-						pfSD = r.rows[0].selfdesc
+					let newPUser = true;
+					dtb.query('SELECT * FROM profile WHERE id = \'' + userID '\'', function(e, r){
+						let newPUser = (r.rows[0] = undefined);
+					}
+					if (!newPUser){
+						let dispname = bot.users[userID].username
+						let pfU = '';
+						let pfN = '';
+						let pfCD = '';
+						let pfC = '';
+						let pfVD = '';
+						let pfTC = 0;
+						let pfTV = 0;
+						let pfSD = '';
+						dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
+							if (e) throw e;
+							pfU = r.rows[0].username
+							pfN = r.rows[0].nickname
+							pfCD = r.rows[0].lastuse
+							pfC = r.rows[0].lastcommand
+							pfVD = r.rows[0].lastvote
+							pfTC = r.rows[0].totalnum
+							pfTV = r.rows[0].totalvote
+							pfSD = r.rows[0].selfdesc
+							bot.sendMessage({
+								to: channelID,
+								embed: {
+									color: 65280,
+									author: {
+										name: '"' + userID + '"',
+										icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
+									},
+									fields: [
+										{
+											name: "Username:",
+											value: pfU
+										},
+										{
+											name: "Nickname:",
+											value: pfN
+										},
+										{
+											name: "Last command used:",
+											value: pfC
+										},
+										{
+											name: "Date of last use:",
+											value: pfCD
+										},
+										{
+											name: "Total commands used:",
+											value: pfTC
+										},
+										{
+											name: "Date of last vote:",
+											value: pfVD
+										},
+										{
+											name: "Total votes:",
+											value: pfTV
+										},
+										{
+											name: "Self description:",
+											value: pfSD
+										}
+										]
+								}
+							}, function(err,res){
+								console.log(err);
+							});
+						});
+					} else {
 						bot.sendMessage({
 							to: channelID,
-							embed: {
-								color: 65280,
-								author: {
-									name: '"' + userID + '"',
-									icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
-								},
-								fields: [
-									{
-										name: "Username:",
-										value: pfU
-									},
-									{
-										name: "Nickname:",
-										value: pfN
-									},
-									{
-										name: "Last command used:",
-										value: pfC
-									},
-									{
-										name: "Date of last use:",
-										value: pfCD
-									},
-									{
-										name: "Total commands used:",
-										value: pfTC
-									},
-									{
-										name: "Date of last vote:",
-										value: pfVD
-									},
-									{
-										name: "Total votes:",
-										value: pfTV
-									},
-									{
-										name: "Self description:",
-										value: pfSD
-									}
-									]
-							}
-						}, function(err,res){
-							console.log(err);
+							message: 'In order to start your own profile, please accept these conditions. \n1. Data will be gathered from you and available to the public (Last command used, date used, total commands used, last time you voted for GCD, and total number of votes for GCD) \n2. Anything deemed offensive in your biography will lead to your expulsion from the profile program.\n3. Any offensive profile nickname will lead to your expulsion from the profile program.\nTo accept these terms, please DM GCD "gcd.accept iAcPT"'
 						});
-					});
+					}
 				}
 				commRand = true;
 				break;
