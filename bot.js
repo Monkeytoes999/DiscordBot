@@ -1946,7 +1946,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								message: 'In order to start your own profile, please accept these conditions. \n\n1. Data will be gathered from you and available to the public (Last command used, date used, total commands used, last time you voted for GCD, and total number of votes for GCD) \n2. Anything deemed offensive in your biography will lead to your expulsion from the profile program.\n3. Any offensive profile nickname will lead to your expulsion from the profile program.\n\nTo accept these terms, please DM GCD "gcd.accept iAcPT"'
 							});
 						}
-					});
+					}
 				}
 				commRand = true;
 				break;
