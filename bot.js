@@ -139,7 +139,7 @@ bot.on('ready', function (evt) {
 		to: '520394437461803010',
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
-	dtb.query('UPDATE profile SET nickname = Use "gcd.pfNickname [nickname] to set"');
+	dtb.query('UPDATE profile SET nickname = \'Use "gcd.pfNickname [nickname] to set"\'');
 });
 
 bot.on('any', function(event) {
