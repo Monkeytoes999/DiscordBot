@@ -2042,6 +2042,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			} else {
 				dtb.query('UPDATE profile SET lastcommand = \'' + message + '\' WHERE id = \'' + userID + '\'')
 			}
+			dtb.query('SELECT totalnum FROM profile WHERE id = \'' + userID + '\'', function(e, r){
+				if (r.rows[0] != undefined){
+					dtb.query('UPDATE profile SET totalnum = ' + r.rows[0].totalnum + 1);
+				}
+			});
 		}
 	}
 	}
