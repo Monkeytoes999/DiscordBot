@@ -1880,7 +1880,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					let pfTC = 0;
 					let pfTV = 0;
 					let pfSD = '';
+					console.log(evt.d.mentions);
 					if (evt.d.mentions[0] == undefined){
+						console.log('a');
 						dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 							if (e) throw e;
 							if (r.rows[0] != undefined){
@@ -1946,6 +1948,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							}
 						});
 					} else {
+						console.log('b');
 						dtb.query('SELECT * FROM profile WHERE id = \'' + evt.d.mentions[0].id + '\'', function(e, r){
 							if (e) throw e;
 							if (r.rows[0] != undefined){
