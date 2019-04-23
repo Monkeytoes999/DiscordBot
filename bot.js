@@ -1880,9 +1880,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					let pfTC = 0;
 					let pfTV = 0;
 					let pfSD = '';
-					console.log(evt.d.mentions);
 					if (evt.d.mentions[0] == undefined){
-						console.log('a');
 						dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 							if (e) throw e;
 							if (r.rows[0] != undefined){
@@ -1938,7 +1936,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 											]
 									}
 								}, function(err,res){
-									console.log(err);
+									if (err) throw err;;
 								});
 							} else {
 								bot.sendMessage({
@@ -1948,7 +1946,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							}
 						});
 					} else {
-						console.log('b');
 						dtb.query('SELECT * FROM profile WHERE id = \'' + evt.d.mentions[0].id + '\'', function(e, r){
 							if (e) throw e;
 							if (r.rows[0] != undefined){
@@ -1965,7 +1962,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									embed: {
 										color: 65280,
 										author: {
-											name: '"' + userID + '"',
+											name: '"' + evt.d.mentions[0].id + '"',
 											icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
 										},
 										fields: [
@@ -2004,12 +2001,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 											]
 									}
 								}, function(err,res){
-									console.log(err);
+									if (err) throw err;
 								});
 							} else {
 								bot.sendMessage({
 									to: channelID,
-									message: 'In order to start your own profile, please accept these conditions. \n\n1. Data will be gathered from you and available to the public (Last command used, date used, total commands used, last time you voted for GCD, and total number of votes for GCD) \n2. Anything deemed offensive in your biography will lead to your expulsion from the profile program.\n3. Any offensive profile nickname will lead to your expulsion from the profile program.\n\nTo accept these terms, please DM GCD "gcd.accept iAcPT"'
+									message: 'This user doesn\'t have a profile with GCD yet.'
 								});
 							}
 						});
