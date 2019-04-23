@@ -2037,6 +2037,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				to: '522580047895330820',
 				message: user + ' used this command: ' + message
 			});
+			dtb.query('UPDATE TABLE profile SET lastcommand = \'' + message.substring(0, message.indexOf(' ')) + '\' WHERE id = '\' + userID + '\'')
 		}
 	}
 	}
