@@ -1873,7 +1873,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
-							if (message.length > 15 && message.length < 272){
+							if (message.length > 10 && message.length < 267){
 								dtb.query('UPDATE profile SET selfdesc = \'' + fixedMsga.substring(15) + '\' WHERE id = \'' + userID + '\'');
 								bot.sendMessage({
 									to: channelID,
