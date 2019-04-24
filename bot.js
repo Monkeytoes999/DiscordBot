@@ -1973,7 +1973,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							} else {
 								bot.sendMessage({
 									to: channelID,
-									message: 'In order to start your own profile, please accept these conditions. \n\n1. Data will be gathered from you and available to the public (Last command used, date used, total commands used, last time you voted for GCD, and total number of votes for GCD) \n2. Anything deemed offensive in your biography will lead to your expulsion from the profile program.\n3. Any offensive profile nickname will lead to your expulsion from the profile program.\n\nTo accept these terms, please DM GCD "gcd.accept iAcPT"'
+									embed: {
+										color: 13173507,
+										author: {
+											name: 'The Profile Police',
+											icon_url: 'https://cdn.discordapp.com/avatars/495714322916311079/01023873526eeafa9b9694bdd1ab95c7.png?size=32'
+										},
+										fields: [
+											{
+												name: 'In order to start your own profile, please accept these conditions.',
+												value: '**1:** Data will be gathered from you and available to the public (Last command used, date used, total commands used, last time you voted for GCD, and total number of votes for GCD) \n**2:** Anything deemed offensive in your profile will lead to your expulsion from the profile program.'
+											}
+											],
+										footer: {
+											text: 'To accept these terms, please DM GCD "gcd.accept iAcPT"'
+										}
+									}
 								});
 							}
 						});
