@@ -1868,6 +1868,38 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					});
 				commRand = true;
 				break;
+			case 'pfBio':
+				let fixedMsg = bot.fixMessage(message);
+				if (serverID == '568917420811747338'){
+					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
+						if (r.rows[0] != undefined){
+							if (message.length > 15 && message.length < 272){
+								dtb.query('UPDATE profile SET selfdesc = \'' + fixedMsg.substring(15) + '\' WHERE id = \'' + userID + '\'');
+								bot.sendMessage({
+									to: channelID,
+									message: 'Your biography is now \'' + fixedMsg.substring(15) + '\'.'
+								});
+							} else if (message.length < 48){
+								bot.sendMessage({
+									to: channelID,
+									message: 'Biography must be at least one character long.'
+								});
+							} else {
+								bot.sendMessage({
+									to: channelID,
+									message: bot.users[userID].username + ', your biography must be less than 257 characters'
+								});
+							}
+						} else {
+							bot.sendMessage({
+								to: channelID,
+								message: bot.users[userID].username + ', you don\'t have a profile with GCD yet. Please run "gcd.profile"'
+							});
+						}
+					});
+				}
+				commRand = true;
+				break;
 			case 'pfNickname':
 				let fixedMsg = bot.fixMessage(message);
 				if (serverID == '568917420811747338'){
