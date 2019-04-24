@@ -1977,7 +1977,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										color: 13173507,
 										author: {
 											name: 'The Profile Police',
-											icon_url: 'https://lh3.google.com/u/0/d/1uH1sRJJZDxldPmZBaQjBY3SOb8XSWVsi=w1366-h625-iv5'
+											icon_url: 'https://lh3.googleusercontent.com/Ewp65PHlXwwz4EMQmzUPnFMvdNOeuPAKTi9X6IqM2dG4R8a-vO0XUJ55Hg09B487pYW5F-8iNavTQolyFLv4I1GTZf7ZuumRrz1LEZAKR9p4iUKbExul7br9oTmusPn_-cNqWzu69e5JIxtpBSJ3hoYLd-7EsFzs7Ev4Mh36o1yrhf_oGaKHB1ymqAL2WY0D_IXcbeb8RMEA492Tc2yVvRUMc9zkVToS8etmRsa6JQjPeyDEt_npIClqCJXcBwf-wHT-2GrRO8mu048tKa1JDtlVWTW4X9OACkaCAEXpdOO-hG2uJe_igfu4AXA1thAH6BRDcBNIoFo1UjB5oAUCqXl45Vxt9wTuwK_HWm_C9xCmFIgZ-YqVaSZc7svmvP3V6qkhv1I6TOPwgFF9z-EijVj3q0NE3BdrozKO9J0AZTxOP5Qi7cCgUG-lFgDgob19JKcsnQztpQoqmLcaw572gTy5EnTYzPBsCo0VH-vUJ9UgPi7FgVguVok-svsvFxVobid9dbGZqGNW9aKZu2Xrfclf8EV7X7I_XVKSVxBh9OZ2dXCtNPQcYt9iLGtFcnUpS4aieeM9wJEeLwEEcA6CbCIUevYjQjnF3G5cbB4=w1366-h625'
 										},
 										fields: [
 											{
