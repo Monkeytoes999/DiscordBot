@@ -1883,17 +1883,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 									to: channelID,
 									message: 'Nickname must be at least one character long.'
 								});
-							}
 							} else {
 								bot.sendMessage({
 									to: channelID,
 									message: bot.users[userID].username + ', your nickname must be less than 32 characters'
 								});
 							}
+						} else {
 							bot.sendMessage({
 								to: channelID,
-								message: bot.users[userID].username + ', you don\' have a profile with GCD yet. Please run "gcd.profile"'
+								message: bot.users[userID].username + ', you don\'t have a profile with GCD yet. Please run "gcd.profile"'
 							});
+						}
 					});
 				}
 				commRand = true;
