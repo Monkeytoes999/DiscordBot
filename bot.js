@@ -1977,7 +1977,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										color: 13173507,
 										author: {
 											name: 'The Profile Police',
-											icon_url: 'https://cdn.discordapp.com/avatars/495714322916311079/01023873526eeafa9b9694bdd1ab95c7.png?size=32'
+											icon_url: 'https://lh3.google.com/u/0/d/1uH1sRJJZDxldPmZBaQjBY3SOb8XSWVsi=w1366-h625-iv5'
 										},
 										fields: [
 											{
