@@ -1886,7 +1886,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							} else {
 								bot.sendMessage({
 									to: channelID,
-									message: bot.users[userID].username + ', your nickname must be less than 32 characters'
+									message: bot.users[userID].username + ', your nickname must be less than 33 characters'
 								});
 							}
 						} else {
