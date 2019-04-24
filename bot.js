@@ -1977,7 +1977,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										color: 13173507,
 										author: {
 											name: 'The Profile Police',
-											icon_url: 'https://lh3.googleusercontent.com/7Ly6QTt4-PbBDLqPRwM-0WzcDVU2YgoEyJ_fyYcANU8ycIEowYTr5OMZZNtFM2-RMhNBAwkiCYFx2062wlKDr1LhiHaK5Nek41QWQ3zhvaF57T5m6oP7I0ABGbLSLu1WbKuyuo2v-4vRnfOpuD8HefxboSgXdSwG-GQ9zYbBQipvNKNgudKRNN4itVYSgSf7zCkMOhURyjNCZ56VUI8GmW7lX998ltB4epVVyW03lYI4zfCOLUePlSZykovCfPP7gGkPbOPaR747ISeRb1nZTa-Anhxq1eqH5aYNS3bvTkaMu5E6X3QmXHgMNl3SOZ14-vAUCZ7S22SKJJI8--ZhP8Ak-y7ZdHtqqYkBI_whfP5PT2IgSBfeicDpfQ_fjoD6nym425P_dR4Tjr8ua7SZAkUlqB2oD_Gfj4Hon7O2zdKQE7qO4Y4ZYptljnk7nzJhiQapHo4siKyf0wx6gv4pgd8gOCKlvjv9X8EkfyltcBGbcsxn9NvrIh9ZEbZlgcTg5ui1DxTvxldnWUcC1fRjFDRf-aKBP__TUkCJLMM5Yoc8IViKBoGTPzyHKmybcIYoDU4nsxLLftS3GYrXaBQEZ4vjsi3iOFN4DRAknTppc-I=w1366-h625'
+											icon_url: 'https://lh3.googleusercontent.com/JScVZmXFOKUVJjCfc0kAzbmCLywyrxWnnH9k1DXr-jB_GUjIY9r-fa4wNui0S7vFZ3xAVrmByfSfPVWxQyW8UG2hIwXOrh_L-yW4Gk_O0nD_eCPkPW6_sh7GPBxI2vdfSaAQXTIKWv9xPRumebARdHdDVdhsE7KQn6da6eO04fSbOMgxQ9UTGzqcyfqqNA_I7SnCkWL4VIM09d5L2qfZGIHnRuf9z9xyDjOWsALKi-8UW5R4MjPf3nXL_ICBvrgiCOIHw0mW6DciVcFVIaicLlD9-vQXYxsl2p8YVps08s3yp0a39cwCHJDvh6_l2Pi8a554jduRAvrcOQHVQjiGGn-0dUrpNeL0n4sWEmxplFM_ws1kSHjkB_yn1Pfq2DepPV4vORYmQlOyit2q-PGIGDA_CruZTwQUadac2Bt1PPpAUmVc1SRbvb1_MgGKeWJwjlmPvGahxFIKrOh2739RId914Xg4S4Dt77HdUMx6floYiVO_LdbV7VnU4oTyjwg6_ADmjqtBDea8j3MD0h-aYBLYgxfI0sIfn36eQmwT1yRhBjqH8IPmrdMUFWYc7NyaE7iwwWeWPG3axT4FnEpagMRfb1ZlXUEC5z2GVaAKu6tdmwo=w1366-h625'
 										},
 										fields: [
 											{
