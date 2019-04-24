@@ -1869,14 +1869,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'pfNickname':
+				let fixedMsg = bot.fixMessage(message);
 				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
 							if (message.length > 15 && message.length < 48){
-								dtb.query('UPDATE profile SET nickname = \'' + message.substring(15) + '\' WHERE id = \'' + userID + '\'');
+								dtb.query('UPDATE profile SET nickname = \'' + fixedMsg.substring(15) + '\' WHERE id = \'' + userID + '\'');
 								bot.sendMessage({
 									to: channelID,
-									message: 'Your nickname is now \'' + message.substring(15) + '\'.'
+									message: 'Your nickname is now \'' + fixedMsg.substring(15) + '\'.'
 								});
 							} else if (message.length < 48){
 								bot.sendMessage({
@@ -1994,7 +1995,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										color: 65280,
 										author: {
 											name: '"' + evt.d.mentions[0].id + '"',
-											icon_url: 'https://cdn.discordapp.com/avatars/' + userID + '/' + bot.users[userID].avatar + '.png?size=32'
+											icon_url: 'https://cdn.discordapp.com/avatars/' + evt.d.mentions[0].id + '/' + bot.users[evt.d.mentions[0].id].avatar + '.png?size=32'
 										},
 										fields: [
 											{
