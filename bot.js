@@ -86,6 +86,7 @@ var randVideo = ['https://m.youtube.com/watch?v=W9gxFkOz2_4'];
 var commRand = false;
 var commands = ['ping', 'music', 'portalCat', 'changeMyNickname', 'knockknock', 'randVideo', 'randSong', 'videoSongSuggestions', 'guildLink', 'help', 'rcCM', 'createPoll', 'pollOptions', 'pollResults', 'addCustomResponse', 'vote', 'closePoll', 'createAtappPoll', 'pollAtappOptions', 'addCustomatAtappResponse', 'pollAtappResults', 'votAtapp', 'closeAtapp', 'customCommand', 'feedback', 'suggest', 'userInfo', 'test', 'getChannelID', 'tto', 'findRoleID', 'getServerID', 'inviteInfo', 'purge','gcd.toggleNSFW'];
 var commandHelp = ['Replys "Pong!", perfect for a game of never-ending ping pong.', 'Replys with the lyrics of a random song.', 'Replys with an animated emoji of a cat jumping into a portal.', 'Changes your nickname to a random nickname from a list.', 'Replys to YOUR knock-knock joke.', 'Replys with a link to a user-suggested video.', 'Replys with a link to a user-suggested song.', 'Sends your video/song suggestion to the owner for review. \nSuggestions must be (mainly) English, curse-free, and under 15 minutes long.', 'Replys with an invite to the GCD Support Server.', 'There are two ways to use this command. \nhelp: DMs you a complete list of commands and descriptions. \nhelp [command]: Replys with a description of that command.', 'Usage: rcCM [@role] [cmd] \nAllows users to join/leave the mentioned role by saying ' + prefix + 'cmd \nTo run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to.', 'Follow directions after using this command to create a poll users can respond to.', 'Replys with the options to the current poll.', 'Replys with the current results of the current poll.', 'Usage: addCustomResponse [custom] \nAllows you to add a custom response to a poll.', 'Usage: vote [optionNum] \nAdds your vote to the option specified, you can only vote once per poll.', 'Can only be done by the poll opener, closes the current poll.', 'After using this command, follow directions to create an \'All that apply\' poll.', 'Replys with the options for the current \'All that apply\' poll.', 'Usage: addCustomAtappResponse [custom] \nAllows you to add a custom response to an \'All that apply\' poll.', 'Replys with the current results for the current \'All that apply\' poll.', 'Allows you to vote for an option in an \'All that apply\' poll. Can be used multiple times.', 'Allows the owner of an \'All that apply\' poll to close it.', 'Usage: customCommand[1/2/3] \nAllows users to create custom (temporary) commands by running the command and following instructions', 'Usage: feeback [feedback] \nSends your feedback to the creator.', 'Usage: suggest [suggestion] \nSends your suggestion to the creator.', 'Usage: useInfo [@user] \nReplys with information about the mentioned user.', 'Replys with a sample of code currently in development.', 'Replys with the ID of the current channel.', 'Usage: tto [input] \nRepeats the input back', 'Usage: findRoleID [@role] \nReplys with the ID of the mentioned role.', 'Replys with the ID of the current server.', 'Usage: inviteInfo [invite] \nReplys with info about the invite given.', 'Usage: purge [num] \nPurges the number of messages requested (This number does not include the gcd.purge message, which is also deleted)','Toggles the NSFW quality for the current channel. \nTo run the command, your highest role must have admin/manage channels.'];
+var pfMsgLength = 15;
 
 //team blue 499003285106196480
 //team red 499003389955407872
@@ -122,6 +123,10 @@ var bot = new Discord.Client({
 });
 const DBL = require("dblapi.js");
 const dbl = new DBL(process.env.dtoken, bot);
+const dblw = new DBL(process.env.dtoken, {
+	webhookPort: 5000,
+	webhookAuth: process.env.wtoken
+});
 
 const { Client } = require('pg');
 const dtb = new Client({
@@ -140,6 +145,16 @@ bot.on('ready', function (evt) {
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
 });
+
+if (dblw.webhook != undefined){
+	dblw.webhook.on('ready', hook => {
+		console.log('Webhook running at https://' + hook.hostname + ':' + hook.port + hook.path);
+		console.log(hook);
+	});
+	dblw.webhook.on('vote', vote => {
+		console.log(vote);
+	});
+}
 
 bot.on('any', function(event) {
 	commRand = false
@@ -282,7 +297,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 
 bot.on('message', function (user, userID, channelID, message, evt) {
 	
-	
+	pfMsgLength = 15;
 	cussIndexes = [];
 	mistakenIndexes = [];
 	
@@ -299,6 +314,49 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			message: '<@&522551255873224704>'
 		});
 	}
+	
+	var mtnT = 0
+	while (evt.d.mentions[mtnT] != undefined && channelID != '579459432933752832'){
+		if (evt.d.mentions[mtnT].id == '495705429150793739'){
+			let sndMessGCP = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
+			bot.sendMessage({
+				to: '579459432933752832',
+				message: sndMessGCP
+			});
+		}
+		mtnT = mtnT + 1;
+	}
+	
+	if (channelID == '577687347336970240' && userID != '495705429150793739'){
+		let sndMessGCA = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
+		bot.sendMessage({
+			to: '579459705852788765',
+			message: sndMessGCA
+		});
+	}
+
+	if (channelID == '579459705852788765' && userID != '495705429150793739'){
+		let sndMessGCF = 'The following message was sent to you by Monkeytoes999: ' + message
+		bot.sendMessage({
+			to: '577687347336970240',
+			message: sndMessGCF
+		});
+	}
+	
+	dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
+		if (bot.directMessages[channelID] && (message == "gcd.accept iAcPT") && r.rows[0] == undefined){
+			dtb.query('INSERT INTO profile(id, username, nickname, lastuse, lastcommand, totalnum, lastvote, totalvote, selfdesc) VALUES (' + userID + ', \'' + bot.users[userID].username + '\', \'Use "gcd.pfNickname [nickname]" to set\', \'NA\', \'NA\', 0, \'NA\', 0, \'Use "gcd.pfBio [biography]" to set\')');
+			bot.sendMessage({
+				to: channelID,
+				message: 'Congrats! You created a profile!'
+			});
+		} else if(bot.directMessages[channelID] && (message == "gcd.accept iAcPT") && r.rows[0] != undefined){
+			bot.sendMessage({
+				to: channelID,
+				message: 'You already have a profile.'
+			});
+		}
+	});
 	
 	//Don't. Ask.
 	if (channelID != '513116265439821832'){
@@ -1223,6 +1281,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Test code.
 			case 'test':
+				dbl.getVotes().then(votes => {
+				   console.log(votes)
+				});
+// 				dbl.getBot().votes.then( votes => {
+// 					console.log(votes)
+// 				});
+				console.log(dbl.getBot().votes);
+				dbl.getBot("495705429150793739").then(all => {
+					console.log(all)	
+				}).catch( err => {
+					console.log(err)
+				})
 				bot.sendMessage({
 					to: channelID,
 					message: "RUN THIS COMMAND WHILE IN A VC"
@@ -1869,17 +1939,25 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'pfBio':
+				pfMsgLength = 9;
+			case 'pfBiography':
+				pfMsgLength = (pfMsgLength + 1);;
 				let fixedMsga = bot.fixMessage(message);
+				let pfNNa = 0;
+				while (fixedMsga.indexOf("'", pfNNa) > -1){ 
+					pfNNa = fixedMsga.indexOf("'", pfNNa) + 1; 
+					fixedMsga = fixedMsga.substring(0, pfNNa-1) + '‘' + fixedMsga.substring(pfNNa);
+				}
 				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
-							if (message.length > 10 && message.length < 267){
-								dtb.query('UPDATE profile SET selfdesc = \'' + fixedMsga.substring(10) + '\' WHERE id = \'' + userID + '\'');
+							if (message.length > pfMsgLength && message.length < (pfMsgLength + 257)){
+								dtb.query('UPDATE profile SET selfdesc = \'' + fixedMsga.substring(pfMsgLength) + '\' WHERE id = \'' + userID + '\'');
 								bot.sendMessage({
 									to: channelID,
-									message: 'Your biography is now \'' + fixedMsga.substring(10) + '\'.'
+									message: 'Your biography is now \'' + fixedMsga.substring(pfMsgLength) + '\'.'
 								});
-							} else if (message.length < 48){
+							} else if (message.length < (pfMsgLength + 257)){
 								bot.sendMessage({
 									to: channelID,
 									message: 'Biography must be at least one character long.'
@@ -1901,17 +1979,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'pfNickname':
+				pfMsgLength = 19;
+			case 'pfNick':
+				pfMsgLength = (pfMsgLength - 4);
 				let fixedMsg = bot.fixMessage(message);
+				let pfNN = 0;
+				while (fixedMsg.indexOf("'", pfNN) > -1){ 
+					pfNN = fixedMsg.indexOf("'", pfNN) + 1; 
+					fixedMsg = fixedMsg.substring(0, pfNN-1) + '‘' + fixedMsg.substring(pfNN);
+				}
+				console.log(fixedMsg);
 				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
-							if (message.length > 15 && message.length < 48){
-								dtb.query('UPDATE profile SET nickname = \'' + fixedMsg.substring(15) + '\' WHERE id = \'' + userID + '\'');
+							if (message.length > pfMsgLength && message.length < (pfMsgLength + 33)){
+								dtb.query('UPDATE profile SET nickname = \'' + fixedMsg.substring(pfMsgLength) + '\' WHERE id = \'' + userID + '\'');
 								bot.sendMessage({
 									to: channelID,
-									message: 'Your nickname is now \'' + fixedMsg.substring(15) + '\'.'
+									message: 'Your nickname is now \'' + fixedMsg.substring(pfMsgLength) + '\'.'
 								});
-							} else if (message.length < 48){
+							} else if (message.length < (pfMsgLength + 33)){
 								bot.sendMessage({
 									to: channelID,
 									message: 'Nickname must be at least one character long.'
@@ -1932,6 +2019,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			case 'pf':
 			case 'profile':
 				if (serverID == '568917420811747338'){
 					let newPUser = false;
