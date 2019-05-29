@@ -157,7 +157,6 @@ if (dblw.webhook != undefined){
 }
 
 bot.on('guildMemberAdd', function(member, evt){
-	console.log('Welcome to the server <@' + member.id + '>! We hope that you enjoy your stay in our curse-free environment here at ' + bot.servers[member.guild_id].name);
 	if (bot.servers[member.guild_id].system_channel_id != undefined){
 		bot.sendMessage({
 			to: bot.servers[member.guild_id].system_channel_id,
