@@ -156,6 +156,10 @@ if (dblw.webhook != undefined){
 	});
 }
 
+bot.on('guildMemberAdd', function(a, b, c, d, e, f, g, h){
+	console.log(a,b,c,d,e,f,g,h);
+});
+
 bot.on('any', function(event) {
 	commRand = false
 //     if ((Math.floor(Math.random() * 50000)) > 49999){
