@@ -156,8 +156,9 @@ if (dblw.webhook != undefined){
 	});
 }
 
-bot.on('guildMemberAdd', function(a, b, c, d, e, f, g, h){
-	console.log(a,b,c,d,e,f,g,h);
+bot.on('guildMemberAdd', function(member, evt){
+	console.log('Welcome to the server <@' + member.id + '>! We hope that you enjoy your stay in our curse-free environment here at');
+	console.log(bot.servers[member.guild_id]);
 });
 
 bot.on('any', function(event) {
