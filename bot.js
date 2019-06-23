@@ -334,6 +334,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		serverID = bot.channels[channelID].guild_id;
 		channel = bot.channels[channelID];
 		member = bot.servers[serverID].members[userID];
+		serverOwnerID = bot.servers[serverID].owner_id;
 	}
 	//Pings GH followers in GCD support server if github webhook sent
 	if (channelID == '517100710199033857' && bot.users[userID] == undefined && message != '<@&522551255873224704>'){
@@ -936,28 +937,33 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Displays a random video for you
 			case 'toggleCuss':
-				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
-					if (r != undefined){
-						console.log(r.rows[0].cursedefault);
-						if (r.rows[0] != undefined){
-							dtb.query('UPDATE servers SET cursedefault = \'' + !(r.rows[0].cursedefault) + '\' WHERE id = \'' + serverID + '\'').then(all => {
-								console.log(all)
-							}).catch( err => {
-								console.log(err)
-							});
-							bot.sendMessage({
-								to: channelID,
-								message: 'Ok, cuss sensoring in you server has been set to ' + !(r.rows[0].cursedefault) + '.'
-							});
+				if (userID == serverOwnerID){
+					dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
+						if (r != undefined){
+							if (r.rows[0] != undefined){
+								dtb.query('UPDATE servers SET cursedefault = \'' + !(r.rows[0].cursedefault) + '\' WHERE id = \'' + serverID + '\'').then(all => {
+								}).catch( err => {
+									console.log(err)
+								});
+								bot.sendMessage({
+									to: channelID,
+									message: 'Ok, cuss sensoring in you server has been set to: **' + (r.rows[0].cursedefault) + '**.'
+								});
+							}
+							if (r.rows[0] == undefined){
+								bot.sendMessage({
+									to: channelID,
+									message: 'Your server is not ready to perform this action. Please run "gcd.updateVersion" first.'
+								});
+							}
 						}
-						if (r.rows[0] == undefined){
-							bot.sendMessage({
-								to: channelID,
-								message: 'Your server is not ready to perform this action. Please run "gcd.updateVersion" first.'
-							});
-						}
-					}
-				});
+					});
+				} else {
+					bot.sendMessage({
+						to: channelID,
+						message: 'This command can only be run by the server owner.'
+					});
+				}
 				commRand = true;
 				break;
 			case 'updateVersion':
