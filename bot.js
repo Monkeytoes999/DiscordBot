@@ -934,7 +934,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 					if (r != undefined){
 						if (r.rows[0] != undefined){
-							dtb.query('UPDATE servers SET cursedefault ' + !(r.rows[0]) + ' WHERE id = \'' + serverID + '\'');
+							dtb.query('UPDATE servers SET cursedefault ' + !(r.rows[0]) + ' WHERE id = \'' + serverID + '\'').then(all => {
+								console.log(all)
+							}).catch( err => {
+								console.log(err)
+							});
 						}
 						if (r.rows[0] == undefined){
 							bot.sendMessage({
