@@ -167,8 +167,10 @@ bot.on('guildMemberAdd', function(member, evt){
 
 bot.on('guildCreate', function(server){
 	dtb.query('SELECT cursedefault FROM servers WHERE id = ' + server.id + ')', function(e, r){
-		if (r.rows[0] == undefined){
-			dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
+		if (r != undefined){
+			if (r.rows[0] == undefined){
+				dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
+			}
 		}
 	});
 });
