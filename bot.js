@@ -172,6 +172,7 @@ bot.on('guildCreate', function(server){
 				dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
 			}
 		}
+		console.log(e);
 	});
 });
 
@@ -943,6 +944,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							});
 						}
 					}
+					console.log(e)
 				});
 				commRand = true;
 				break;
