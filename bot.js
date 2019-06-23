@@ -589,20 +589,34 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 	
-		if (serverID == '513785745568301090'){
-			dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
-				if (r != undefined){
-					console.log(r)
-					if (r.rows[0] != undefined){
-						allowCuss = r.rows[0].cursedefault;
-						console.log(r.rows[0].cursedefault)
-					}
+		dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
+			if (r != undefined){
+				if (r.rows[0] != undefined){
+					allowCuss = r.rows[0].cursedefault;
 				}
-				console.log(e)
-			});
-			console.log(allowCuss);
-		}
-		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
+			}
+		});
+	
+		if (!allowCuss){
+			if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !channel.nsfw || message.includes('A$$H0L3')){
+					bot.deleteMessage({
+						channelID: channelID,
+						messageID: prevEvtID
+					});
+					bot.sendMessage({
+						to: channelID,
+						message: user + ', please don\'t curse. Thank you.'
+					});
+					bot.sendMessage({
+						to: '509920937093890058',
+						message: userID
+					});
+					bot.sendMessage({
+						to: '524703539801489418',
+						message: message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
+					});
+			}
+			if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
 				bot.deleteMessage({
 					channelID: channelID,
 					messageID: prevEvtID
@@ -615,24 +629,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					to: '509920937093890058',
 					message: userID
 				});
-				bot.sendMessage({
-					to: '524703539801489418',
-					message: message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
-				});
-		}
-		if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
-		  	bot.deleteMessage({
-				channelID: channelID,
-				messageID: prevEvtID
-			});
-			bot.sendMessage({
-				to: channelID,
-				message: user + ', please don\'t curse. Thank you.'
-			});
-			bot.sendMessage({
-				to: '509920937093890058',
-				message: userID
-			});
+			}
 		}
 	
 	if (bikCussServers.includes(serverID)){
