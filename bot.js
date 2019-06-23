@@ -595,7 +595,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					allowCuss = r.rows[0].cursedefault;
 				}
 			}
+			console.log(e)
 		});
+		console.log(allowCuss);
 		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
 				bot.deleteMessage({
 					channelID: channelID,
