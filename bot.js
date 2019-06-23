@@ -274,38 +274,41 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 			if (r != undefined){
 				if (r.rows[0] != undefined){
 					allowCuss = r.rows[0].cursedefault;
+					if (!allowCuss){
+						if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
+								bot.deleteMessage({
+									channelID: newMsgData.channel_id,
+									messageID: newMsgData.id
+								});
+								bot.sendMessage({
+									to: newMsgData.channel_id,
+									message: newMsgData.author.username + ', please don\'t curse. Thank you.'
+								});
+								bot.sendMessage({
+									to: '509920937093890058',
+									message: newMsgData.author.id
+								});
+						}
+						if (cussmessage.includes('BIKE') && newMsgData.guild_id == 490695949786677248){
+								bot.deleteMessage({
+									channelID: newMsgData.channel_id,
+									messageID: newMsgData.id
+								});
+								bot.sendMessage({
+									to: newMsgData.channel_id,
+									message: newMsgData.author.username + ', please don\'t curse. Thank you.'
+								});
+								bot.sendMessage({
+									to: '509920937093890058',
+									message: newMsgData.author.id
+								});
+						}
+					}
 				}
 			}
 		});
-		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
-				bot.deleteMessage({
-					channelID: newMsgData.channel_id,
-					messageID: newMsgData.id
-				});
-				bot.sendMessage({
-					to: newMsgData.channel_id,
-					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
-				});
-				bot.sendMessage({
-					to: '509920937093890058',
-					message: newMsgData.author.id
-				});
-		}
-		if (cussmessage.includes('BIKE') && newMsgData.guild_id == 490695949786677248){
-		  		bot.deleteMessage({
-					channelID: newMsgData.channel_id,
-					messageID: newMsgData.id
-				});
-				bot.sendMessage({
-					to: newMsgData.channel_id,
-					message: newMsgData.author.username + ', please don\'t curse. Thank you.'
-				});
-				bot.sendMessage({
-					to: '509920937093890058',
-					message: newMsgData.author.id
-				});
-		}
 	
+						
 	//Removes "bike" from the list of cuss words if it was added
 	if (bikCussServers != undefined){
 		if (bikCussServers.includes(serverID)){
@@ -593,44 +596,43 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if (r != undefined){
 				if (r.rows[0] != undefined){
 					allowCuss = r.rows[0].cursedefault;
+					if (!allowCuss){
+						if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !channel.nsfw || message.includes('A$$H0L3')){
+								bot.deleteMessage({
+									channelID: channelID,
+									messageID: prevEvtID
+								});
+								bot.sendMessage({
+									to: channelID,
+									message: user + ', please don\'t curse. Thank you.'
+								});
+								bot.sendMessage({
+									to: '509920937093890058',
+									message: userID
+								});
+								bot.sendMessage({
+									to: '524703539801489418',
+									message: message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
+								});
+						}
+						if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
+							bot.deleteMessage({
+								channelID: channelID,
+								messageID: prevEvtID
+							});
+							bot.sendMessage({
+								to: channelID,
+								message: user + ', please don\'t curse. Thank you.'
+							});
+							bot.sendMessage({
+								to: '509920937093890058',
+								message: userID
+							});
+						}
+					}
 				}
 			}
 		});
-	
-		if (!allowCuss){
-			if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !channel.nsfw || message.includes('A$$H0L3')){
-					bot.deleteMessage({
-						channelID: channelID,
-						messageID: prevEvtID
-					});
-					bot.sendMessage({
-						to: channelID,
-						message: user + ', please don\'t curse. Thank you.'
-					});
-					bot.sendMessage({
-						to: '509920937093890058',
-						message: userID
-					});
-					bot.sendMessage({
-						to: '524703539801489418',
-						message: message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
-					});
-			}
-			if (cussmessage.includes('BIKE') && serverID == 490695949786677248){
-				bot.deleteMessage({
-					channelID: channelID,
-					messageID: prevEvtID
-				});
-				bot.sendMessage({
-					to: channelID,
-					message: user + ', please don\'t curse. Thank you.'
-				});
-				bot.sendMessage({
-					to: '509920937093890058',
-					message: userID
-				});
-			}
-		}
 	
 	if (bikCussServers.includes(serverID)){
 		curses.splice(curses.length - 1, 1)
