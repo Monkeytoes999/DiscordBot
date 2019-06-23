@@ -932,7 +932,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					if (r.rows[0] == undefined){
 						bot.sendMessage({
 							to: channelID,
-							message: 'Your server is not ready to perform this action. Please run "gcd.updateVersion" first.
+							message: 'Your server is not ready to perform this action. Please run "gcd.updateVersion" first.'
 						});
 					}
 				});
