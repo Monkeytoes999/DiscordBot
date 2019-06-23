@@ -945,6 +945,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							}).catch( err => {
 								console.log(err)
 							});
+							bot.sendMessage({
+								to: channelID,
+								message: 'Ok, cuss sensoring in you server has been set to ' + !(r.rows[0].cursedefault) + '.'
+							});
 						}
 						if (r.rows[0] == undefined){
 							bot.sendMessage({
