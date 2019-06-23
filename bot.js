@@ -172,7 +172,6 @@ bot.on('guildCreate', function(server){
 				dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
 			}
 		}
-		console.log(e);
 	});
 });
 
@@ -271,7 +270,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 		}
 	}
 
-		dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + server.id + '\'', function(e, r){
+		dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 			if (r != undefined){
 				if (r.rows[0] != undefined){
 					allowCuss = r.rows[0];
@@ -590,7 +589,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 	
-		dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + server.id + '\'', function(e, r){
+		dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 			if (r != undefined){
 				if (r.rows[0] != undefined){
 					allowCuss = r.rows[0];
@@ -932,7 +931,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Displays a random video for you
 			case 'toggleCuss':
-				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + server.id + '\'', function(e, r){
+				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 					if (r != undefined){
 						if (r.rows[0] != undefined){
 							dtb.query('UPDATE servers SET cursedefault ' + !(r.rows[0]) + ' WHERE id = \'' + serverID + '\'');
@@ -948,10 +947,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'updateVersion':
-				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + server.id + '\'', function(e, r){
+				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 					if (r != undefined){
 						if (r.rows[0] == undefined){
-							dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
+							dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + serverID + ', false)');
 							bot.sendMessage({
 								to: channelID,
 								message: 'Version now up-to-date.'
