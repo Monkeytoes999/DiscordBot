@@ -271,8 +271,10 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	}
 
 		dtb.query('SELECT cursedefault FROM servers WHERE id = ' + serverID + ')', function(e, r){
-			if (r.rows[0] != undefined){
-				allowCuss = r.rows[0];
+			if (r != undefined){
+				if (r.rows[0] != undefined){
+					allowCuss = r.rows[0];
+				}
 			}
 		});
 		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
@@ -588,8 +590,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	}
 	
 		dtb.query('SELECT cursedefault FROM servers WHERE id = ' + serverID + ')', function(e, r){
-			if (r.rows[0] != undefined){
-				allowCuss = r.rows[0];
+			if (r != undefined){
+				if (r.rows[0] != undefined){
+					allowCuss = r.rows[0];
+				}
 			}
 		});
 		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
@@ -928,32 +932,36 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			//Displays a random video for you
 			case 'toggleCuss':
 				dtb.query('SELECT cursedefault FROM servers WHERE id = ' + serverID + ')', function(e, r){
-					if (r.rows[0] != undefined){
-						dtb.query('UPDATE servers SET cursedefault ' + !(r.rows[0]) + ' WHERE id = \'' + serverID + '\'');
-					}
-					if (r.rows[0] == undefined){
-						bot.sendMessage({
-							to: channelID,
-							message: 'Your server is not ready to perform this action. Please run "gcd.updateVersion" first.'
-						});
+					if (r != undefined){
+						if (r.rows[0] != undefined){
+							dtb.query('UPDATE servers SET cursedefault ' + !(r.rows[0]) + ' WHERE id = \'' + serverID + '\'');
+						}
+						if (r.rows[0] == undefined){
+							bot.sendMessage({
+								to: channelID,
+								message: 'Your server is not ready to perform this action. Please run "gcd.updateVersion" first.'
+							});
+						}
 					}
 				});
 				commRand = true;
 				break;
 			case 'updateVersion':
 				dtb.query('SELECT cursedefault FROM servers WHERE id = ' + server.id + ')', function(e, r){
-					if (r.rows[0] == undefined){
-						dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
-						bot.sendMessage({
-							to: channelID,
-							message: 'Version now up-to-date.'
-						});
-					}
-					if (r.rows[0] != undefined){
-						bot.sendMessage({
-							to: channelID,
-							message: 'Version already up-to-date.'
-						});
+					if (r != undefined){
+						if (r.rows[0] == undefined){
+							dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
+							bot.sendMessage({
+								to: channelID,
+								message: 'Version now up-to-date.'
+							});
+						}
+						if (r.rows[0] != undefined){
+							bot.sendMessage({
+								to: channelID,
+								message: 'Version already up-to-date.'
+							});
+						}
 					}
 				});
 				commRand = true;
