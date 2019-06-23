@@ -933,9 +933,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'toggleCuss':
 				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 					if (r != undefined){
-						console.log(r.rows[0]);
+						console.log(r.rows[0].cursedefault);
 						if (r.rows[0] != undefined){
-							dtb.query('UPDATE servers SET cursedefault \'' + !(r.rows[0]) + '\' WHERE id = \'' + serverID + '\'').then(all => {
+							dtb.query('UPDATE servers SET cursedefault \'' + !(r.rows[0].cursedefault) + '\' WHERE id = \'' + serverID + '\'').then(all => {
 								console.log(all)
 							}).catch( err => {
 								console.log(err)
