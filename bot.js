@@ -591,8 +591,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	
 		dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 			if (r != undefined){
+				console.log(r)
 				if (r.rows[0] != undefined){
 					allowCuss = r.rows[0].cursedefault;
+					console.log(r.rows[0].cursedefault)
 				}
 			}
 			console.log(e)
