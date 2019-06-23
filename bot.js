@@ -935,7 +935,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					if (r != undefined){
 						console.log(r.rows[0].cursedefault);
 						if (r.rows[0] != undefined){
-							dtb.query('UPDATE servers SET cursedefault \'' + !(r.rows[0].cursedefault) + '\' WHERE id = \'' + serverID + '\'').then(all => {
+							dtb.query('UPDATE servers SET cursedefault = \'' + !(r.rows[0].cursedefault) + '\' WHERE id = \'' + serverID + '\'').then(all => {
 								console.log(all)
 							}).catch( err => {
 								console.log(err)
