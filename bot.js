@@ -172,6 +172,7 @@ bot.on('guildCreate', function(server){
 				dtb.query('INSERT INTO servers(id, cursedefault) VALUES (' + server.id + ', false)');
 			}
 		}
+		console.log(e);
 	});
 });
 
@@ -276,6 +277,7 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 					allowCuss = r.rows[0];
 				}
 			}
+			console.log(e)
 		});
 		if (!(newMsgData.author.id == 408785106942164992) && cussIndexes.length > 0 && !allowCuss || newMsgData.content.includes('A$$H0L3')){
 				bot.deleteMessage({
@@ -943,6 +945,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							});
 						}
 					}
+					console.log(e)
 				});
 				commRand = true;
 				break;
