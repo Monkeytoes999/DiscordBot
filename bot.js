@@ -589,17 +589,19 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	}
 	
-		dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
-			if (r != undefined){
-				console.log(r)
-				if (r.rows[0] != undefined){
-					allowCuss = r.rows[0].cursedefault;
-					console.log(r.rows[0].cursedefault)
+		if (serverID == '513785745568301090'){
+			dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
+				if (r != undefined){
+					console.log(r)
+					if (r.rows[0] != undefined){
+						allowCuss = r.rows[0].cursedefault;
+						console.log(r.rows[0].cursedefault)
+					}
 				}
-			}
-			console.log(e)
-		});
-		console.log(allowCuss);
+				console.log(e)
+			});
+			console.log(allowCuss);
+		}
 		if (!(userID == 408785106942164992) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !allowCuss && !channel.nsfw || message.includes('A$$H0L3')){
 				bot.deleteMessage({
 					channelID: channelID,
