@@ -165,6 +165,10 @@ bot.on('guildMemberAdd', function(member, evt){
 	}
 });
 
+bot.on('guildCreate', function(server){
+	console.log(server);
+});
+
 bot.on('any', function(event) {
 	commRand = false
 //     if ((Math.floor(Math.random() * 50000)) > 49999){
