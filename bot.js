@@ -1369,18 +1369,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Test code.
 			case 'test':
-// 				dbl.getVotes().then(votes => {
-// 				   console.log(votes)
-// 				});
-				dbl.getBot().votes.then( votes => {
-					console.log(votes)
+				dbl.getVotes().then(votes => {
+					votes.find(vote => console.log(vote))
 				});
-// 				console.log(dbl.getBot().votes);
-// 				dbl.getBot("495705429150793739").then(all => {
-// 					console.log(all)	
-// 				}).catch( err => {
-// 					console.log(err)
-// 				})
+// 				dbl.getBot().votes.then( votes => {
+// 					console.log(votes)
+// 				});
+				console.log(dbl.getBot().votes);
+				dbl.getBot("495705429150793739").then(all => {
+					console.log(all)	
+				}).catch( err => {
+					console.log(err)
+				})
 				bot.sendMessage({
 					to: channelID,
 					message: "RUN THIS COMMAND WHILE IN A VC"
