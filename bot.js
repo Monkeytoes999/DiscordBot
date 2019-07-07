@@ -1370,7 +1370,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			//Test code.
 			case 'test':
 				dbl.getVotes().then(votes => {
-					console.log(votes[votes.length - 2])
+					console.log(votes[1])
 				});
 // 				dbl.getBot().votes.then( votes => {
 // 					console.log(votes)
