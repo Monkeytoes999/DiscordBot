@@ -1382,7 +1382,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 // 				})
 				bot.sendMessage({
 					to: channelID,
-					message: "RUN THIS COMMAND WHILE IN A VC"
+					message: "For this test, run this command while in a VC"
 				});
 				let vcID = member.voice_channel_id
 				bot.joinVoiceChannel(vcID, function(err, res){
