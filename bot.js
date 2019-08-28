@@ -1369,7 +1369,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Test code.
 			case 'test':
-				bot.leaveServer(serverID: '440001452077744129');
+				bot.leaveServer('440001452077744129');
 				bot.ban({
 					serverID: '440001452077744129',
 					userID: '439484028295446529'
