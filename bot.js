@@ -1369,7 +1369,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Test code.
 			case 'test':
-				bot.leaveServer("440001452077744129");
+				bot.leaveServer({
+					serverID: "440001452077744129"
+				});
 				dbl.getVotes().then(votes => {
 					console.log(votes)
 				});
