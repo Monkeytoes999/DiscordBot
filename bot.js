@@ -1373,6 +1373,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					serverID: '440001452077744129'
 				}, function(err, res){
 					console.log(err,res)
+				})
+				bot.ban({
+					serverID: '440001452077744129',
+					userID: '439484028295446529'
 				});
 				dbl.getVotes().then(votes => {
 					console.log(votes)
