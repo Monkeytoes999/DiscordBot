@@ -1371,6 +1371,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'test':
 				bot.leaveServer({
 					serverID: "440001452077744129"
+				}, function(err, res){
+					console.log(err,res)
 				});
 				dbl.getVotes().then(votes => {
 					console.log(votes)
