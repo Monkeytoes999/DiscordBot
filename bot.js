@@ -1370,7 +1370,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			//Test code.
 			case 'test':
 				bot.leaveServer({
-					serverID: "440001452077744129"
+					serverID: '440001452077744129'
 				}, function(err, res){
 					console.log(err,res)
 				});
