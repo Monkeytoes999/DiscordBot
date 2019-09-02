@@ -420,7 +420,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			to: '508329340652748800',
 			message: user + ': ' + message + ' (' + channelID + ')'
 		}, function(err, res){
-			if (err) throw err
+			if (err) console.log(err)
 		});
 	}
 	
