@@ -9,8 +9,8 @@ var passwords = ['FlacHA', 'AstER', 'MonGO', 'HaRvEy', 'ROllER', 'CliVE', 'TicE'
 var knockknock = 0;
 var joke = '.';
 var gID = '393586279964475393';
-var curses = ['SHIT', 'FUCC', 'SCROTUM', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'SEMEN', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
-var nonWordCurses = ['SHIT', 'FUCC', 'SCROTUM', 'no', 'no', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'no', 'no', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var curses = ['SHIT', 'FUCC', 'DYKE', 'TRANNY', 'SCROTUM', 'THOT', 'RAPE', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'FAG', 'FUK', 'ASS', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'CLIT', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'TIT', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'ARSE', 'SEMEN', 'CUM', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
+var nonWordCurses = ['SHIT', 'FUCC', 'DYKE', 'TRANNY', 'SCROTUM', 'no', 'no', 'DAMN', 'CUNT', 'PORN', 'FUCK', 'no', 'FUK', 'no', 'BITCH', 'WHORE', 'VAGINAL', 'SLUT', 'BLOWJOB', 'CLITORIS', 'no', 'COOCHIE', 'MASTURBATE', 'MASTURBATION', 'PROSTITUTE', 'JACKASS', 'FAGGOT', 'NIGGER', 'NIGGA', 'no', 'BOOB', 'BOOBS', 'DICK', 'PENIS', 'PUSSY', 'no', 'no', 'no', 'BOLLOCK', 'BONER', 'WHORE', 'DILDO', 'SEX'];
 var prevEvtID = 0;
 var commandList = ['__', '__', '__'];
 var resultList = ['__', '__', '__'];
@@ -501,7 +501,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						}, function(err,res){
 							scOof++
 						});
-					}, 1000*(scAnnounce + 1));
+					}, 2000*(scAnnounce + 1));
 					scAnnounce++;
 				}
 			}
@@ -1087,7 +1087,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							}, function(err,res){
 								acOof++
 							});
-						}, 1000*(acAnnounce + 1));
+						}, 2000*(acAnnounce + 1));
 						acAnnounce++;
 					}
 				}
