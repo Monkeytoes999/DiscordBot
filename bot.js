@@ -1075,7 +1075,22 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Hahahahahahaha I want this to do something... but it doesn't yet.
 			case 'announce':
-// 				console.log(bot.servers)
+				if (userID == gID){
+					let acAnnounce = 0;
+					let acAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336']
+					let acOof = 0;
+					while (acAnnounce < acAnnArr.length){
+						setTimeout(() => {
+							bot.sendMessage({
+								to: acAnnArr[acOof],
+								message: message.substring(13)
+							}, function(err,res){
+								acOof++
+							});
+						}, 1000*(acAnnounce + 1));
+						acAnnounce++;
+					}
+				}
 				commRand = true;
 				break;
 			//Allows people in the GCD support server to leave the follower role to not get pinged and stuff
