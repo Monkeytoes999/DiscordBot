@@ -839,51 +839,66 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Deletes 2-99 messages.
 			case 'purge':
-				if (message.length < 11 || !(message.substring(9, 10) == ' ')){
-					bot.sendMessage({
-						to: channelID,
-						message: 'Please include the number of messages to purge (gcd.purge [num])'
-					});
-				} else if (parseInt(message.substring(10)) > 100){
-					bot.sendMessage({
-						to: channelID,
-						message: 'The max number of messages to purge is 100'
-					});
-				} else	{
-					let purgeMess = prevEvtID
-					bot.getMessages({
-						channelID: channelID,
-						limit: parseInt(message.substring(10)),
-						before: prevEvtID
-					}, function(err, res){
-						let resMesIDs = []
-						let resMesIDnum = 0;
-						while (resMesIDnum < parseInt(message.substring(10))){
-						       resMesIDs.push(res[resMesIDnum].id)
-							resMesIDnum = resMesIDnum + 1
-						}
-						bot.deleteMessages({
-							channelID: channelID,
-							messageIDs: resMesIDs
-						})
+				let topRolePu = 0;
+				let topRoleIDPu = serverID;
+				for (var iooofPu = 0; iooofPu < member.roles.length; iooofPu++){
+					if (bot.servers[serverID].roles[member.roles[iooofPu]].position > topRole){
+						topRolePu = bot.servers[serverID].roles[member.roles[iooofPu]].position
+						topRoleIDPu = bot.servers[serverID].roles[member.roles[iooofPu]].id
+					}
+				}
+				if ((bot.servers[serverID].roles[topRoleIDPu].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleIDPu]._permissions), 8192, 1073741824))){
+					if (message.length < 11 || !(message.substring(9, 10) == ' ')){
 						bot.sendMessage({
 							to: channelID,
-							message: parseInt(message.substring(10)) + ' messages deleted.'
-						}, function(errr, ress){
-							setTimeout(() => {
-								bot.deleteMessage({
-									channelID: channelID,
-									messageID: ress.id
-								});
-								bot.deleteMessage({
-									channelID: channelID,
-									messageID: purgeMess
-								});
-							}, 2000);
+							message: 'Please include the number of messages to purge (gcd.purge [num])'
 						});
+					} else if (parseInt(message.substring(10)) > 100){
+						bot.sendMessage({
+							to: channelID,
+							message: 'The max number of messages to purge is 100'
+						});
+					} else	{
+						let purgeMess = prevEvtID
+						bot.getMessages({
+							channelID: channelID,
+							limit: parseInt(message.substring(10)),
+							before: prevEvtID
+						}, function(err, res){
+							let resMesIDs = []
+							let resMesIDnum = 0;
+							while (resMesIDnum < parseInt(message.substring(10))){
+							       resMesIDs.push(res[resMesIDnum].id)
+								resMesIDnum = resMesIDnum + 1
+							}
+							bot.deleteMessages({
+								channelID: channelID,
+								messageIDs: resMesIDs
+							})
+							bot.sendMessage({
+								to: channelID,
+								message: parseInt(message.substring(10)) + ' messages deleted.'
+							}, function(errr, ress){
+								setTimeout(() => {
+									bot.deleteMessage({
+										channelID: channelID,
+										messageID: ress.id
+									});
+									bot.deleteMessage({
+										channelID: channelID,
+										messageID: purgeMess
+									});
+								}, 2000);
+							});
+						});
+					}
+				} else {
+					bot.sendMessage({
+						channelID: channelID,
+						message: 'Your top role must have Manage Messages or Admin Permissions to use this command.'
 					});
 				}
-				commRand = true;
+				commRand = true;	
 				break;
 			//Vote for the bot in bot list/vote for a poll option
 			case 'vote':
