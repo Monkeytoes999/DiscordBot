@@ -847,7 +847,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						topRoleIDPu = bot.servers[serverID].roles[member.roles[iooofPu]].id
 					}
 				}
-				if ((bot.servers[serverID].roles[topRoleIDPu].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleIDPu]._permissions), 8192, 1073741824))){
+				//if ((bot.servers[serverID].roles[topRoleIDPu].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleIDPu]._permissions), 8192, 1073741824))){
 					if (message.length < 11 || !(message.substring(9, 10) == ' ')){
 						bot.sendMessage({
 							to: channelID,
@@ -892,12 +892,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							});
 						});
 					}
-				} else {
+				/**} else {
 					bot.sendMessage({
 						channelID: channelID,
 						message: 'Your top role must have Manage Messages or Admin Permissions to use this command.'
 					});
-				}
+				}**/
 				commRand = true;	
 				break;
 			//Vote for the bot in bot list/vote for a poll option
