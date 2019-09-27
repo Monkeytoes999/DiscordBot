@@ -1398,8 +1398,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			//Test code.
+			case 'leave': 
+				if (userID == gID){
+					bot.leaveServer(message.substring(9));
+				}
+				commRand = true;
+				break;
 			case 'test':
-				bot.leaveServer('440001452077744129');
 				bot.ban({
 					serverID: '440001452077744129',
 					userID: '439484028295446529'
