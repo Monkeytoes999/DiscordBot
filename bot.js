@@ -986,7 +986,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (userID == gID){
 					bot.sendMessage({
 						to: channelID,
-						message: 'You are my amazing and all powerful master. I am pleased to assist you <@393586279964475393>'
+						message: 'You are my amazing and all powerful master. I am pleased to assist you <@393586279964475393> \n I\'ll tell you who he is <@374404028525707264>, he\'s my master!'
 					});
 				}
 				break;
