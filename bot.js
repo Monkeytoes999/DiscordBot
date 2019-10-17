@@ -982,6 +982,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;
 				break;
+			case 'whoisme?':
+				if (userID == gID){
+					bot.sendMessage({
+						to: channelID,
+						message: 'You are my amazing and all powerful master. I am pleased to assist you <@393586279964475393>'
+					});
+				}
+				break;
 			case 'updateVersion':
 				dtb.query('SELECT cursedefault FROM servers WHERE id = \'' + serverID + '\'', function(e, r){
 					if (r != undefined){
