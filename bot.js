@@ -1365,6 +1365,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				}
+				break;
 			case 'udtServers':
 				if (userID == gID){
 					bot.setPresence({
