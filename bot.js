@@ -1342,7 +1342,29 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						roleID: roleIDnum
 					});
 				}
-				break;	
+				break;
+			case 'prs':
+				if (userID == gID){
+					if (message.length > 7){
+						bot.setPresence({
+							game: {
+								type: 0,
+								name: message.substring(8)
+							}
+						}, function(err, res){
+							if (err) throw err
+						});
+					} else {
+						bot.setPresence({
+							game: {
+								type: 0,
+								name: 'in ' + Object.keys(bot.servers).length + ' servers! gcd.help | gcd.guildLink'
+							}
+						}, function(err, res){
+							if (err) throw err
+						});
+					}
+				}
 			case 'udtServers':
 				if (userID == gID){
 					bot.setPresence({
