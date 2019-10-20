@@ -1574,7 +1574,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Repeats your message
 			case 'tto':
-				if (channelID != '517100710199033857'){
+				if (channelID != '517100710199033857' && userID != '617215320159027200'){
 					 bot.sendMessage({
 						to: channelID,
 						message: bot.fixMessage(message.substring(8))
