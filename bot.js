@@ -2114,7 +2114,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					pfNNa = fixedMsga.indexOf("'", pfNNa) + 1; 
 					fixedMsga = fixedMsga.substring(0, pfNNa-1) + '‘' + fixedMsga.substring(pfNNa);
 				}
-				if (serverID == '568917420811747338'){
+				
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
 							if (message.length > pfMsgLength && message.length < (pfMsgLength + 257)){
@@ -2141,7 +2141,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							});
 						}
 					});
-				}
+				
 				commRand = true;
 				break;
 			case 'pfNickname':
@@ -2155,7 +2155,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 					fixedMsg = fixedMsg.substring(0, pfNN-1) + '‘' + fixedMsg.substring(pfNN);
 				}
 				console.log(fixedMsg);
-				if (serverID == '568917420811747338'){
 					dtb.query('SELECT * FROM profile WHERE id = \'' + userID + '\'', function(e, r){
 						if (r.rows[0] != undefined){
 							if (message.length > pfMsgLength && message.length < (pfMsgLength + 33)){
@@ -2182,12 +2181,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							});
 						}
 					});
-				}
 				commRand = true;
 				break;
 			case 'pf':
 			case 'profile':
-				if (serverID == '568917420811747338'){
 					let newPUser = false;
 					let dispname = bot.users[userID].username
 					let pfU = '';
@@ -2268,7 +2265,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 										fields: [
 											{
 												name: 'In order to start your own profile, please accept these conditions.',
-												value: '**1:** Data will be gathered from you and available to the public (Last command used, date used, total commands used, last time you voted for GCD, and total number of votes for GCD) \n**2:** Anything deemed offensive in your profile will lead to your expulsion from the profile program.'
+												value: '**1:** Data will be gathered from you and available to the public (Last command used, date used, and total commands used) \n**2:** Anything deemed offensive in your profile will lead to your expulsion from the profile program.'
 											}
 											],
 										footer: {
@@ -2319,14 +2316,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 												name: "Total commands used:",
 												value: pfTC
 											},
-											{
-												name: "Date of last vote:",
-												value: pfVD
-											},
-											{
-												name: "Total votes:",
-												value: pfTV
-											},
+// 											{
+// 												name: "Date of last vote:",
+// 												value: pfVD
+// 											},
+// 											{
+// 												name: "Total votes:",
+// 												value: pfTV
+// 											},
 											{
 												name: "Bio:",
 												value: pfSD
@@ -2344,7 +2341,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							}
 						});
 					}
-				}
 				commRand = true;
 				break;
 			case 'die':
