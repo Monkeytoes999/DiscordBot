@@ -2236,14 +2236,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 												name: "Total commands used:",
 												value: pfTC
 											},
-											{
-												name: "Date of last vote:",
-												value: pfVD
-											},
-											{
-												name: "Total votes:",
-												value: pfTV
-											},
+// 											{
+// 												name: "Date of last vote:",
+// 												value: pfVD
+// 											},
+// 											{
+// 												name: "Total votes:",
+// 												value: pfTV
+// 											},
 											{
 												name: "Bio:",
 												value: pfSD
