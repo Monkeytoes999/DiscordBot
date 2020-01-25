@@ -1633,10 +1633,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			//Help stuff
 			case 'setScMsg':
+				args = message.substring(13).split(': ');
 				if (userID == gID){
 					let nams = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro'];
-					let nam = args[1];
-					let mss = args[2];
+					let nam = args[0];
+					let mss = args[1];
 					if (nam in nams){
 						dtb.query('UPDATE day SET ' + nam + ' = \'' + mss + '\'');
 						bot.sendMessage({
