@@ -505,7 +505,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								}, function(err, res){
 									scOof++
 								});
-								dtb.query("UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
+								dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 							} else {
 								bot.sendMessage({
 									to: scAnnArr[scOof],
