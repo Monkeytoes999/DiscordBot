@@ -1640,12 +1640,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						let nam = args[0];
 						let mss = args[1];
 						if (nam in nams){
+							console.log(1)
 							dtb.query('UPDATE day SET ' + nam + ' = \'' + mss + '\'');
 							bot.sendMessage({
 								to: channelID,
 								message: 'Your message for ' + nam + ', ' + mss + ', has been set.'
 							});
 						}
+						console.log(args[0], args[1], args[0] in nams)
 					}
 				}, 1000);
 			commRand = true;
