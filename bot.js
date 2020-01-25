@@ -1645,6 +1645,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						});
 					}
 				}
+				console.log(args);
+			commRand = true;
 			break;		
 			case 'help':
 				let usrID = userID;
