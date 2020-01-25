@@ -493,14 +493,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if(scDay.toUpperCase() != 'NONE'){
 				let scAnnounce = 0;
 				let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336']
+				let scAnnMArr = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro'];
 				let scOof = 0;
 				while (scAnnounce < scAnnArr.length){
 					setTimeout(() => {
-						bot.sendMessage({
-							to: scAnnArr[scOof],
-							message: scAnMsg
-						}, function(err,res){
-							scOof++
+						dtb.query("SELECT " + scAnnMArr[scOof] + " FROM id", function(e, r){
+							if(r.rows[0] != 'oof'){
+								bot.sendMessage({
+									to: scAnnArr[scOof],
+									message: r.rows[0];
+								}, function(err, res){
+									scOof++
+								});
+							} else {
+								bot.sendMessage({
+									to: scAnnArr[scOof],
+									message: scAnMsg
+								}, function(err,res){
+									scOof++
+								});
+							}
 						});
 					}, 2000*(scAnnounce + 1));
 					scAnnounce++;
@@ -1619,6 +1631,20 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			//Help stuff
+			case 'setScMsg':
+				if (userID == gID){
+					let nams = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro'];
+					let nam = args[1];
+					let mss = args[2];
+					if (nam in nams){
+						dtb.query('UPDATE day SET ' + nam + ' = \'' + mss + '\'');
+						bot.sendMessage({
+							to: channelID,
+							message: 'Your message for ' + nam + ', ' + mss + ', has been set.'
+						});
+					}
+				}
+			break;		
 			case 'help':
 				let usrID = userID;
 				if (message.length == 8){
