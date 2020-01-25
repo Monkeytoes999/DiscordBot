@@ -1639,8 +1639,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						let nams = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro'];
 						let nam = args[0];
 						let mss = args[1];
+						let mscNNA = 0;
+						while (mss.indexOf("'", mscNNA) > -1){ 
+							mscNNA = mss.indexOf("'", mscNNA) + 1; 
+							mss = mss.substring(0, mscNNA-1) + '‘' + mss.substring(mscNNA);
+						}
 						if (nams.includes(nam)){
-							console.log(1)
 							dtb.query('UPDATE day SET ' + nam + ' = \'' + mss + '\'');
 							bot.sendMessage({
 								to: channelID,
