@@ -1634,19 +1634,20 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			//Help stuff
 			case 'setScMsg':
 				args = message.substring(13).split(': ');
-				if (userID == gID){
-					let nams = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro'];
-					let nam = args[0];
-					let mss = args[1];
-					if (nam in nams){
-						dtb.query('UPDATE day SET ' + nam + ' = \'' + mss + '\'');
-						bot.sendMessage({
-							to: channelID,
-							message: 'Your message for ' + nam + ', ' + mss + ', has been set.'
-						});
+				setTimeout(() => {
+					if (userID == gID){
+						let nams = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro'];
+						let nam = args[0];
+						let mss = args[1];
+						if (nam in nams){
+							dtb.query('UPDATE day SET ' + nam + ' = \'' + mss + '\'');
+							bot.sendMessage({
+								to: channelID,
+								message: 'Your message for ' + nam + ', ' + mss + ', has been set.'
+							});
+						}
 					}
-				}
-				console.log(args);
+				}, 1000);
 			commRand = true;
 			break;		
 			case 'help':
