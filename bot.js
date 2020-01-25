@@ -501,10 +501,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							if(r.rows[0] != 'oof'){
 								bot.sendMessage({
 									to: scAnnArr[scOof],
-									message: r.rows[0];
+									message: r.rows[0]
 								}, function(err, res){
 									scOof++
 								});
+								dtb.query("UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 							} else {
 								bot.sendMessage({
 									to: scAnnArr[scOof],
@@ -514,7 +515,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 								});
 							}
 						});
-					}, 2000*(scAnnounce + 1));
+					}, 3000*(scAnnounce + 1));
 					scAnnounce++;
 				}
 			}
