@@ -500,7 +500,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 							let perp = scAnnMArr[scOof]
 							if (e) throw e;
-							console.log(r.rows[0].perp);
+							console.log(r.rows[0]);
+							console.log(perp);
 							if(r.rows[0].perp != 'oof'){
 								bot.sendMessage({
 									to: scAnnArr[scOof],
