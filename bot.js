@@ -493,13 +493,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			if(scDay.toUpperCase() != 'NONE'){
 				let scAnnounce = 0;
 				let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336']
-				let scAnnMArr = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro'];
+				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro'];
 				let scOof = 0;
 				while (scAnnounce < scAnnArr.length){
 					setTimeout(() => {
 						dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 							if (e) throw e;
-							console.log(r.rows[0]);
+							console.log(r.rows[0].scAnnMArr[scOof]);
 							if(r.rows[0].scAnnMArr[scOof] != 'oof'){
 								bot.sendMessage({
 									to: scAnnArr[scOof],
