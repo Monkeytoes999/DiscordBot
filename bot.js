@@ -454,7 +454,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		day = thisDay;
 		dayay = thisDayay;
 		//If day did change...
-		if (day != prevDay && scDay != 'oof'){
+		if ((day != prevDay && scDay != 'oof') || message == "gcd.gcd.gcd...gcD."){
 			//Update server count.
 			bot.setPresence({
 				game: {
