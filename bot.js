@@ -1489,7 +1489,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'INVVV':
 				if (userID == gID){
 					bot.createInvite({
-						channelID: '688139790029160510',
+						channelID: '688136121854460013',
 						max_users: 1,
 						max_age: 300,
 						temporary: false
