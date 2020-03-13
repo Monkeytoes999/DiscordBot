@@ -1488,6 +1488,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'INVVV':
 				if (userID == gID){
+					bot.getServerInvites({
+						serverID: '688117927605698638'	
+					}, function(err, res){
+						console.log(res)
+						console.log(err)
+					});
 					bot.createInvite({
 						channelID: '688136121854460013',
 						max_users: 1,
