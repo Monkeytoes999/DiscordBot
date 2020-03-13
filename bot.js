@@ -1488,9 +1488,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				break;
 			case 'INVVV':
 				if (userID == gID){
-					bot.getServerInvites({
-						serverID: '688117927605698638'	
-					}, function(err, res){
+					bot.getServerInvites('688117927605698638', function(err, res){
 						console.log(res)
 						console.log(err)
 					});
