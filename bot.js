@@ -1506,14 +1506,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				break;
 			case 'INVV':
-				var serv = message.substring(8).split(' ');
+				let serv = message.substring(8);
 				if (userID == gID){
-					bot.getServerInvites(" " + serv[1], function(err, res){
+					bot.getChannelInvites(serv, function(err, res){
 						console.log(res)
 						console.log(err)
 					});
 					bot.createInvite({
-						channelID: " " + serv[0],
+						channelID: serv,
 						max_users: 1,
 						max_age: 300,
 						temporary: false
@@ -1522,6 +1522,17 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 						console.log(err)
 					});
 				}
+				commRand = true;
+				break
+			case 'INVVVV':
+				let serv = message.substring(10);
+				if (userID == gID){
+					bot.getServerInvites(serv, function(err, res){
+						console.log(res)
+						console.log(err)
+					});
+				}
+				commRand = true;
 				break
 			//Logs the servers the bot is in.
 			case 'aTaaTa':
