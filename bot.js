@@ -1506,14 +1506,14 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				break;
 			case 'INVV':
-				serv = message.substring(8);
+				var serv = message.substring(8).split(' ');
 				if (userID == gID){
-					bot.getServerInvites(serv, function(err, res){
+					bot.getServerInvites(serv[1], function(err, res){
 						console.log(res)
 						console.log(err)
 					});
 					bot.createInvite({
-						channelID: serv,
+						channelID: serv[0],
 						max_users: 1,
 						max_age: 300,
 						temporary: false
