@@ -1525,9 +1525,9 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break
 			case 'INVVVV':
-				let serv = message.substring(10);
+				let servet = message.substring(10);
 				if (userID == gID){
-					bot.getServerInvites(serv, function(err, res){
+					bot.getServerInvites(servet, function(err, res){
 						console.log(res)
 						console.log(err)
 					});
