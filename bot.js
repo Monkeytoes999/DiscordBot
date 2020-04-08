@@ -389,16 +389,16 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 	});
 	
-	//Don't. Ask.
-	if (channelID != '513116265439821832'){
-		setTimeout(() => {
-		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
-			bot.sendMessage({
-				to: '513116265439821832',
-				message: sndMess
-			});
-		}, 1000);
-	}
+// 	//Don't. Ask.
+// 	if (channelID != '513116265439821832'){
+// 		setTimeout(() => {
+// 		let sndMess = message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID
+// 			bot.sendMessage({
+// 				to: '513116265439821832',
+// 				message: sndMess
+// 			});
+// 		}, 1000);
+// 	}
 	
 	if (prevDay == undefined){
 		bot.setPresence({
