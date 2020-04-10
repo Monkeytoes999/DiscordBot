@@ -147,6 +147,11 @@ bot.on('ready', function (evt) {
 	});
 });
 
+bot.on('disconnect', function(erMsg, code) {
+    console.log('----- Bot disconnected from Discord with code', code, 'for reason:', erMsg, '-----');
+    bot.connect();
+});
+
 if (dblw.webhook != undefined){
 	dblw.webhook.on('ready', hook => {
 		console.log('Webhook running at https://' + hook.hostname + ':' + hook.port + hook.path);
