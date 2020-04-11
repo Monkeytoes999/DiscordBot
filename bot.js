@@ -1459,11 +1459,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'test':
-				dtb.query('UPDATE day SET civ = oof', function(err, res){
-					console.log(err);
-					console.log(res);
-				});
-				dtb.query('ALTER TABLE day SET voosh = oof', function(err, res){
+				dtb.query('UPDATE day SET civ = \'oof\', voosh = \'oof\'', function(err, res){
 					console.log(err);
 					console.log(res);
 				});
