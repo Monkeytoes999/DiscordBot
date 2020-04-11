@@ -1459,11 +1459,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'test':
-				client.query('ALTER TABLE day ADD COLUMN civ text', function(err, res){
+				dtb.query('ALTER TABLE day ADD COLUMN civ text', function(err, res){
 					console.log(err);
 					console.log(res);
 				});
-				client.query('ALTER TABLE day ADD COLUMN voosh text', function(err, res){
+				dtb.query('ALTER TABLE day ADD COLUMN voosh text', function(err, res){
 					console.log(err);
 					console.log(res);
 				});
