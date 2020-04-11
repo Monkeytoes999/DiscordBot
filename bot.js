@@ -499,8 +499,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			if(scDay.toUpperCase() != 'NONE'){
 				let scAnnounce = 0;
-				let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336']
-				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro'];
+				let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
+				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
 				let scOof = 0;
 				while (scAnnounce < scAnnArr.length){
 					setTimeout(() => {
@@ -1123,7 +1123,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'announce':
 				if (userID == gID){
 					let acAnnounce = 0;
-					let acAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336']
+					let acAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
 					let acOof = 0;
 					while (acAnnounce < acAnnArr.length){
 						setTimeout(() => {
@@ -1459,14 +1459,13 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'test':
-				bot.ban({
-					serverID: '440001452077744129',
-					userID: '439484028295446529'
-				}, function(err, res){
-					console.log(err, res)
+				client.query('ALTER TABLE day ADD COLUMN civ text', function(err, res){
+					console.log(err);
+					console.log(res);
 				});
-				dbl.getVotes().then(votes => {
-					console.log(votes)
+				client.query('ALTER TABLE day ADD COLUMN voosh text', function(err, res){
+					console.log(err);
+					console.log(res);
 				});
 // 				dbl.getBot().votes.then( votes => {
 // 					console.log(votes)
