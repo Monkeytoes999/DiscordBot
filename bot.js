@@ -1459,10 +1459,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'test':
-				dtb.query('UPDATE day SET civ = \'oof\', voosh = \'oof\'', function(err, res){
-					console.log(err);
-					console.log(res);
-				});
 // 				dbl.getBot().votes.then( votes => {
 // 					console.log(votes)
 // 				});
