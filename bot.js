@@ -151,7 +151,7 @@ bot.on('disconnect', function(erMsg, code) {
     console.log('----- Bot disconnected from Discord with code', code, 'for reason:', erMsg, '-----');
 	bot.sendMessage({
 		to: '701915050688118804',
-		message: 'Error Code: ' + code + ' Reason: ' + erMsg + ' -----'
+		message: 'Error Code: ' + code + ' Reason: ' + erMsg
 	});
 	if (erMsg != 'Reconnect requested by Discord'){
 		bot.sendMessage({
