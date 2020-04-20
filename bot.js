@@ -149,6 +149,16 @@ bot.on('ready', function (evt) {
 
 bot.on('disconnect', function(erMsg, code) {
     console.log('----- Bot disconnected from Discord with code', code, 'for reason:', erMsg, '-----');
+	bot.sendMessage({
+		to: '701915050688118804',
+		message: '----- Bot disconnected from Discord with code', code, 'for reason:', erMsg, '-----'
+	});
+	if (code != 1000){
+		bot.sendMessage({
+			to: '701915050688118804',
+			message: '<@393586279964475393>'
+		});
+	}
     bot.connect();
 });
 
