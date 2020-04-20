@@ -153,7 +153,7 @@ bot.on('disconnect', function(erMsg, code) {
 		to: '701915050688118804',
 		message: 'Error Code: ' + code + ' Reason: ' + erMsg + ' -----'
 	});
-	if (!erMsg.equals('Reconnect requested by Discord')){
+	if (erMsg != 'Reconnect requested by Discord')){
 		bot.sendMessage({
 			to: '701915050688118804',
 			message: '<@393586279964475393>'
