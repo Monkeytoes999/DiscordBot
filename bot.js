@@ -874,13 +874,15 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'purge':
 				let topRolePu = 0;
 				let topRoleIDPu = serverID;
-				for (var iooofPu = 0; iooofPu < member.roles.length; iooofPu++){
-					if (bot.servers[serverID].roles[member.roles[iooofPu]].position > topRolePu){
-						topRolePu = bot.servers[serverID].roles[member.roles[iooofPu]].position
-						topRoleIDPu = bot.servers[serverID].roles[member.roles[iooofPu]].id
-					}
+				let canPu = false;
+				let cooPu = 0;
+				for (var iooofPu = 0; iooofPu < member.roles.length && !canPu; iooofPu++){
+					cooPu = (member.roles[iooofPu]);
+					console.log(bot.servers[serverID].roles[cooPu]);
+					console.log(cooPu);
+					canPu = (bot.servers[serverID].roles[cooPu].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[cooPu]._permissions), 8192, 1073741824));
 				}
-				//if ((bot.servers[serverID].roles[topRoleIDPu].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleIDPu]._permissions), 8192, 1073741824))){
+				if (canPu || userID == bot.servers[serverID].owner_id){
 					if (message.length < 11 || !(message.substring(9, 10) == ' ')){
 						bot.sendMessage({
 							to: channelID,
@@ -925,12 +927,12 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 							});
 						});
 					}
-				/**} else {
+				} else {
 					bot.sendMessage({
-						channelID: channelID,
-						message: 'Your top role must have Manage Messages or Admin Permissions to use this command.'
+						to: channelID,
+						message: 'You must have Manage Messages or Admin Permissions to use this command.'
 					});
-				}**/
+				}
 				commRand = true;	
 				break;
 			//Vote for the bot in bot list/vote for a poll option
