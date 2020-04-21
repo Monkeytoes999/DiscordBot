@@ -878,8 +878,6 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				let cooPu = 0;
 				for (var iooofPu = 0; iooofPu < member.roles.length && !canPu; iooofPu++){
 					cooPu = (member.roles[iooofPu]);
-					console.log(bot.servers[serverID].roles[cooPu]);
-					console.log(cooPu);
 					canPu = (bot.servers[serverID].roles[cooPu].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[cooPu]._permissions), 8192, 1073741824));
 				}
 				if (canPu || userID == bot.servers[serverID].owner_id){
