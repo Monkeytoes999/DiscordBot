@@ -951,6 +951,26 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				}
 				commRand = true;	
 				break;
+			case '🅱️day':
+				if (userID == '393586279964475393' || userID == '458809225120972800' || userID == '430480264678998047' || userID == '485628261494292505'){
+					dtb.query('SELECT id FROM bday', function(e, r){
+						let Brows = 0;
+						let Brows2 = 0;
+						while (Brows < r.rows.length){
+							setTimeout(() => {
+								bot.sendMessage({
+									to: r.rows[Brows2].id,
+									message: "TODAY IS A 🅱️ DAY! Check the yoyo club announcements page for more details!"
+								}, function(err, res){
+									Brows2++;
+								});
+							}, 3000*(Brows + 1));
+							Brows++;
+						}
+					});
+				}
+				commRand = true;
+				break;
 			//Vote for the bot in bot list/vote for a poll option
 			case 'vote':
 				if (message.length < 9){
