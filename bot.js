@@ -340,6 +340,24 @@ bot.on('messageUpdate', function (oldMsgData, newMsgData, evt){
 	
 });
 
+bot.on('messageReactionAdd', function(reaction){
+	if (reaction.d.message_id == '702611914542284841' && reaction.d.emoji.id == '505852061745807361'){
+		dtb.query('SELECT id FROM bday WHERE id = \'' + reaction.d.user_id + '\'', function(e, r){
+			if(r.rows[0] == undefined){
+				dtb.query('INSERT INTO bday(id) VALUES (' + reaction.d.user_id + ')');
+			}
+		});
+	}
+});
+
+bot.on('messageReactionRemove', function(reaction){
+	if (reaction.d.message_id == '702611914542284841' && reaction.d.emoji.id == '505852061745807361'){
+		dtb.query('DELETE FROM bday WHERE id = \'' + reaction.d.user_id + '\'', function(e, r){
+		});
+	}
+});
+
+
 bot.on('message', function (user, userID, channelID, message, evt) {
 	
 	pfMsgLength = 15;
