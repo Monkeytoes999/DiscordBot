@@ -865,13 +865,18 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 
 		//Doesn't let bots run commands, doesn't run commands in bot list server, yeah.
+		var splice = 4;
+	    if (serverID == '669733918378819584'){
+		prefix = ';';
+		splice = 1;
+	    }
 	    if (message.toLowerCase().indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null && !bot.directMessages[channelID]) {
 		knockknock = 0
 		var args = message.substring(4).split(' ');
 		var cmd = args[0];
 		    
 		    //args = command, w/o prefix.
-		args = args.splice(4);
+		args = args.splice(splice);
 		switch(cmd) {
 		    // If u say ping, I say pong. Well, not me.
 		    case 'ping':
