@@ -872,11 +872,11 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 	    }
 	    if (message.toLowerCase().indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null && !bot.directMessages[channelID]) {
 		knockknock = 0
-		var args = message.substring(4).split(' ');
+		var args = message.substring(splice).split(' ');
 		var cmd = args[0];
 		    
 		    //args = command, w/o prefix.
-		args = args.splice(splice);
+		args = args.splice(4);
 		switch(cmd) {
 		    // If u say ping, I say pong. Well, not me.
 		    case 'ping':
