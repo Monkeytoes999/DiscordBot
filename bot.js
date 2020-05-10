@@ -865,7 +865,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 		}
 
 		//Doesn't let bots run commands, doesn't run commands in bot list server, yeah.
-		var splice = 4;
+	    var splice = 4;
+	    prefix = 'gcd.';
 	    if (serverID == '669733918378819584'){
 		prefix = ';';
 		splice = 1;
