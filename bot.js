@@ -1763,7 +1763,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				args = message.substring(13).split(': ');
 				setTimeout(() => {
 					if (userID == gID){
-						let nams = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro', 'Civ', 'Voosh'];
+						let nams = ['Jon', 'Bert', 'Cy', 'G', 'Er', 'Miro', 'Civ', 'Voosh', 'Simon', 'Jake'];
 						let nam = args[0];
 						let mss = args[1];
 						let mscNNA = 0;
