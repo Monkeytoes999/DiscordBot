@@ -893,7 +893,8 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			commRand = true;
 		    break;
 			case 'tmp':
-				message = message.replaceAll("'", "`");
+				let regex = /\'/gi
+				message = message.replace(regex, "`");
 				let tmpArgs = message.substring(splice + 4).split(';');
 				var outputa = "";
 				var outputb = "";
