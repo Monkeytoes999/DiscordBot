@@ -134,7 +134,12 @@ const dtb = new Client({
   connectionString: process.env.DATABASE_URL,
   ssl: true,
 });
+const tdtb = new Client({
+  connectionString: process.env.TMP_URL,
+  ssl: true,
+});
 dtb.connect();
+tdtb.connect();
 
 bot.on('ready', function (evt) {
     logger.info('Connected');
@@ -887,6 +892,40 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			});
 			commRand = true;
 		    break;
+			case 'tmp':
+				let tmpArgs = message.substring(splice + 4).split(';');
+				var outputa = "";
+				var outputb = "";
+			 	var answers = [tmpArgs[2],tmpArgs[3]];
+				var correctPlace = 0;
+				var loc = Math.floor(Math.random()*2);
+				if (loc == 0){
+				  answers.unshift(tmpArgs[4]);
+				}
+				if (loc == 1){
+				  answers.push(tmpArgs[4]);
+				}
+				correctPlace = 2*loc;
+				loc = Math.floor(Math.random()*2);
+				if (loc == 0){
+				  answers.push(tmpArgs[4]);
+				}
+				if (loc == 1){
+				  answers.unshift(tmpArgs[4]);
+				}
+				correctPlace = correctPlace + loc;
+				var options = ["","","",""];
+				options[correctPlace] = '"correct":true,';
+				outputa = '{"hasOutro":false,"x":false,"id":58001,"text":"' + tmpArgs[0] + '","pic":false,"choices":[{"controllerClass":"",' + options[0] + '"text":"' + answers[0] + '"},{"controllerClass":"",' + options[1] + '"text":"' + answers[1] + '"},{"controllerClass":"",' + options[2] + '"text":"' + answers[2] + '"},{"controllerClass":"",' + options[3] + '"text":"' + answers[3] + '"}],"us":false,"hasIntro":false},';
+				outputb = '{"fields":[{"t":"B","v":"false","n":"HasIntro"},{"t":"B","v":"false","n":"HasPic"},{"t":"B","v":"false","n":"HasVamp"},{"t":"B","v":"false","n":"HasChoices"},{"t":"B","v":"false","n":"HasOutro"},{"s":"' + tmpArgs[0] + '","t":"A","v":"58000","n":"Q"},{"s":"","t":"A","n":"Intro"},{"s":"[' + answers[0] + '] [' + answers[1] + '] [' + answers[2] + '] [' + answers[3] + ']","t":"A","n":"Choices"},{"s":"","t":"A","n":"Vamp"},{"s":"","t":"A","n":"Outro"},{"t":"G","n":"Pic"}]}';
+  				tdtb.query('SELECT * FROM tmp', function(err, res){
+					if (err) throw err;
+					if (res.rows[0] != undefined){
+						tdtb.query('UPDATE tmp SET top = \'' + res.rows[0].top + ' ' + outputa + '\', bottom = \'' + res.rows[0].bottom + ' ' + outputb + '\'');
+					}
+				});
+				commRand = true;
+				break;
 			//Suggest a video to us
 			case 'videoSongSuggestions':
 				bot.sendMessage({
