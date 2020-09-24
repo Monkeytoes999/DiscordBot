@@ -918,7 +918,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				var options = ["","","",""];
 				options[correctPlace] = '"correct":true,';
 				outputa = '{"hasOutro":false,"x":false,"id":58001,"text":"' + tmpArgs[0] + '","pic":false,"choices":[{"controllerClass":"",' + options[0] + '"text":"' + answers[0] + '"},{"controllerClass":"",' + options[1] + '"text":"' + answers[1] + '"},{"controllerClass":"",' + options[2] + '"text":"' + answers[2] + '"},{"controllerClass":"",' + options[3] + '"text":"' + answers[3] + '"}],"us":false,"hasIntro":false},';
-				outputb = '{"fields":[{"t":"B","v":"false","n":"HasIntro"},{"t":"B","v":"false","n":"HasPic"},{"t":"B","v":"false","n":"HasVamp"},{"t":"B","v":"false","n":"HasChoices"},{"t":"B","v":"false","n":"HasOutro"},{"s":"' + tmpArgs[0] + '","t":"A","v":"58000","n":"Q"},{"s":"","t":"A","n":"Intro"},{"s":"[' + answers[0] + '] [' + answers[1] + '] [' + answers[2] + '] [' + answers[3] + ']","t":"A","n":"Choices"},{"s":"","t":"A","n":"Vamp"},{"s":"","t":"A","n":"Outro"},{"t":"G","n":"Pic"}]}';
+				outputb = '\n{"fields":[{"t":"B","v":"false","n":"HasIntro"},{"t":"B","v":"false","n":"HasPic"},{"t":"B","v":"false","n":"HasVamp"},{"t":"B","v":"false","n":"HasChoices"},{"t":"B","v":"false","n":"HasOutro"},{"s":"' + tmpArgs[0] + '","t":"A","v":"58000","n":"Q"},{"s":"","t":"A","n":"Intro"},{"s":"[' + answers[0] + '] [' + answers[1] + '] [' + answers[2] + '] [' + answers[3] + ']","t":"A","n":"Choices"},{"s":"","t":"A","n":"Vamp"},{"s":"","t":"A","n":"Outro"},{"t":"G","n":"Pic"}]}';
   				tdtb.query('SELECT * FROM tmp', function(err, res){
 					if (err) throw err;
 					if (res.rows[0] != undefined){
