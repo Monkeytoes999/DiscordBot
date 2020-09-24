@@ -893,6 +893,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			commRand = true;
 		    break;
 			case 'tmp':
+				message = message.replaceAll("'", "`");
 				let tmpArgs = message.substring(splice + 4).split(';');
 				var outputa = "";
 				var outputb = "";
@@ -900,10 +901,10 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				var correctPlace = 0;
 				var loc = Math.floor(Math.random()*2);
 				if (loc == 0){
-				  answers.unshift(tmpArgs[4]);
+				  answers.unshift(tmpArgs[1]);
 				}
 				if (loc == 1){
-				  answers.push(tmpArgs[4]);
+				  answers.push(tmpArgs[1]);
 				}
 				correctPlace = 2*loc;
 				loc = Math.floor(Math.random()*2);
