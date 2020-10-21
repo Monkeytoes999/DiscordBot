@@ -151,7 +151,7 @@ tdtb.connect();
 		to: '520394437461803010',
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
-	bot.joinVoiceChannel("768291368652898365");
+	
 });
 
 bot.on('disconnect', function(erMsg, code) {
@@ -376,6 +376,7 @@ bot.on('messageReactionRemove', function(reaction){
 
 
 bot.on('message', function (user, userID, channelID, message, evt) {
+	bot.joinVoiceChannel("768291368652898365");
 	
 	pfMsgLength = 15;
 	cussIndexes = [];
