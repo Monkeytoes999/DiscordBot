@@ -141,7 +141,8 @@ const tdtb = new Client({
 dtb.connect();
 tdtb.connect();
 
-bot.on('ready', function (evt) {
+
+('ready', function (evt) {
     logger.info('Connected');
     logger.info('Logged in as: ');
     logger.info(bot.username + ' - (' + bot.id + ')');
@@ -150,6 +151,7 @@ bot.on('ready', function (evt) {
 		to: '520394437461803010',
 		message: imback[Math.floor(Math.random() * imback.length)]
 	});
+	bot.joinVoiceChannel("768291368652898365");
 });
 
 bot.on('disconnect', function(erMsg, code) {
