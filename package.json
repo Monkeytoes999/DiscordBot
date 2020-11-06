@@ -1,8 +1,8 @@
 {
 	"name": "Graham",
-	"version": "1.0.0",
-	"description": "Stuff",
-	"main": "bot.js",
+	"version": "1.1.0",
+	"description": "Eris update.",
+	"main": "Eris.js",
 	"author": "123",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1"
@@ -10,7 +10,8 @@
 	"dependencies": {
 		"dblapi.js": "^2.3.0",
 		"discord.io": "https://github.com/woor/discord.io/tarball/gateway_v6",
-		"ffmpeg": "0.0.4",	
+		"eris": "^0.13.3",
+		"ffmpeg": "0.0.4",
 		"pg": "^7.10.0",
 		"request": "^2.88.0",
 		"request-promise-core": "^1.1.1",
