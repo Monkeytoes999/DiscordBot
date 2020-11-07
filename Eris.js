@@ -295,8 +295,9 @@ bot.on('messageCreate',  (msg) => {
 		dayay = thisDayay;
 		//If day did change...
 		if ((day != prevDay && scDay != 'oof') || message == "gcd.gcd.gcd...gcD."){
+			console.log(day, prevDay, scDay);
 			//Update server count.
-			bot.editStatus("online", {"name": "in" + Object.keys(bot.guildShardMap).length + ' servers! gcd.help | gcd.guildLink', "type": 0});
+			bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 			//A/B day rotation notification setting.
 			let scAnMsg = scDay;
 			if (scDay.length == 1){
