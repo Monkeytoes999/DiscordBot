@@ -458,8 +458,6 @@ bot.on('messageCreate',  (msg) => {
 						let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
 						let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
 						let scOof = 0;
-						let shutitcy = bot.getDMChannel(userID)
-						break;
 						while (scAnnounce < scAnnArr.length){
 							let scAnMsg = "Testing something, don't worry about it";
 							setTimeout(() => {
@@ -468,20 +466,16 @@ bot.on('messageCreate',  (msg) => {
 									if (e) throw e;
 									let dmChannel = bot.getDMChannel(scAnnArr[scOof])
 									if(r.rows[0][perp] != 'oof'){
-										setTimeout(() => {
-											bot.createMessage(dmChannel.PrivateChannel.id, r.rows[0][perp]).catch(function(err, res){
-												console.log(err,res)
-												scOof++
-											})
-										}, 100);
+										bot.createMessage(dmChannel.PrivateChannel.id, r.rows[0][perp]).catch(function(err, res){
+											console.log(err,res)
+											scOof++
+										})
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 									} else {
-										setTimeout(() => {
-											bot.createMessage(dmChannel.PrivateChannel.id, scAnMsg).catch(function(err, res){
-												console.log(err,res)
-												scOof++
-											})
-										}, 100);
+										bot.createMessage(dmChannel.PrivateChannel.id, scAnMsg).catch(function(err, res){
+											console.log(err,res)
+											scOof++
+										})
 									}
 								});
 							}, 3000*(scAnnounce + 1));
