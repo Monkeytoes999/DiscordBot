@@ -479,7 +479,7 @@ bot.on('messageCreate',  (msg) => {
 												scOof++;
 											});
 										}
-									}
+									});
 								});
 							}, 3000*(scAnnounce + 1));
 							scAnnounce++;
