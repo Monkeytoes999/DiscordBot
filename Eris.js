@@ -455,7 +455,9 @@ bot.on('messageCreate',  (msg) => {
 						break;
 					case 'owowo':
 						let shutitcy = bot.getDMChannel(userID)
-						console.log(shutitcy)
+						setTimeout(() => {
+							console.log(shutitcy);
+						}, 100);
 						break;
 					case 'announcetest':
 						let scAnnounce = 0;
