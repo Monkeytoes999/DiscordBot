@@ -424,7 +424,7 @@ bot.on('messageCreate',  (msg) => {
 							bot.createMessage('509920937093890058', userID).catch();
 							bot.createMessage('524703539801489418', message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID);
 						}
-					}
+					}.catch()
 				}
 			}
 		}
