@@ -464,6 +464,7 @@ bot.on('messageCreate',  (msg) => {
 									if (e) throw e;
 									if(r.rows[0][perp] != 'oof'){
 										bot.createMessage(scAnnArr[scOof], r.rows[0][perp], function(err, res){
+											console.log(err, res)
 											scOof++
 										});
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
