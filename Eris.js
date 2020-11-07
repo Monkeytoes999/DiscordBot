@@ -464,17 +464,17 @@ bot.on('messageCreate',  (msg) => {
 								dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 									let perp = scAnnMArr[scOof]
 									if (e) throw e;
-									let dmChannel = bot.getDMChannel(scAnnArr[scOof])
+									let dmChannel = await bot.getDMChannel(scAnnArr[scOof])
 									let relvID = "";
 									dmChannel.then(channel => {
 										if(r.rows[0][perp] != 'oof'){
-											bot.createMessage(channel, r.rows[0][perp]).catch(function(err, res){
+											bot.createMessage(channel.id, r.rows[0][perp]).catch(function(err, res){
 												console.log(err,res);
 												scOof++;
 											});
 											dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 										} else {
-											bot.createMessage(channel, scAnMsg).catch(function(err, res){
+											bot.createMessage(channel.id, scAnMsg).catch(function(err, res){
 												console.log(err,res);
 												scOof++;
 											});
