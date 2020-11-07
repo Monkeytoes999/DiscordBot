@@ -466,14 +466,15 @@ bot.on('messageCreate',  (msg) => {
 								dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 									let perp = scAnnMArr[scOof]
 									if (e) throw e;
+									let dmChannel = bot.getDMChannel(scAnnArr[scOof])
 									if(r.rows[0][perp] != 'oof'){
-										bot.createMessage(bot.getDMChannel(scAnnArr[scOof]).PrivateChannel.id, r.rows[0][perp]).catch(function(err, res){
+										bot.createMessage(dmChannel.PrivateChannel.id, r.rows[0][perp]).catch(function(err, res){
 											console.log(err,res)
 											scOof++
 										})
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 									} else {
-										bot.createMessage(bot.getDMChannel(scAnnArr[scOof]).PrivateChannel.id, scAnMsg).catch(function(err, res){
+										bot.createMessage(dmChannel.PrivateChannel.id, scAnMsg).catch(function(err, res){
 											console.log(err,res)
 											scOof++
 										})
