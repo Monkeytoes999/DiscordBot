@@ -463,21 +463,24 @@ bot.on('messageCreate',  (msg) => {
 									let perp = scAnnMArr[scOof]
 									if (e) throw e;
 									if(r.rows[0][perp] != 'oof'){
-										bot.createMessage(scAnnArr[scOof], r.rows[0][perp]).catch()
-										setTimeout(() => {
+										bot.createMessage(scAnnArr[scOof], r.rows[0][perp]).catch(function(err, res){
+											console.log(err,res)
 											scOof++
-										}, 200);
+										})
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 									} else {
-										bot.createMessage(scAnnArr[scOof], scAnMsg).catch()
-										setTimeout(() => {
+										bot.createMessage(scAnnArr[scOof], scAnMsg).catch(function(err, res){
+											console.log(err,res)
 											scOof++
-										}, 200);
+										})
 									}
 								});
 							}, 3000*(scAnnounce + 1));
 							scAnnounce++;
 						}
+						break;
+					case 'abcdssdx':
+						bot.createMessage('393586279964475393', "aab").catch()
 						break;
 					case 'setScDay':
 						if (userID == gID || userID == cID){
