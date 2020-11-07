@@ -335,18 +335,12 @@ bot.on('messageCreate',  (msg) => {
 							let perp = scAnnMArr[scOof]
 							if (e) throw e;
 							if(r.rows[0][perp] != 'oof'){
-								bot.sendMessage({
-									to: scAnnArr[scOof],
-									message: r.rows[0][perp]
-								}, function(err, res){
+								bot.createMessage(scAnnArr[scOof], r.rows[0][perp], function(err, res){
 									scOof++
 								});
 								dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 							} else {
-								bot.sendMessage({
-									to: scAnnArr[scOof],
-									message: scAnMsg
-								}, function(err,res){
+								bot.createMessage(scAnnArr[scOof], scAnMsg, function(err, res){
 									scOof++
 								});
 							}
@@ -498,6 +492,32 @@ bot.on('messageCreate',  (msg) => {
 						}
 						commRand = true;
 						break;
+					default:
+						if (!isDM && serverID != '264445053596991498'){
+							let rcMsg = message.substring(4);
+							dtb.query('SELECT roleid FROM rccm WHERE serverid = \'' + serverID + '\' AND command = \'' + rcMsg + '\'', function(err, res){
+								if (err) throw err;
+								if (res.rows[0] != undefined){
+									let rAdd = true;
+									for (let rToI = 0; member.roles[rToI] != undefined && rAdd; rToI++){
+										if (member.roles[rToI] == res.rows[0].roleid){
+											rAdd = false;
+										}
+									}
+									if (rAdd){
+										bot.addGuildMemberRole(serverID, userID, res.rows[0].roleid, function(err, res){
+											if (err) throw err
+										});
+										bot.createMessage(channelID, 'You have successfully added yourself to the role.');
+									} else {
+										bot.removeGuildMemberRole(serverID, userID, res.rows[0].roleid, function(err, res){
+											if (err) throw err
+										});
+										bot.createMessage(channelID, 'You have successfully removed yourself from the role.');
+									}
+								}
+							})
+						}
 				}
 			}
 		}
