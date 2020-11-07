@@ -463,13 +463,13 @@ bot.on('messageCreate',  (msg) => {
 									let perp = scAnnMArr[scOof]
 									if (e) throw e;
 									if(r.rows[0][perp] != 'oof'){
-										bot.createMessage(scAnnArr[scOof], r.rows[0][perp]).catch(err, res)
+										bot.createMessage(scAnnArr[scOof], r.rows[0][perp]).catch()
 										setTimeout(() => {
 											scOof++
 										}, 200);
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 									} else {
-										bot.createMessage(scAnnArr[scOof], scAnMsg).catch(err, res)
+										bot.createMessage(scAnnArr[scOof], scAnMsg).catch()
 										setTimeout(() => {
 											scOof++
 										}, 200);
