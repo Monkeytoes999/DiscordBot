@@ -465,6 +465,9 @@ bot.on('messageCreate',  (msg) => {
 									let perp = scAnnMArr[scOof]
 									if (e) throw e;
 									let dmChannel = bot.getDMChannel(scAnnArr[scOof])
+									dmChannel.then((PrivateChannel) => {
+										console.log(PrivateChannel)
+									}
 									if(r.rows[0][perp] != 'oof'){
 										setTimeout(() => {
 											console.log(dmChannel);
