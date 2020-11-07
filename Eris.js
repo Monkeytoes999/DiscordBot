@@ -241,7 +241,7 @@ bot.on('messageUpdate', (msg, oldMsgData) => {
 });
 
 
-bot.on('messageCreate',  (msg) => {
+bot.on('messageCreate',  async (msg) => {
 
 	var channelID = msg.channel.id;
 	var userID = msg.author.id;
