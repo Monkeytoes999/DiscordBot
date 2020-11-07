@@ -453,6 +453,9 @@ bot.on('messageCreate',  (msg) => {
 					case 'statustest':
 						bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 						break;
+					case 'owowo':
+						console.log(bot.getDMChannel(userID))
+						break;
 					case 'announcetest':
 						let scAnnounce = 0;
 						let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
