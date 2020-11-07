@@ -464,9 +464,7 @@ bot.on('messageCreate', (msg) => {
 								dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 									let perp = scAnnMArr[scOof]
 									if (e) throw e;
-									let dmChannel = bot.getDMChannel(scAnnArr[scOof]);
-									let relvID = "";
-									dmChannel.then(channel => {
+									bot.getDMChannel(scAnnArr[scOof]).then(channel => {
 										if(r.rows[0][perp] != 'oof'){
 											bot.createMessage(channel.id, r.rows[0][perp]).catch(function(err, res){
 												console.log(err,res);
