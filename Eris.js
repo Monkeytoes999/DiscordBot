@@ -454,7 +454,8 @@ bot.on('messageCreate',  (msg) => {
 						bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 						break;
 					case 'owowo':
-						console.log(bot.getDMChannel(userID))
+						let shutitcy = bot.getDMChannel(userID)
+						console.log(shutitcy)
 						break;
 					case 'announcetest':
 						let scAnnounce = 0;
