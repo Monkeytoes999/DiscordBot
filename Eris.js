@@ -241,7 +241,7 @@ bot.on('messageUpdate', (msg, oldMsgData) => {
 });
 
 
-bot.on('messageCreate',  async (msg) => {
+bot.on('messageCreate', (msg) => {
 
 	var channelID = msg.channel.id;
 	var userID = msg.author.id;
@@ -464,7 +464,7 @@ bot.on('messageCreate',  async (msg) => {
 								dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 									let perp = scAnnMArr[scOof]
 									if (e) throw e;
-									let dmChannel = await bot.getDMChannel(scAnnArr[scOof])
+									let dmChannel = bot.getDMChannel(scAnnArr[scOof]);
 									let relvID = "";
 									dmChannel.then(channel => {
 										if(r.rows[0][perp] != 'oof'){
