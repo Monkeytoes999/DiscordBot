@@ -136,8 +136,10 @@ bot.on('any', (event) => {
 bot.on('messageUpdate', (msg, oldMsgData) => {
 	var newMsgData = msg;
 	var channelID = msg.channel.id;
-	var userID = msg.author.id;
-	var user = msg.author.username;
+	if (msg.author != undefined){
+		var userID = msg.author.id;
+		var user = msg.author.username;
+	}
 	var message = msg.content;
 	var isDM = (msg.channel.guild == undefined);
 	channel = msg.channel;
