@@ -467,10 +467,11 @@ bot.on('messageCreate',  (msg) => {
 									let dmChannel = bot.getDMChannel(scAnnArr[scOof])
 									if(r.rows[0][perp] != 'oof'){
 										setTimeout(() => {
+											console.log(dmChannel);
 											bot.createMessage(dmChannel.PrivateChannel.id, r.rows[0][perp]).catch(function(err, res){
 												console.log(err,res)
 												scOof++
-											})
+											});
 										}, 100);
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 									} else {
@@ -478,7 +479,7 @@ bot.on('messageCreate',  (msg) => {
 											bot.createMessage(dmChannel.PrivateChannel.id, scAnMsg).catch(function(err, res){
 												console.log(err,res)
 												scOof++
-											})
+											});
 										}, 100);
 									}
 								});
