@@ -424,7 +424,7 @@ bot.on('messageCreate',  (msg) => {
 							bot.createMessage('509920937093890058', userID).catch();
 							bot.createMessage('524703539801489418', message + ': from: ' + user + ' servID: ' + serverID + ', chID: ' + channelID);
 						}
-					}.catch()
+					}
 				}
 			}
 		}
@@ -466,12 +466,12 @@ bot.on('messageCreate',  (msg) => {
 										bot.createMessage(scAnnArr[scOof], r.rows[0][perp], function(err, res){
 											console.log(err, res)
 											scOof++
-										});
+										}).catch();
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 									} else {
 										bot.createMessage(scAnnArr[scOof], scAnMsg, function(err,res){
 											scOof++
-										});
+										}).catch();
 									}
 								});
 							}, 3000*(scAnnounce + 1));
