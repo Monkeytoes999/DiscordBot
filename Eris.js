@@ -466,27 +466,19 @@ bot.on('messageCreate',  (msg) => {
 									if (e) throw e;
 									let dmChannel = bot.getDMChannel(scAnnArr[scOof])
 									let relvID = "";
-									dmChannel.then((PrivateChannel) => {
-										console.log(PrivateChannel);
-										relvID = PrivateChannel.id;
-									});
-									if(r.rows[0][perp] != 'oof'){
-										setTimeout(() => {
-											console.log(dmChannel);
-											bot.createMessage(relvID, r.rows[0][perp]).catch(function(err, res){
+									dmChannel.then(channel => {
+										if(r.rows[0][perp] != 'oof'){
+											bot.createMessage(channel, r.rows[0][perp]).catch(function(err, res){
 												console.log(err,res);
 												scOof++;
 											});
-										}, 100);
-										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
-									} else {
-										setTimeout(() => {
-											console.log(dmChannel.Promise);
-											bot.createMessage(relvID, scAnMsg).catch(function(err, res){
+											dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
+										} else {
+											bot.createMessage(channel, scAnMsg).catch(function(err, res){
 												console.log(err,res);
 												scOof++;
 											});
-										}, 100);
+										}
 									}
 								});
 							}, 3000*(scAnnounce + 1));
