@@ -476,6 +476,7 @@ bot.on('messageCreate',  (msg) => {
 										dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
 									} else {
 										setTimeout(() => {
+											console.log(dmChannel);
 											bot.createMessage(dmChannel.PrivateChannel.id, scAnMsg).catch(function(err, res){
 												console.log(err,res)
 												scOof++
