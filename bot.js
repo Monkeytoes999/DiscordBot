@@ -163,7 +163,7 @@ bot.on('disconnect', function(erMsg, code) {
 	if (erMsg != 'Reconnect requested by Discord' && code != 1000){
 		bot.sendMessage({
 			to: '701915050688118804',
-			message: '<@393586279964475393>'
+			message: '<@' + gID + '>'
 		});
 	}
     bot.connect();
@@ -214,7 +214,7 @@ bot.on('any', function(event) {
 // 	    if (event.d != null){
 // 		    if (event.d.channel_id != undefined && event.d.guild_id != '264445053596991498'){
 // 			    bot.sendMessage({
-// 				    to: '393586279964475393',
+// 				    to: gID,
 // 				    message: superRareResponseList[(Math.floor(Math.random() * superRareResponseList.length))]
 // 			    });
 // 			    bot.sendMessage({
@@ -228,7 +228,7 @@ bot.on('any', function(event) {
 });
 
 bot.on('presenceUpdate', function(event){
-//        if(event.d.user.id == '393586279964475393'){
+//        if(event.d.user.id == gID){
 // 		bot.sendMessage({
 // 			to: '514213516538806304',
 // 			message: 'OOF!! I\'ll do more with this later'
@@ -545,7 +545,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			}
 			if(scDay.toUpperCase() != 'NONE'){
 				let scAnnounce = 0;
-				let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504', '487285707635818498'];
+				let scAnnArr = ['458809225120972800','486985623161274378',cID,gID,'399366382799814656','156126755646734336','120545011392577537','250331063337877504', '487285707635818498'];
 				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh', 'jake'];
 				let scOof = 0;
 				while (scAnnounce < scAnnArr.length){
@@ -1012,7 +1012,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;	
 				break;
 			case '🅱️day':
-				if (userID == '393586279964475393' || userID == '458809225120972800' || userID == '430480264678998047' || userID == '485628261494292505'){
+				if (userID == gID || userID == '458809225120972800' || userID == '430480264678998047' || userID == '485628261494292505'){
 					dtb.query('SELECT id FROM bday', function(e, r){
 						let Brows = 0;
 						let Brows2 = 0;
@@ -1117,7 +1117,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				if (userID == gID){
 					bot.sendMessage({
 						to: channelID,
-						message: 'You are my amazing and all powerful master. I am pleased to assist you <@393586279964475393> \n I\'ll tell you who he is <@374404028525707264>, he\'s my master!'
+						message: 'You are my amazing and all powerful master. I am pleased to assist you <@' + gID + '> \n I\'ll tell you who he is <@374404028525707264>, he\'s my master!'
 					});
 				}
 				break;
@@ -1231,7 +1231,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			case 'announce':
 				if (userID == gID){
 					let acAnnounce = 0;
-					let acAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504','487285707635818498'];
+					let acAnnArr = ['458809225120972800','486985623161274378',cID,gID,'399366382799814656','156126755646734336','120545011392577537','250331063337877504','487285707635818498'];
 					let acOof = 0;
 					while (acAnnounce < acAnnArr.length){
 						setTimeout(() => {
@@ -2143,7 +2143,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 			break;
 			//BTW this no happen likely
 			case 'spamit':
-				if(channelID == spamChannel && message.substring(11) == spamPassword && allowSpam && ((userID == 393586279964475393) || (userID == 495705429150793739))){
+				if(channelID == spamChannel && message.substring(11) == spamPassword && allowSpam && ((userID == gID) || (userID == 495705429150793739))){
 					setTimeout(() => {
 						 bot.sendMessage({
 							 to: channelID,
@@ -2552,7 +2552,7 @@ bot.on('message', function (user, userID, channelID, message, evt) {
 				commRand = true;
 				break;
 			case 'die':
-				if (userID == '393586279964475393'){
+				if (userID == gID){
 					bot.sendMessage({
 						to: channelID,
 						message: 'Beep Boop. I died.'
