@@ -300,7 +300,6 @@ bot.on('messageCreate', (msg) => {
 		dayay = thisDayay;
 		//If day did change...
 		if ((day != prevDay && scDay != 'oof') || message == "gcd.gcd.gcd...gcD."){
-			console.log(day, prevDay, scDay);
 			//Update server count.
 			bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 			//A/B day rotation notification setting.
@@ -335,7 +334,6 @@ bot.on('messageCreate', (msg) => {
 				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
 				let scOof = 0;
 				while (scAnnounce < scAnnArr.length){
-					let scAnMsg = "Testing something, don't worry about it";
 					setTimeout(() => {
 						dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 							let perp = scAnnMArr[scOof]
@@ -362,6 +360,7 @@ bot.on('messageCreate', (msg) => {
 				if (err) throw err;
 				scDay = res.rows[0].day
 			})
+			bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 		}
 	}
 		
@@ -451,13 +450,13 @@ bot.on('messageCreate', (msg) => {
 				//args = command, w/o prefix.
 				args = args.splice(4);
 				switch(cmd) {
-					case 'announcetest':
+					case 'announce':
 						let scAnnounce = 0;
 						let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
 						let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
 						let scOof = 0;
 						while (scAnnounce < scAnnArr.length){
-							let scAnMsg = "Testing something, don't worry about it";
+							let scAnMsg = message.substring(13);
 							setTimeout(() => {
 								dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 									let perp = scAnnMArr[scOof]
@@ -500,9 +499,12 @@ bot.on('messageCreate', (msg) => {
 						commRand = true;
 						break;
 					case 'ttu':
-						if (userID == gID){
-							bot.createMessage(args[1], args[2]).catch()
-							console.log(args)
+						if(message.substring(8,9) != '<'){
+							bot.getDMChannel(scAnnArr[scOof]).then(channel => {
+								bot.createMessage(channel.id, message.substring(27)).catch
+							});
+						} else {
+							bot.createMessage(message.substring(10,28), message.substring(30)).catch()
 						}
 						comRand = true;
 						break;
