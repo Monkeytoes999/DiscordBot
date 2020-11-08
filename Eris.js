@@ -501,7 +501,7 @@ bot.on('messageCreate', (msg) => {
 						break;
 					case 'ttu':
 						if (userID == gID){
-							bot.screateMessage(args[1], args[2])
+							bot.createMessage(args[1], args[2]).catch()
 							console.log(args)
 						}
 						comRand = true;
