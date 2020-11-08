@@ -268,6 +268,9 @@ bot.on('messageCreate', (msg) => {
 		nonWordCurses.push('no')
 	}
 	
+	if (isDM && channelID != '495705429150793739' && message.indexOf("Our current commands are as follows.") == -1 && message.indexOf("Today is a") == -1 && message.indexOf("This bot comes equipped with a curse censoring feature,") == -1){
+		bot.createMessage('508329340652748800', user + ': ' + message + ' (' + channelID + ')')
+	}
 	
 	prevEvtID = msg.id;
 	
