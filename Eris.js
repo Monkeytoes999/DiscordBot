@@ -500,11 +500,11 @@ bot.on('messageCreate', (msg) => {
 						break;
 					case 'ttu':
 						if(message.substring(8,9) != '<'){
-							bot.getDMChannel(scAnnArr[scOof]).then(channel => {
-								bot.createMessage(channel.id, message.substring(27)).catch
-							});
+							bot.createMessage(message.substring(8,26), message.substring(27)).catch()
 						} else {
-							bot.createMessage(message.substring(10,28), message.substring(30)).catch()
+							bot.getDMChannel(message.substring(10,28)).then(channel => {
+								bot.createMessage(channel.id, message.substring(30)).catch
+							});
 						}
 						comRand = true;
 						break;
