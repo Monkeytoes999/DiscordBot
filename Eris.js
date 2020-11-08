@@ -335,20 +335,21 @@ bot.on('messageCreate', (msg) => {
 				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
 				let scOof = 0;
 				while (scAnnounce < scAnnArr.length){
+					let scAnMsg = "Testing something, don't worry about it";
 					setTimeout(() => {
 						dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
 							let perp = scAnnMArr[scOof]
 							if (e) throw e;
-							if(r.rows[0][perp] != 'oof'){
-								bot.createMessage(scAnnArr[scOof], r.rows[0][perp], function(err, res){
+							bot.getDMChannel(scAnnArr[scOof]).then(channel => {
+								if(r.rows[0][perp] != 'oof'){
+									bot.createMessage(channel.id, r.rows[0][perp])
 									scOof++
-								});
-								dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
-							} else {
-								bot.createMessage(scAnnArr[scOof], scAnMsg, function(err, res){
+									dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
+								} else {
+									bot.createMessage(channel.id, scAnMsg)
 									scOof++
-								});
-							}
+								}
+							});
 						});
 					}, 3000*(scAnnounce + 1));
 					scAnnounce++;
