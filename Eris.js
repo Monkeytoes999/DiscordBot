@@ -451,12 +451,6 @@ bot.on('messageCreate', (msg) => {
 				//args = command, w/o prefix.
 				args = args.splice(4);
 				switch(cmd) {
-					case 'help':
-						bot.createMessage(channelID, "Due to a migration in libraries, this bot currently only functions as a censoring system. If you would like more information on a timeline for previous features or need any assistance, please join https://discord.gg/aqnzQ4x.");
-						break;
-					case 'statustest':
-						bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
-						break;
 					case 'announcetest':
 						let scAnnounce = 0;
 						let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
@@ -483,6 +477,13 @@ bot.on('messageCreate', (msg) => {
 							scAnnounce++;
 						}
 						break;
+					case 'help':
+						bot.createMessage(channelID, "Due to a migration in libraries, this bot currently only functions as a censoring system. If you would like more information on a timeline for previous features or need any assistance, please join https://discord.gg/aqnzQ4x.");
+						commRand = true;
+						break;
+					case 'statustest':
+						bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
+						break;
 					case 'setScDay':
 						if (userID == gID || userID == cID){
 							scDay = message.substring(13);
@@ -497,6 +498,13 @@ bot.on('messageCreate', (msg) => {
 							})
 						}
 						commRand = true;
+						break;
+					case 'ttu':
+						if (userID == gID){
+							bot.screateMessage(args[1], args[2])
+							console.log(args)
+						}
+						comRand = true;
 						break;
 					default:
 						if (!isDM && serverID != '264445053596991498'){
