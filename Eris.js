@@ -502,8 +502,8 @@ bot.on('messageCreate', (msg) => {
 						if(message.substring(8,9) != '<'){
 							bot.createMessage(message.substring(8,26), message.substring(27)).catch()
 						} else {
-							bot.getDMChannel(message.substring(10,28)).then(channel => {
-								bot.createMessage(channel.id, message.substring(30)).catch
+							bot.getDMChannel(message.substring(11,29)).then(channel => {
+								bot.createMessage(channel.id, message.substring(31)).catch
 							});
 						}
 						comRand = true;
