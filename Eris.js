@@ -496,7 +496,7 @@ bot.on('messageCreate', (msg) => {
 						    ]
 						  }
 						};
-						bot.createMessage(channelID, data);
+						bot.createMessage(channelID, helpData);
 						commRand = true;
 						break;
 					case 'statustest':
