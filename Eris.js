@@ -94,11 +94,6 @@ bot.on("ready", () => {
 });
 
 bot.on('disconnect', (erMsg, code) => {
-    console.log('----- Bot disconnected from Discord with code', code, 'for reason:', erMsg, '-----');
-	bot.createMessage('701915050688118804', 'Error Code: ' + code + ' Reason: ' + erMsg).catch();
-	if (erMsg != 'Reconnect requested by Discord'){
-			bot.createMessage('701915050688118804', '<@393586279964475393>').catch();
-	}
     bot.connect();
 });
 
@@ -477,7 +472,31 @@ bot.on('messageCreate', (msg) => {
 						}
 						break;
 					case 'help':
-						bot.createMessage(channelID, "Due to a migration in libraries, this bot currently only functions as a censoring system. If you would like more information on a timeline for previous features or need any assistance, please join https://discord.gg/aqnzQ4x.");
+						let helpData = {
+						  "embed": {
+						    "title": "Commands",
+						    "description": "Current Prefix: 'gcd.'",
+						    "footer": {
+						      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
+						      "text": "footer text"
+						    },
+						    "fields": [
+						      {
+							"name": "Help",
+							"value": "Displays this embed"
+						      },
+						      {
+							"name": "rcCM [@role] [command]",
+							"value": "Creates a custom command that will allow users to add or remove themselves from roles by using 'gcd.[command]'.\nTo run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to."
+						      },
+						      {
+							"name": "For more information, please join our support server:",
+							"value": "https://discord.gg/aqnzQ4x"
+						      }
+						    ]
+						  }
+						};
+						bot.createMessage(channelID, data);
 						commRand = true;
 						break;
 					case 'statustest':
