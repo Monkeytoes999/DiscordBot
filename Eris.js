@@ -91,7 +91,6 @@ bot.on("ready", () => {
     console.log('Connected');
     console.log('Logged in as: ');
     console.log(bot.user.username + ' - (' + bot.user.id + ')');
-    bot.joinVoiceChannel("768291368652898365");
 });
 
 bot.on('disconnect', (erMsg, code) => {
@@ -513,6 +512,9 @@ bot.on('messageCreate', (msg) => {
 							})
 						}
 						commRand = true;
+						break;
+					case 'join':
+						bot.joinVoiceChannel("768291368652898365").catch()
 						break;
 					case 'rcCM':
 						if (!isDM){
