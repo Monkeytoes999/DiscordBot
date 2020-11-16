@@ -516,21 +516,12 @@ bot.on('messageCreate', (msg) => {
 										let rcCMD = message.substring(32)
 										dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
 											if (err) throw err;
-											bot.sendMessage({
-												to: channelID,
-												message: 'Your commmand has been created.'
-											});
+											bot.createMessage(channelID, "Your command has been created.");
 										});
 									}  else if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
-										bot.sendMessage({
-											to: channelID,
-											message: 'Your highest role must be higher in rank than the role you are trying to allow access to.'
-										});
+										bot.createMessage(channelID, 'Your highest role must be higher in rank than the role you are trying to allow access to.')
 									} else {
-										bot.sendMessage({
-											to: channelID,
-											message: 'The highest role you have in this server must have admin/manage roles to run this command!'
-										});
+										bot.createMessage(channelID, 'The highest role you have in this server must have admin/manage roles to run this command!')
 									}
 								}
 							}
