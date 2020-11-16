@@ -521,14 +521,10 @@ bot.on('messageCreate', (msg) => {
 										}
 									}
 									if (rAdd){
-										bot.addGuildMemberRole(serverID, userID, res.rows[0].roleid, function(err, res){
-											if (err) throw err
-										});
+										bot.addGuildMemberRole(serverID, userID, res.rows[0].roleid).catch();
 										bot.createMessage(channelID, 'You have successfully added yourself to the role.');
 									} else {
-										bot.removeGuildMemberRole(serverID, userID, res.rows[0].roleid, function(err, res){
-											if (err) throw err
-										});
+										bot.removeGuildMemberRole(serverID, userID, res.rows[0].roleid).catch();
 										bot.createMessage(channelID, 'You have successfully removed yourself from the role.');
 									}
 								}
