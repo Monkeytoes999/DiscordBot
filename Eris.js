@@ -484,10 +484,10 @@ bot.on('messageCreate', (msg) => {
 						      },
 						      {
 							"name": "Rccm [@role] [command]",
-							"value": "Creates a custom command that will allow users to add or remove themselves from roles by using 'gcd.[command]'.\nTo run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to."
+							"value": "Creates a custom command that will allow users to add or remove themselves from [@role] by using 'gcd.[command]'.\nTo run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to."
 						      },
 						      {
-							"name": "For more information, please join our support server:",
+							"name": "This bot is currently under a library migration, and thus some old features are currently unavailable. \nFor more information, please join our support server:",
 							"value": "https://discord.gg/aqnzQ4x"
 						      }
 						    ]
