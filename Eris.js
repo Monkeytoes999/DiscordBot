@@ -503,8 +503,8 @@ bot.on('messageCreate', (msg) => {
 							let topRole = 0;
 							let topRoleID = serverID;
 							for (var iooof = 0; iooof < member.roles.length; iooof++){
-								console.log(bot.guilds)
-								if (bot.guilds.serverID.roles[member.roles[iooof]].position > topRole){
+								console.log(bot.guilds.find("id" == serverID).roles)
+								if (bot.guilds.find("id" == serverID).roles[member.roles[iooof]].position > topRole){
 									topRole = bot.guilds[serverID].roles[member.roles[iooof]].position
 									topRoleID = bot.guilds[serverID].roles[member.roles[iooof]].id
 								}
