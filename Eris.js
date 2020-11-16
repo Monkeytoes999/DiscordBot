@@ -503,7 +503,6 @@ bot.on('messageCreate', (msg) => {
 							let topRole = 0;
 							let topRoleID = serverID;
 							for (var iooof = 0; iooof < member.roles.length; iooof++){
-								console.log(bot.guilds.find(function(obj){return obj.id == serverID}).roles)
 								if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == member.roles[iooof]}).position > topRole){
 									topRole = bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == member.roles[iooof]}).position
 									topRoleID = bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == member.roles[iooof]}).id
