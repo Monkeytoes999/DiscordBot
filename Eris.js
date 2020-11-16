@@ -498,6 +498,49 @@ bot.on('messageCreate', (msg) => {
 						}
 						commRand = true;
 						break;
+					case 'rcCM':
+						if (!isDM){
+							let topRole = 0;
+							let topRoleID = serverID;
+							for (var iooof = 0; iooof < member.roles.length; iooof++){
+								if (bot.servers[serverID].roles[member.roles[iooof]].position > topRole){
+									topRole = bot.servers[serverID].roles[member.roles[iooof]].position
+									topRoleID = bot.servers[serverID].roles[member.roles[iooof]].id
+								}
+							}
+							if (message.length > 33 && message.length < 48 && message.includes('<@&')){
+								if (topRole != 0 && bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)] != undefined){
+								    if (bot.servers[serverID].roles[message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)].position < topRole && (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 268435456, 1073741824))){
+										let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
+										let rcCMD = message.substring(32)
+										dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
+											if (err) throw err;
+											bot.sendMessage({
+												to: channelID,
+												message: 'Your commmand has been created.'
+											});
+										});
+									}  else if (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || (bot.servers[serverID].roles[topRoleID].GENERAL_ADMINISTRATOR || checkPerms((bot.servers[serverID].roles[topRoleID]._permissions), 268435456, 1073741824))){
+										bot.sendMessage({
+											to: channelID,
+											message: 'Your highest role must be higher in rank than the role you are trying to allow access to.'
+										});
+									} else {
+										bot.sendMessage({
+											to: channelID,
+											message: 'The highest role you have in this server must have admin/manage roles to run this command!'
+										});
+									}
+								}
+							}
+						} else {
+							bot.sendMessage({
+								to: channelID,
+								message: 'You can\'t do this in a DM'
+							});
+						}
+						commRand = true;
+						break;
 					case 'ttu':
 						if(message.substring(8,9) != '<'){
 							bot.createMessage(message.substring(8,26), message.substring(27)).catch()
