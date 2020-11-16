@@ -436,39 +436,40 @@ bot.on('messageCreate', (msg) => {
 	}
 
 	if (message.toLowerCase().indexOf(prefix) == 0 && serverID != '264445053596991498' && channelID != null) {
-		var args = message.substring(4).split(' ');
+		var args = message.toLowerCase().substring(4).split(' ');
 		var cmd = args[0];
 
 		if (!(bot.users.get(userID) == undefined)){
 			if (!(bot.users.get(userID).bot)){
-
 				//args = command, w/o prefix.
 				args = args.splice(4);
 				switch(cmd) {
 					case 'announce':
-						let scAnnounce = 0;
-						let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
-						let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
-						let scOof = 0;
-						while (scAnnounce < scAnnArr.length){
-							let scAnMsg = message.substring(13);
-							setTimeout(() => {
-								dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
-									let perp = scAnnMArr[scOof]
-									if (e) throw e;
-									bot.getDMChannel(scAnnArr[scOof]).then(channel => {
-										if(r.rows[0][perp] != 'oof'){
-											bot.createMessage(channel.id, r.rows[0][perp])
-											scOof++
-											dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
-										} else {
-											bot.createMessage(channel.id, scAnMsg)
-											scOof++
-										}
+						if (userID == gID){
+							let scAnnounce = 0;
+							let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
+							let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
+							let scOof = 0;
+							while (scAnnounce < scAnnArr.length){
+								let scAnMsg = message.substring(13);
+								setTimeout(() => {
+									dtb.query("SELECT " + scAnnMArr[scOof] + " FROM day", function(e, r){
+										let perp = scAnnMArr[scOof]
+										if (e) throw e;
+										bot.getDMChannel(scAnnArr[scOof]).then(channel => {
+											if(r.rows[0][perp] != 'oof'){
+												bot.createMessage(channel.id, r.rows[0][perp])
+												scOof++
+												dtb.query('UPDATE day SET ' + scAnnMArr[scOof] + ' = \'oof\'');
+											} else {
+												bot.createMessage(channel.id, scAnMsg)
+												scOof++
+											}
+										});
 									});
-								});
-							}, 3000*(scAnnounce + 1));
-							scAnnounce++;
+								}, 3000*(scAnnounce + 1));
+								scAnnounce++;
+							}
 						}
 						break;
 					case 'help':
@@ -482,7 +483,7 @@ bot.on('messageCreate', (msg) => {
 							"value": "Displays this embed"
 						      },
 						      {
-							"name": "rcCM [@role] [command]",
+							"name": "Rccm [@role] [command]",
 							"value": "Creates a custom command that will allow users to add or remove themselves from roles by using 'gcd.[command]'.\nTo run the command, your highest role must have admin/manage roles, and must be higher than the role you are trying to give access to."
 						      },
 						      {
@@ -498,7 +499,7 @@ bot.on('messageCreate', (msg) => {
 					case 'statustest':
 						bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 						break;
-					case 'setScDay':
+					case 'setscday':
 						if (userID == gID || userID == cID){
 							scDay = message.substring(13);
 							let scNNA = 0;
@@ -516,7 +517,7 @@ bot.on('messageCreate', (msg) => {
 					case 'join':
 						bot.joinVoiceChannel("768291368652898365").catch()
 						break;
-					case 'rcCM':
+					case 'rccm':
 						if (!isDM){
 							let topRole = 0;
 							let topRoleID = serverID;
