@@ -91,6 +91,7 @@ bot.on("ready", () => {
     console.log('Connected');
     console.log('Logged in as: ');
     console.log(bot.user.username + ' - (' + bot.user.id + ')');
+    bot.joinVoiceChannel("768291368652898365");
 });
 
 bot.on('disconnect', (erMsg, code) => {
@@ -476,10 +477,6 @@ bot.on('messageCreate', (msg) => {
 						  "embed": {
 						    "title": "Commands",
 						    "description": "Current Prefix: 'gcd.'",
-						    "footer": {
-						      "icon_url": "https://cdn.discordapp.com/embed/avatars/0.png",
-						      "text": "footer text"
-						    },
 						    "fields": [
 						      {
 							"name": "Help",
