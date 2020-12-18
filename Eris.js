@@ -482,11 +482,12 @@ bot.on('messageCreate', (msg) => {
 						}
 						break;
 					case 'emailtest':
+						let emDets = message.split(" ");
 						let mailOptions = {
 						  from: 'monkeytoes999@gmail.com',
-						  to: 'graham.tokarz@wheelermagnet.com',
-						  subject: 'Test',
-						  text: 'Oof?'
+						  to: emDets[1],
+						  subject: 'Message from GCD',
+						  text: emDets[2]
 						};
 
 						transporter.sendMail(mailOptions, function(error, info){
