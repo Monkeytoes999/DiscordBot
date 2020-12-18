@@ -16,6 +16,7 @@
 		"request": "^2.88.0",
 		"request-promise-core": "^1.1.1",
 		"request-promise-native": "^1.0.5",
-		"winston": "^3.1.0"
+		"winston": "^3.1.0",
+		"nodemailer": "^6.4.17"
 	}
 }
