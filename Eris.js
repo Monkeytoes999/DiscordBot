@@ -481,12 +481,12 @@ bot.on('messageCreate', (msg) => {
 							}
 						}
 						break;
-					case 'emailtest':
+					case 'email':
 						let emDets = message.split(" ");
 						let mailOptions = {
 						  from: 'monkeytoes999@gmail.com',
 						  to: emDets[1],
-						  subject: 'Message from GCD',
+						  subject: 'Message from ' + user + ' through GCD',
 						  text: emDets[2]
 						};
 
