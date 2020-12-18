@@ -3,6 +3,7 @@ var logger = require('winston');
 var fs = require('fs');
 var serverOptions = require('./serverOptions.json');
 var ffmpeg = require('ffmpeg');
+var nodemailer = require('nodemailer');
 var prefix = 'gcd.';
 var gID = '393586279964475393';
 var cID = '336507246227881984';
@@ -84,6 +85,14 @@ const dtb = new Client({
   ssl: true,
 });
 dtb.connect();
+
+var transporter = nodemailer.createTransport({
+	service: 'gmail',
+	auth: {
+		user: 'monkeytoes999@gmail.com',
+		pass: process.env.empass
+	}
+});
 
 
 bot.connect();
@@ -471,6 +480,23 @@ bot.on('messageCreate', (msg) => {
 								scAnnounce++;
 							}
 						}
+						break;
+					case 'emailtest':
+						let mailOptions = {
+						  from: 'monkeytoes999@gmail.com',
+						  to: 'graham.tokarz@wheelermagnet.com',
+						  subject: 'Test',
+						  text: 'Oof?'
+						};
+
+						transporter.sendMail(mailOptions, function(error, info){
+						  if (error) {
+						    console.log(error);
+						  } else {
+						    console.log('Email sent: ' + info.response);
+						  }
+						});
+						commRand = true;
 						break;
 					case 'help':
 						let helpData = {
