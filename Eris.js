@@ -89,7 +89,7 @@ dtb.connect();
 var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
-		user: 'monkeytoes999@gmail.com',
+		user: 'grahamcussdestroyer@gmail.com',
 		pass: process.env.empass
 	}
 });
@@ -484,7 +484,7 @@ bot.on('messageCreate', (msg) => {
 					case 'email':
 						let emDets = message.split(" ");
 						let mailOptions = {
-						  from: 'monkeytoes999@gmail.com',
+						  from: 'grahamcussdestroyer@gmail.com',
 						  to: emDets[1],
 						  subject: 'Message from ' + user + ' through GCD',
 						  text: emDets[2]
