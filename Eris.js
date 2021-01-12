@@ -282,6 +282,7 @@ bot.on('messageCreate', (msg) => {
 	if (true){
 		//Sets variables for time/date
 		let thisTime = new Date();
+			let thisMinute = thisTime.getMinutes();
 			let thisHour = (thisTime.getHours() - 5);
 			let thisDay = thisTime.getDate();
 			let thisDayay = (thisTime.getDay() - 1);
@@ -299,6 +300,9 @@ bot.on('messageCreate', (msg) => {
 				thisHour = thisHour - 12
 			}
 		//So basically, this allows it to detect if the date changed.
+		if ((thisTime.getHours() - 5) == 16 && thisMinute == 20){
+			bot.createMessage('703452725219950623', 'https://i.ibb.co/Jp9Y11W/sharkhmm.gif')
+		}
 		prevDay = day;
 		day = thisDay;
 		dayay = thisDayay;
