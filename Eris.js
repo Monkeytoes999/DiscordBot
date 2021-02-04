@@ -573,7 +573,7 @@ bot.on('messageCreate', (msg) => {
 													bot.createMessage(channelID, "Your command has been created.");
 												});		
 											} else {
-												bot.createMessage(channelID, 'This role already has a command, ' + qres.rows[0].command)
+												bot.createMessage(channelID, 'This role already has a command, \'gcd.' + qres.rows[0].command + '\'')
 											}
 										});
 									}  else if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
