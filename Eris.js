@@ -602,7 +602,7 @@ bot.on('messageCreate', (msg) => {
 								}
 							}
 							if (message.includes('<@&')){
-								if (topRole != 0 && bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}) != undefined){
+								if (topRole != 0){
 								    if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}).position < topRole && (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow || userID == gID), 268435456, 1073741824))){
 										let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
 										dtb.query('SELECT command FROM rccm WHERE serverid = \'' + serverID + '\' and roleid = \'' + rcRID + '\'', function(qerr, qres){
