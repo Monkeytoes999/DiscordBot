@@ -565,7 +565,7 @@ bot.on('messageCreate', (msg) => {
 								    if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}).position < topRole && (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
 										let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
 										let rcCMD = message.substring(32)
-										dtb.query('SELECT command FROM rccm WHERE serverid = \'' + serverID + '\' and roleid = ' + rcRID, function(qerr, qres){
+										dtb.query('SELECT command FROM rccm WHERE serverid = \'' + serverID + '\' and roleid = \'' + rcRID + '\'', function(qerr, qres){
 											if (qerr) throw qerr;
 											console.log(qres)
 										});
