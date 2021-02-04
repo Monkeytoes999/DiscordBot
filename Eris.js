@@ -559,11 +559,12 @@ bot.on('messageCreate', (msg) => {
 								}
 							}
 							console.log(message.length)
-							if (message.length > 33 && message.includes('<@&')){
+							if (message.length > 32 && message.includes('<@&')){
 								if (topRole != 0 && bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}) != undefined){
 								    if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}).position < topRole && (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
 										let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
 										let rcCMD = message.substring(32)
+										console.log(rcRID, rcCMD)
 										dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
 											if (err) throw err;
 											bot.createMessage(channelID, "Your command has been created.");
