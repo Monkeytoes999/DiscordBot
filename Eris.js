@@ -100,10 +100,12 @@ bot.on("ready", () => {
     console.log('Connected');
     console.log('Logged in as: ');
     console.log(bot.user.username + ' - (' + bot.user.id + ')');
+	dtb.connect();
 });
 
 bot.on('disconnect', (erMsg, code) => {
     bot.connect();
+	dtb.connect();
 });
 
 
