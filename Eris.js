@@ -563,13 +563,9 @@ bot.on('messageCreate', (msg) => {
 								    if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}).position < topRole && (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
 										let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
 										let rcCMD = message.substring(32)
-										dtb.query('SELECT command FROM rccm WHERE serverid = \'514109744496115713\' and roleid = \'573279440264757248\'', function(qerr, qres){
-											if (qerr) throw qerr;
-											console.log(qres)
-											dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
-												if (err) throw err;
-												bot.createMessage(channelID, "Your command has been created.");
-											});
+										dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
+											if (err) throw err;
+											bot.createMessage(channelID, "Your command has been created.");
 										});
 									}  else if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
 										bot.createMessage(channelID, 'Your highest role must be higher in rank than the role you are trying to allow access to.')
