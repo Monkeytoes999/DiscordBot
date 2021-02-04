@@ -602,7 +602,7 @@ bot.on('messageCreate', (msg) => {
 								}
 							}
 							if (message.includes('<@&')){
-								if (topRole != 0){
+								if (topRole != 0 && bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}) != undefined){
 								    if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}).position < topRole && (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow || userID == gID), 268435456, 1073741824))){
 										let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
 										dtb.query('SELECT command FROM rccm WHERE serverid = \'' + serverID + '\' and roleid = \'' + rcRID + '\'', function(qerr, qres){
@@ -621,6 +621,18 @@ bot.on('messageCreate', (msg) => {
 									} else {
 										bot.createMessage(channelID, 'The highest role you have in this server must have admin/manage roles to run this command!')
 									}
+								}
+								if (topRole != 0 && bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}) == undefined){
+									let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
+									dtb.query('SELECT command FROM rccm WHERE serverid = \'' + serverID + '\' and roleid = \'' + rcRID + '\'', function(qerr, qres){
+										if (qerr) throw qerr;
+										if (qres.rows.length != 0){
+											dtb.query('DELETE FROM rccm WHERE serverid = \'' + serverID + '\' and roleid = \'' + rcRID + '\'', function(err, res){
+												if (err) throw err;
+												bot.createMessage(channelID, "The command for this role has been cleared.");
+											});		
+										}
+									});
 								}
 							}
 						} else {
