@@ -601,7 +601,7 @@ bot.on('messageCreate', (msg) => {
 									topRoleID = bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == member.roles[iooof]}).id
 								}
 							}
-							if (message.length > 33 && message.includes('<@&')){
+							if (message.includes('<@&')){
 								if (topRole != 0 && bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}) != undefined){
 								    if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19)}).position < topRole && (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow || userID == gID), 268435456, 1073741824))){
 										let rcRID = message.substring(message.indexOf('&') + 1, message.indexOf('&') + 19);
