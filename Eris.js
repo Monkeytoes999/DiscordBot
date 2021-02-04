@@ -613,7 +613,7 @@ bot.on('messageCreate', (msg) => {
 													bot.createMessage(channelID, "The command for this role has been cleared.");
 												});		
 											} else {
-												bot.createMessage(channelID, 'This role has no command yet!)
+												bot.createMessage(channelID, 'This role has no command yet!')
 											}
 										});
 									}  else if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
