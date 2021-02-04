@@ -567,11 +567,14 @@ bot.on('messageCreate', (msg) => {
 										let rcCMD = message.substring(32)
 										dtb.query('SELECT command FROM rccm WHERE serverid = \'' + serverID + '\' and roleid = \'' + rcRID + '\'', function(qerr, qres){
 											if (qerr) throw qerr;
-											console.log(qres)
-										});
-										dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
-											if (err) throw err;
-											bot.createMessage(channelID, "Your command has been created.");
+											if (qres.rows.length == 0){
+												dtb.query('INSERT INTO rccm(command, roleid, serverid) VALUES (\'' + rcCMD + '\', ' + rcRID + ', ' + serverID + ')', function(err, res){
+													if (err) throw err;
+													bot.createMessage(channelID, "Your command has been created.");
+												});		
+											} else {
+												bot.createMessage(channelID, 'This role already has a command, ' + qres.rows[0].command)
+											}
 										});
 									}  else if (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || (bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.has("administrator") || checkPerms((bot.guilds.find(function(obj){return obj.id == serverID}).roles.find(function(obj){return obj.id == topRoleID}).permissions.allow), 268435456, 1073741824))){
 										bot.createMessage(channelID, 'Your highest role must be higher in rank than the role you are trying to allow access to.')
