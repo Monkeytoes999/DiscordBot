@@ -258,7 +258,7 @@ bot.on('messageCreate', (msg) => {
 	member = msg.member;
 	
 	if (channelID == "803791345629134860" && userID != "495705429150793739"){
-		bot.createMessage(channelID, 'CUBING CHANNEL')
+		bot.createMessage(channelID, '<@485628261494292505> CUBING CHANNEL')
 	}
 	
 	if (!isDM){
