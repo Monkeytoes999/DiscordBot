@@ -256,7 +256,11 @@ bot.on('messageCreate', (msg) => {
 	var isDM = (msg.channel.guild == undefined);
 	channel = msg.channel;
 	member = msg.member;
-
+	
+	if (channelID == "803791345629134860" && userID != "495705429150793739"){
+		bot.createMessage(channelID, 'CUBING CHANNEL')
+	}
+	
 	if (!isDM){
 		serverID = msg.channel.guild.id;
 		serverOwnerID = bot.guilds.get(serverID).ownerID;
