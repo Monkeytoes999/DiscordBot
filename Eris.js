@@ -168,8 +168,10 @@ bot.on('messageUpdate', (msg, oldMsgData) => {
 		nonWordCurses.push('no')
 	}
 	
+	console.log(msg)
+
 	prevEvtID = msg.id;
-	cussmessage = message.toUpperCase();
+	cussmessage = msg.content.toUpperCase();
 	
 	allowOwo = true;
 	allowCuss = false;
