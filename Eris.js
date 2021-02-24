@@ -171,7 +171,9 @@ bot.on('messageUpdate', (msg, oldMsgData) => {
 	console.log(msg)
 
 	prevEvtID = msg.id;
-	cussmessage = msg.content.toUpperCase();
+	if (message != undefined){
+		cussmessage = message.toUpperCase();
+	}
 	
 	allowOwo = true;
 	allowCuss = false;
