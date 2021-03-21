@@ -290,7 +290,7 @@ bot.on('messageCreate', (msg) => {
 		//Sets variables for time/date
 		let thisTime = new Date();
 			let thisMinute = thisTime.getMinutes();
-			let thisHour = (thisTime.getHours() - 6);
+			let thisHour = (thisTime.getHours() - 8);
 			let thisDay = thisTime.getDate();
 			let thisDayay = (thisTime.getDay() - 1);
 			if (thisHour < 0){
