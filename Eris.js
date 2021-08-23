@@ -1,4 +1,5 @@
-﻿const Eris = require("eris");
+
+const Eris = require("eris");
 var logger = require('winston');
 var fs = require('fs');
 var serverOptions = require('./serverOptions.json');
@@ -77,6 +78,7 @@ logger.add(new logger.transports.Console, {
 });
 logger.level = 'debug';
 // Initialize Discord Bot 
+console.log('owo');
 var bot = new Eris(process.env.token);
 
 const { Client } = require('pg');
