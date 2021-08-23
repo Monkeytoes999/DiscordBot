@@ -82,13 +82,13 @@ console.log('owo');
 var bot = new Eris(process.env.token);
 
 const { Client } = require('pg');
-const dtb = new Client({
-  connectionString: 'postgres://pqqdeufmjhfapi:a7dfc3d12dfdcfbfa3f5ed2bab3b69191788f652d49b6e205c5e87e19448a4a5@ec2-54-235-92-244.compute-1.amazonaws.com:5432/db4aqjlp6bhtn0',
-  ssl: {
-    rejectUnauthorized: false
-  }
-});
-dtb.connect();
+// const dtb = new Client({
+//   connectionString: 'postgres://pqqdeufmjhfapi:a7dfc3d12dfdcfbfa3f5ed2bab3b69191788f652d49b6e205c5e87e19448a4a5@ec2-54-235-92-244.compute-1.amazonaws.com:5432/db4aqjlp6bhtn0',
+//   ssl: {
+//     rejectUnauthorized: false
+//   }
+// });
+// dtb.connect();
 console.log('owo');
 
 /**var transporter = nodemailer.createTransport({
@@ -123,7 +123,7 @@ bot.on('guildCreate', (server) => {
 });
 
 //bot.on('any', (event) => {
-	commRand = false
+	commRand = false;
 //     if ((Math.floor(Math.random() * 50000)) > 49999){
 // 	    if (event.d != null){
 // 		    if (event.d.channel_id != undefined && event.d.guild_id != '264445053596991498'){
