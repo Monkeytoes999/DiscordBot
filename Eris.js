@@ -89,14 +89,15 @@ const dtb = new Client({
   }
 });
 dtb.connect();
+console.log('owo');
 
-var transporter = nodemailer.createTransport({
+/**var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
 		user: 'grahamcussdestroyer@gmail.com',
 		pass: process.env.empass
 	}
-});
+});**/
 
 
 bot.connect();
@@ -121,7 +122,7 @@ bot.on('guildCreate', (server) => {
 	});
 });
 
-bot.on('any', (event) => {
+//bot.on('any', (event) => {
 	commRand = false
 //     if ((Math.floor(Math.random() * 50000)) > 49999){
 // 	    if (event.d != null){
@@ -138,7 +139,7 @@ bot.on('any', (event) => {
 // 	    }
 //     }
 	
-});
+//});
 
 
 bot.on('messageUpdate', (msg, oldMsgData) => {
