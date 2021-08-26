@@ -371,13 +371,15 @@ bot.on('messageCreate', (msg) => {
 			}
 		}
 		//If A/B rotation variable not set yet, set it from its storage location
-		if (scDay == 'oof'){
-			dtb.query('SELECT day FROM day', function(err, res){
-				if (err) throw err;
-				scDay = res.rows[0].day
-			})
-			bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
-		}
+		setTimeout(() => {
+			if (scDay == 'oof'){
+				dtb.query('SELECT day FROM day', function(err, res){
+					if (err) throw err;
+					scDay = res.rows[0].day
+				})
+				bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
+			}
+		}, 10000);
 	}
 		
 	cussmessage = message.toUpperCase();
