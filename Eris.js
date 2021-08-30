@@ -89,13 +89,13 @@ const dtb = new Client({
  });
 dtb.connect();
 
-/**var transporter = nodemailer.createTransport({
+var transporter = nodemailer.createTransport({
 	service: 'gmail',
 	auth: {
 		user: 'grahamcussdestroyer@gmail.com',
 		pass: process.env.empass
 	}
-});**/
+});
 
 
 bot.connect();
