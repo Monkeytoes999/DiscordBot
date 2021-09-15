@@ -5,6 +5,7 @@ var fs = require('fs');
 var serverOptions = require('./serverOptions.json');
 var ffmpeg = require('ffmpeg');
 var nodemailer = require('nodemailer');
+const ytdl = require("ytdl-core");
 var prefix = 'gcd.';
 var gID = '393586279964475393';
 var cID = '336507246227881984';
@@ -463,7 +464,6 @@ bot.on('messageCreate', (msg) => {
 		if (!(bot.users.get(userID) == undefined)){
 			if (!(bot.users.get(userID).bot)){
 				//args = command, w/o prefix.
-				args = args.splice(4);
 				switch(cmd) {
 					case 'announce':
 						if (userID == gID){
@@ -554,7 +554,14 @@ bot.on('messageCreate', (msg) => {
 						commRand = true;
 						break;
 					case 'join':
-						bot.joinVoiceChannel("768291368652898365").catch()
+						let vcChannel = bot.getChannel('505885160752021529');
+						let filename = message
+						vc = vcChannel.join().then((connection) => {
+							source = ytdl(args[1]);
+							setTimeout(() => {
+								connection.play(source);
+							}, 3000);
+						});
 						break;
 					case 'rccm':
 						if (!isDM){
