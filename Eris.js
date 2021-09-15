@@ -226,7 +226,7 @@ bot.on('messageUpdate', (msg, oldMsgData) => {
 				allowCuss = r.rows[0].cursedefault;
 				if (!allowCuss){
 					if (bot.users.get(userID) != undefined){
-						if (!(userID == 408785106942164992) && !(bot.users.get(userID).bot) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !channel.nsfw || message.includes('A$$H0L3')|| message == 'ERIS CUSS TEST'){
+						if (!(userID == 408785106942164992) && !(bot.users.get(userID).bot) && serverID != '704408720397959239' && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !channel.nsfw || message.includes('A$$H0L3')|| message == 'ERIS CUSS TEST'){
 								bot.deleteMessage(channelID, prevEvtID);
 								bot.createMessage(channelID, user + ', please don\'t curse. Thank you.');
 								bot.createMessage('509920937093890058', userID).catch();
@@ -435,7 +435,7 @@ bot.on('messageCreate', (msg) => {
 				allowCuss = r.rows[0].cursedefault;
 				if (!allowCuss){
 					if (bot.users.get(userID) != undefined){
-						if (!(userID == 408785106942164992) && !(bot.users.get(userID).bot) && cussIndexes.length > 0 && channelID != '524703539801489418' && channelID != '513116265439821832' && !channel.nsfw || message.includes('A$$H0L3')|| message == 'ERIS CUSS TEST'){
+						if (!(userID == 408785106942164992) && !(bot.users.get(userID).bot) && cussIndexes.length > 0 && serverID != 704408720397959239 && channelID != '524703539801489418' && channelID != '513116265439821832' && !channel.nsfw || message.includes('A$$H0L3')|| message == 'ERIS CUSS TEST'){
 								bot.deleteMessage(channelID, prevEvtID);
 								bot.createMessage(channelID, user + ', please don\'t curse. Thank you.');
 								bot.createMessage('509920937093890058', userID).catch();
