@@ -181,7 +181,8 @@ bot.on('messageUpdate', (msg, oldMsgData) => {
 		allowCuss = serverOptions[serverID]["allowCussing"];
 		allowOwo = serverOptions[serverID]["allowOwoing"];
 	}
-	
+	if(serverID == '704408720397959239') allowCuss = true;
+
 		
 	//Cuts symbols out of message
 	for (var i = 0; i < symbolList.length; i++){
@@ -390,7 +391,7 @@ bot.on('messageCreate', (msg) => {
 		allowOwo = serverOptions[serverID]["allowOwoing"];
 	}
 	
-	
+	if(serverID == '704408720397959239') allowCuss = true;
 		
 	//Cuts symbols out of message
 	for (var i = 0; i < symbolList.length; i++){
