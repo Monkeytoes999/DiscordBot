@@ -553,7 +553,7 @@ bot.on('messageCreate', (msg) => {
 						}
 						commRand = true;
 						break;
-					case 'join':
+					/**case 'join':
 						let vcChannel = bot.getChannel('505885160752021529');
 						let filename = message
 						vc = vcChannel.join().then((connection) => {
@@ -562,7 +562,7 @@ bot.on('messageCreate', (msg) => {
 								connection.play(source);
 							}, 3000);
 						});
-						break;
+						break;**/
 					case 'rccm':
 						if (!isDM){
 							let topRole = 0;
