@@ -661,14 +661,16 @@ bot.on('messageCreate', (msg) => {
 						commRand = true;
 						break;
 					case 'ttu':
-						if(message.substring(8,9) != '<'){
-							bot.createMessage(message.substring(8,26), message.substring(27)).catch()
-						} else {
-							bot.getDMChannel(message.substring(11,29)).then(channel => {
-								bot.createMessage(channel.id, message.substring(31)).catch
-							});
+						if(userID == gID || userID == cID){
+							if(message.substring(8,9) != '<'){
+								bot.createMessage(message.substring(8,26), message.substring(27)).catch()
+							} else {
+								bot.getDMChannel(message.substring(11,29)).then(channel => {
+									bot.createMessage(channel.id, message.substring(31)).catch
+								});
+							}
+							comRand = true;
 						}
-						comRand = true;
 						break;
 					default:
 						if (!isDM && serverID != '264445053596991498'){
