@@ -306,7 +306,7 @@ bot.on('messageCreate', (msg) => {
 				thisDayay = 6 + (thisDayay + 1);
 			}
 			if (thisHour > 12){
-				thisHour = thisHour - 12
+				thisHour = thisHour - 11
 			}
 		//So basically, this allows it to detect if the date changed.
 		if ((thisTime.getHours() - 5) == 16 && thisMinute == 20 && shark){
