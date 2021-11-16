@@ -8,7 +8,7 @@
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"dependencies": {
-		"eris": "^0.13.4",
+		"eris": "^0.16.0",
 		"ffmpeg": "0.0.4",
 		"pg": "^8.7.1",
 		"request": "^2.88.0",
