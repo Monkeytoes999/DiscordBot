@@ -542,6 +542,16 @@ bot.on('messageCreate', (msg) => {
 					case 'statustest':
 						bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 						break;
+					case 'dontsetscday':
+						if (userID == cID){
+							scDay = message.substring(17);
+							let scNNA = 0;
+							while (scDay.indexOf("'", scNNA) > -1){ 
+								scNNA = scDay.indexOf("'", scNNA) + 1; 
+								scDay = scDay.substring(0, scNNA-1) + '‘' + scDay.substring(scNNA);
+							}
+							dtb.query('UPDATE day SET ' + Cy + ' = \'' + scDay + '\'');
+						break;
 					case 'setscday':
 						if (userID == gID || userID == cID){
 							scDay = message.substring(13);
