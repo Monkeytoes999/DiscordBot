@@ -550,7 +550,8 @@ bot.on('messageCreate', (msg) => {
 								scNNA = scDay.indexOf("'", scNNA) + 1; 
 								scDay = scDay.substring(0, scNNA-1) + '‘' + scDay.substring(scNNA);
 							}
-							dtb.query('UPDATE day SET ' + Cy + ' = \'' + scDay + '\'');
+							dtb.query('UPDATE day SET ' + 'Cy' + ' = \'' + scDay + '\'');
+						}
 						break;
 					case 'setscday':
 						if (userID == gID || userID == cID){
