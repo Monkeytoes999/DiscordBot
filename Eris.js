@@ -543,7 +543,7 @@ bot.on('messageCreate', (msg) => {
 						bot.editStatus("online", {"name": "in " + Object.keys(bot.guildShardMap).length + ' servers! gcd.help', "type": 0});
 						break;
 					case 'dontsetscday':
-						if (userID == cID){
+						if (userID == cID || userID == gID){
 							scDay = message.substring(17);
 							let scNNA = 0;
 							while (scDay.indexOf("'", scNNA) > -1){ 
