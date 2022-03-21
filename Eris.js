@@ -349,8 +349,8 @@ bot.on('messageCreate', (msg) => {
 			}
 			if(scDay.toUpperCase() != 'NONE'){
 				let scAnnounce = 0;
-				let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','399366382799814656','156126755646734336','120545011392577537','250331063337877504'];
-				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'er', 'miro', 'civ', 'voosh'];
+				let scAnnArr = ['458809225120972800','486985623161274378','336507246227881984','393586279964475393','156126755646734336','120545011392577537','250331063337877504'];
+				let scAnnMArr = ['jon', 'bert', 'cy', 'g', 'miro', 'civ', 'voosh'];
 				let scOof = 0;
 				while (scAnnounce < scAnnArr.length){
 					setTimeout(() => {
