@@ -677,7 +677,7 @@ bot.on('messageCreate', (msg) => {
 								bot.createMessage(message.substring(8,26), message.substring(27)).catch()
 							} else {
 								bot.getDMChannel(message.substring(11,29)).then(channel => {
-									bot.createMessage(channel.id, message.substring(31)).catch
+									bot.createMessage(channel.id, message.substring(31)).catch()
 								});
 							}
 							comRand = true;
