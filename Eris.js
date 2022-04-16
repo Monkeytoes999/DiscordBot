@@ -294,7 +294,9 @@ bot.on('messageCreate', (msg) => {
 		let thisTime = new Date();
 			let thisMinute = thisTime.getMinutes();
 			let thisHour = (thisTime.getHours() - 4);
-			if (DST) thisHour = thisHour-1;
+			if (DST) { 
+				thisHour = thisHour-1;
+			}
 			let thisDay = thisTime.getDate();
 			let thisDayay = (thisTime.getDay() - 1);
 			if (thisHour < 0){
