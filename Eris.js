@@ -102,10 +102,52 @@ var transporter = nodemailer.createTransport({
 
 
 bot.connect();
-bot.on("ready", () => {
+bot.on("ready", async () => {
     console.log('Connected');
     console.log('Logged in as: ');
     console.log(bot.user.username + ' - (' + bot.user.id + ')');
+
+	const commands = await bot.getCommands();
+
+	if (!commands.length) {
+
+		const scDayCmd = bot.createGuildCommand("505885160752021525", {
+			name: "setScDay",
+			description: "Dev command",
+			options: [
+				{
+					"name": "day",
+					"description": "the new day",
+					"type": 3,
+					"required": true
+				}
+			],
+			type: 1
+		}, );
+	}
+});
+
+bot.on("interactionCreate", interaction => {
+	if (interaction instanceof Eris.CommandInteraction) {
+		if (interaction.data.name == "setscday") {
+			var userID = interaction.member.id;
+			var channelID = interaction.channel.id;
+				if (userID == gID || userID == cID){
+				scDay = interaction.data.options[0].value;
+				let scNNA = 0;
+				while (scDay.indexOf("'", scNNA) > -1){ 
+					scNNA = scDay.indexOf("'", scNNA) + 1; 
+					scDay = scDay.substring(0, scNNA-1) + '‘' + scDay.substring(scNNA);
+				}
+				bot.createMessage(channelID, 'Ok, today is now a ' + scDay + ' day.');
+				dtb.query('UPDATE day SET day = \'' + scDay + '\'', function(err, res){
+					if (err) throw err;
+					console.log(res)
+				})
+			}
+			return interaction.createMessage("Changed")
+		}
+	}
 });
 
 bot.on('disconnect', (erMsg, code) => {
