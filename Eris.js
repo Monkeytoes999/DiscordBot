@@ -142,7 +142,6 @@ bot.on("interactionCreate", interaction => {
 				bot.createMessage(channelID, 'Ok, today is now a ' + scDay + ' day.');
 				dtb.query('UPDATE day SET day = \'' + scDay + '\'', function(err, res){
 					if (err) throw err;
-					console.log(res)
 				})
 			}
 			return interaction.createMessage("Changed")
