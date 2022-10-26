@@ -124,6 +124,24 @@ bot.on("ready", async () => {
 			],
 			type: 1
 		}, );
+		const ttuCmd = bot.createGuildCommand("505885160752021525", {
+			name: "ttu",
+			description: "Dev command",
+			options: [
+				{
+					"name": "id",
+					"description": "where",
+					"type": 3,
+					"required": true
+				}, {
+					"name": "message",
+					"description": "what",
+					"type": 3,
+					"required": true
+				}
+			],
+			type: 1
+		}, );
 	}
 });
 
@@ -144,7 +162,17 @@ bot.on("interactionCreate", interaction => {
 					if (err) throw err;
 				})
 			}
-			return interaction.createMessage("Changed")
+			return interaction.createMessage("Changed");
+		}
+		if (interaction.data.name == "ttu") {
+			var userID = interaction.member.id;
+			var channelID = interaction.channel.id;
+				if (userID == gID || userID == cID){
+				id = interaction.data.options[0].value;
+				msg = interaction.data.options[1].value;
+				bot.createMessage(id, msg);
+			}
+			return interaction.createMessage("Response Sent");
 		}
 	}
 });
